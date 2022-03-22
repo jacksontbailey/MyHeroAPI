@@ -1,4 +1,4 @@
-import requests, re, asyncio, shutil
+import requests, re, asyncio, shutil, os
 from cgitb import text
 from pprint import pprint
 from bs4 import BeautifulSoup
@@ -9,12 +9,16 @@ page = requests.get(parent_url).text
 soup = BeautifulSoup(page, "html.parser")
 imgs = soup.find_all('img')
 
-async def download_card_images():
+def download_card_images():
+    os.chdir("C:/Users/jbailey/OneDrive - OTO Development, LLC/Pictures/MHA images")
+
     for card in cards.values():
-        pattern = re.compile(r'\d+(-([a-z])+)+(-\d).png$', re.IGNORECASE)
+        pattern = re.compile(r'\d+((\-([a-z])+)+|(\-([\s\S]+)+))(.png$)', re.IGNORECASE)
         file_name_search = pattern.search(card)
         file_name= file_name_search.group()
+        print(f"Here is the pattern I found: {file_name}")
         res = requests.get(card, stream = True)
+            
         if res.status_code == 200:
             with open(file_name, 'wb') as f:
                 shutil.copyfileobj(res.raw, f)
@@ -32,9 +36,3 @@ for img in (imgs):
         i+=1
 
 download_card_images()
-
-"""card_name = (cards[1])
-print(card_name)
-pattern = re.compile(r'\d+(-([a-z])+)+(-\d).png$', re.IGNORECASE)
-mo = pattern.search(card_name)
-print(f"Here is the pattern I found: {mo.group()}")"""
