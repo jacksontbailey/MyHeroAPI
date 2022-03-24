@@ -1,6 +1,4 @@
 import requests, re, asyncio, shutil, os
-from cgitb import text
-from pprint import pprint
 from bs4 import BeautifulSoup
 
 parent_url = "https://mhacardgame.com/cards/"
