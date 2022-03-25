@@ -1,0 +1,1 @@
+BASE_URL = "https://sitemap.tcgplayer.com/universus.0.xml"
