@@ -11,8 +11,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from card_page.card_page import Card_Page
 
 
-inst = Card_Page()
-inst.land_first_page()
+with Card_Page() as bot:
+    bot.land_first_page()
 
 """ser = Service("C:/Program Files (x86)/chromedriver.exe")
 op = webdriver.ChromeOptions()
