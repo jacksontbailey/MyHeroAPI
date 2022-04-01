@@ -7,7 +7,7 @@ from card_page.card_page import Card_Page
 
 with Card_Page() as bot:
     bot.land_first_page()
-
+"""
 ser = Service("C:/Program Files (x86)/chromedriver.exe")
 op = webdriver.ChromeOptions()
 driver = webdriver.Chrome(service=ser, options=op)
@@ -31,7 +31,7 @@ for p in range(1,2):
 
     driver.get(f"{page2}{p}")
     driver.implicitly_wait(10)
-
+""""""
     WebDriverWait(driver, 30).until(
         EC.all_of(
             (By.CLASS_NAME, 'product-details__name'),
@@ -67,5 +67,5 @@ for p in range(1,2):
             p+=1
     
     sleep(10)
-
-print(card_names)
+"""
+"""print(card_names)"""
