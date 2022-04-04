@@ -16,7 +16,7 @@ class Card_Page(webdriver.Chrome):
         self.chrome_service = Service(self.driver_path)
         self.teardown = teardown
         super(Card_Page, self).__init__(service=self.chrome_service)
-        self.implicitly_wait(15)
+        self.implicitly_wait(10)
         self.maximize_window()
 
     def __exit__(self, exec_type, exc_val, exc_tb):
@@ -24,19 +24,29 @@ class Card_Page(webdriver.Chrome):
             self.quit()
 
     def land_first_page(self):
-        self.get(const.BASE_URL)
+        driver = const.BASE_URL
+        self.get(driver)
+        self.implicitly_wait(10)
+        print(driver)
+        possible_direct_xpath = self.find_element_by_xpath("//span[starts-with(@id, 'folder0')]")
+        print(possible_direct_xpath)
         
 
     
     def find_all_card_urls(self):
-        select_span = self.find_elements_by_css_selector('span')
-        for i in select_span:
-            print(i)
+        possible_direct_xpath = self.find_element_by_xpath("/html/body/div[1]/urlset/url")
+        
+        print(possible_direct_xpath)
+
+"""        for i in possible_direct_xpath:
+            i = possible_direct_xpath.text()
+            pattern = re.compile(const.BASE_URL_REGEX, re.IGNORECASE)
+            if i == pattern:
+                print(i)"""
 """        href = []
         card_urls = const.BASE_URL.find_elements_by_css_selector("span")
         print(card_urls)
         url_text = card_urls.text
-        pattern = re.compile(const.BASE_URL_REGEX, re.IGNORECASE)
         titled_columns =   {"Urls": NULL,
                             "Card Name": NULL, 
                             "Card ID": NULL, 
