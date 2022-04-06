@@ -2,6 +2,7 @@ from asyncio.windows_events import NULL
 from cgitb import html
 import imp, os, re, requests
 import card_page.constants as const
+import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from requests.exceptions import HTTPError
@@ -46,16 +47,8 @@ class Card_Page(webdriver.Chrome):
 
     
     def find_all_card_urls(self):
-        possible_direct_xpath = self.find("/html/body/div[1]/urlset/url")
-        
-        print(possible_direct_xpath)
-
-"""        for i in possible_direct_xpath:
-            i = possible_direct_xpath.text()
-            pattern = re.compile(const.BASE_URL_REGEX, re.IGNORECASE)
-            if i == pattern:
-                print(i)"""
-"""        href = []
+        pattern = const.BASE_URL #replace with real regex pattern
+        href = []
         card_urls = const.BASE_URL.find_elements_by_css_selector("span")
         print(card_urls)
         url_text = card_urls.text
@@ -76,7 +69,6 @@ class Card_Page(webdriver.Chrome):
         url_db['url'] = href
         url_db.to_csv("cards.csv", sep="\t")
         print(url_db)
-"""
                 
 
 #https://www.youtube.com/watch?v=j7VZsCCnptM
