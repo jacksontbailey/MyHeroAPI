@@ -1,13 +1,10 @@
 from asyncio.windows_events import NULL
-import imp, os, re
+from cgitb import html
+import imp, os, re, requests
 import card_page.constants as const
-import pandas as pd
-from bs4 import BeautifulSoup as bs
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-
+from requests.exceptions import HTTPError
 
 
 class Card_Page(webdriver.Chrome):
@@ -24,17 +21,32 @@ class Card_Page(webdriver.Chrome):
             self.quit()
 
     def land_first_page(self):
-        driver = const.BASE_URL
-        self.get(driver)
-        self.implicitly_wait(10)
-        print(driver)
-        possible_direct_xpath = self.find_element_by_xpath("//span[starts-with(@id, 'folder0')]")
-        print(possible_direct_xpath)
+        try:
+            r = requests.get(const.BASE_URL)
+            r.raise_for_status()
+            json_response = r.text
+            regex_1 = re.compile(const.PARSE_JSON_REGEX, re.MULTILINE|re.IGNORECASE)
+            regex_2 = re.compile(const.BASE_URL_REGEX, re.IGNORECASE)
+
+                
+            extract_page_json = re.findall(regex_1, json_response)
+            for card_url in extract_page_json:
+                my_hero_url = re.search(regex_2, card_url[0])
+                if my_hero_url:
+                    print(card_url[0])
+                #pattern = re.compile(const.BASE_URL_REGEX, re.IGNORECASE)
+                #for url in pattern:
+                #    print(url)
+
+        except HTTPError as http_err:
+            print(f'HTTP error occurred: {http_err}')
+        except Exception as err:
+            print(f'Other error occurred: {err}')
         
 
     
     def find_all_card_urls(self):
-        possible_direct_xpath = self.find_element_by_xpath("/html/body/div[1]/urlset/url")
+        possible_direct_xpath = self.find("/html/body/div[1]/urlset/url")
         
         print(possible_direct_xpath)
 
@@ -66,7 +78,5 @@ class Card_Page(webdriver.Chrome):
         print(url_db)
 """
                 
-
-
 
 #https://www.youtube.com/watch?v=j7VZsCCnptM
