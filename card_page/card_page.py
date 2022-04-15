@@ -1,19 +1,22 @@
 from asyncio.windows_events import NULL
 from cgitb import html
-import imp, os, re, requests
+import imp, os, re, requests,time
 import card_page.constants as const
 import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
 from requests.exceptions import HTTPError
 
 
 class Card_Page(webdriver.Chrome):
     def __init__(self, driver_path = r"C:\Users\jbailey\Selenium\chromedriver.exe", teardown=False):
+        options = webdriver.ChromeOptions()
+        options.add_experimental_option('excludeSwitches', ['enable-logging'])
         self.driver_path = driver_path
         self.chrome_service = Service(self.driver_path)
         self.teardown = teardown
-        super(Card_Page, self).__init__(service=self.chrome_service)
+        super(Card_Page, self).__init__(service=self.chrome_service, options=options)
         self.implicitly_wait(10)
         self.maximize_window()
 
@@ -46,29 +49,39 @@ class Card_Page(webdriver.Chrome):
         
 
     
-    async def open_all_card_urls(self, url):
+    def open_all_card_urls(self, url):
+        options = webdriver.ChromeOptions()
+        options.add_experimental_option('excludeSwitches', ['enable-logging'])
         pattern = self #replace with real regex pattern
-        driver = self.get(url)
-        card_description = driver.find_elements_by_css_selector("span")
-        await card_description
-    #    url_text = card_urls.text
-    #    titled_columns =   {"Urls": NULL,
-    #                        "Card Name": NULL, 
-    #                        "Card ID": NULL, 
-    #                        "Play Difficulty": NULL, 
-    #                        "Block Total": NULL, 
-    #                        "Type": NULL, 
-    #                        "Text Box": NULL, 
-    #                        "Symbols": NULL, 
-    #                        "Check": NULL}
-    #    url_db = pd.DataFrame(titled_columns)
-    #    for url in url_text:
-    #        if pattern.__str__ in url:
-    #            href.append(url)
-    #            print(url)
-    #    url_db['url'] = href
-    #    url_db.to_csv("cards.csv", sep="\t")
-    #    print(url_db)
+        driver = webdriver.Chrome(r"C:\Users\jbailey\Selenium\chromedriver.exe", options=options)
+        driver.get(url)
+        assert "My Hero Academia" in driver.title
+        
+        # -- Get card description for each card -- Need to still parse strong text from span
+        card_description = driver.find_elements_by_class_name("product__item-details__description")
+        for card in card_description:
+            print(card.text)
+
+        assert "No results found." not in driver.page_source
+        
+        url_text = driver.text
+        titled_columns =   {"Urls": NULL,
+                            "Card Name": driver.find_element_by_class_name("product-details__name").text, 
+                            "Card ID": NULL, 
+                            "Play Difficulty": NULL, 
+                            "Block Total": NULL, 
+                            "Type": NULL, 
+                            "Text Box": NULL, 
+                            "Symbols": NULL, 
+                            "Check": NULL}
+        url_db = pd.DataFrame(titled_columns)
+        for url in url_text:
+            if pattern.__str__ in url:
+                href.append(url)
+                print(url)
+        url_db['url'] = href
+        url_db.to_csv("cards.csv", sep="\t")
+        print(url_db)
                 
 
 #https://www.youtube.com/watch?v=j7VZsCCnptM
