@@ -51,12 +51,16 @@ class Card_Page(webdriver.Chrome):
     
     def open_all_card_urls(self, url):
         options = webdriver.ChromeOptions()
-        options.add_experimental_option('excludeSwitches', ['enable-logging'])
+        options.add_argument("start-maximized")
+        options.add_experimental_option('excludeSwitches', ['enable-logging', 'enable-automation'])
+        options.add_experimental_option('useAutomationExtension', False)
         pattern = self #replace with real regex pattern
         driver = webdriver.Chrome(r"C:\Users\jbailey\Selenium\chromedriver.exe", options=options)
         driver.get(url)
         assert "My Hero Academia" in driver.title
         
+        self.implicitly_wait(15)
+
         # -- Get card description for each card -- Need to still parse strong text from span
         card_description = driver.find_elements_by_class_name("product__item-details__description")
         for card in card_description:
@@ -64,24 +68,27 @@ class Card_Page(webdriver.Chrome):
 
         assert "No results found." not in driver.page_source
         
-        url_text = driver.text
-        titled_columns =   {"Urls": NULL,
-                            "Card Name": driver.find_element_by_class_name("product-details__name").text, 
-                            "Card ID": NULL, 
-                            "Play Difficulty": NULL, 
-                            "Block Total": NULL, 
-                            "Type": NULL, 
-                            "Text Box": NULL, 
-                            "Symbols": NULL, 
-                            "Check": NULL}
-        url_db = pd.DataFrame(titled_columns)
-        for url in url_text:
-            if pattern.__str__ in url:
-                href.append(url)
-                print(url)
-        url_db['url'] = href
-        url_db.to_csv("cards.csv", sep="\t")
-        print(url_db)
+        element_list = driver.find_element(By.XPATH, "//ul[@class='product__item-details__attributes']")
+        items = element_list.find_elements(By.TAG_NAME, 'li')
+        for i in items:
+            print(i.text)
+#        titled_columns =   {"Urls": NULL,
+#                            "Card Name": driver.find_element_by_class_name("product-details__name").text, 
+#                            "Card ID": NULL, 
+#                            "Play Difficulty": NULL, 
+#                            "Block Total": NULL, 
+#                            "Type": NULL, 
+#                            "Text Box": NULL, 
+#                            "Symbols": NULL, 
+#                            "Check": NULL}
+#        url_db = pd.DataFrame(titled_columns)
+#        for url in url_text:
+#            if pattern.__str__ in url:
+#                href.append(url)
+#                print(url)
+#        url_db['url'] = href
+#        url_db.to_csv("cards.csv", sep="\t")
+#        print(url_db)
                 
 
 #https://www.youtube.com/watch?v=j7VZsCCnptM
