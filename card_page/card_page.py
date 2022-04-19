@@ -1,11 +1,14 @@
 from asyncio.windows_events import NULL
 from cgitb import html
 import imp, os, re, requests,time
+from operator import indexOf
 import card_page.constants as const
 import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from requests.exceptions import HTTPError
 
 
@@ -59,19 +62,34 @@ class Card_Page(webdriver.Chrome):
         driver.get(url)
         assert "My Hero Academia" in driver.title
         
-        self.implicitly_wait(15)
+        try:
+            # -- Starts waiting process for parent elements of stuff I'm looking for on the page 
+            wait = WebDriverWait(driver, 20)
+
+            read_button = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "product__item-details__toggle")))
+            desc_el = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "product__item-details__content")))
+            attr_el = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "product__item-details__attributes")))
+            
+            # -- Needed to click dropdown button in order to retrieve all of the attributes for the card
+            read_button.click()
+
+            # -- Gets the card description
+            card_description = desc_el.find_elements(By.CLASS_NAME, "product__item-details__description")
+            for card in card_description:
+                print(card.text)
+
+            # -- Gets all of the card stats besides the description
+            items = attr_el.find_elements(By.TAG_NAME, value='li')
+            
+            for i in range(len(items)):
+                val = items[i]
+                print(f"{i}: {val.text}")
+            assert "No results found." not in driver.page_source
+            
+        except:
+            driver.quit()
 
         # -- Get card description for each card -- Need to still parse strong text from span
-        card_description = driver.find_elements_by_class_name("product__item-details__description")
-        for card in card_description:
-            print(card.text)
-
-        assert "No results found." not in driver.page_source
-        
-        element_list = driver.find_element(By.XPATH, "//ul[@class='product__item-details__attributes']")
-        items = element_list.find_elements(By.TAG_NAME, 'li')
-        for i in items:
-            print(i.text)
 #        titled_columns =   {"Urls": NULL,
 #                            "Card Name": driver.find_element_by_class_name("product-details__name").text, 
 #                            "Card ID": NULL, 
