@@ -69,44 +69,48 @@ class Card_Page(webdriver.Chrome):
             read_button = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "product__item-details__toggle")))
             desc_el = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "product__item-details__content")))
             attr_el = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "product__item-details__attributes")))
-            
+            title_el = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "product-details__header")))
             # -- Needed to click dropdown button in order to retrieve all of the attributes for the card
             read_button.click()
+
+            stats = []
+            card_description_text = []
+
+            # -- Gets the card title
+            title = title_el.find_element(By.TAG_NAME, "h1")
+            card_title = title.text
 
             # -- Gets the card description
             card_description = desc_el.find_elements(By.CLASS_NAME, "product__item-details__description")
             for card in card_description:
-                print(card.text)
+                card_description_text.append(card.text)
 
             # -- Gets all of the card stats besides the description
             items = attr_el.find_elements(By.TAG_NAME, value='li')
             
             for i in range(len(items)):
                 val = items[i]
-                print(f"{i}: {val.text}")
+                card_stats = val.text
+                card_stats_split = card_stats.split(":")
+                stats.append(card_stats_split)
+            return(card_title, card_description_text, stats)
+
             assert "No results found." not in driver.page_source
             
         except:
             driver.quit()
 
         # -- Get card description for each card -- Need to still parse strong text from span
-#        titled_columns =   {"Urls": NULL,
-#                            "Card Name": driver.find_element_by_class_name("product-details__name").text, 
-#                            "Card ID": NULL, 
-#                            "Play Difficulty": NULL, 
-#                            "Block Total": NULL, 
-#                            "Type": NULL, 
-#                            "Text Box": NULL, 
-#                            "Symbols": NULL, 
-#                            "Check": NULL}
-#        url_db = pd.DataFrame(titled_columns)
-#        for url in url_text:
-#            if pattern.__str__ in url:
-#                href.append(url)
-#                print(url)
-#        url_db['url'] = href
-#        url_db.to_csv("cards.csv", sep="\t")
-#        print(url_db)
+        titled_columns =   {"Urls": NULL,
+                            "Card Name": driver.find_element_by_class_name("product-details__name").text, 
+                            "Card ID": NULL, 
+                            "Play Difficulty": NULL, 
+                            "Block Total": NULL, 
+                            "Type": NULL, 
+                            "Text Box": NULL, 
+                            "Symbols": NULL, 
+                            "Check": NULL}
+
                 
 
 #https://www.youtube.com/watch?v=j7VZsCCnptM
