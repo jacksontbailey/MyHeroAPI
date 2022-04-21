@@ -60,18 +60,26 @@ class Card_Page(webdriver.Chrome):
         pattern = self #replace with real regex pattern
         driver = webdriver.Chrome(r"C:\Users\jbailey\Selenium\chromedriver.exe", options=options)
         driver.get(url)
-        assert "My Hero Academia" in driver.title
         
         try:
             # -- Starts waiting process for parent elements of stuff I'm looking for on the page 
-            wait = WebDriverWait(driver, 20)
+            wait = WebDriverWait(driver, 10)
 
-            read_button = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "product__item-details__toggle")))
             desc_el = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "product__item-details__content")))
             attr_el = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "product__item-details__attributes")))
             title_el = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "product-details__header")))
+            
+
             # -- Needed to click dropdown button in order to retrieve all of the attributes for the card
-            read_button.click()
+            while True:
+                try:
+                    read_button = WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME, "product__item-details__toggle")))
+                    read_button.click()
+                    break
+                except:
+                    print("No Drop Down button available")
+                    break
+
 
             stats = []
             card_description_text = []
@@ -94,22 +102,9 @@ class Card_Page(webdriver.Chrome):
                 card_stats_split = card_stats.split(":")
                 stats.append(card_stats_split)
             return(card_title, card_description_text, stats)
-
-            assert "No results found." not in driver.page_source
             
         except:
             driver.quit()
-
-        # -- Get card description for each card -- Need to still parse strong text from span
-        titled_columns =   {"Urls": NULL,
-                            "Card Name": driver.find_element_by_class_name("product-details__name").text, 
-                            "Card ID": NULL, 
-                            "Play Difficulty": NULL, 
-                            "Block Total": NULL, 
-                            "Type": NULL, 
-                            "Text Box": NULL, 
-                            "Symbols": NULL, 
-                            "Check": NULL}
 
                 
 

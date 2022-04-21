@@ -7,9 +7,17 @@ from requests.exceptions import HTTPError
 def run_test():
     with Card_Page() as bot:
         get_all_urls = bot.land_first_page()
-        description = bot.open_all_card_urls(get_all_urls[10])
-        print(description)
-        #for i in get_all_urls:
-        #    asyncio.all_tasks
+        print(get_all_urls)
+        print(type(get_all_urls))
 
+        loop = 0
+        for i, val in enumerate(get_all_urls):
+            if loop < 10:
+                description = bot.open_all_card_urls(get_all_urls[i])
+                print(val, description)
+                loop+=1
+                print(f"{loop} loop total")
+            else:
+                print(f"loop equals {loop}")
+                break
 run_test()
