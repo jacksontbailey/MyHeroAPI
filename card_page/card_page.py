@@ -73,7 +73,7 @@ class Card_Page(webdriver.Chrome):
             # -- Needed to click dropdown button in order to retrieve all of the attributes for the card
             while True:
                 try:
-                    read_button = WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME, "product__item-details__toggle")))
+                    read_button = WebDriverWait(driver, .5).until(EC.presence_of_element_located((By.CLASS_NAME, "product__item-details__toggle")))
                     read_button.click()
                     break
                 except:

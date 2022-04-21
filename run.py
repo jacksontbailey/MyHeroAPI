@@ -9,7 +9,9 @@ def run_test():
         get_all_urls = bot.land_first_page()
         print(get_all_urls)
         print(type(get_all_urls))
-
+    
+    # -- Loops through all of the card urls to get the data, but is currently set to max of 10 for testing purposes
+    # -- Remove if/else statement to cycle through all of them. 
         loop = 0
         for i, val in enumerate(get_all_urls):
             if loop < 10:
