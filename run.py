@@ -34,15 +34,21 @@ def run_test():
                 card_block_zone = description[2][7][1]
 
                 if card_type == "Character":
-                    None
+                    card_hand_size = description[2][8][1]
+                    card_vitality = description[2][9][1]
+                    card_keywords_unparsed = description[2][10]
                 elif card_type == "Attack":
-                    None
+                    card_attack_speed = description[2][8][1]
+                    card_attack_zone = description[2][9][1]
+                    card_attack_damage = description[2][10][1]
+                    card_keywords_unparsed = description[2][11]
+
                 elif card_type == "Foundation":
-                    None
+                    card_keywords_unparsed = description[2][8]
                 elif card_type == "Action":
-                    None
+                    card_keywords_unparsed = description[2][8]
                 elif card_type== "Asset":
-                    None
+                    card_keywords_unparsed = description[2][8]
                 else:
                     None
 
