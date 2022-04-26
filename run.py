@@ -1,6 +1,9 @@
 import re
 
-from sqlalchemy import desc
+from typing import List
+from fastapi import FastAPI
+from cards import Card, CardType, AttackCard, AttackKeyword, CharacterCard, Symbol
+
 import card_page.constants as const
 from card_page.card_page import Card_Page
 from requests.exceptions import HTTPError
@@ -25,7 +28,7 @@ def run_test():
                 card_name = description[0]
                 card_description_unparsed = description[1]
                 card_rarity = description[2][0][1]
-                card_number = description[2][1][1]
+                card_number_unparsed = description[2][1][1]
                 card_type = description[2][2][1]
                 card_resource_symbols_unparsed = description[2][3][1]
                 card_check = description[2][4][1]
@@ -33,10 +36,30 @@ def run_test():
                 card_block_modifier = description[2][6][1]
                 card_block_zone = description[2][7][1]
 
+                card_number = re.sub(const.CARD_NUMBER, '', card_number_unparsed)
+                card_description = card_description_unparsed.split(const.DESCRIPTION_SPLIT)
+                card_resource_symbols = card_resource_symbols_unparsed.split(" ")
+
                 if card_type == "Character":
                     card_hand_size = description[2][8][1]
                     card_vitality = description[2][9][1]
                     card_keywords_unparsed = description[2][10]
+                    
+                    db: List[Card] = [
+                        Card(
+                            id = int(card_number),
+                            image_url = None,
+                            name = card_name,
+                            type= CardType.character,
+                            rarity = card_rarity,
+                            play_difficulty= int(card_difficulty),
+                            block_modifier= int(card_block_modifier),
+                            block_zone= card_block_zone,
+                            text_box= card_description,
+                            symbols= card_resource_symbols,
+                            check= int(card_check)
+                        )
+                    ]
                 elif card_type == "Attack":
                     card_attack_speed = description[2][8][1]
                     card_attack_zone = description[2][9][1]
@@ -52,7 +75,6 @@ def run_test():
                 else:
                     None
 
-                card_number = re.sub(const.CARD_NUMBER, '', card_number)
                 
                 print(card_number)
                 print(card_type)

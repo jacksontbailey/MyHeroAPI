@@ -48,19 +48,19 @@ class AttackCard(str, Enum):
     ability: Optional[dict[keyword[len(keyword)], str]]
 
 class CardType(str, Enum):
-    character = "character"
-    attack = "attack"
+    character = CharacterCard
+    attack = AttackCard
     foundation = "foundation"
     action = "action"
     assets = "assets"
 
 class Card(BaseModel):
-    id: Optional[UUID] = uuid4
+    id: str
     image_url: str
     name: str
     play_difficulty: int
     block_total: int
-    type: str
+    type: CardType
     text_box: str
     symbols: List[Symbol]
     check: int
