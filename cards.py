@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Optional, List
+from typing import Optional
 from uuid import UUID, uuid4
 from pydantic import BaseModel
 
@@ -36,34 +36,38 @@ class AttackKeyword(str, Enum):
     unique = "Unique"
 
 class CharacterCard(str, Enum):
+    type = "character"
     starting_hand_size: int
     max_health: int
-    version: str
 
 class AttackCard(str, Enum):
+    type = "character"
     zone = "Red" or "Orange" or "Yellow"
     speed: int
     damage: int
-    keyword: List[AttackKeyword]
-    ability: Optional[dict[keyword[len(keyword)], str]]
+    keyword: list[AttackKeyword]
+    ability: Optional[str]
 
 class CardType(str, Enum):
-    character = CharacterCard
-    attack = AttackCard
+    character = list[CharacterCard]
+    attack = list[AttackCard]
     foundation = "foundation"
     action = "action"
     assets = "assets"
 
 class Card(BaseModel):
-    id: str
-    image_url: str
+    id: int
+    image_url: str | None = None
     name: str
-    play_difficulty: int
-    block_total: int
     type: CardType
-    text_box: str
-    symbols: List[Symbol]
+    rarity: str
+    play_difficulty: int
+    block_modifier: int
+    block_zone: str
+    text_box: list[str]
+    symbols: list[Symbol]
     check: int
+    keyword: Optional[str] | None = None
 
 
 
