@@ -1,6 +1,7 @@
+import re
+import card_page.constants as const
 from enum import Enum
 from typing import Optional
-from uuid import UUID, uuid4
 from pydantic import BaseModel
 
 class Symbol(str, Enum):
@@ -69,6 +70,39 @@ class Card(BaseModel):
     check: int
     keyword: Optional[str] | None = None
 
+
+class Unicode_Parser():
+
+    def parse_list(self, new_data):
+        for number, string in enumerate(new_data):
+#            if (new_data[number] == "Keywords") | (new_data[number] == ""):
+#                print(f"{string} is a keyword")
+
+            unicode = re.search(const.UNICODE_SEARCH, string)
+
+            if unicode == r"\u2019":
+                unicode_swap = re.sub(unicode, "\'", string)
+                return(unicode_swap)
+
+            elif unicode == r"\u2022":
+                unicode_swap = re.sub(unicode, "", string)                
+                return(unicode_swap)
+
+            elif unicode == r"\u201c":
+                unicode_swap = re.sub(unicode, "\"", string)
+                return(unicode_swap)
+            
+            elif unicode == r"\u201d":
+                unicode_swap = re.sub(unicode, "\"", string)
+                return(unicode_swap)
+
+            elif unicode == r"\u2022":
+                unicode_swap = re.sub(unicode, "", string)
+                return(unicode_swap)
+            else:
+                print(f"No unicode in string: {string}")    
+
+                
 
 
 

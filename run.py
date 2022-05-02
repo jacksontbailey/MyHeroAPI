@@ -1,7 +1,7 @@
 import re, json
 
 from fastapi import FastAPI
-from cards import Card, CardType, AttackCard, AttackKeyword, CharacterCard, Symbol
+from cards import Card, CardType, AttackCard, AttackKeyword, CharacterCard, Symbol, Unicode_Parser
 
 import card_page.constants as const
 from card_page.card_page import Card_Page
@@ -21,11 +21,12 @@ def run_test():
         json_card_data = [] 
         loop = 0
         for i, val in enumerate(get_all_urls):
-            if loop < 20:
+            if loop < 3:
                 description = bot.open_all_card_urls(get_all_urls[i])
+                u  = Unicode_Parser()
                 print(val, description)
 
-    #-- Find out if the card is a Character, Attack, Foundation, Action, or Asset
+                #-- Find out if the card is a Character, Attack, Foundation, Action, or Asset
 
                 card_name = description[0]
                 card_description_unparsed = str(description[1][0])
@@ -50,18 +51,18 @@ def run_test():
 
                     card_details = {
                         "card_name": card_name,
-                        "card_description": [card_description],
+                        "card_description": card_description,
                         "card_rarity": card_rarity,
                         "card_number": card_number,
                         "card_type": card_type,
-                        "card_resource_symbols": [card_resource_symbols],
+                        "card_resource_symbols": card_resource_symbols,
                         "card_check": card_check,
                         "card_difficulty": card_difficulty,
                         "card_block_modifier": card_block_modifier,
                         "card_block_zone": card_block_zone,
                         "card_hand_size": card_hand_size,
                         "card_vitality": card_vitality,
-                        "card_keywords_unparsed": card_keywords_unparsed,
+                        "card_keywords": card_keywords_unparsed,
                     }
                     card_copy = card_details.copy()
                     json_card_data.append(card_copy)
@@ -72,13 +73,14 @@ def run_test():
                     card_attack_damage = description[2][10][1]
                     card_keywords_unparsed = description[2][11]
 
+
                     card_details = {
                         "card_name": card_name,
-                        "card_description": [card_description],
+                        "card_description": card_description,
                         "card_rarity": card_rarity,
                         "card_number": card_number,
                         "card_type": card_type,
-                        "card_resource_symbols": [card_resource_symbols],
+                        "card_resource_symbols": card_resource_symbols,
                         "card_check": card_check,
                         "card_difficulty": card_difficulty,
                         "card_block_modifier": card_block_modifier,
@@ -86,7 +88,7 @@ def run_test():
                         "card_attack_speed": card_attack_speed,
                         "card_attack_zone": card_attack_zone,
                         "card_attack_damage": card_attack_damage,
-                        "card_keywords_unparsed": card_keywords_unparsed
+                        "card_keywords": card_keywords_unparsed
                     }
 
                     card_copy = card_details.copy()
@@ -95,21 +97,22 @@ def run_test():
 
                 elif (card_type == "Foundation") | (card_type == "Action") | (card_type == "Asset"):
                     card_keywords_unparsed = description[2][8]
+                    print(card_keywords_unparsed)
 
                     card_details = {
                         "card_name": card_name,
-                        "card_description": [card_description],
+                        "card_description": card_description,
                         "card_rarity": card_rarity,
                         "card_number": card_number,
                         "card_type": card_type,
-                        "card_resource_symbols": [card_resource_symbols],
+                        "card_resource_symbols": card_resource_symbols,
                         "card_check": card_check,
                         "card_difficulty": card_difficulty,
                         "card_block_modifier": card_block_modifier,
                         "card_block_zone": card_block_zone,
-                        "card_keywords_unparsed": card_keywords_unparsed
+                        "card_keywords": card_keywords_unparsed
                     }
-
+                    
                     card_copy = card_details.copy()
                     json_card_data.append(card_copy)
 
