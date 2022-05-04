@@ -52,9 +52,9 @@ class AttackCard(str, Enum):
 class CardType(str, Enum):
     character = list[CharacterCard]
     attack = list[AttackCard]
-    foundation = "foundation"
-    action = "action"
-    assets = "assets"
+    foundation = "Foundation"
+    action = "Action"
+    assets = "Asset"
 
 class Card(BaseModel):
     id: int
@@ -68,7 +68,22 @@ class Card(BaseModel):
     text_box: list[str]
     symbols: list[Symbol]
     check: int
-    keyword: Optional[str] | None = None
+    keyword: Optional[list] | None = None
+
+class UpdateCard(BaseModel):
+    id: Optional[int] = None
+    image_url: Optional[str]= None
+    name: Optional[str] = None
+    type: Optional[CardType] = None
+    rarity: Optional[str] = None
+    play_difficulty: Optional[int] = None
+    block_modifier: Optional[int] = None
+    block_zone: Optional[str] = None
+    text_box: Optional[list[str]] = None
+    symbols: Optional[list[Symbol]] = None
+    check: Optional[int] = None
+    keyword: Optional[list[str]] = None
+
 
 
 class Unicode_Parser():
