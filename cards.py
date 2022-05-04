@@ -37,13 +37,13 @@ class AttackKeyword(str, Enum):
     unique = "Unique"
 
 class CharacterCard(str, Enum):
-    type = "character"
+    type = "Character"
     starting_hand_size: int
     max_health: int
 
 class AttackCard(str, Enum):
-    type = "character"
-    zone = "Red" or "Orange" or "Yellow"
+    type = "Attack"
+    zone = "High" or "Mid" or "Low"
     speed: int
     damage: int
     keyword: list[AttackKeyword]

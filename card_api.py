@@ -1,10 +1,15 @@
-from msilib.schema import Patch
 from typing import Optional
 from fastapi import FastAPI, Path, Query, status, Response
-import cards
+import cards, json
 app = FastAPI()
 
-card_database = {}
+
+f = open("./MHAcards.json")
+
+card_database = json.load(f)
+for card in card_database:
+    print(card)
+
 
 @app.get("/")
 async def home():
