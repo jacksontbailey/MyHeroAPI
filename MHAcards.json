@@ -1,4 +1,5 @@
-[{
+[
+    {
     "card_name": "Quick Creation",
     "card_description": ["Enhance Commit: Add the top card of your discard pile to your card pool. This attack gets +2 or -2 damage.", "Deadlock First Enhance Commit: Double your Weapon attack\u2019s speed and damage."],
     "card_rarity": "Rare",
@@ -10,7 +11,9 @@
     "card_block_modifier": "2",
     "card_block_zone": "mid",
     "card_keywords": ["Keywords", "Breaker", " 1 \u2022 Weapon"]
-}, {
+    }, 
+    
+    {
     "card_name": "Create: Bo Staff",
     "card_description": ["Enhance: Add 1 asset or Weapon foundation from your discard pile to your card pool or hand."],
     "card_rarity": "Uncommon",
@@ -24,8 +27,10 @@
     "card_attack_speed": "4",
     "card_attack_zone": "Mid",
     "card_attack_damage": "4",
-    "card_keywords": ["Keywords", "Weapon"]
-}, {
+    "card_keywords": ["Weapon"]
+    }, 
+
+    {
     "card_name": "All Might",
     "card_description": ["Form [Once per turn] Permanently reduce your character\u2019s hand size by 1: Draw 3 cards.", "Enhance Commit: Your Fury or Punch attack gains Powerful: X. X equals the number of cards in your hand.", "\"Powerful: X - Enhance Discard 1 or more momentum: This attack gets +X damage for each momentum used to pay the cost of this ability.\""],
     "card_rarity": "Uncommon",
@@ -39,4 +44,5 @@
     "card_hand_size": "5",
     "card_vitality": "30",
     "card_keywords": ["Keywords", ""]
-}]
+    }
+]

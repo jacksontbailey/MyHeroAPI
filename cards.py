@@ -1,8 +1,8 @@
 import re
 import card_page.constants as const
 from enum import Enum
-from typing import Optional
-from pydantic import BaseModel
+from typing import Optional, Literal, Union
+from pydantic import BaseModel, ValidationError, validator
 
 class Symbol(str, Enum):
     air = "Air"
@@ -19,7 +19,7 @@ class Symbol(str, Enum):
     water = "Water"
 
 class AttackKeyword(str, Enum):
-    ally = "ally"
+    ally = "Ally"
     breaker = "Breaker"
     charge = "Charge"
     combo = "Combo"
@@ -36,32 +36,11 @@ class AttackKeyword(str, Enum):
     weapon = "Weapon"
     unique = "Unique"
 
-class CharacterCard(str, Enum):
-    type = "Character"
-    starting_hand_size: int
-    max_health: int
-
-class AttackCard(str, Enum):
-    type = "Attack"
-    zone = "High" or "Mid" or "Low"
-    speed: int
-    damage: int
-    keyword: list[AttackKeyword]
-    ability: Optional[str]
-
-class CardType(str, Enum):
-    character = list[CharacterCard]
-    attack = list[AttackCard]
-    foundation = "Foundation"
-    action = "Action"
-    assets = "Asset"
-
 class Card(BaseModel):
-    id: int
-    image_url: str | None = None
     name: str
-    type: CardType
+    id: int
     rarity: str
+    image_url: str | None = None
     play_difficulty: int
     block_modifier: int
     block_zone: str
@@ -74,7 +53,6 @@ class UpdateCard(BaseModel):
     id: Optional[int] = None
     image_url: Optional[str]= None
     name: Optional[str] = None
-    type: Optional[CardType] = None
     rarity: Optional[str] = None
     play_difficulty: Optional[int] = None
     block_modifier: Optional[int] = None
@@ -84,7 +62,40 @@ class UpdateCard(BaseModel):
     check: Optional[int] = None
     keyword: Optional[list[str]] = None
 
+class CharacterCard(Card):
+    def __init_subclass__(cls) -> None:
+        return super().__init_subclass__()
 
+    type = "Character"
+    starting_hand_size: int
+    max_health: int
+
+class AttackCard(Card):
+    def __init_subclass__(cls) -> None:
+        return super().__init_subclass__()
+
+    type = "Attack"
+    zone = "High" or "Mid" or "Low"
+    speed: int
+    damage: int
+    keyword: list[AttackKeyword]
+    ability: Optional[str]
+
+class FoundationCard(Card):
+    def __init_subclass__(cls) -> None:
+        return super().__init_subclass__()
+    
+    type = "Foundation"
+class ActionCard(Card):
+    def __init_subclass__(cls) -> None:
+        return super().__init_subclass__()
+    
+    type = "Action"
+class AssetCard(Card):
+    def __init_subclass__(cls) -> None:
+        return super().__init_subclass__()
+    
+    type = "Asset"
 
 class Unicode_Parser():
 
@@ -118,6 +129,18 @@ class Unicode_Parser():
                 print(f"No unicode in string: {string}")    
 
                 
+    
+class Height(str, Enum):
+    tall = "tall"
+    medium = "medium"
+    short = "short"
+class Parent_Class(BaseModel):
+    eyes: str
+    height: Height
+    weight: int
 
-
-
+class Child_Class(Parent_Class):
+    def __init_subclass__(cls) -> None:
+        return super().__init_subclass__()
+    name: str = "Peter"
+    
