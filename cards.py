@@ -1,6 +1,7 @@
 import re
+from string import ascii_letters
+import unicodedata
 
-from numpy import append
 import card_page.constants as const
 from enum import Enum
 from typing import Annotated, Dict, Optional, Literal, Union
@@ -93,41 +94,69 @@ class UpdateCard(BaseModel):
 
 
 class Unicode_Parser():
+
+    def ascii_code(self, item):
+        print(f"{item}: {type(item)}")
+
+        matches = re.findall(const.UNICODE_SEARCH, item)
+        if matches != None:
+            # -- If any ASCII (unicode) is spotted, this will replace it.
+            for match in matches:
+                print(match)
+                print(unicodedata.name(match))
+                    
+                if unicodedata.name(match) == "BULLET":
+                    c = re.sub(match, "", item)
+                    return(c)
+                else:
+                    return(item)
+        else:
+            print(f"Item didn't have ascii code match: {item}")
+            return(item)
+    
+    def space_matcher(self, item, previous_item):
+        print(f"{item}: {type(item)}")
+        space_match = re.search(const.SPACE_DIGIT, item)
+        # -- Checks to see if the item in the list starts out with a space & number. If it does, then it 
+        # -- takes that number and puts it on the previous item in the list and updates the current list.
+        # -- I'm doing this because some of the data from TCG player doesn't properly sort the keywords and seperates the items incorrectly.
+        if space_match != None:
+            start = space_match.start()
+            end = space_match.end()
+            save_array_item = item[start:end]
+            new_save= str(save_array_item).replace(" ", "")
+            
+            delete_item_from_current_array = re.sub(r"(^ \d )", "", item)
+            updated_item = f"{previous_item}: {new_save}"
+
+            previous_item = (delete_item_from_current_array)
+            item = updated_item
+            return(item, previous_item)
+        else:
+            return(item, previous_item)
+    
+    def unwanted_match(self, item):
+        # -- Gets rid of list items that just say "Keywords"    
+        if item == "Keywords":
+            string = item.remove(string)
+            return(None)
+        
+        # -- Gets rid of empty list items
+        if item == "":
+            return(None)
+
+    
     def parse_list(self, new_data):
+        print(new_data)
+
         for number, string in enumerate(new_data):
-            unicode = re.search(const.UNICODE_SEARCH, string)
-            unicode_swap = None
-            print(new_data[number])
-            if new_data[number] == "Keywords":
-                new_data.pop(number)
-            if new_data[number] == "":
-                new_data.pop(number)
+            item_num = new_data[number]
+            previous_array_item = new_data[number-1]
 
-            if unicode == r"\\u2019":
-                unicode_swap = re.sub(unicode, "\'", string)
-                append(unicode_swap)         
+            print(f"Here is the string: {string}")
+            ascii_code_checker = self.ascii_code(item_num)
+            print(ascii_code_checker)
+            space_code_checker = self.space_matcher(ascii_code_checker, previous_array_item)
+            unwanted_code_checker = self.unwanted_match(space_code_checker)
 
-            if unicode == r"\\u2022":
-                unicode_swap = re.sub(unicode, "", string)                
-                append(unicode_swap)         
-
-            if unicode == r"\\u201c":
-                unicode_swap = re.sub(unicode, "\"", string)
-                append(unicode_swap)         
-            
-            if unicode == r"\\u201d":
-                unicode_swap = re.sub(unicode, "\"", string)
-                append(unicode_swap)         
-
-            if unicode == r"\\u2022":
-                unicode_swap = re.sub(unicode, "", string)
-                append(unicode_swap)         
-            
-            if unicode == True:
-                unicode_swap = re.sub(unicode, "", string)
-                append(unicode_swap)         
-            else:
-                print(f"No unicode in string: {string}")    
-
-            print(unicode_swap)
-            return unicode_swap
+            print(f"Unicode Swap 2: {unwanted_code_checker}")

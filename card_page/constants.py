@@ -6,4 +6,5 @@ BASE_URL_REGEX = r"(product\/)\d+\/(universus-universus-my-hero-academia)((?!((\
 PARSE_JSON_REGEX = r"((https:\/\/)((.+)+)(?=<\/))"
 CARD_NUMBER = r"(\/\d+)"
 DESCRIPTION_SPLIT = r"(\\)(\")"
-UNICODE_SEARCH = r"\\(\"|\\|\/|b|f|n|r|t|u[0-9]{4})"
+UNICODE_SEARCH = r"[^\x00-\x7f]"
+SPACE_DIGIT = r"(^ \d )"

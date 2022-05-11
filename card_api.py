@@ -114,7 +114,7 @@ with open("./MHAcards.json") as f:
         else:
             print("Card not in types")
 
-print(full_card_results)
+#print(full_card_results)
     
 
 
