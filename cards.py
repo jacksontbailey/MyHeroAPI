@@ -1,5 +1,4 @@
 import re
-from string import ascii_letters
 import unicodedata
 
 import card_page.constants as const
@@ -94,28 +93,30 @@ class UpdateCard(BaseModel):
 
 
 class Unicode_Parser():
+    def __init__(self) -> None:
+        pass
 
     def ascii_code(self, item):
         print(f"{item}: {type(item)}")
 
-        matches = re.findall(const.UNICODE_SEARCH, item)
-        if matches != None:
+        initial_match = re.search(const.UNICODE_SEARCH, item)
+        if initial_match != None:
+            matches = re.findall(const.UNICODE_SEARCH, item)
+
             # -- If any ASCII (unicode) is spotted, this will replace it.
             for match in matches:
-                print(match)
-                print(unicodedata.name(match))
                     
                 if unicodedata.name(match) == "BULLET":
                     c = re.sub(match, "", item)
                     return(c)
                 else:
+                    print("returned regular item")
                     return(item)
         else:
             print(f"Item didn't have ascii code match: {item}")
             return(item)
     
     def space_matcher(self, item, previous_item):
-        print(f"{item}: {type(item)}")
         space_match = re.search(const.SPACE_DIGIT, item)
         # -- Checks to see if the item in the list starts out with a space & number. If it does, then it 
         # -- takes that number and puts it on the previous item in the list and updates the current list.
@@ -127,36 +128,57 @@ class Unicode_Parser():
             new_save= str(save_array_item).replace(" ", "")
             
             delete_item_from_current_array = re.sub(r"(^ \d )", "", item)
-            updated_item = f"{previous_item}: {new_save}"
+            updated_previous_item = f"{previous_item}: {new_save}"
 
-            previous_item = (delete_item_from_current_array)
-            item = updated_item
+            previous_item = updated_previous_item
+            item = delete_item_from_current_array
+            print(f"{item}: is item. {previous_item}: is previous item")
             return(item, previous_item)
         else:
+            print(f"No match, but {item}: is item. {previous_item}: is previous item")
             return(item, previous_item)
     
     def unwanted_match(self, item):
+        
+        item = re.sub(const.SPACE_START, "", item)
+        
         # -- Gets rid of list items that just say "Keywords"    
         if item == "Keywords":
-            string = item.remove(string)
             return(None)
         
         # -- Gets rid of empty list items
-        if item == "":
+        if item == "" or item == '':
             return(None)
+
+
+        return item
+
+    def delete_none(self, data):
+        for num, item in enumerate(data):
+            if item == None:
+                print(f"Popping item ({item}) from list")
+                data.pop(num)
+            
+        return(data)
+
 
     
     def parse_list(self, new_data):
         print(new_data)
 
         for number, string in enumerate(new_data):
-            item_num = new_data[number]
             previous_array_item = new_data[number-1]
 
             print(f"Here is the string: {string}")
-            ascii_code_checker = self.ascii_code(item_num)
-            print(ascii_code_checker)
+            ascii_code_checker = self.ascii_code(string)
+            print(f"parse_list: finished ascii_code_checker. Var is: {ascii_code_checker}")
             space_code_checker = self.space_matcher(ascii_code_checker, previous_array_item)
-            unwanted_code_checker = self.unwanted_match(space_code_checker)
+            new_data[number-1]=space_code_checker[1]
+            unwanted_code_checker = self.unwanted_match(space_code_checker[0])
 
+            new_data[number] = unwanted_code_checker
             print(f"Unicode Swap 2: {unwanted_code_checker}")
+            
+            print(f"New data: {new_data}")
+        new_data = self.delete_none(new_data)
+        print(new_data)
