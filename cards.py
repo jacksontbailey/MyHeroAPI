@@ -29,7 +29,7 @@ class AttackKeyword(str, Enum):
     ally = "Ally"
     breaker = "Breaker"
     charge = "Charge"
-    combo = "Combo"
+    combo = "Combo (Foundation)"
     ex = "EX"
     flash = "Flash"
     fury = "Fury"
@@ -97,9 +97,8 @@ class Unicode_Parser():
         pass
 
     def ascii_code(self, item):
-        print(f"{item}: {type(item)}")
-
         initial_match = re.search(const.UNICODE_SEARCH, item)
+        
         if initial_match != None:
             matches = re.findall(const.UNICODE_SEARCH, item)
 
@@ -107,23 +106,25 @@ class Unicode_Parser():
             for match in matches:
                     
                 if unicodedata.name(match) == "BULLET":
-                    c = re.sub(match, "", item)
-                    return(c)
+                    c = item.split(match, -1)
+                    print(c)
+                    return(c, True)
                 else:
-                    print("returned regular item")
-                    return(item)
+                    return(item, False)
         else:
-            print(f"Item didn't have ascii code match: {item}")
-            return(item)
+            return(item, False)
     
     def space_matcher(self, item, previous_item):
-        space_match = re.search(const.SPACE_DIGIT, item)
+        print(f"{item} is space match item")
+        print(f"{previous_item} is previous space match item")
         # -- Checks to see if the item in the list starts out with a space & number. If it does, then it 
         # -- takes that number and puts it on the previous item in the list and updates the current list.
         # -- I'm doing this because some of the data from TCG player doesn't properly sort the keywords and seperates the items incorrectly.
-        if space_match != None:
-            start = space_match.start()
-            end = space_match.end()
+        number_space_match = re.search(const.SPACE_DIGIT, item)
+        if number_space_match != None:
+            print(item)
+            start = number_space_match.start()
+            end = number_space_match.end()
             save_array_item = item[start:end]
             new_save= str(save_array_item).replace(" ", "")
             
@@ -132,16 +133,16 @@ class Unicode_Parser():
 
             previous_item = updated_previous_item
             item = delete_item_from_current_array
-            print(f"{item}: is item. {previous_item}: is previous item")
-            return(item, previous_item)
-        else:
-            print(f"No match, but {item}: is item. {previous_item}: is previous item")
-            return(item, previous_item)
+
+        
+        regular_space_match = re.search(const.SPACE_START_END, item)
+        if regular_space_match != None:
+            item = re.sub(const.SPACE_START_END, "", item)
+        print(f"item without spaces{item}see")
+        return(item, previous_item)
     
     def unwanted_match(self, item):
-        
-        item = re.sub(const.SPACE_START, "", item)
-        
+                
         # -- Gets rid of list items that just say "Keywords"    
         if item == "Keywords":
             return(None)
@@ -154,31 +155,39 @@ class Unicode_Parser():
         return item
 
     def delete_none(self, data):
-        for num, item in enumerate(data):
+        for num, item in reversed(list(enumerate(data))):
             if item == None:
-                print(f"Popping item ({item}) from list")
+                print("Item is None")
                 data.pop(num)
-            
         return(data)
 
 
     
     def parse_list(self, new_data):
-        print(new_data)
-
         for number, string in enumerate(new_data):
+            print(new_data)
+
+            ascii_code_checker = self.ascii_code(string)
+            
+            if ascii_code_checker[1] == True:
+                new_data = new_data[:number+1] + ascii_code_checker[0] + new_data[number:+1]
+                print(f"Data was added to list: {new_data}")
+                new_data.pop(number)
+                print(f"Data was popped after split: {new_data}")
+
             previous_array_item = new_data[number-1]
 
-            print(f"Here is the string: {string}")
-            ascii_code_checker = self.ascii_code(string)
-            print(f"parse_list: finished ascii_code_checker. Var is: {ascii_code_checker}")
-            space_code_checker = self.space_matcher(ascii_code_checker, previous_array_item)
+            space_code_checker = self.space_matcher(new_data[number], previous_array_item)
+            print("passed space_code_checker")
             new_data[number-1]=space_code_checker[1]
+            print(f"previous number after space_code_checker{new_data[number-1]}")
+            print(f"current list after space_code_chcker: {new_data}")
+
             unwanted_code_checker = self.unwanted_match(space_code_checker[0])
+            print("passed unwanted_code_checker")
 
             new_data[number] = unwanted_code_checker
-            print(f"Unicode Swap 2: {unwanted_code_checker}")
             
-            print(f"New data: {new_data}")
         new_data = self.delete_none(new_data)
         print(new_data)
+        return new_data

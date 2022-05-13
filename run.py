@@ -1,11 +1,9 @@
 import re, json
 
 from fastapi import FastAPI
-from cards import Card, CardType, AttackCard, AttackKeyword, CharacterCard, Symbol, Unicode_Parser
 
 import card_page.constants as const
 from card_page.card_page import Card_Page
-from requests.exceptions import HTTPError
 
 app = FastAPI()
 
@@ -21,11 +19,12 @@ def run_test():
         json_card_data = [] 
         loop = 0
         for i, val in enumerate(get_all_urls):
-            if loop < 3:
-                description = bot.open_all_card_urls(get_all_urls[i])
-                u  = Unicode_Parser()
-                print(val, description)
+            description = bot.open_all_card_urls(get_all_urls[i])
+            print(val, description)
+    # -- Loops through all of the card urls to get the data, but is currently set to max of 10 for testing purposes
+    # -- Remove if/else statement to cycle through all of them.
 
+            if loop < 20:
                 #-- Find out if the card is a Character, Attack, Foundation, Action, or Asset
 
                 card_name = description[0]
@@ -121,13 +120,12 @@ def run_test():
 
                 with open("MHAcards.json", "w") as outfile:
                     json.dump(json_card_data, outfile)
-
-
+                    
                 loop+=1
                 print(f"{loop} loop total")
             else:
                 print(f"loop equals {loop}")
-                break
+                break        
 
 
 run_test()

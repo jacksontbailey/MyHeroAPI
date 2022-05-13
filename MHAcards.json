@@ -1,5 +1,4 @@
-[
-    {
+[{
     "card_name": "Quick Creation",
     "card_description": ["Enhance Commit: Add the top card of your discard pile to your card pool. This attack gets +2 or -2 damage.", "Deadlock First Enhance Commit: Double your Weapon attack\u2019s speed and damage."],
     "card_rarity": "Rare",
@@ -11,9 +10,7 @@
     "card_block_modifier": "2",
     "card_block_zone": "mid",
     "card_keywords": ["Keywords", "Breaker", " 1 \u2022 Weapon"]
-    }, 
-    
-    {
+}, {
     "card_name": "Create: Bo Staff",
     "card_description": ["Enhance: Add 1 asset or Weapon foundation from your discard pile to your card pool or hand."],
     "card_rarity": "Uncommon",
@@ -27,10 +24,8 @@
     "card_attack_speed": "4",
     "card_attack_zone": "Mid",
     "card_attack_damage": "4",
-    "card_keywords": ["Weapon"]
-    }, 
-
-    {
+    "card_keywords": ["Keywords", "Weapon"]
+}, {
     "card_name": "All Might",
     "card_description": ["Form [Once per turn] Permanently reduce your character\u2019s hand size by 1: Draw 3 cards.", "Enhance Commit: Your Fury or Punch attack gains Powerful: X. X equals the number of cards in your hand.", "\"Powerful: X - Enhance Discard 1 or more momentum: This attack gets +X damage for each momentum used to pay the cost of this ability.\""],
     "card_rarity": "Uncommon",
@@ -44,5 +39,237 @@
     "card_hand_size": "5",
     "card_vitality": "30",
     "card_keywords": ["Keywords", ""]
-    }
-]
+}, {
+    "card_name": "Create: Capturing Net",
+    "card_description": ["Combo Enhance: This attack gains Stun: 2.", "Enhance: Build 1 foundation from your card pool face up.", "\"Combo (___) - This attacks's Combo Enhance cannot be played unless the card immediately preceding it matches the requirement in parenthesis.\""],
+    "card_rarity": "Common",
+    "card_number": "112",
+    "card_type": "Attack",
+    "card_resource_symbols": ["All", "Good", "Life"],
+    "card_check": "3",
+    "card_difficulty": "4",
+    "card_block_modifier": "2",
+    "card_block_zone": "high",
+    "card_attack_speed": "2",
+    "card_attack_zone": "Low",
+    "card_attack_damage": "4",
+    "card_keywords": ["Keywords", "Charge \u2022 Weapon \u2022 Combo (Foundation)"]
+}, {
+    "card_name": "Flying Thruster Kick",
+    "card_description": ["Enhance: This attack gets +2 damage. Only playable if this attack has received a speed bonus.", "Deadlock Enhance: Add the top 2 cards of your deck to your momentum.", "\"EX: X - Enhance Discard 1 or more momentum: This attack gets +X speed for each momentum used to pay the cost of this ability.\""],
+    "card_rarity": "Common",
+    "card_number": "147",
+    "card_type": "Attack",
+    "card_resource_symbols": ["Fire", "Order", "Void"],
+    "card_check": "3",
+    "card_difficulty": "4",
+    "card_block_modifier": "1",
+    "card_block_zone": "mid",
+    "card_attack_speed": "4",
+    "card_attack_zone": "High",
+    "card_attack_damage": "4",
+    "card_keywords": ["Keywords", "EX", " 2 \u2022 Kick"]
+}, {
+    "card_name": "Detroit Smash",
+    "card_description": ["Enhance Discard 1 momentum: Add up to 3 cards from your hand to your momentum.", "All Might Enhance Permanently reduce your character\u2019s hand size by 1: Draw 3 cards."],
+    "card_rarity": "Ultra Rare",
+    "card_number": "2",
+    "card_type": "Attack",
+    "card_resource_symbols": ["All", "Earth", "Good"],
+    "card_check": "2",
+    "card_difficulty": "6",
+    "card_block_modifier": "0",
+    "card_block_zone": "high",
+    "card_attack_speed": "6",
+    "card_attack_zone": "Mid",
+    "card_attack_damage": "6",
+    "card_keywords": ["Keywords", "EX", " 2 \u2022 Fury \u2022 Powerful", " 2 \u2022 Punch"]
+}, {
+    "card_name": "Missouri Smash",
+    "card_description": ["Enhance: If this attack deals damage, build the next foundation you play face up.", "Enhance: If a Punch attack has dealt damage this turn, draw 1 card."],
+    "card_rarity": "Uncommon",
+    "card_number": "3",
+    "card_type": "Attack",
+    "card_resource_symbols": ["All", "Earth", "Good"],
+    "card_check": "3",
+    "card_difficulty": "4",
+    "card_block_modifier": "2",
+    "card_block_zone": "high",
+    "card_attack_speed": "3",
+    "card_attack_zone": "High",
+    "card_attack_damage": "5",
+    "card_keywords": ["Keywords", "Punch"]
+}, {
+    "card_name": "Recipro Burst",
+    "card_description": ["Response: After your rival commits 1 or more foundations during this attack\u2019s Enhance Step, it gets +1 speed.", "Enhance Discard 1 momentum: This attack gets +X damage. X equals the speed of this attack minus 3."],
+    "card_rarity": "Ultra Rare",
+    "card_number": "148",
+    "card_type": "Attack",
+    "card_resource_symbols": ["Fire", "Order", "Void"],
+    "card_check": "3",
+    "card_difficulty": "1",
+    "card_block_modifier": "5",
+    "card_block_zone": "high",
+    "card_attack_speed": "3",
+    "card_attack_zone": "Low",
+    "card_attack_damage": "5",
+    "card_keywords": ["Keywords", "EX", " 3 \u2022 Kick \u2022 Stun", " 1"]
+}, {
+    "card_name": "Staff Strike",
+    "card_description": ["Combo Enhance: The next 2 Weapon cards you try to play this turn ignore progressive difficulty.", "Enhance: Draw 1 card for each foundation in your card pool."],
+    "card_rarity": "Ultra Rare",
+    "card_number": "113",
+    "card_type": "Attack",
+    "card_resource_symbols": ["All", "Good", "Life"],
+    "card_check": "3",
+    "card_difficulty": "6",
+    "card_block_modifier": "2",
+    "card_block_zone": "mid",
+    "card_attack_speed": "4",
+    "card_attack_zone": "Mid",
+    "card_attack_damage": "6",
+    "card_keywords": ["Keywords", "Powerful", " 2 \u2022 Weapon \u2022 Combo (Weapon, Foundation)"]
+}, {
+    "card_name": "Smash",
+    "card_description": ["Enhance: If this attack is blocked, your rival flips 1 foundation."],
+    "card_rarity": "Common",
+    "card_number": "4",
+    "card_type": "Attack",
+    "card_resource_symbols": ["All", "Earth", "Good"],
+    "card_check": "3",
+    "card_difficulty": "5",
+    "card_block_modifier": "1",
+    "card_block_zone": "mid",
+    "card_attack_speed": "4",
+    "card_attack_zone": "Mid",
+    "card_attack_damage": "6",
+    "card_keywords": ["Keywords", "Fury \u2022 Punch"]
+}, {
+    "card_name": "Fumikage Tokoyami",
+    "card_description": ["Enhance [Once per turn] Discard the top 5 cards of your deck: Add 1 copy of \u201cSummon Dark Shadow\u201d from your discard pile to your hand.", "Enhance: This attack gets +1 or -1 damage. Only playable while committed."],
+    "card_rarity": "Uncommon",
+    "card_number": "37",
+    "card_type": "Character",
+    "card_resource_symbols": ["Chaos", "Evil", "Fire"],
+    "card_check": "6",
+    "card_difficulty": "6",
+    "card_block_modifier": "0",
+    "card_block_zone": "mid",
+    "card_hand_size": "7",
+    "card_vitality": "20",
+    "card_keywords": ["Keywords", ""]
+}, {
+    "card_name": "Recipro Extend",
+    "card_description": ["Enhance: Your next Kick attack this turn gets +2 speed and +2 damage.", "Enhance: Draw 1 card."],
+    "card_rarity": "Uncommon",
+    "card_number": "149",
+    "card_type": "Attack",
+    "card_resource_symbols": ["Fire", "Order", "Void"],
+    "card_check": "3",
+    "card_difficulty": "4",
+    "card_block_modifier": "3",
+    "card_block_zone": "mid",
+    "card_attack_speed": "4",
+    "card_attack_zone": "Mid",
+    "card_attack_damage": "4",
+    "card_keywords": ["Keywords", "Charge \u2022 Kick"]
+}, {
+    "card_name": "A Precious Lesson",
+    "card_description": ["Response Flip: After 1 of your foundations is removed or destroyed, build the top card of your deck face down."],
+    "card_rarity": "Uncommon",
+    "card_number": "114",
+    "card_type": "Foundation",
+    "card_resource_symbols": ["All", "Good", "Life"],
+    "card_check": "4",
+    "card_difficulty": "1",
+    "card_block_modifier": "3",
+    "card_block_zone": "mid",
+    "card_keywords": ["Keywords", ""]
+}, {
+    "card_name": "Preparing for Battle",
+    "card_description": ["Enhance Commit, discard 1 card: Draw 1 card."],
+    "card_rarity": "Common",
+    "card_number": "115",
+    "card_type": "Foundation",
+    "card_resource_symbols": ["All", "Good", "Life"],
+    "card_check": "5",
+    "card_difficulty": "1",
+    "card_block_modifier": "3",
+    "card_block_zone": "low",
+    "card_keywords": ["Keywords", "Breaker", " 1 \u2022 Weapon"]
+}, {
+    "card_name": "Texas Smash",
+    "card_description": ["Combo Enhance: This attack gets +4 damage.", "Enhance Discard 1 card: Your next attack this turn gets +4 damage."],
+    "card_rarity": "Ultra Rare",
+    "card_number": "5",
+    "card_type": "Attack",
+    "card_resource_symbols": ["All", "Earth", "Good"],
+    "card_check": "3",
+    "card_difficulty": "4",
+    "card_block_modifier": "1",
+    "card_block_zone": "mid",
+    "card_attack_speed": "4",
+    "card_attack_zone": "High",
+    "card_attack_damage": "3",
+    "card_keywords": ["Keywords", "Fury \u2022 Punch \u2022 Combo (Punch)"]
+}, {
+    "card_name": "Summon Dark Shadow",
+    "card_description": ["While this card is in your card pool, your attacks get +1 speed and +1 damage.", "Enhance: Your next check to play a card this turn gets +3. Commit your character."],
+    "card_rarity": "Uncommon",
+    "card_number": "38",
+    "card_type": "Action",
+    "card_resource_symbols": ["Chaos", "Evil", "Fire"],
+    "card_check": "5",
+    "card_difficulty": "2",
+    "card_block_modifier": "2",
+    "card_block_zone": "mid",
+    "card_keywords": ["Keywords", "Ally"]
+}, {
+    "card_name": "Calling for Backup",
+    "card_description": ["Enhance Flip: Draw 1 card. If this was not the first Enhance played this Enhance Step, discard 1 card."],
+    "card_rarity": "Common",
+    "card_number": "150",
+    "card_type": "Foundation",
+    "card_resource_symbols": ["Fire", "Order", "Void"],
+    "card_check": "5",
+    "card_difficulty": "4",
+    "card_block_modifier": "1",
+    "card_block_zone": "M",
+    "card_keywords": ["Keywords", ""]
+}, {
+    "card_name": "Fulfilled My Duty",
+    "card_description": ["Enhance Destroy: End this Enhance Step."],
+    "card_rarity": "Uncommon",
+    "card_number": "151",
+    "card_type": "Foundation",
+    "card_resource_symbols": ["Fire", "Order", "Void"],
+    "card_check": "4",
+    "card_difficulty": "2",
+    "card_block_modifier": "3",
+    "card_block_zone": "high",
+    "card_keywords": ["Keywords", ""]
+}, {
+    "card_name": "Rising Starlet",
+    "card_description": ["Enhance Commit, discard 1 card: Draw 1 card."],
+    "card_rarity": "Rare",
+    "card_number": "116",
+    "card_type": "Foundation",
+    "card_resource_symbols": ["All", "Good", "Life"],
+    "card_check": "5",
+    "card_difficulty": "2",
+    "card_block_modifier": "2",
+    "card_block_zone": "high",
+    "card_keywords": ["Keywords", "Weapon"]
+}, {
+    "card_name": "Celebrity Status",
+    "card_description": ["Enhance Flip: Add 1 of your momentum to the top of your deck."],
+    "card_rarity": "Common",
+    "card_number": "6",
+    "card_type": "Foundation",
+    "card_resource_symbols": ["All", "Earth", "Good"],
+    "card_check": "5",
+    "card_difficulty": "1",
+    "card_block_modifier": "2",
+    "card_block_zone": "mid",
+    "card_keywords": ["Keywords", ""]
+}]
