@@ -3,7 +3,7 @@ import re, json
 from fastapi import FastAPI
 
 import card_page.constants as const
-from card_page.card_page import Card_Page
+from card_page.data_collector import Card_Page
 
 app = FastAPI()
 
@@ -11,7 +11,6 @@ def run_test():
     with Card_Page() as bot:
         get_all_urls = bot.land_first_page()
         print(get_all_urls)
-        print(type(get_all_urls))
     
     # -- Loops through all of the card urls to get the data, but is currently set to max of 10 for testing purposes
     # -- Remove if/else statement to cycle through all of them.
@@ -24,9 +23,9 @@ def run_test():
     # -- Loops through all of the card urls to get the data, but is currently set to max of 10 for testing purposes
     # -- Remove if/else statement to cycle through all of them.
 
-            if loop < 20:
+            if loop < 2:
                 #-- Find out if the card is a Character, Attack, Foundation, Action, or Asset
-
+                tcg_url = val
                 card_name = description[0]
                 card_description_unparsed = str(description[1][0])
                 card_rarity = description[2][0][1]
@@ -37,11 +36,14 @@ def run_test():
                 card_difficulty = description[2][5][1]
                 card_block_modifier = description[2][6][1]
                 card_block_zone = description[2][7][1]
+                set_name = description[3]
 
                 card_number = re.sub(const.CARD_NUMBER, '', card_number_unparsed)
                 card_description_unparsed = re.sub(const.DESCRIPTION_SPLIT, '', card_description_unparsed)
                 card_description = card_description_unparsed.split("\n")
                 card_resource_symbols = card_resource_symbols_unparsed.split(" ")
+                card_set_name = re.search(const.RELEASE_SET_STRING, set_name, flags=re.IGNORECASE).group(0)
+                print(f"{card_set_name}: {type(card_set_name)}")
 
                 if card_type == "Character":
                     card_hand_size = description[2][8][1]
@@ -62,6 +64,8 @@ def run_test():
                         "card_hand_size": card_hand_size,
                         "card_vitality": card_vitality,
                         "card_keywords": card_keywords_unparsed,
+                        "card_tcg_url": tcg_url,
+                        "set_name": card_set_name
                     }
                     card_copy = card_details.copy()
                     json_card_data.append(card_copy)
@@ -87,7 +91,9 @@ def run_test():
                         "card_attack_speed": card_attack_speed,
                         "card_attack_zone": card_attack_zone,
                         "card_attack_damage": card_attack_damage,
-                        "card_keywords": card_keywords_unparsed
+                        "card_keywords": card_keywords_unparsed,
+                        "card_tcg_url": tcg_url,
+                        "set_name": card_set_name
                     }
 
                     card_copy = card_details.copy()
@@ -109,7 +115,9 @@ def run_test():
                         "card_difficulty": card_difficulty,
                         "card_block_modifier": card_block_modifier,
                         "card_block_zone": card_block_zone,
-                        "card_keywords": card_keywords_unparsed
+                        "card_keywords": card_keywords_unparsed,
+                        "card_tcg_url": tcg_url,
+                        "set_name": card_set_name
                     }
                     
                     card_copy = card_details.copy()

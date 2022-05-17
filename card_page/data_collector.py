@@ -14,7 +14,7 @@ from requests.exceptions import HTTPError
 
 
 class Card_Page(webdriver.Chrome):
-    def __init__(self, driver_path = r"C:\Users\jbailey\Selenium\chromedriver.exe", teardown=False):
+    def __init__(self, driver_path = const.WORK_DRIVER, teardown=False):
         options = webdriver.ChromeOptions()
         options.add_experimental_option('excludeSwitches', ['enable-logging'])
         self.driver_path = driver_path
@@ -60,7 +60,7 @@ class Card_Page(webdriver.Chrome):
         options.add_experimental_option('useAutomationExtension', False)
 
         pattern = self #replace with real regex pattern
-        driver = webdriver.Chrome(r"C:\Users\jbailey\Selenium\chromedriver.exe", options=options)
+        driver = webdriver.Chrome(const.WORK_DRIVER, options=options)
         driver.get(url)
         
         try:
@@ -90,6 +90,10 @@ class Card_Page(webdriver.Chrome):
             title = title_el.find_element(By.TAG_NAME, "h1")
             card_title = title.text
 
+            # -- Gets the set name
+            set = title_el.find_element(By.TAG_NAME, "h2")
+            set_title = set.text
+
             # -- Gets the card description
             card_description = desc_el.find_elements(By.CLASS_NAME, "product__item-details__description")
             for card in card_description:
@@ -103,7 +107,7 @@ class Card_Page(webdriver.Chrome):
                 card_stats = val.text
                 card_stats_split = card_stats.split(":")
                 stats.append(card_stats_split)
-            return(card_title, card_description_text, stats)
+            return(card_title, card_description_text, stats, set_title)
             
         except:
             driver.quit()
