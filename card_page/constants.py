@@ -3,6 +3,8 @@ TEST_URL = "https://www.tcgplayer.com/product/251196/universus-universus-my-hero
 
 WORK_DRIVER = r"C:\Users\jbailey\Selenium\chromedriver.exe"
 
+JSON_FILE_URL = r"MHAcards.json"
+
 # -- Regex Expressions
 BASE_URL_REGEX = r"(product\/)\d+\/(universus-universus-my-hero-academia)((?!((\-.+)+)(booster-((box)|(pack))|pack|box|promo)))((\-.+)+)((?<!\-xr)$)((?<!\-xsr)$)"
 PARSE_JSON_REGEX = r"((https:\/\/)((.+)+)(?=<\/))"

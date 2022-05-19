@@ -16,6 +16,7 @@ from requests.exceptions import HTTPError
 class Card_Page(webdriver.Chrome):
     def __init__(self, driver_path = const.WORK_DRIVER, teardown=False):
         options = webdriver.ChromeOptions()
+        options.headless = True
         options.add_experimental_option('excludeSwitches', ['enable-logging'])
         self.driver_path = driver_path
         self.chrome_service = Service(self.driver_path)
@@ -56,6 +57,7 @@ class Card_Page(webdriver.Chrome):
     def open_all_card_urls(self, url):
         options = webdriver.ChromeOptions()
         options.add_argument("start-maximized")
+        options.headless = True
         options.add_experimental_option('excludeSwitches', ['enable-logging', 'enable-automation'])
         options.add_experimental_option('useAutomationExtension', False)
 
