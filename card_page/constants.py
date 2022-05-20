@@ -6,7 +6,7 @@ WORK_DRIVER = r"C:\Users\jbailey\Selenium\chromedriver.exe"
 JSON_FILE_URL = r"MHAcards.json"
 
 # -- Regex Expressions
-BASE_URL_REGEX = r"(product\/)\d+\/(universus-universus-my-hero-academia)((?!((\-.+)+)(booster-((box)|(pack))|pack|box|promo)))((\-.+)+)((?<!\-xr)$)((?<!\-xsr)$)"
+BASE_URL_REGEX = r"(product\/)\d+\/(universus-universus-my-hero-academia)((?!((\-.+)+)(booster-((box)|(pack))|pack|box|promo|judge)))((\-.+)+)((?<!\-xr)$)((?<!\-xsr)$)"
 PARSE_JSON_REGEX = r"((https:\/\/)((.+)+)(?=<\/))"
 CARD_NUMBER = r"(\/\d+)"
 DESCRIPTION_SPLIT = r"(\\)(\")"
