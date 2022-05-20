@@ -19,11 +19,7 @@
         "card_difficulty": "2",
         "card_block_modifier": "2",
         "card_block_zone": "mid",
-        "card_keywords": [
-            "Keywords",
-            "Breaker",
-            " 1 \u2022 Weapon"
-        ]
+        "card_keywords": "Keywords"
     },
     {
         "card_name": "Create: Bo Staff",
@@ -73,8 +69,8 @@
         "card_difficulty": "6",
         "card_block_modifier": "0",
         "card_block_zone": "mid",
-        "card_hand_size": "5",
-        "card_vitality": "30",
+        "card_vitality": "5",
+        "card_hand_size": "30",
         "card_keywords": [
             "Keywords",
             ""

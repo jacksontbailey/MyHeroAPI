@@ -6,7 +6,9 @@ def multi_list_comparator(all_urls, json_file_urls):
     # -- Converts both of my lists into a set in order to use symmetric difference to compare
     # -- the items in the list without worrying about their order. Then converts back to a list.
     urls_still_needed = list(set(all_urls).symmetric_difference(set(json_file_urls)))
+    print(f"HERE ARE ALL OF THE URLS STILL NEEDED: \n{urls_still_needed}")
     return urls_still_needed
+
 
 def retrieve_json_items(filename):
     print('started 2')
@@ -18,8 +20,11 @@ def retrieve_json_items(filename):
         urls.append(card['card_tcg_url'])
     return urls
 
+
 def universal_card_info(bot, urls):
     loop = 0
+    temporary_card_list = []
+
     for i, val in enumerate(urls):
         description = bot.open_all_card_urls(urls[i])
         print(val, description)
@@ -89,12 +94,13 @@ def universal_card_info(bot, urls):
             else:
                 print("Card isn't of any type")
                 None
-            card_details
+
+            temporary_card_list.append(card_details)
             loop+=1
             print(f"{loop} loop total")
         else:
             print(f"loop equals {loop}")
-            break        
+            return(temporary_card_list)        
 
 
 

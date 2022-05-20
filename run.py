@@ -10,45 +10,35 @@ app = FastAPI()
 
 def run_test():
     with Card_Page() as bot:
+        filename = const.JSON_FILE_URL
         get_all_urls = bot.land_first_page()
         print(get_all_urls)
-    
+
         
-        filename = const.JSON_FILE_URL
-        loop = 0
-        total_card_data = [] 
-        print(filename)
-        
-        # Check if file exists
-        if path.isfile(filename) is True:
-            json_card_data = None
-        
-            with open(filename, "r+") as fp:
-                print('started 1')
-                json_card_data = json.load(fp)
-                print("did 1")
+        # -- If JSON file exists, this will append the card data to the existing file.
+        if path.isfile(filename) is True:        
+            with open(filename, "r+") as file:
+                json_card_data = json.load(file)
+                if type(json_card_data) is dict:
+                    json_card_data = [json_card_data]
+
                 json_file_urls = retrieve_json_items(filename)
                 needed_urls = multi_list_comparator(get_all_urls, json_file_urls)
+                retrieve_card_data = universal_card_info(bot, needed_urls)
+
+                for i in retrieve_card_data:
+                    json_card_data.append(i)
+                
+                with open(filename, "w+") as outfile:
+                    json.dump(json_card_data, outfile, indent=4)
+
+        # -- If JSON file doesn't exist, this will create a new one
         else:
-            needed_urls = get_all_urls
             print("File hasn't been created yet")
-
-                json_file_urls = retrieve_json_items(filename)
-                needed_urls = multi_list_comparator(get_all_urls, json_file_urls)
             
-            with open("MHAcards.json", "a+") as outfile:
-                json.dump(json_card_data, outfile, indent=4)
-
-
-        
-                
-            
-        print(f"total card data = {total_card_data[0]}")
-        json_card_data = total_card_data
-
-        with open("MHAcards.json", "a+") as outfile:
-            json.dump(json_card_data, outfile, indent=4)
-                
+            json_card_data = universal_card_info(bot, get_all_urls)
+            with open(filename, "w+") as outfile:
+                json.dump(json_card_data, outfile, indent=4)                
 
 
 run_test()
