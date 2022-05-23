@@ -14,6 +14,7 @@ with open("./MHAcards.json") as f:
         c = card_database[val]
         ct = card.get("card_type")
         kw = card.get("card_keywords")
+        print(kw)
         revised_keywords = u.parse_list(kw)
 
         #print(ct)
@@ -23,6 +24,7 @@ with open("./MHAcards.json") as f:
         if ct == "Attack":
             new_card = Card(name=c["card_name"], 
                             id=c["card_number"],
+                            set=c["set_name"],
                             type_attributes= {"type": ct,
                                 "attack_zone": c['card_attack_zone'],
                                 "speed": c["card_attack_speed"],
@@ -44,6 +46,7 @@ with open("./MHAcards.json") as f:
         elif ct == "Asset":
             new_card = Card(name=c["card_name"], 
                             id=c["card_number"],
+                            set=c["set_name"],
                             type_attributes={"type": ct},
                             rarity=c["card_rarity"],
                             card_type=c["card_type"],
@@ -62,6 +65,7 @@ with open("./MHAcards.json") as f:
         elif ct == "Action":
             new_card = Card(name=c["card_name"], 
                             id=c["card_number"],
+                            set=c["set_name"],
                             type_attributes= {"type": ct},
                             rarity=c["card_rarity"],
                             play_difficulty=c['card_difficulty'],
@@ -78,6 +82,7 @@ with open("./MHAcards.json") as f:
         elif ct == "Character":
             new_card = Card(name=c["card_name"], 
                             id=c["card_number"],
+                            set=c["set_name"],
                             type_attributes= {
                                 "type": ct,
                                 "starting_hand_size": c["card_hand_size"],
@@ -98,6 +103,7 @@ with open("./MHAcards.json") as f:
         elif ct == "Foundation":
             new_card = Card(name=c["card_name"], 
                             id=c["card_number"],
+                            set=c["set_name"],
                             type_attributes= {"type": ct},
                             rarity=c["card_rarity"],
                             play_difficulty=c['card_difficulty'],
@@ -160,6 +166,9 @@ def update_card(card_id: int, card: cards.UpdateCard):
     
     if card.id != None:
         full_card_results[card_id].id = card.id
+
+    if card.set != None:
+        full_card_results[card_id].set = card.set
     
     if card.image_url != None:
         full_card_results[card_id].image_url = card.image_url

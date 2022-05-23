@@ -33,18 +33,7 @@ def check_for_matching_attribute(description, keyword):
             return value
         
     return("Attribute not found")
-#def check_for_missing_attributes(attribute):
-#    if (len(attribute) == 0) | (attribute == False):
-#        print(f"attribute if is: {attribute} \n Now it is None")
-#        attribute = "None"
-#
-#    else:
-#        attribute = str(attribute[1])
-#        print(f"attribute else is: {attribute}")
-#
-#
-#    return(attribute)
-#
+
 
 
 def universal_card_info(urls):
@@ -73,15 +62,6 @@ def universal_card_info(urls):
                 card_block_modifier = check_for_matching_attribute(description, "Block Modifier")
                 card_block_zone = check_for_matching_attribute(description, "Block Zone")
                 set_name = description[3]
-
-                #card_rarity = check_for_missing_attributes(card_rarity)
-                #card_number_unparsed = check_for_missing_attributes(card_number_unparsed)
-                #card_type = check_for_missing_attributes(card_type)
-                #card_resource_symbols_unparsed = check_for_missing_attributes(card_resource_symbols_unparsed)
-                #card_check = check_for_missing_attributes(card_check)
-                #card_difficulty = check_for_missing_attributes(card_difficulty)
-                #card_block_modifier = check_for_missing_attributes(card_block_modifier)
-                #card_block_zone = check_for_missing_attributes(card_block_zone)
                 
                 if len(card_description_raw) == 0:
                     card_description = None
@@ -127,9 +107,9 @@ def universal_card_info(urls):
 
                 elif (card_type == "Foundation") | (card_type == "Action") | (card_type == "Asset"):
                     
-                    card_keywords_unparsed = check_for_matching_attribute(description, "Keywords")
-                    card_details['card_keywords'] = card_keywords_unparsed
-
+                    other_card_types = other_shared_type_info(description)
+                    card_details['card_keywords'] = other_card_types[0]
+                    
                 else:
                     print("Card isn't of any type")
                     None
@@ -137,6 +117,7 @@ def universal_card_info(urls):
                 temporary_card_list.append(card_details)
                 loop+=1
                 print(f"items printed: {loop}")
+
         except BaseException as err:
             print(f"\n\nUnexpected {err=}, {type(err)=} \n\nproblem card: {val, description}")
         
@@ -155,11 +136,9 @@ def attack_card_info(description):
 
     print(f"attack speed: {card_attack_speed}\n attack zone: {card_attack_zone} \n attack damage: {card_attack_damage}")
 
-    #card_attack_speed = check_for_missing_attributes(card_attack_speed)
-    #card_attack_zone = check_for_missing_attributes(card_attack_zone)
-    #card_attack_damage = check_for_missing_attributes(card_attack_damage)
-
     return(card_attack_speed, card_attack_zone, card_attack_damage, card_keywords_unparsed)
+
+
 
 def character_card_info(description):
     card_vitality = check_for_matching_attribute(description, "Vitality")
@@ -167,6 +146,7 @@ def character_card_info(description):
     card_keywords_unparsed = check_for_matching_attribute(description, "Keywords")
 
     return(card_hand_size, card_vitality, card_keywords_unparsed)
+
 
 
 def other_shared_type_info(description):

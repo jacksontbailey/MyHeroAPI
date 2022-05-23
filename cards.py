@@ -1,6 +1,8 @@
 import re
 import unicodedata
 
+from pyparsing import Opt
+
 import card_page.constants as const
 from enum import Enum
 from typing import Annotated, Dict, Optional, Literal, Union
@@ -24,31 +26,7 @@ class Symbol(str, Enum):
     order = "Order"
     void = "Void"
     water = "Water"
-#class AttackKeyword(str, Enum):
-#    ally = "Ally"
-#    breaker = "Breaker"
-#    charge = "Charge"
-#    combo = "Combo (Foundation)"
-#    ex: str
-#    flash = "Flash"
-#    fury = "Fury"
-#    kick = "Kick"
-#    powerful = "Powerful"
-#    punch = "Punch"
-#    ranged = "Ranged"
-#    slam = "Slam"
-#    stun = "Stun"
-#    throw = "Throw"
-#    weapon = "Weapon"
-#    unique = "Unique"
-#
-#    @validator("ex")
-#    def check_valid_regex(cls, v):
-#        regExs = r"((EX:) .+)"
-#        if not re.search(regExs, v):
-#            return ValueError("not match")
-#        return v
-#
+
 class CharacterCard(BaseModel):
     type: Literal['Character']
     starting_hand_size: int
@@ -72,6 +50,7 @@ class AssetCard(BaseModel):
 class Card(BaseModel):
     name: str
     id: int
+    set: str
     type_attributes: Annotated[Union[CharacterCard, AttackCard, AssetCard, ActionCard,FoundationCard], Field(discriminator='type')]
     rarity: str
     image_url: str | None = None
@@ -81,11 +60,12 @@ class Card(BaseModel):
     description: list[str]
     symbols: list[Symbol]
     check: int
-    keyword: Optional[list] | None = None
+    keyword: Optional[list[str]] | None = None
 
 class UpdateCard(BaseModel):
     name: Optional[str] = None
     id: Optional[int] = None
+    set: Optional[str] = None
     type_attributes: Optional[str] = None
     rarity: Optional[str] = None
     image_url: Optional[str]= None

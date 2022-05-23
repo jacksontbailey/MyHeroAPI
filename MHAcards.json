@@ -1976,9 +1976,9 @@
         "card_difficulty": "4",
         "card_block_modifier": "1",
         "card_block_zone": "low",
-        "card_attack_speed": "Attribute not found",
-        "card_attack_zone": "Attribute not found",
-        "card_attack_damage": "Attribute not found",
+        "card_attack_speed": "4",
+        "card_attack_zone": "high",
+        "card_attack_damage": "4",
         "card_keywords": "Charge \u2022 Ranged \u2022 Weapon"
     },
     {
@@ -5540,10 +5540,10 @@
         "card_resource_symbols": [
             ""
         ],
-        "card_check": "Attribute not found",
-        "card_difficulty": "Attribute not found",
-        "card_block_modifier": "Attribute not found",
-        "card_block_zone": "Attribute not found",
+        "card_check": "5",
+        "card_difficulty": "2",
+        "card_block_modifier": "3",
+        "card_block_zone": "high",
         "card_keywords": ""
     },
     {
@@ -5614,9 +5614,9 @@
         "card_difficulty": "5",
         "card_block_modifier": "2",
         "card_block_zone": "mid",
-        "card_attack_speed": "Attribute not found",
-        "card_attack_zone": "Attribute not found",
-        "card_attack_damage": "Attribute not found",
+        "card_attack_speed": "3",
+        "card_attack_zone": "mid",
+        "card_attack_damage": "6",
         "card_keywords": "Breaker"
     },
     {
@@ -6366,7 +6366,7 @@
         "card_check": "3",
         "card_difficulty": "5",
         "card_block_modifier": "3",
-        "card_block_zone": "Attribute not found",
+        "card_block_zone": "high",
         "card_attack_speed": "4",
         "card_attack_zone": "Low",
         "card_attack_damage": "5",
