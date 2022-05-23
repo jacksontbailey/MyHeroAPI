@@ -1,4 +1,4 @@
-import re, json
+import json
 from os import path
 from fastapi import FastAPI
 
@@ -22,7 +22,7 @@ def run_test():
 
                 json_file_urls = retrieve_json_items(filename)
                 needed_urls = multi_list_comparator(get_all_urls, json_file_urls)
-                retrieve_card_data = universal_card_info(bot, needed_urls)
+                retrieve_card_data = universal_card_info(needed_urls)
                 
                 for i in retrieve_card_data:
                     json_card_data.append(i)
@@ -34,7 +34,7 @@ def run_test():
         else:
             print("File hasn't been created yet")
             
-            json_card_data = universal_card_info(bot, get_all_urls)
+            json_card_data = universal_card_info(get_all_urls)
             with open(filename, "w+") as outfile:
                 json.dump(json_card_data, outfile, indent=4)                
         

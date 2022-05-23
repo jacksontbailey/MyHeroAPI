@@ -1,9 +1,5 @@
-from asyncio.windows_events import NULL
-from cgitb import html
-import imp, os, re, requests,time
-from operator import indexOf
+import re, requests
 import card_page.constants as const
-import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -14,7 +10,7 @@ from requests.exceptions import HTTPError
 
 
 class Card_Page(webdriver.Chrome):
-    def __init__(self, driver_path = const.WORK_DRIVER, teardown=False):
+    def __init__(self, driver_path = const.HOME_FOLDER, teardown=False):
         options = webdriver.ChromeOptions()
         options.headless = True
         options.add_experimental_option('excludeSwitches', ['enable-logging'])
@@ -58,11 +54,11 @@ class Card_Page(webdriver.Chrome):
         options = webdriver.ChromeOptions()
         options.add_argument("start-maximized")
         options.headless = True
+        options.add_argument("--dns-prefetch-disable")
         options.add_experimental_option('excludeSwitches', ['enable-logging', 'enable-automation'])
         options.add_experimental_option('useAutomationExtension', False)
 
-        pattern = self #replace with real regex pattern
-        driver = webdriver.Chrome(const.WORK_DRIVER, options=options)
+        driver = webdriver.Chrome(const.HOME_FOLDER, options=options)
         driver.get(url)
         
         try:
@@ -77,7 +73,7 @@ class Card_Page(webdriver.Chrome):
             # -- Needed to click dropdown button in order to retrieve all of the attributes for the card
             while True:
                 try:
-                    read_button = WebDriverWait(driver, .5).until(EC.presence_of_element_located((By.CLASS_NAME, "product__item-details__toggle")))
+                    read_button = WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME, "product__item-details__toggle")))
                     read_button.click()
                     break
                 except:
@@ -96,10 +92,15 @@ class Card_Page(webdriver.Chrome):
             set = title_el.find_element(By.TAG_NAME, "h2")
             set_title = set.text
 
+            check_set_title = re.search(const.CARD_NAME, set_title, flags=re.IGNORECASE)
+            if check_set_title:
+                print(f"Set Title is bad: {set_title}")
+                return False
+
             # -- Gets the card description
             card_description = desc_el.find_elements(By.CLASS_NAME, "product__item-details__description")
-            for card in card_description:
-                card_description_text.append(card.text)
+            for stat in card_description:
+                card_description_text.append(stat.text)
 
             # -- Gets all of the card stats besides the description
             items = attr_el.find_elements(By.TAG_NAME, value='li')

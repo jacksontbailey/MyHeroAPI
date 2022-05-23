@@ -1,6 +1,7 @@
 import json, re
-import logging
 import card_page.constants as const
+from card_page.data_collector import Card_Page
+
 
 
 def multi_list_comparator(all_urls, json_file_urls):
@@ -11,6 +12,7 @@ def multi_list_comparator(all_urls, json_file_urls):
     return urls_still_needed
 
 
+
 def retrieve_json_items(filename):
     urls = []
     with open(filename, 'r') as data:
@@ -19,116 +21,154 @@ def retrieve_json_items(filename):
         urls.append(card['card_tcg_url'])
     return urls
 
-def check_for_missing_attributes(attribute):
-    if len(attribute) == 0:
-        print(f"Attribute - {attribute}: Equals None")
-        attribute = "None"
-    else:
-        attribute = str(attribute[1])
-    return(attribute)
+
+def check_for_matching_attribute(description, keyword):
+    for i in description[2]:
+        current_key = i[0]
+        current_item = i[1]
+        check_key = re.search(keyword, current_key, flags=re.I)
+        
+        if check_key:    
+            value = str(current_item)
+            return value
+        
+    return("Attribute not found")
+#def check_for_missing_attributes(attribute):
+#    if (len(attribute) == 0) | (attribute == False):
+#        print(f"attribute if is: {attribute} \n Now it is None")
+#        attribute = "None"
+#
+#    else:
+#        attribute = str(attribute[1])
+#        print(f"attribute else is: {attribute}")
+#
+#
+#    return(attribute)
+#
 
 
-def universal_card_info(bot, urls):
-    temporary_card_list = []
-    
-    try:
+def universal_card_info(urls):
+    with Card_Page() as bot:
+        print("retrieving card info")
+        temporary_card_list = []
         loop = 0
-        for i, val in enumerate(urls):
-            description = bot.open_all_card_urls(urls[i])
-            print(val, description)
 
-            #-- Find out if the card is a Character, Attack, Foundation, Action, or Asset
-            tcg_url = val
-            card_name = description[0]
-            card_description_raw = description[1]
-            card_rarity = check_for_missing_attributes(description[2][0])
-            card_number_unparsed = check_for_missing_attributes(description[2][1])
-            card_type = check_for_missing_attributes(description[2][2])
-            card_resource_symbols_unparsed = check_for_missing_attributes(description[2][3])
-            card_check = check_for_missing_attributes(description[2][4])
-            card_difficulty = check_for_missing_attributes(description[2][5])
-            card_block_modifier = check_for_missing_attributes(description[2][6])
-            card_block_zone = check_for_missing_attributes(description[2][7])
-            set_name = description[3]
+        try:
+            for i, val in enumerate(urls):
+                description = bot.open_all_card_urls(urls[i])
+                print(val, description)
 
-            if len(card_description_raw) == 0:
-                card_description = None
-            else:
-                card_description_unparsed = str(card_description_raw[0])
-                card_description_unparsed = re.sub(const.DESCRIPTION_SPLIT, '', card_description_unparsed)
-                card_description = card_description_unparsed.split("\n")
+                if description == False:
+                    continue
+                #-- Find out if the card is a Character, Attack, Foundation, Action, or Asset
+                tcg_url = val
+                card_name = description[0]
+                card_description_raw = description[1]
+                card_rarity = check_for_matching_attribute(description, "Rarity")
+                card_number_unparsed = check_for_matching_attribute(description, "Number")
+                card_type = check_for_matching_attribute(description, "Card Type")
+                card_resource_symbols_unparsed = check_for_matching_attribute(description, "Resource")
+                card_check = check_for_matching_attribute(description, "Control")
+                card_difficulty = check_for_matching_attribute(description, "Difficulty")
+                card_block_modifier = check_for_matching_attribute(description, "Block Modifier")
+                card_block_zone = check_for_matching_attribute(description, "Block Zone")
+                set_name = description[3]
 
-            card_number = re.sub(const.CARD_NUMBER, '', card_number_unparsed)
-            card_resource_symbols = card_resource_symbols_unparsed.split(" ")
-            card_set_name = re.search(const.RELEASE_SET_STRING, set_name, flags=re.IGNORECASE).group(0)
-
-            card_details= {
-                "card_name": card_name,
-                "card_number": card_number,
-                "card_tcg_url": tcg_url,
-                "set_name": card_set_name,
-                "card_type": card_type,
-                "card_rarity": card_rarity,
-                "card_description": card_description,
-                "card_resource_symbols": card_resource_symbols,
-                "card_check": card_check,
-                "card_difficulty": card_difficulty,
-                "card_block_modifier": card_block_modifier,
-                "card_block_zone": card_block_zone,
-            }
-
-            if card_type == "Character":
+                #card_rarity = check_for_missing_attributes(card_rarity)
+                #card_number_unparsed = check_for_missing_attributes(card_number_unparsed)
+                #card_type = check_for_missing_attributes(card_type)
+                #card_resource_symbols_unparsed = check_for_missing_attributes(card_resource_symbols_unparsed)
+                #card_check = check_for_missing_attributes(card_check)
+                #card_difficulty = check_for_missing_attributes(card_difficulty)
+                #card_block_modifier = check_for_missing_attributes(card_block_modifier)
+                #card_block_zone = check_for_missing_attributes(card_block_zone)
                 
-                character_card_type = character_card_info(description)
-                card_details['card_vitality'] = character_card_type[0]
-                card_details['card_hand_size'] = character_card_type[1]
-                card_details['card_keywords'] = character_card_type[2]
+                if len(card_description_raw) == 0:
+                    card_description = None
+                else:
+                    card_description_unparsed = str(card_description_raw[0])
+                    card_description_unparsed = re.sub(const.DESCRIPTION_SPLIT, '', card_description_unparsed)
+                    card_description = card_description_unparsed.split("\n")
 
-            elif card_type == "Attack":
-                
-                attack_card_type = attack_card_info(description)
-                card_details['card_attack_speed'] = attack_card_type[0]
-                card_details['card_attack_zone'] = attack_card_type[1]
-                card_details['card_attack_damage'] = attack_card_type[2]
-                card_details['card_keywords'] = attack_card_type[3]
+                card_number = re.sub(const.CARD_NUMBER, '', card_number_unparsed)
+                card_resource_symbols = card_resource_symbols_unparsed.split(" ")
+                card_set_name = re.search(const.RELEASE_SET_STRING, set_name, flags=re.IGNORECASE).group(0)
+                print("got to card details")
+                card_details= {
+                    "card_name": card_name,
+                    "card_number": card_number,
+                    "card_tcg_url": tcg_url,
+                    "set_name": card_set_name,
+                    "card_type": card_type,
+                    "card_rarity": card_rarity,
+                    "card_description": card_description,
+                    "card_resource_symbols": card_resource_symbols,
+                    "card_check": card_check,
+                    "card_difficulty": card_difficulty,
+                    "card_block_modifier": card_block_modifier,
+                    "card_block_zone": card_block_zone,
+                }
 
-            elif (card_type == "Foundation") | (card_type == "Action") | (card_type == "Asset"):
-                
-                other_card_type = other_shared_type_info(description)
-                card_details['card_keywords'] = other_card_type[0]
+                if card_type == "Character":
+                    
+                    character_card_type = character_card_info(description)
+                    card_details['card_vitality'] = character_card_type[0]
+                    card_details['card_hand_size'] = character_card_type[1]
+                    card_details['card_keywords'] = character_card_type[2]
+                    
 
-            else:
-                print("Card isn't of any type")
-                None
+                elif card_type == "Attack":
+                    
+                    attack_card_type = attack_card_info(description)
+                    card_details['card_attack_speed'] = attack_card_type[0]
+                    card_details['card_attack_zone'] = attack_card_type[1]
+                    card_details['card_attack_damage'] = attack_card_type[2]
+                    card_details['card_keywords'] = attack_card_type[3]
 
-            temporary_card_list.append(card_details)
-            loop+=1
-            print(f"items printed: {loop}")
-    
-    except BaseException as err:
-        print(f"\n\nUnexpected {err=}, {type(err)=} \n\nproblem card: {val, description}")
+                elif (card_type == "Foundation") | (card_type == "Action") | (card_type == "Asset"):
+                    
+                    card_keywords_unparsed = check_for_matching_attribute(description, "Keywords")
+                    card_details['card_keywords'] = card_keywords_unparsed
 
-    finally:
-        return(temporary_card_list)        
+                else:
+                    print("Card isn't of any type")
+                    None
+
+                temporary_card_list.append(card_details)
+                loop+=1
+                print(f"items printed: {loop}")
+        except BaseException as err:
+            print(f"\n\nUnexpected {err=}, {type(err)=} \n\nproblem card: {val, description}")
+        
+        finally:
+            return(temporary_card_list)        
 
 
 
 def attack_card_info(description):
-    card_attack_speed = check_for_missing_attributes(description[2][8])
-    card_attack_zone = check_for_missing_attributes(description[2][9])
-    card_attack_damage = check_for_missing_attributes(description[2][10])
-    card_keywords_unparsed = description[2][11]
+    print(f"description length: {range(len(description[2]))}\n description: {description[2]}")
+
+    card_attack_speed = check_for_matching_attribute(description, "Attack Speed")
+    card_attack_zone = check_for_matching_attribute(description, "Attack Zone")
+    card_attack_damage = check_for_matching_attribute(description, "Attack Damage")
+    card_keywords_unparsed = check_for_matching_attribute(description, "Keywords")
+
+    print(f"attack speed: {card_attack_speed}\n attack zone: {card_attack_zone} \n attack damage: {card_attack_damage}")
+
+    #card_attack_speed = check_for_missing_attributes(card_attack_speed)
+    #card_attack_zone = check_for_missing_attributes(card_attack_zone)
+    #card_attack_damage = check_for_missing_attributes(card_attack_damage)
 
     return(card_attack_speed, card_attack_zone, card_attack_damage, card_keywords_unparsed)
 
 def character_card_info(description):
-    card_vitality = check_for_missing_attributes(description[2][9])
-    card_hand_size = check_for_missing_attributes(description[2][8])
-    card_keywords_unparsed = description[2][10]
+    card_vitality = check_for_matching_attribute(description, "Vitality")
+    card_hand_size = check_for_matching_attribute(description, "Hand Size")
+    card_keywords_unparsed = check_for_matching_attribute(description, "Keywords")
 
     return(card_hand_size, card_vitality, card_keywords_unparsed)
 
 
 def other_shared_type_info(description):
-    card_keywords_unparsed = description[2][8]
+    card_keywords_unparsed = check_for_matching_attribute(description, "Keywords")
     return(card_keywords_unparsed)
