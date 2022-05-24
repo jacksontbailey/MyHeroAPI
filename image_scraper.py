@@ -30,7 +30,6 @@ i = 0
 for img in (imgs):
     if img.has_attr(r'srcset'):
         card = (img['src'])
-        cards[i] =card
+        cards[i] = card
+        print(f"This is a card: {cards[i]}")
         i+=1
-
-download_card_images()

@@ -1,4 +1,5 @@
 import json, re
+from typing_extensions import Self
 import card_page.constants as const
 from card_page.data_collector import Card_Page
 
@@ -26,11 +27,18 @@ def check_for_matching_attribute(description, keyword):
     for i in description[2]:
         current_key = i[0]
         current_item = i[1]
-        check_key = re.search(keyword, current_key, flags=re.I)
-        
-        if check_key:    
-            value = str(current_item)
-            return value
+        check_key = re.search(keyword, current_key, flags=re.IGNORECASE)
+
+        if keyword == "Keywords":
+            if (current_key == '') or (current_key == False):
+                return None
+            elif check_key:
+                return(i)
+
+        if check_key:
+            #print(f"current key: {current_key} and its value: {current_item}")
+
+            return current_item
         
     return("Attribute not found")
 
@@ -41,7 +49,7 @@ def universal_card_info(urls):
         print("retrieving card info")
         temporary_card_list = []
         loop = 0
-
+        
         try:
             for i, val in enumerate(urls):
                 description = bot.open_all_card_urls(urls[i])
@@ -52,6 +60,7 @@ def universal_card_info(urls):
                 #-- Find out if the card is a Character, Attack, Foundation, Action, or Asset
                 tcg_url = val
                 card_name = description[0]
+                card_image = description[4]
                 card_description_raw = description[1]
                 card_rarity = check_for_matching_attribute(description, "Rarity")
                 card_number_unparsed = check_for_matching_attribute(description, "Number")
@@ -77,6 +86,7 @@ def universal_card_info(urls):
                 card_details= {
                     "card_name": card_name,
                     "card_number": card_number,
+                    "card_image": card_image,
                     "card_tcg_url": tcg_url,
                     "set_name": card_set_name,
                     "card_type": card_type,
@@ -92,8 +102,8 @@ def universal_card_info(urls):
                 if card_type == "Character":
                     
                     character_card_type = character_card_info(description)
-                    card_details['card_vitality'] = character_card_type[0]
-                    card_details['card_hand_size'] = character_card_type[1]
+                    card_details['card_hand_size'] = character_card_type[0]
+                    card_details['card_vitality'] = character_card_type[1]
                     card_details['card_keywords'] = character_card_type[2]
                     
 
@@ -107,8 +117,8 @@ def universal_card_info(urls):
 
                 elif (card_type == "Foundation") | (card_type == "Action") | (card_type == "Asset"):
                     
-                    other_card_types = other_shared_type_info(description)
-                    card_details['card_keywords'] = other_card_types[0]
+                    card_keywords_unparsed = check_for_matching_attribute(description, "Keywords")
+                    card_details['card_keywords'] = card_keywords_unparsed
                     
                 else:
                     print("Card isn't of any type")
@@ -117,38 +127,28 @@ def universal_card_info(urls):
                 temporary_card_list.append(card_details)
                 loop+=1
                 print(f"items printed: {loop}")
-
+            
         except BaseException as err:
             print(f"\n\nUnexpected {err=}, {type(err)=} \n\nproblem card: {val, description}")
-        
         finally:
             return(temporary_card_list)        
 
 
 
 def attack_card_info(description):
-    print(f"description length: {range(len(description[2]))}\n description: {description[2]}")
 
     card_attack_speed = check_for_matching_attribute(description, "Attack Speed")
     card_attack_zone = check_for_matching_attribute(description, "Attack Zone")
     card_attack_damage = check_for_matching_attribute(description, "Attack Damage")
     card_keywords_unparsed = check_for_matching_attribute(description, "Keywords")
 
-    print(f"attack speed: {card_attack_speed}\n attack zone: {card_attack_zone} \n attack damage: {card_attack_damage}")
-
     return(card_attack_speed, card_attack_zone, card_attack_damage, card_keywords_unparsed)
 
 
 
 def character_card_info(description):
-    card_vitality = check_for_matching_attribute(description, "Vitality")
     card_hand_size = check_for_matching_attribute(description, "Hand Size")
+    card_vitality = check_for_matching_attribute(description, "Vitality")
     card_keywords_unparsed = check_for_matching_attribute(description, "Keywords")
 
     return(card_hand_size, card_vitality, card_keywords_unparsed)
-
-
-
-def other_shared_type_info(description):
-    card_keywords_unparsed = check_for_matching_attribute(description, "Keywords")
-    return(card_keywords_unparsed)

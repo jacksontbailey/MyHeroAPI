@@ -26,6 +26,7 @@ class Symbol(str, Enum):
     order = "Order"
     void = "Void"
     water = "Water"
+    infinity = "Infinity"
 
 class CharacterCard(BaseModel):
     type: Literal['Character']
@@ -49,7 +50,7 @@ class AssetCard(BaseModel):
 
 class Card(BaseModel):
     name: str
-    id: int
+    id: str
     set: str
     type_attributes: Annotated[Union[CharacterCard, AttackCard, AssetCard, ActionCard,FoundationCard], Field(discriminator='type')]
     rarity: str
@@ -64,7 +65,7 @@ class Card(BaseModel):
 
 class UpdateCard(BaseModel):
     name: Optional[str] = None
-    id: Optional[int] = None
+    id: Optional[str] = None
     set: Optional[str] = None
     type_attributes: Optional[str] = None
     rarity: Optional[str] = None

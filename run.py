@@ -27,6 +27,17 @@ def run_test():
                 for i in retrieve_card_data:
                     json_card_data.append(i)
                 
+                for card in json_card_data:
+                    symbol = card['card_resource_symbols']
+                    for i in symbol:
+                        if i not in ["Air", "Good", "Chaos", "All", "Death", "Earth", "Evil", "Fire", "Life", "Order", "Void", "Water", "Infinity"]:
+                            print(f"Card: {card['card_name']} ------ Symbols: {i}")
+                    block_modifier = card['card_block_modifier']
+                    for i in block_modifier:
+                        if i.isdigit():
+                            i = int(i)
+                            json_card_data.append()
+                            print(f"Card: {card['card_name']} ------ Value: {i}")
                 with open(filename, "w+") as outfile:
                     json.dump(json_card_data, outfile, indent=4)
 
@@ -39,5 +50,6 @@ def run_test():
                 json.dump(json_card_data, outfile, indent=4)                
         
         print("Finished retrieving card collection")
+
 
 run_test()

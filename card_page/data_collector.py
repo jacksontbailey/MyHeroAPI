@@ -10,7 +10,7 @@ from requests.exceptions import HTTPError
 
 
 class Card_Page(webdriver.Chrome):
-    def __init__(self, driver_path = const.HOME_FOLDER, teardown=False):
+    def __init__(self, driver_path = const.WORK_DRIVER, teardown=False):
         options = webdriver.ChromeOptions()
         options.headless = True
         options.add_experimental_option('excludeSwitches', ['enable-logging'])
@@ -58,22 +58,22 @@ class Card_Page(webdriver.Chrome):
         options.add_experimental_option('excludeSwitches', ['enable-logging', 'enable-automation'])
         options.add_experimental_option('useAutomationExtension', False)
 
-        driver = webdriver.Chrome(const.HOME_FOLDER, options=options)
+        driver = webdriver.Chrome(const.WORK_DRIVER, options=options)
         driver.get(url)
         
         try:
             # -- Starts waiting process for parent elements of stuff I'm looking for on the page 
-            wait = WebDriverWait(driver, 10)
+            wait = WebDriverWait(driver, 15)
 
             desc_el = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "product__item-details__content")))
             attr_el = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "product__item-details__attributes")))
             title_el = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "product-details__header")))
+            image_el = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "progressive-image-wrapper")))
             
-
             # -- Needed to click dropdown button in order to retrieve all of the attributes for the card
             while True:
                 try:
-                    read_button = WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME, "product__item-details__toggle")))
+                    read_button = WebDriverWait(driver, 1.5).until(EC.presence_of_element_located((By.CLASS_NAME, "product__item-details__toggle")))
                     read_button.click()
                     break
                 except:
@@ -110,7 +110,12 @@ class Card_Page(webdriver.Chrome):
                 card_stats = val.text
                 card_stats_split = card_stats.split(":")
                 stats.append(card_stats_split)
-            return(card_title, card_description_text, stats, set_title)
+
+            # -- Gets the image url
+            card_image = image_el.find_element(By.CLASS_NAME, "progressive-image-main")
+            image_src = card_image.get_attribute("src")
+
+            return(card_title, card_description_text, stats, set_title, image_src)
             
         except:
             driver.quit()
