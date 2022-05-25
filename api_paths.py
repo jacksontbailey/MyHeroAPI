@@ -1,6 +1,6 @@
 from typing import Optional
 from fastapi import FastAPI, Path, Query, status, Response
-import cards, json
+import json, cards
 from cards import *
 app = FastAPI()
 
@@ -13,11 +13,6 @@ with open("./MHAcards.json") as f:
     for val, card in enumerate(card_database):
         c = card_database[val]
         ct = card.get("card_type")
-        kw = card.get("card_keywords")
-        print(kw)
-        revised_keywords = u.parse_list(kw)
-
-        #print(ct)
 
         # -- Parses cards by their types since each type has a different amount of 
         # -- attributes that it paseses in.  
@@ -87,7 +82,7 @@ with open("./MHAcards.json") as f:
                                 "type": ct,
                                 "starting_hand_size": c["card_hand_size"],
                                 "max_health": c["card_vitality"]
-},
+                                },
                             rarity=c["card_rarity"],
                             play_difficulty=c['card_difficulty'],
                             block_modifier= c['card_block_modifier'],
@@ -128,39 +123,39 @@ with open("./MHAcards.json") as f:
 async def home():
     return {"Greeting": "Welcome to the My Hero Academia Card Game API! This is a fan-made API that any developer is free to use. The only thing I ask is that you give me some credit when you use it, and/or buy me a coffee. This carbon-based lifeform needs Java installed..."}
 
-@app.get("/card-list")
+@app.get("/v1/cards")
 async def card_list():
-    return {"cards": full_card_results}
+    return{"card_list": full_card_results}
 
-@app.get("/get-card/{card_id}")
-def get_card(card_id: int = Path(None, description="The ID of the item you'd like to add.")):
+@app.get("/v1/get-card/{card_id}")
+async def get_card(card_id: int = Path(None, description="The ID of the item you'd like to add.")):
     return full_card_results[card_id]
 
-@app.get("/get-card-by-name")
-def get_card(name: str = Query(None, title = "Name", description="Name of item.")):
+@app.get("/v1/get-card-by-name")
+async def get_card(name: str = Query(None, title = "Name", description="Name of item.")):
     for card_id in full_card_results:
         if full_card_results[card_id].name == name:
             return full_card_results[card_id]
     return {"Data": "Not found"}
 
-@app.get("/get-card-by-name/{card_id}")
-def get_card( *, card_id: int, name: Optional[str] = None, test: int):
+@app.get("/v1/get-card-by-name/{card_id}")
+async def get_card( *, card_id: int, name: Optional[str] = None, test: int):
     for card_id in full_card_results:
         if full_card_results[card_id].name == name:
             return full_card_results[card_id]
     return {"Data": "Not found"}
 
 
-@app.post("/add-card/{card_id}")
-def add_card(card_id: int, card: cards.Card):
+@app.post("/v1/add-card/{card_id}")
+async def add_card(card_id: int, card: cards.Card):
     if card_id in full_card_results:
         return{"Error": "Card already exists in database."}
     
     full_card_results[card_id] = card
     return full_card_results[card_id]
 
-@app.put("/update-card/{card_id}")
-def update_card(card_id: int, card: cards.UpdateCard):
+@app.put("/v1/update-card/{card_id}")
+async def update_card(card_id: int, card: cards.UpdateCard):
     if card_id not in full_card_results:
         return{"Error": "Card does not exist in database."}
     
@@ -205,8 +200,8 @@ def update_card(card_id: int, card: cards.UpdateCard):
 
     return full_card_results[card_id]
 
-@app.delete("/delete-card")
-def delete_card(card_id: int = Query(..., description= "The ID of the card to delete must be greater than or equal to 0.", gt=0)):
+@app.delete("/v1/delete-card")
+async def delete_card(card_id: int = Query(..., description= "The ID of the card to delete must be greater than or equal to 0.", gt=0)):
     if card_id not in card_database:
         return {"Error": "ID does not exist."}
     
@@ -218,4 +213,4 @@ def delete_card(card_id: int = Query(..., description= "The ID of the card to de
 # /get-random-card
 # /add-card
 # /get-card-by-name?{}
-# -- uvicorn card_api:app --reload
+# -- uvicorn api_paths:app --reload

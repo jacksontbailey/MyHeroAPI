@@ -36,10 +36,11 @@ def check_for_matching_attribute(description, keyword):
                 return(i)
 
         if check_key:
-            #print(f"current key: {current_key} and its value: {current_item}")
-
-            return current_item
-        
+            if current_item.isdigit():
+                return int(current_item)
+            else:
+                return current_item
+                
     return("Attribute not found")
 
 

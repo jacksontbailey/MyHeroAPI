@@ -5,14 +5,14 @@ from pyparsing import Opt
 
 import card_page.constants as const
 from enum import Enum
-from typing import Annotated, Dict, Optional, Literal, Union
-from pydantic import BaseModel, Field, ValidationError, validator
+from typing import Annotated, Optional, Literal, Union
+from pydantic import BaseModel, Field, HttpUrl, ValidationError, validator
 
 
 class Zone(str, Enum):
     high = "High"
-    mid = "Mid"
     low = "Low"
+    mid = "Mid"
 class Symbol(str, Enum):
     air = "Air"
     all = "All"
@@ -22,24 +22,24 @@ class Symbol(str, Enum):
     evil = "Evil"
     fire = "Fire"
     good = "Good"
+    infinity = "Infinity"
     life = "Life"
     order = "Order"
     void = "Void"
     water = "Water"
-    infinity = "Infinity"
 
 class CharacterCard(BaseModel):
-    type: Literal['Character']
-    starting_hand_size: int
     max_health: int
+    starting_hand_size: int
+    type: Literal['Character']
 
 class AttackCard(BaseModel):
-    type: Literal['Attack']
-    attack_zone: Zone
-    speed: int
-    damage: int
+    ability: str | None
     attack_keywords: list[str]
-    ability: Optional[str]
+    attack_zone: Zone
+    damage: int
+    speed: int
+    type: Literal['Attack']
 
 class FoundationCard(BaseModel):
     type: Literal['Foundation']
@@ -48,40 +48,45 @@ class ActionCard(BaseModel):
 class AssetCard(BaseModel):
     type: Literal['Asset']
 
-class Card(BaseModel):
-    name: str
+class AllCards(BaseModel):
     id: str
-    set: str
-    type_attributes: Annotated[Union[CharacterCard, AttackCard, AssetCard, ActionCard,FoundationCard], Field(discriminator='type')]
-    rarity: str
-    image_url: str | None = None
-    play_difficulty: int
+    name: str
+
+class Card(BaseModel):
     block_modifier: int
     block_zone: str
-    description: list[str]
-    symbols: list[Symbol]
     check: int
-    keyword: Optional[list[str]] | None = None
+    description: list[str | list[str]] | None = None
+    id: str
+    image_url: HttpUrl | None = None
+    keyword: list[str] | None = None
+    name: str
+    play_difficulty: int
+    rarity: str
+    set: str
+    symbols: list[Symbol]
+    type_attributes: Annotated[Union[CharacterCard, AttackCard, AssetCard, ActionCard,FoundationCard], Field(discriminator='type')]
 
 class UpdateCard(BaseModel):
-    name: Optional[str] = None
-    id: Optional[str] = None
-    set: Optional[str] = None
-    type_attributes: Optional[str] = None
-    rarity: Optional[str] = None
-    image_url: Optional[str]= None
-    play_difficulty: Optional[int] = None
     block_modifier: Optional[int] = None
     block_zone: Optional[str] = None
-    description: Optional[list[str]] = None
-    symbols: Optional[list[Symbol]] = None
     check: Optional[int] = None
+    description: Optional[list[str]] = None
+    id: Optional[str] = None
+    image_url: Optional[HttpUrl]= None
     keyword: Optional[list[str]] = None
+    name: Optional[str] = None
+    play_difficulty: Optional[int] = None
+    rarity: Optional[str] = None
+    set: Optional[str] = None
+    symbols: Optional[list[Symbol]] = None
+    type_attributes: Optional[str] = None
 
 
 class Unicode_Parser():
     def __init__(self) -> None:
         pass
+
 
     def ascii_code(self, item):
         initial_match = re.search(const.UNICODE_SEARCH, item)
@@ -95,12 +100,22 @@ class Unicode_Parser():
                 if unicodedata.name(match) == "BULLET":
                     c = item.split(match, -1)
                     return(c, True)
+                elif unicodedata.name(match) == "MIDDLE DOT":
+                    c = item.split(match, -1)
+                    return(c, True)
+                elif unicodedata.name(match) == "RIGHT SINGLE QUOTATION MARK":
+                    c = item.replace(match, r"\'")
+                    return(item, True)
+                elif unicodedata.name(match) == ("RIGHT DOUBLE QUOTATION MARK" | "LEFT DOUBLE QUOTATION MARK"):
+                    c = item.replace(match, r"\"")
+                    return(item, True)
                 else:
                     print(f"There was a unicode match not listed: {unicodedata.name(match)}")
                     return(item, False)
         else:
             return(item, False)
     
+
     def space_matcher(self, item, previous_item):
         # -- Checks to see if the item in the list starts out with a space & number. If it does, then it 
         # -- takes that number and puts it on the previous item in the list and updates the current list.
@@ -124,6 +139,7 @@ class Unicode_Parser():
             item = re.sub(const.SPACE_START_END, "", item)
         return(item, previous_item)
     
+
     def unwanted_match(self, item):
                 
         # -- Gets rid of list items that just say "Keywords"    
@@ -137,6 +153,7 @@ class Unicode_Parser():
 
         return item
 
+
     def delete_none(self, data):
         for num, item in reversed(list(enumerate(data))):
             if item == None:
@@ -144,7 +161,17 @@ class Unicode_Parser():
         return(data)
 
 
+    def parse_string(self, new_string):
+        parse_new_string = new_string
+        string_boolean_checker = True
+
+        while string_boolean_checker == True:
+            parse_new_string = self.ascii_code(parse_new_string[0])
+            string_boolean_checker = parse_new_string[1]
+
+        return parse_new_string
     
+
     def parse_list(self, new_data):
         parse_new_data = new_data
         print(f"Old data: {parse_new_data}")
@@ -153,7 +180,6 @@ class Unicode_Parser():
             ascii_code_checker = self.ascii_code(string)
             
             if ascii_code_checker[1] == True:
-                #parse_new_data = parse_new_data[:number+1] + ascii_code_checker[0] + parse_new_data[number:+1]
                 parse_new_data[number+1:number+1]= ascii_code_checker[0]
                 parse_new_data.pop(number)
 

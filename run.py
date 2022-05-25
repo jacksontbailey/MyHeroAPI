@@ -5,6 +5,7 @@ from fastapi import FastAPI
 import card_page.constants as const
 from reusable_functions import *
 from card_page.data_collector import Card_Page
+from cards import Unicode_Parser
 
 app = FastAPI()
 
@@ -32,12 +33,7 @@ def run_test():
                     for i in symbol:
                         if i not in ["Air", "Good", "Chaos", "All", "Death", "Earth", "Evil", "Fire", "Life", "Order", "Void", "Water", "Infinity"]:
                             print(f"Card: {card['card_name']} ------ Symbols: {i}")
-                    block_modifier = card['card_block_modifier']
-                    for i in block_modifier:
-                        if i.isdigit():
-                            i = int(i)
-                            json_card_data.append()
-                            print(f"Card: {card['card_name']} ------ Value: {i}")
+                    
                 with open(filename, "w+") as outfile:
                     json.dump(json_card_data, outfile, indent=4)
 
@@ -51,5 +47,21 @@ def run_test():
         
         print("Finished retrieving card collection")
 
+def refactor_keywords():
+    filename = const.JSON_FILE_URL
+    
+    with open(filename, "r+") as file:
+        u = Unicode_Parser()
+        card_database = json.load(file)
+        
+        for val, card in enumerate(card_database):
+            kw = card.get("card_keywords")
+            print(val, kw)
+            kw = u.parse_list(kw)
+        file.seek(0)
+        json.dump(card_database, file, indent=4)
+        file.truncate()
 
-run_test()
+
+#run_test()
+refactor_keywords()
