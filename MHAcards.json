@@ -1,7 +1,8 @@
 [
     {
         "card_name": "Quick Creation",
-        "card_number": "110",
+        "card_release_number": 110,
+        "card_number_in_set": "110",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250623.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250623/universus-universus-my-hero-academia-quick-creation",
         "set_name": "My Hero Academia",
@@ -27,7 +28,8 @@
     },
     {
         "card_name": "Create: Bo Staff",
-        "card_number": "111",
+        "card_release_number": 111,
+        "card_number_in_set": "111",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250625.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250625/universus-universus-my-hero-academia-create-bo-staff",
         "set_name": "My Hero Academia",
@@ -54,7 +56,8 @@
     },
     {
         "card_name": "Maneuvering Laser",
-        "card_number": "10",
+        "card_release_number": 342,
+        "card_number_in_set": "10",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/272840.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/272840/universus-universus-my-hero-academia-crimson-rampage-maneuvering-laser",
         "set_name": "Crimson Rampage",
@@ -84,7 +87,8 @@
     },
     {
         "card_name": "Acid Corrosion Breach",
-        "card_number": "39",
+        "card_release_number": 251,
+        "card_number_in_set": "39",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270364.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270364/universus-universus-my-hero-academia-crimson-rampage-acid-corrosion-breach",
         "set_name": "Crimson Rampage",
@@ -114,7 +118,8 @@
     },
     {
         "card_name": "Denki Kaminari",
-        "card_number": "10",
+        "card_release_number": 10,
+        "card_number_in_set": "10",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250691.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250691/universus-universus-my-hero-academia-denki-kaminari",
         "set_name": "My Hero Academia",
@@ -139,7 +144,8 @@
     },
     {
         "card_name": "Frog Lashing",
-        "card_number": "166",
+        "card_release_number": 166,
+        "card_number_in_set": "166",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250760.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250760/universus-universus-my-hero-academia-frog-lashing",
         "set_name": "My Hero Academia",
@@ -168,7 +174,8 @@
     },
     {
         "card_name": "Engine Rush",
-        "card_number": "146",
+        "card_release_number": 146,
+        "card_number_in_set": "146",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250872.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250872/universus-universus-my-hero-academia-engine-rush",
         "set_name": "My Hero Academia",
@@ -198,7 +205,8 @@
     },
     {
         "card_name": "Decaying Grip",
-        "card_number": "157",
+        "card_release_number": 157,
+        "card_number_in_set": "157",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250703.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250703/universus-universus-my-hero-academia-decaying-grip",
         "set_name": "My Hero Academia",
@@ -227,7 +235,8 @@
     },
     {
         "card_name": "Dark Shadow Ruin",
-        "card_number": "39",
+        "card_release_number": 39,
+        "card_number_in_set": "39",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250664.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250664/universus-universus-my-hero-academia-dark-shadow-ruin",
         "set_name": "My Hero Academia",
@@ -258,7 +267,8 @@
     },
     {
         "card_name": "Pull No Punches",
-        "card_number": "8",
+        "card_release_number": 8,
+        "card_number_in_set": "8",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250678.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250678/universus-universus-my-hero-academia-pull-no-punches",
         "set_name": "My Hero Academia",
@@ -281,7 +291,8 @@
     },
     {
         "card_name": "Wealthy Aspirations",
-        "card_number": "135",
+        "card_release_number": 135,
+        "card_number_in_set": "135",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250790.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250790/universus-universus-my-hero-academia-wealthy-aspirations",
         "set_name": "My Hero Academia",
@@ -306,7 +317,8 @@
     },
     {
         "card_name": "Precise Control",
-        "card_number": "143",
+        "card_release_number": 143,
+        "card_number_in_set": "143",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250848.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250848/universus-universus-my-hero-academia-precise-control",
         "set_name": "My Hero Academia",
@@ -330,7 +342,8 @@
     },
     {
         "card_name": "Capabilities",
-        "card_number": "86",
+        "card_release_number": 86,
+        "card_number_in_set": "86",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250948.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250948/universus-universus-my-hero-academia-capabilities",
         "set_name": "My Hero Academia",
@@ -352,7 +365,8 @@
     },
     {
         "card_name": "Izuku Midoriya",
-        "card_number": "10",
+        "card_release_number": 222,
+        "card_number_in_set": "10",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270216.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270216/universus-universus-my-hero-academia-crimson-rampage-izuku-midoriya",
         "set_name": "Crimson Rampage",
@@ -377,7 +391,8 @@
     },
     {
         "card_name": "Grasping Tape Toss",
-        "card_number": "47",
+        "card_release_number": 47,
+        "card_number_in_set": "47",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250746.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250746/universus-universus-my-hero-academia-grasping-tape-toss",
         "set_name": "My Hero Academia",
@@ -408,7 +423,8 @@
     },
     {
         "card_name": "Present Mic",
-        "card_number": "100",
+        "card_release_number": 312,
+        "card_number_in_set": "100",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270217.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270217/universus-universus-my-hero-academia-crimson-rampage-present-mic",
         "set_name": "Crimson Rampage",
@@ -433,7 +449,8 @@
     },
     {
         "card_name": "Ochaco Uraraka",
-        "card_number": "46",
+        "card_release_number": 258,
+        "card_number_in_set": "46",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270361.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270361/universus-universus-my-hero-academia-crimson-rampage-ochaco-uraraka",
         "set_name": "Crimson Rampage",
@@ -458,7 +475,8 @@
     },
     {
         "card_name": "\"Fusion\"",
-        "card_number": "105",
+        "card_release_number": 317,
+        "card_number_in_set": "105",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270259.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270259/universus-universus-my-hero-academia-crimson-rampage-fusion",
         "set_name": "Crimson Rampage",
@@ -483,7 +501,8 @@
     },
     {
         "card_name": "Reverse Throw",
-        "card_number": "61",
+        "card_release_number": 61,
+        "card_number_in_set": "61",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250864.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250864/universus-universus-my-hero-academia-reverse-throw",
         "set_name": "My Hero Academia",
@@ -512,7 +531,8 @@
     },
     {
         "card_name": "Rebound Side Kick",
-        "card_number": "4",
+        "card_release_number": 216,
+        "card_number_in_set": "4",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270189.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270189/universus-universus-my-hero-academia-crimson-rampage-rebound-side-kick",
         "set_name": "Crimson Rampage",
@@ -543,7 +563,8 @@
     },
     {
         "card_name": "Half-Hot Ignition",
-        "card_number": "58",
+        "card_release_number": 270,
+        "card_number_in_set": "58",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270339.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270339/universus-universus-my-hero-academia-crimson-rampage-half-hot-ignition",
         "set_name": "Crimson Rampage",
@@ -573,7 +594,8 @@
     },
     {
         "card_name": "Short Circuit",
-        "card_number": "18",
+        "card_release_number": 18,
+        "card_number_in_set": "18",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250767.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250767/universus-universus-my-hero-academia-short-circuit",
         "set_name": "My Hero Academia",
@@ -595,7 +617,8 @@
     },
     {
         "card_name": "Ibara Shiozaki",
-        "card_number": "91",
+        "card_release_number": 303,
+        "card_number_in_set": "91",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270158.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270158/universus-universus-my-hero-academia-crimson-rampage-ibara-shiozaki",
         "set_name": "Crimson Rampage",
@@ -620,7 +643,8 @@
     },
     {
         "card_name": "Point Blank Incineration",
-        "card_number": "80",
+        "card_release_number": 80,
+        "card_number_in_set": "80",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250913.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250913/universus-universus-my-hero-academia-point-blank-incineration",
         "set_name": "My Hero Academia",
@@ -648,7 +672,8 @@
     },
     {
         "card_name": "Corrosion Lunge",
-        "card_number": "156",
+        "card_release_number": 156,
+        "card_number_in_set": "156",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250700.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250700/universus-universus-my-hero-academia-corrosion-lunge",
         "set_name": "My Hero Academia",
@@ -676,7 +701,8 @@
     },
     {
         "card_name": "Hanta Sero",
-        "card_number": "46",
+        "card_release_number": 46,
+        "card_number_in_set": "46",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250730.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250730/universus-universus-my-hero-academia-hanta-sero",
         "set_name": "My Hero Academia",
@@ -703,7 +729,8 @@
     },
     {
         "card_name": "Minoru Mineta",
-        "card_number": "94",
+        "card_release_number": 306,
+        "card_number_in_set": "94",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270166.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270166/universus-universus-my-hero-academia-crimson-rampage-minoru-mineta",
         "set_name": "Crimson Rampage",
@@ -728,7 +755,8 @@
     },
     {
         "card_name": "Fulfilled My Duty",
-        "card_number": "151",
+        "card_release_number": 151,
+        "card_number_in_set": "151",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250657.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250657/universus-universus-my-hero-academia-fulfilled-my-duty",
         "set_name": "My Hero Academia",
@@ -750,7 +778,8 @@
     },
     {
         "card_name": "Himiko Toga",
-        "card_number": "85",
+        "card_release_number": 297,
+        "card_number_in_set": "85",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270285.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270285/universus-universus-my-hero-academia-crimson-rampage-himiko-toga",
         "set_name": "Crimson Rampage",
@@ -775,7 +804,8 @@
     },
     {
         "card_name": "Alleyway Ambush",
-        "card_number": "1",
+        "card_release_number": 332,
+        "card_number_in_set": "1",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270157.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270157/universus-universus-my-hero-academia-crimson-rampage-alleyway-ambush",
         "set_name": "Crimson Rampage",
@@ -798,7 +828,8 @@
     },
     {
         "card_name": "Tsuyu Asui",
-        "card_number": "10",
+        "card_release_number": 198,
+        "card_number_in_set": "10",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250924.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250924/universus-universus-my-hero-academia-dlc-tsuyu-asui",
         "set_name": "My Hero Academia",
@@ -823,7 +854,8 @@
     },
     {
         "card_name": "Requesting Assistance",
-        "card_number": "16",
+        "card_release_number": 16,
+        "card_number_in_set": "16",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250756.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250756/universus-universus-my-hero-academia-requesting-assistance",
         "set_name": "My Hero Academia",
@@ -845,7 +877,8 @@
     },
     {
         "card_name": "Binding Cloth Assault",
-        "card_number": "30",
+        "card_release_number": 30,
+        "card_number_in_set": "30",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250870.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250870/universus-universus-my-hero-academia-binding-cloth-assault",
         "set_name": "My Hero Academia",
@@ -875,7 +908,8 @@
     },
     {
         "card_name": "Blitz Rush",
-        "card_number": "11",
+        "card_release_number": 11,
+        "card_number_in_set": "11",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250707.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250707/universus-universus-my-hero-academia-blitz-rush",
         "set_name": "My Hero Academia",
@@ -904,7 +938,8 @@
     },
     {
         "card_name": "Zero Gravity Barrier",
-        "card_number": "50",
+        "card_release_number": 262,
+        "card_number_in_set": "50",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270378.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270378/universus-universus-my-hero-academia-crimson-rampage-zero-gravity-barrier",
         "set_name": "Crimson Rampage",
@@ -934,7 +969,8 @@
     },
     {
         "card_name": "Natural Leader",
-        "card_number": "153",
+        "card_release_number": 153,
+        "card_number_in_set": "153",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250669.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250669/universus-universus-my-hero-academia-natural-leader",
         "set_name": "My Hero Academia",
@@ -957,7 +993,8 @@
     },
     {
         "card_name": "Ingenium",
-        "card_number": "1",
+        "card_release_number": 345,
+        "card_number_in_set": "1",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/image-missing.svg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270783/universus-universus-my-hero-academia-crimson-rampage-ingenium",
         "set_name": "Crimson Rampage",
@@ -980,7 +1017,8 @@
     },
     {
         "card_name": "Turn To Dust",
-        "card_number": "159",
+        "card_release_number": 159,
+        "card_number_in_set": "159",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250714.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250714/universus-universus-my-hero-academia-turn-to-dust",
         "set_name": "My Hero Academia",
@@ -1010,7 +1048,8 @@
     },
     {
         "card_name": "Small And Limber",
-        "card_number": "8",
+        "card_release_number": 220,
+        "card_number_in_set": "8",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270209.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270209/universus-universus-my-hero-academia-crimson-rampage-small-and-limber",
         "set_name": "Crimson Rampage",
@@ -1033,7 +1072,8 @@
     },
     {
         "card_name": "Ready, Get Set, GO!",
-        "card_number": "110",
+        "card_release_number": 322,
+        "card_number_in_set": "110",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270296.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270296/universus-universus-my-hero-academia-crimson-rampage-ready-get-set-go",
         "set_name": "Crimson Rampage",
@@ -1056,7 +1096,8 @@
     },
     {
         "card_name": "Dissolving The Conflict",
-        "card_number": "11",
+        "card_release_number": 343,
+        "card_number_in_set": "11",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/272843.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/272843/universus-universus-my-hero-academia-crimson-rampage-dissolving-the-conflict",
         "set_name": "Crimson Rampage",
@@ -1079,7 +1120,8 @@
     },
     {
         "card_name": "Unexpected Hero",
-        "card_number": "90",
+        "card_release_number": 302,
+        "card_number_in_set": "90",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270312.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270312/universus-universus-my-hero-academia-crimson-rampage-unexpected-hero",
         "set_name": "Crimson Rampage",
@@ -1102,7 +1144,8 @@
     },
     {
         "card_name": "Taiyaki Fanatic",
-        "card_number": "9",
+        "card_release_number": 221,
+        "card_number_in_set": "9",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270476.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270476/universus-universus-my-hero-academia-crimson-rampage-taiyaki-fanatic",
         "set_name": "Crimson Rampage",
@@ -1125,7 +1168,8 @@
     },
     {
         "card_name": "Note Taking",
-        "card_number": "67",
+        "card_release_number": 67,
+        "card_number_in_set": "67",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250942.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250942/universus-universus-my-hero-academia-note-taking",
         "set_name": "My Hero Academia",
@@ -1147,7 +1191,8 @@
     },
     {
         "card_name": "Delaware Smash",
-        "card_number": "57",
+        "card_release_number": 57,
+        "card_number_in_set": "57",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250827.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250827/universus-universus-my-hero-academia-delaware-smash",
         "set_name": "My Hero Academia",
@@ -1173,7 +1218,8 @@
     },
     {
         "card_name": "Cementos",
-        "card_number": "3",
+        "card_release_number": 335,
+        "card_number_in_set": "3",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/272830.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/272830/universus-universus-my-hero-academia-crimson-rampage-cementos",
         "set_name": "Crimson Rampage",
@@ -1199,7 +1245,8 @@
     },
     {
         "card_name": "Rooftop Vantage",
-        "card_number": "72",
+        "card_release_number": 284,
+        "card_number_in_set": "72",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270202.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270202/universus-universus-my-hero-academia-crimson-rampage-rooftop-vantage",
         "set_name": "Crimson Rampage",
@@ -1221,7 +1268,8 @@
     },
     {
         "card_name": "Dropkick Slicer",
-        "card_number": "118",
+        "card_release_number": 330,
+        "card_number_in_set": "118",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270349.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270349/universus-universus-my-hero-academia-crimson-rampage-dropkick-slicer",
         "set_name": "Crimson Rampage",
@@ -1250,7 +1298,8 @@
     },
     {
         "card_name": "Mighty Punch",
-        "card_number": "2",
+        "card_release_number": 190,
+        "card_number_in_set": "2",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250901.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250901/universus-universus-my-hero-academia-dlc-mighty-punch",
         "set_name": "My Hero Academia",
@@ -1279,7 +1328,8 @@
     },
     {
         "card_name": "Detonation Launcher",
-        "card_number": "21",
+        "card_release_number": 233,
+        "card_number_in_set": "21",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270269.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270269/universus-universus-my-hero-academia-crimson-rampage-detonation-launcher",
         "set_name": "Crimson Rampage",
@@ -1308,7 +1358,8 @@
     },
     {
         "card_name": "Plus Ultra!",
-        "card_number": "MHA-PU01 11",
+        "card_release_number": 211,
+        "card_number_in_set": "MHA-PU01 11",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/251692.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/251692/universus-universus-my-hero-academia-plus-ultra",
         "set_name": "My Hero Academia",
@@ -1329,7 +1380,8 @@
     },
     {
         "card_name": "Super Regeneration",
-        "card_number": "126",
+        "card_release_number": 126,
+        "card_number_in_set": "126",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250724.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250724/universus-universus-my-hero-academia-super-regeneration",
         "set_name": "My Hero Academia",
@@ -1351,7 +1403,8 @@
     },
     {
         "card_name": "Revel At His Masterpiece",
-        "card_number": "78",
+        "card_release_number": 290,
+        "card_number_in_set": "78",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270242.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270242/universus-universus-my-hero-academia-crimson-rampage-revel-at-his-masterpiece",
         "set_name": "Crimson Rampage",
@@ -1374,7 +1427,8 @@
     },
     {
         "card_name": "Think Fast!",
-        "card_number": "53",
+        "card_release_number": 53,
+        "card_number_in_set": "53",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250799.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250799/universus-universus-my-hero-academia-think-fast",
         "set_name": "My Hero Academia",
@@ -1399,7 +1453,8 @@
     },
     {
         "card_name": "Meteor Shower",
-        "card_number": "129",
+        "card_release_number": 129,
+        "card_number_in_set": "129",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250745.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250745/universus-universus-my-hero-academia-meteor-shower",
         "set_name": "My Hero Academia",
@@ -1429,7 +1484,8 @@
     },
     {
         "card_name": "Rigorous Training",
-        "card_number": "71",
+        "card_release_number": 71,
+        "card_number_in_set": "71",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250969.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250969/universus-universus-my-hero-academia-rigorous-training",
         "set_name": "My Hero Academia",
@@ -1452,7 +1508,8 @@
     },
     {
         "card_name": "Struggling With Studies",
-        "card_number": "45",
+        "card_release_number": 257,
+        "card_number_in_set": "45",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270390.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270390/universus-universus-my-hero-academia-crimson-rampage-struggling-with-studies",
         "set_name": "Crimson Rampage",
@@ -1475,7 +1532,8 @@
     },
     {
         "card_name": "Self-Assured",
-        "card_number": "144",
+        "card_release_number": 144,
+        "card_number_in_set": "144",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250855.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250855/universus-universus-my-hero-academia-self-assured",
         "set_name": "My Hero Academia",
@@ -1500,7 +1558,8 @@
     },
     {
         "card_name": "Hitoshi Shinso",
-        "card_number": "88",
+        "card_release_number": 300,
+        "card_number_in_set": "88",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270301.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270301/universus-universus-my-hero-academia-crimson-rampage-hitoshi-shinso",
         "set_name": "Crimson Rampage",
@@ -1525,7 +1584,8 @@
     },
     {
         "card_name": "Cheerful Uppercut",
-        "card_number": "41",
+        "card_release_number": 253,
+        "card_number_in_set": "41",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270373.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270373/universus-universus-my-hero-academia-crimson-rampage-cheerful-uppercut",
         "set_name": "Crimson Rampage",
@@ -1554,7 +1614,8 @@
     },
     {
         "card_name": "Create: Capturing Net",
-        "card_number": "112",
+        "card_release_number": 112,
+        "card_number_in_set": "112",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250629.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250629/universus-universus-my-hero-academia-create-capturing-net",
         "set_name": "My Hero Academia",
@@ -1585,7 +1646,8 @@
     },
     {
         "card_name": "Evil Gaze",
-        "card_number": "155",
+        "card_release_number": 155,
+        "card_number_in_set": "155",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250690.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250690/universus-universus-my-hero-academia-evil-gaze",
         "set_name": "My Hero Academia",
@@ -1611,7 +1673,8 @@
     },
     {
         "card_name": "League Interview",
-        "card_number": "75",
+        "card_release_number": 287,
+        "card_number_in_set": "75",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270233.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270233/universus-universus-my-hero-academia-crimson-rampage-league-interview",
         "set_name": "Crimson Rampage",
@@ -1634,7 +1697,8 @@
     },
     {
         "card_name": "Tomura Shigaraki",
-        "card_number": "154",
+        "card_release_number": 154,
+        "card_number_in_set": "154",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250681.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250681/universus-universus-my-hero-academia-tomura-shigaraki",
         "set_name": "My Hero Academia",
@@ -1659,7 +1723,8 @@
     },
     {
         "card_name": "Signature Right Swing",
-        "card_number": "81",
+        "card_release_number": 81,
+        "card_number_in_set": "81",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250920.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250920/universus-universus-my-hero-academia-signature-right-swing",
         "set_name": "My Hero Academia",
@@ -1686,7 +1751,8 @@
     },
     {
         "card_name": "Dark Shadow Talon",
-        "card_number": "41",
+        "card_release_number": 41,
+        "card_number_in_set": "41",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250682.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250682/universus-universus-my-hero-academia-dark-shadow-talon",
         "set_name": "My Hero Academia",
@@ -1716,7 +1782,8 @@
     },
     {
         "card_name": "Planning Ahead",
-        "card_number": "69",
+        "card_release_number": 69,
+        "card_number_in_set": "69",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250952.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250952/universus-universus-my-hero-academia-planning-ahead",
         "set_name": "My Hero Academia",
@@ -1737,38 +1804,9 @@
         "card_keywords": []
     },
     {
-        "card_name": "Recipro Acceleration Kick (Victory)",
-        "card_number": "MHA-PU01 12",
-        "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/257511.jpg",
-        "card_tcg_url": "https://www.tcgplayer.com/product/257511/universus-universus-my-hero-academia-recipro-acceleration-kick-victory",
-        "set_name": "My Hero Academia",
-        "card_type": "Attack",
-        "card_rarity": "Promo",
-        "card_description": [
-            "Combo Enhance: Your rival discards 1 random card and then draws 1 card.",
-            "Enhance: You may remove Kick attacks from your card pool in addition to discarding momentum to pay for this attack's EX ability."
-        ],
-        "card_resource_symbols": [
-            "Earth",
-            "Order",
-            "Void"
-        ],
-        "card_check": 3,
-        "card_difficulty": 5,
-        "card_block_modifier": 3,
-        "card_block_zone": "High",
-        "card_attack_speed": 4,
-        "card_attack_zone": "Low",
-        "card_attack_damage": 6,
-        "card_keywords": [
-            "EX: 2",
-            "Kick",
-            "Combo (Kick)"
-        ]
-    },
-    {
         "card_name": "Tres Chic Cape",
-        "card_number": "173",
+        "card_release_number": 173,
+        "card_number_in_set": "173",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250822.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250822/universus-universus-my-hero-academia-tres-chic-cape",
         "set_name": "My Hero Academia",
@@ -1793,7 +1831,8 @@
     },
     {
         "card_name": "Slashing Whirlwind",
-        "card_number": "68",
+        "card_release_number": 280,
+        "card_number_in_set": "68",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270184.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270184/universus-universus-my-hero-academia-crimson-rampage-slashing-whirlwind",
         "set_name": "Crimson Rampage",
@@ -1821,7 +1860,8 @@
     },
     {
         "card_name": "Frigid Heatwave",
-        "card_number": "137",
+        "card_release_number": 137,
+        "card_number_in_set": "137",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250809.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250809/universus-universus-my-hero-academia-frigid-heatwave",
         "set_name": "My Hero Academia",
@@ -1849,7 +1889,8 @@
     },
     {
         "card_name": "Katsuki Bakugo",
-        "card_number": "19",
+        "card_release_number": 231,
+        "card_number_in_set": "19",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270256.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270256/universus-universus-my-hero-academia-crimson-rampage-katsuki-bakugo",
         "set_name": "Crimson Rampage",
@@ -1874,7 +1915,8 @@
     },
     {
         "card_name": "Overhead Reversal",
-        "card_number": "14",
+        "card_release_number": 226,
+        "card_number_in_set": "14",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270230.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270230/universus-universus-my-hero-academia-crimson-rampage-overhead-reversal",
         "set_name": "Crimson Rampage",
@@ -1901,7 +1943,8 @@
     },
     {
         "card_name": "Navel Laser Charge",
-        "card_number": "176",
+        "card_release_number": 176,
+        "card_number_in_set": "176",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250845.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250845/universus-universus-my-hero-academia-navel-laser-charge",
         "set_name": "My Hero Academia",
@@ -1931,7 +1974,8 @@
     },
     {
         "card_name": "Off-Guard Punch",
-        "card_number": "89",
+        "card_release_number": 301,
+        "card_number_in_set": "89",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270305.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270305/universus-universus-my-hero-academia-crimson-rampage-off-guard-punch",
         "set_name": "Crimson Rampage",
@@ -1960,7 +2004,8 @@
     },
     {
         "card_name": "Relentless Barrage",
-        "card_number": "122",
+        "card_release_number": 122,
+        "card_number_in_set": "122",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250696.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250696/universus-universus-my-hero-academia-relentless-barrage",
         "set_name": "My Hero Academia",
@@ -1990,7 +2035,8 @@
     },
     {
         "card_name": "Travel By Tape",
-        "card_number": "84",
+        "card_release_number": 296,
+        "card_number_in_set": "84",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270278.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270278/universus-universus-my-hero-academia-crimson-rampage-travel-by-tape",
         "set_name": "Crimson Rampage",
@@ -2013,7 +2059,8 @@
     },
     {
         "card_name": "Searing Glacial Storm",
-        "card_number": "59",
+        "card_release_number": 271,
+        "card_number_in_set": "59",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270346.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270346/universus-universus-my-hero-academia-crimson-rampage-searing-glacial-storm",
         "set_name": "Crimson Rampage",
@@ -2041,7 +2088,8 @@
     },
     {
         "card_name": "Mezo Shoji",
-        "card_number": "MHA-PU01 7",
+        "card_release_number": 207,
+        "card_number_in_set": "MHA-PU01 7",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/251688.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/251688/universus-universus-my-hero-academia-mezo-shoji",
         "set_name": "My Hero Academia",
@@ -2066,7 +2114,8 @@
     },
     {
         "card_name": "Determined Victory Smash",
-        "card_number": "58",
+        "card_release_number": 58,
+        "card_number_in_set": "58",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250830.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250830/universus-universus-my-hero-academia-determined-victory-smash",
         "set_name": "My Hero Academia",
@@ -2093,7 +2142,8 @@
     },
     {
         "card_name": "Howitzer Impact",
-        "card_number": "76",
+        "card_release_number": 76,
+        "card_number_in_set": "76",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250899.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250899/universus-universus-my-hero-academia-howitzer-impact",
         "set_name": "My Hero Academia",
@@ -2121,7 +2171,8 @@
     },
     {
         "card_name": "Floating Around My Babies",
-        "card_number": "33",
+        "card_release_number": 245,
+        "card_number_in_set": "33",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270334.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270334/universus-universus-my-hero-academia-crimson-rampage-floating-around-my-babies",
         "set_name": "Crimson Rampage",
@@ -2146,7 +2197,8 @@
     },
     {
         "card_name": "Manly Passionate Guy",
-        "card_number": "26",
+        "card_release_number": 26,
+        "card_number_in_set": "26",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250837.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250837/universus-universus-my-hero-academia-manly-passionate-guy",
         "set_name": "My Hero Academia",
@@ -2168,7 +2220,8 @@
     },
     {
         "card_name": "Arrogant Disposition",
-        "card_number": "84",
+        "card_release_number": 84,
+        "card_number_in_set": "84",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250938.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250938/universus-universus-my-hero-academia-arrogant-disposition",
         "set_name": "My Hero Academia",
@@ -2190,7 +2243,8 @@
     },
     {
         "card_name": "Advice for Winners",
-        "card_number": "MHA-Q02P 4",
+        "card_release_number": 348,
+        "card_number_in_set": "MHA-Q02P 4",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/272100.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/272100/universus-universus-my-hero-academia-advice-for-winners",
         "set_name": "My Hero Academia",
@@ -2212,7 +2266,8 @@
     },
     {
         "card_name": "Brutal Explosion",
-        "card_number": "20",
+        "card_release_number": 232,
+        "card_number_in_set": "20",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270263.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270263/universus-universus-my-hero-academia-crimson-rampage-brutal-explosion",
         "set_name": "Crimson Rampage",
@@ -2242,7 +2297,8 @@
     },
     {
         "card_name": "Crow and Frog Takedown (Victory)",
-        "card_number": "MHA-PU01 2",
+        "card_release_number": 202,
+        "card_number_in_set": "MHA-PU01 2",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/257508.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/257508/universus-universus-my-hero-academia-crow-and-frog-takedown-victory",
         "set_name": "My Hero Academia",
@@ -2271,7 +2327,8 @@
     },
     {
         "card_name": "All Might (True Form)",
-        "card_number": "MHA-Q01 1",
+        "card_release_number": 184,
+        "card_number_in_set": "MHA-Q01 1",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/251194.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/251194/universus-universus-my-hero-academia-all-might-true-form",
         "set_name": "My Hero Academia",
@@ -2297,7 +2354,8 @@
     },
     {
         "card_name": "Intimidating Presence",
-        "card_number": "71",
+        "card_release_number": 283,
+        "card_number_in_set": "71",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270200.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270200/universus-universus-my-hero-academia-crimson-rampage-intimidating-presence",
         "set_name": "Crimson Rampage",
@@ -2322,7 +2380,8 @@
     },
     {
         "card_name": "Training With Gunhead",
-        "card_number": "54",
+        "card_release_number": 266,
+        "card_number_in_set": "54",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270392.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270392/universus-universus-my-hero-academia-crimson-rampage-training-with-gunhead",
         "set_name": "Crimson Rampage",
@@ -2348,7 +2407,8 @@
     },
     {
         "card_name": "Fighting Spirit",
-        "card_number": "53",
+        "card_release_number": 265,
+        "card_number_in_set": "53",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270389.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270389/universus-universus-my-hero-academia-crimson-rampage-fighting-spirit",
         "set_name": "Crimson Rampage",
@@ -2370,7 +2430,8 @@
     },
     {
         "card_name": "Finishing Blast",
-        "card_number": "22",
+        "card_release_number": 234,
+        "card_number_in_set": "22",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270275.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270275/universus-universus-my-hero-academia-crimson-rampage-finishing-blast",
         "set_name": "Crimson Rampage",
@@ -2401,7 +2462,8 @@
     },
     {
         "card_name": "Eijiro Kirishima",
-        "card_number": "19",
+        "card_release_number": 19,
+        "card_number_in_set": "19",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250778.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250778/universus-universus-my-hero-academia-eijiro-kirishima",
         "set_name": "My Hero Academia",
@@ -2426,7 +2488,8 @@
     },
     {
         "card_name": "Falling Thruster Kick",
-        "card_number": "104",
+        "card_release_number": 316,
+        "card_number_in_set": "104",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270255.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270255/universus-universus-my-hero-academia-crimson-rampage-falling-thruster-kick",
         "set_name": "Crimson Rampage",
@@ -2455,7 +2518,8 @@
     },
     {
         "card_name": "20 Meter Tongue Strike",
-        "card_number": "164",
+        "card_release_number": 164,
+        "card_number_in_set": "164",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250747.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250747/universus-universus-my-hero-academia-20-meter-tongue-strike",
         "set_name": "My Hero Academia",
@@ -2482,7 +2546,8 @@
     },
     {
         "card_name": "Ochaco Uraraka",
-        "card_number": "4",
+        "card_release_number": 192,
+        "card_number_in_set": "4",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250907.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250907/universus-universus-my-hero-academia-dlc-ochaco-uraraka",
         "set_name": "My Hero Academia",
@@ -2509,7 +2574,8 @@
     },
     {
         "card_name": "Irrefutable Force of Nature",
-        "card_number": "142",
+        "card_release_number": 142,
+        "card_number_in_set": "142",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250842.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250842/universus-universus-my-hero-academia-irrefutable-force-of-nature",
         "set_name": "My Hero Academia",
@@ -2532,7 +2598,8 @@
     },
     {
         "card_name": "Release",
-        "card_number": "134",
+        "card_release_number": 134,
+        "card_number_in_set": "134",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250781.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250781/universus-universus-my-hero-academia-release",
         "set_name": "My Hero Academia",
@@ -2555,7 +2622,8 @@
     },
     {
         "card_name": "Let's Fight Bad Guys!",
-        "card_number": "90",
+        "card_release_number": 90,
+        "card_number_in_set": "90",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250966.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250966/universus-universus-my-hero-academia-lets-fight-bad-guys",
         "set_name": "My Hero Academia",
@@ -2577,7 +2645,8 @@
     },
     {
         "card_name": "Mina Ashido",
-        "card_number": "37",
+        "card_release_number": 249,
+        "card_number_in_set": "37",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270357.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270357/universus-universus-my-hero-academia-crimson-rampage-mina-ashido",
         "set_name": "Crimson Rampage",
@@ -2602,7 +2671,8 @@
     },
     {
         "card_name": "Destined for Mainstream Success",
-        "card_number": "97",
+        "card_release_number": 97,
+        "card_number_in_set": "97",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250997.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250997/universus-universus-my-hero-academia-destined-for-mainstream-success",
         "set_name": "My Hero Academia",
@@ -2624,7 +2694,8 @@
     },
     {
         "card_name": "Zoom",
-        "card_number": "36",
+        "card_release_number": 248,
+        "card_number_in_set": "36",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270348.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270348/universus-universus-my-hero-academia-crimson-rampage-zoom",
         "set_name": "Crimson Rampage",
@@ -2649,7 +2720,8 @@
     },
     {
         "card_name": "Frozen",
-        "card_number": "141",
+        "card_release_number": 141,
+        "card_number_in_set": "141",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250832.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250832/universus-universus-my-hero-academia-frozen",
         "set_name": "My Hero Academia",
@@ -2671,7 +2743,8 @@
     },
     {
         "card_name": "Shoto Todoroki",
-        "card_number": "136",
+        "card_release_number": 136,
+        "card_number_in_set": "136",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250802.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250802/universus-universus-my-hero-academia-shoto-todoroki",
         "set_name": "My Hero Academia",
@@ -2696,7 +2769,8 @@
     },
     {
         "card_name": "Stain",
-        "card_number": "64",
+        "card_release_number": 276,
+        "card_number_in_set": "64",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270171.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270171/universus-universus-my-hero-academia-crimson-rampage-stain",
         "set_name": "Crimson Rampage",
@@ -2721,7 +2795,8 @@
     },
     {
         "card_name": "High Value Target",
-        "card_number": "17",
+        "card_release_number": 229,
+        "card_number_in_set": "17",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270248.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270248/universus-universus-my-hero-academia-crimson-rampage-high-value-target",
         "set_name": "Crimson Rampage",
@@ -2744,7 +2819,8 @@
     },
     {
         "card_name": "Frog Kick",
-        "card_number": "165",
+        "card_release_number": 165,
+        "card_number_in_set": "165",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250750.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250750/universus-universus-my-hero-academia-frog-kick",
         "set_name": "My Hero Academia",
@@ -2772,7 +2848,8 @@
     },
     {
         "card_name": "Confident Counterstrike",
-        "card_number": "112",
+        "card_release_number": 324,
+        "card_number_in_set": "112",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270308.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270308/universus-universus-my-hero-academia-crimson-rampage-confident-counterstrike",
         "set_name": "Crimson Rampage",
@@ -2800,7 +2877,8 @@
     },
     {
         "card_name": "Binding Cloth Capture",
-        "card_number": "31",
+        "card_release_number": 31,
+        "card_number_in_set": "31",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250879.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250879/universus-universus-my-hero-academia-binding-cloth-capture",
         "set_name": "My Hero Academia",
@@ -2830,7 +2908,8 @@
     },
     {
         "card_name": "Setup Strike",
-        "card_number": "62",
+        "card_release_number": 62,
+        "card_number_in_set": "62",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250883.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250883/universus-universus-my-hero-academia-setup-strike",
         "set_name": "My Hero Academia",
@@ -2858,7 +2937,8 @@
     },
     {
         "card_name": "Drowning In Resentment",
-        "card_number": "61",
+        "card_release_number": 273,
+        "card_number_in_set": "61",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270358.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270358/universus-universus-my-hero-academia-crimson-rampage-drowning-in-resentment",
         "set_name": "Crimson Rampage",
@@ -2881,7 +2961,8 @@
     },
     {
         "card_name": "Sugar Rush Power-Up",
-        "card_number": "2",
+        "card_release_number": 346,
+        "card_number_in_set": "2",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/image-missing.svg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270780/universus-universus-my-hero-academia-crimson-rampage-sugar-rush-power-up",
         "set_name": "Crimson Rampage",
@@ -2904,7 +2985,8 @@
     },
     {
         "card_name": "ERASE!",
-        "card_number": "29",
+        "card_release_number": 29,
+        "card_number_in_set": "29",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250867.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250867/universus-universus-my-hero-academia-erase",
         "set_name": "My Hero Academia",
@@ -2929,7 +3011,8 @@
     },
     {
         "card_name": "\"SPoOoOoOoKY!\"",
-        "card_number": "117",
+        "card_release_number": 329,
+        "card_number_in_set": "117",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270342.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270342/universus-universus-my-hero-academia-crimson-rampage-spoooooooky",
         "set_name": "Crimson Rampage",
@@ -2953,7 +3036,8 @@
     },
     {
         "card_name": "Harden",
-        "card_number": "25",
+        "card_release_number": 25,
+        "card_number_in_set": "25",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250829.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250829/universus-universus-my-hero-academia-harden",
         "set_name": "My Hero Academia",
@@ -2976,7 +3060,8 @@
     },
     {
         "card_name": "Mid-Match Advertisement",
-        "card_number": "34",
+        "card_release_number": 246,
+        "card_number_in_set": "34",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270338.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270338/universus-universus-my-hero-academia-crimson-rampage-mid-match-advertisement",
         "set_name": "Crimson Rampage",
@@ -3001,10 +3086,11 @@
     },
     {
         "card_name": "Concentrate",
-        "card_number": "MHA-PS01 1",
+        "card_release_number": 1,
+        "card_number_in_set": "MHA-PS01 1",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/268185.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/268185/universus-universus-my-hero-academia-concentrate",
-        "set_name": "My Hero Academia",
+        "set_name": "Provisional Showdown",
         "card_type": "Action",
         "card_rarity": "Promo",
         "card_description": [
@@ -3024,7 +3110,8 @@
     },
     {
         "card_name": "Mina Ashido",
-        "card_number": "MHA-PU01 8",
+        "card_release_number": 208,
+        "card_number_in_set": "MHA-PU01 8",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/251689.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/251689/universus-universus-my-hero-academia-mina-ashido",
         "set_name": "My Hero Academia",
@@ -3049,7 +3136,8 @@
     },
     {
         "card_name": "Grape Rush",
-        "card_number": "95",
+        "card_release_number": 307,
+        "card_number_in_set": "95",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270173.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270173/universus-universus-my-hero-academia-crimson-rampage-grape-rush",
         "set_name": "Crimson Rampage",
@@ -3078,7 +3166,8 @@
     },
     {
         "card_name": "Sticky Ball Toss Tackle",
-        "card_number": "104",
+        "card_release_number": 104,
+        "card_number_in_set": "104",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250965.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250965/universus-universus-my-hero-academia-sticky-ball-toss-tackle",
         "set_name": "My Hero Academia",
@@ -3107,7 +3196,8 @@
     },
     {
         "card_name": "Eraser Head",
-        "card_number": "28",
+        "card_release_number": 28,
+        "card_number_in_set": "28",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250859.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250859/universus-universus-my-hero-academia-eraser-head",
         "set_name": "My Hero Academia",
@@ -3133,7 +3223,8 @@
     },
     {
         "card_name": "Momo Yaoyorozu",
-        "card_number": "109",
+        "card_release_number": 109,
+        "card_number_in_set": "109",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250990.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250990/universus-universus-my-hero-academia-momo-yaoyorozu",
         "set_name": "My Hero Academia",
@@ -3158,7 +3249,8 @@
     },
     {
         "card_name": "Tenya Iida",
-        "card_number": "7",
+        "card_release_number": 195,
+        "card_number_in_set": "7",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250915.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250915/universus-universus-my-hero-academia-dlc-tenya-iida",
         "set_name": "My Hero Academia",
@@ -3183,7 +3275,8 @@
     },
     {
         "card_name": "Creepy Realization",
-        "card_number": "106",
+        "card_release_number": 106,
+        "card_number_in_set": "106",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250978.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250978/universus-universus-my-hero-academia-creepy-realization",
         "set_name": "My Hero Academia",
@@ -3205,7 +3298,8 @@
     },
     {
         "card_name": "Velocity Punch",
-        "card_number": "63",
+        "card_release_number": 63,
+        "card_number_in_set": "63",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250889.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250889/universus-universus-my-hero-academia-velocity-punch",
         "set_name": "My Hero Academia",
@@ -3232,7 +3326,8 @@
     },
     {
         "card_name": "Hellflame Javelin",
-        "card_number": "77",
+        "card_release_number": 289,
+        "card_number_in_set": "77",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270241.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270241/universus-universus-my-hero-academia-crimson-rampage-hellflame-javelin",
         "set_name": "Crimson Rampage",
@@ -3261,7 +3356,8 @@
     },
     {
         "card_name": "Blue Flame Spiral",
-        "card_number": "74",
+        "card_release_number": 286,
+        "card_number_in_set": "74",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270226.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270226/universus-universus-my-hero-academia-crimson-rampage-blue-flame-spiral",
         "set_name": "Crimson Rampage",
@@ -3290,7 +3386,8 @@
     },
     {
         "card_name": "Zero Gravity Capture",
-        "card_number": "130",
+        "card_release_number": 130,
+        "card_number_in_set": "130",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250752.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250752/universus-universus-my-hero-academia-zero-gravity-capture",
         "set_name": "My Hero Academia",
@@ -3319,7 +3416,8 @@
     },
     {
         "card_name": "Tenya Iida",
-        "card_number": "103",
+        "card_release_number": 315,
+        "card_number_in_set": "103",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270250.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270250/universus-universus-my-hero-academia-crimson-rampage-tenya-iida",
         "set_name": "Crimson Rampage",
@@ -3344,7 +3442,8 @@
     },
     {
         "card_name": "Acid Chop",
-        "card_number": "38",
+        "card_release_number": 250,
+        "card_number_in_set": "38",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270360.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270360/universus-universus-my-hero-academia-crimson-rampage-acid-chop",
         "set_name": "Crimson Rampage",
@@ -3372,7 +3471,8 @@
     },
     {
         "card_name": "Joint Effort Offensive",
-        "card_number": "119",
+        "card_release_number": 331,
+        "card_number_in_set": "119",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270354.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270354/universus-universus-my-hero-academia-crimson-rampage-joint-effort-offensive",
         "set_name": "Crimson Rampage",
@@ -3403,7 +3503,8 @@
     },
     {
         "card_name": "Merciless Rush",
-        "card_number": "121",
+        "card_release_number": 121,
+        "card_number_in_set": "121",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250692.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250692/universus-universus-my-hero-academia-merciless-rush",
         "set_name": "My Hero Academia",
@@ -3434,7 +3535,8 @@
     },
     {
         "card_name": "Kamui Woods",
-        "card_number": "MHA-Q01 4",
+        "card_release_number": 187,
+        "card_number_in_set": "MHA-Q01 4",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/251197.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/251197/universus-universus-my-hero-academia-kamui-woods",
         "set_name": "My Hero Academia",
@@ -3459,7 +3561,8 @@
     },
     {
         "card_name": "Tetsutetsu Tetsutetsu",
-        "card_number": "106",
+        "card_release_number": 318,
+        "card_number_in_set": "106",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270266.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270266/universus-universus-my-hero-academia-crimson-rampage-tetsutetsu-tetsutetsu",
         "set_name": "Crimson Rampage",
@@ -3485,7 +3588,8 @@
     },
     {
         "card_name": "Encouragement",
-        "card_number": "87",
+        "card_release_number": 87,
+        "card_number_in_set": "87",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250956.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250956/universus-universus-my-hero-academia-encouragement",
         "set_name": "My Hero Academia",
@@ -3507,7 +3611,8 @@
     },
     {
         "card_name": "Monster Blast",
-        "card_number": "79",
+        "card_release_number": 79,
+        "card_number_in_set": "79",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250911.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250911/universus-universus-my-hero-academia-monster-blast",
         "set_name": "My Hero Academia",
@@ -3536,7 +3641,8 @@
     },
     {
         "card_name": "Expert Flurry",
-        "card_number": "33",
+        "card_release_number": 33,
+        "card_number_in_set": "33",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250892.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250892/universus-universus-my-hero-academia-expert-flurry",
         "set_name": "My Hero Academia",
@@ -3567,7 +3673,8 @@
     },
     {
         "card_name": "Resting Between Bouts",
-        "card_number": "81",
+        "card_release_number": 293,
+        "card_number_in_set": "81",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270264.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270264/universus-universus-my-hero-academia-crimson-rampage-resting-between-bouts",
         "set_name": "Crimson Rampage",
@@ -3590,7 +3697,8 @@
     },
     {
         "card_name": "Tsuyu Asui",
-        "card_number": "163",
+        "card_release_number": 163,
+        "card_number_in_set": "163",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250739.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250739/universus-universus-my-hero-academia-tsuyu-asui",
         "set_name": "My Hero Academia",
@@ -3615,7 +3723,8 @@
     },
     {
         "card_name": "Invincible Clasp",
-        "card_number": "3",
+        "card_release_number": 347,
+        "card_number_in_set": "3",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/image-missing.svg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270782/universus-universus-my-hero-academia-crimson-rampage-invincible-clasp",
         "set_name": "Crimson Rampage",
@@ -3640,7 +3749,8 @@
     },
     {
         "card_name": "Go Beyond!",
-        "card_number": "1",
+        "card_release_number": 183,
+        "card_number_in_set": "1",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250972.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250972/universus-universus-my-hero-academia-go-beyond",
         "set_name": "My Hero Academia",
@@ -3660,7 +3770,8 @@
     },
     {
         "card_name": "Massive Flash Freeze",
-        "card_number": "140",
+        "card_release_number": 140,
+        "card_number_in_set": "140",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250820.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250820/universus-universus-my-hero-academia-massive-flash-freeze",
         "set_name": "My Hero Academia",
@@ -3688,7 +3799,8 @@
     },
     {
         "card_name": "Self-Propulsion",
-        "card_number": "26",
+        "card_release_number": 238,
+        "card_number_in_set": "26",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270298.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270298/universus-universus-my-hero-academia-crimson-rampage-self-propulsion",
         "set_name": "Crimson Rampage",
@@ -3710,10 +3822,11 @@
     },
     {
         "card_name": "Toru Hagakure",
-        "card_number": "MHA-PS01 7",
+        "card_release_number": 7,
+        "card_number_in_set": "MHA-PS01 7",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/268219.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/268219/universus-universus-my-hero-academia-toru-hagakure",
-        "set_name": "My Hero Academia",
+        "set_name": "Provisional Showdown",
         "card_type": "Character",
         "card_rarity": "Promo",
         "card_description": [
@@ -3735,7 +3848,8 @@
     },
     {
         "card_name": "Hanta Sero",
-        "card_number": "82",
+        "card_release_number": 294,
+        "card_number_in_set": "82",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270268.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270268/universus-universus-my-hero-academia-crimson-rampage-hanta-sero",
         "set_name": "Crimson Rampage",
@@ -3760,7 +3874,8 @@
     },
     {
         "card_name": "Panache Shining Navel Blast",
-        "card_number": "177",
+        "card_release_number": 177,
+        "card_number_in_set": "177",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250853.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250853/universus-universus-my-hero-academia-panache-shining-navel-blast",
         "set_name": "My Hero Academia",
@@ -3789,7 +3904,8 @@
     },
     {
         "card_name": "Confused",
-        "card_number": "52",
+        "card_release_number": 264,
+        "card_number_in_set": "52",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270384.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270384/universus-universus-my-hero-academia-crimson-rampage-confused",
         "set_name": "Crimson Rampage",
@@ -3811,7 +3927,8 @@
     },
     {
         "card_name": "Nervous Habit",
-        "card_number": "161",
+        "card_release_number": 161,
+        "card_number_in_set": "161",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250727.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250727/universus-universus-my-hero-academia-nervous-habit",
         "set_name": "My Hero Academia",
@@ -3835,7 +3952,8 @@
     },
     {
         "card_name": "Go For The Win!",
-        "card_number": "109",
+        "card_release_number": 321,
+        "card_number_in_set": "109",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270288.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270288/universus-universus-my-hero-academia-crimson-rampage-go-for-the-win",
         "set_name": "Crimson Rampage",
@@ -3858,7 +3976,8 @@
     },
     {
         "card_name": "Minoru Mineta",
-        "card_number": "100",
+        "card_release_number": 100,
+        "card_number_in_set": "100",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250934.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250934/universus-universus-my-hero-academia-minoru-mineta",
         "set_name": "My Hero Academia",
@@ -3884,7 +4003,8 @@
     },
     {
         "card_name": "Infinite Potential",
-        "card_number": "133",
+        "card_release_number": 133,
+        "card_number_in_set": "133",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250775.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250775/universus-universus-my-hero-academia-infinite-potential",
         "set_name": "My Hero Academia",
@@ -3907,7 +4027,8 @@
     },
     {
         "card_name": "Double Jab Pummel",
-        "card_number": "47",
+        "card_release_number": 259,
+        "card_number_in_set": "47",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270367.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270367/universus-universus-my-hero-academia-crimson-rampage-double-jab-pummel",
         "set_name": "Crimson Rampage",
@@ -3937,7 +4058,8 @@
     },
     {
         "card_name": "Any Means Necessary",
-        "card_number": "15",
+        "card_release_number": 227,
+        "card_number_in_set": "15",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270235.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270235/universus-universus-my-hero-academia-crimson-rampage-any-means-necessary",
         "set_name": "Crimson Rampage",
@@ -3960,7 +4082,8 @@
     },
     {
         "card_name": "Night Watch",
-        "card_number": "36",
+        "card_release_number": 36,
+        "card_number_in_set": "36",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250925.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250925/universus-universus-my-hero-academia-night-watch",
         "set_name": "My Hero Academia",
@@ -3985,7 +4108,8 @@
     },
     {
         "card_name": "Mediator",
-        "card_number": "35",
+        "card_release_number": 35,
+        "card_number_in_set": "35",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250922.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250922/universus-universus-my-hero-academia-mediator",
         "set_name": "My Hero Academia",
@@ -4007,7 +4131,8 @@
     },
     {
         "card_name": "Earphone Jack",
-        "card_number": "92",
+        "card_release_number": 92,
+        "card_number_in_set": "92",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250976.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250976/universus-universus-my-hero-academia-earphone-jack",
         "set_name": "My Hero Academia",
@@ -4033,7 +4158,8 @@
     },
     {
         "card_name": "Ambush Tactics",
-        "card_number": "51",
+        "card_release_number": 263,
+        "card_number_in_set": "51",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270382.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270382/universus-universus-my-hero-academia-crimson-rampage-ambush-tactics",
         "set_name": "Crimson Rampage",
@@ -4056,7 +4182,8 @@
     },
     {
         "card_name": "Encouraging Training Partner",
-        "card_number": "132",
+        "card_release_number": 132,
+        "card_number_in_set": "132",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250768.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250768/universus-universus-my-hero-academia-encouraging-training-partner",
         "set_name": "My Hero Academia",
@@ -4079,7 +4206,8 @@
     },
     {
         "card_name": "Hardened Pummel",
-        "card_number": "23",
+        "card_release_number": 23,
+        "card_number_in_set": "23",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250817.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250817/universus-universus-my-hero-academia-hardened-pummel",
         "set_name": "My Hero Academia",
@@ -4107,7 +4235,8 @@
     },
     {
         "card_name": "Jet Stream Crash",
-        "card_number": "3",
+        "card_release_number": 215,
+        "card_number_in_set": "3",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270185.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270185/universus-universus-my-hero-academia-crimson-rampage-jet-stream-crash",
         "set_name": "Crimson Rampage",
@@ -4136,7 +4265,8 @@
     },
     {
         "card_name": "Bloodcurdle",
-        "card_number": "5",
+        "card_release_number": 337,
+        "card_number_in_set": "5",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/272834.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/272834/universus-universus-my-hero-academia-crimson-rampage-bloodcurdle",
         "set_name": "Crimson Rampage",
@@ -4159,7 +4289,8 @@
     },
     {
         "card_name": "One For All: Full Cowling 5% Strike",
-        "card_number": "182",
+        "card_release_number": 182,
+        "card_number_in_set": "182",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250881.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250881/universus-universus-my-hero-academia-one-for-all-full-cowling-5pct-strike",
         "set_name": "My Hero Academia",
@@ -4187,7 +4318,8 @@
     },
     {
         "card_name": "Learning The Standards",
-        "card_number": "5",
+        "card_release_number": 349,
+        "card_number_in_set": "5",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/image-missing.svg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270781/universus-universus-my-hero-academia-crimson-rampage-learning-the-standards",
         "set_name": "Crimson Rampage",
@@ -4210,7 +4342,8 @@
     },
     {
         "card_name": "Aiming For #1",
-        "card_number": "115",
+        "card_release_number": 327,
+        "card_number_in_set": "115",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270324.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270324/universus-universus-my-hero-academia-crimson-rampage-aiming-for-1",
         "set_name": "Crimson Rampage",
@@ -4233,7 +4366,8 @@
     },
     {
         "card_name": "Improvised Blade",
-        "card_number": "94",
+        "card_release_number": 94,
+        "card_number_in_set": "94",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250987.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250987/universus-universus-my-hero-academia-improvised-blade",
         "set_name": "My Hero Academia",
@@ -4262,7 +4396,8 @@
     },
     {
         "card_name": "All Might",
-        "card_number": "1",
+        "card_release_number": 201,
+        "card_number_in_set": "1",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250900.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250900/universus-universus-my-hero-academia-dlc-all-might",
         "set_name": "My Hero Academia",
@@ -4287,7 +4422,8 @@
     },
     {
         "card_name": "Aggressive Temper",
-        "card_number": "82",
+        "card_release_number": 82,
+        "card_number_in_set": "82",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250929.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250929/universus-universus-my-hero-academia-aggressive-temper",
         "set_name": "My Hero Academia",
@@ -4309,7 +4445,8 @@
     },
     {
         "card_name": "In the Typhoon",
-        "card_number": "MHA-PU01 5",
+        "card_release_number": 205,
+        "card_number_in_set": "MHA-PU01 5",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/251684.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/251684/universus-universus-my-hero-academia-in-the-typhoon",
         "set_name": "My Hero Academia",
@@ -4331,7 +4468,8 @@
     },
     {
         "card_name": "Self Sacrifice",
-        "card_number": "72",
+        "card_release_number": 72,
+        "card_number_in_set": "72",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250980.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250980/universus-universus-my-hero-academia-self-sacrifice",
         "set_name": "My Hero Academia",
@@ -4353,7 +4491,8 @@
     },
     {
         "card_name": "Aspiring Punch",
-        "card_number": "56",
+        "card_release_number": 56,
+        "card_number_in_set": "56",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250819.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250819/universus-universus-my-hero-academia-aspiring-punch",
         "set_name": "My Hero Academia",
@@ -4381,7 +4520,8 @@
     },
     {
         "card_name": "Instant Shining Flash",
-        "card_number": "174",
+        "card_release_number": 174,
+        "card_number_in_set": "174",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250836.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250836/universus-universus-my-hero-academia-instant-shining-flash",
         "set_name": "My Hero Academia",
@@ -4411,7 +4551,8 @@
     },
     {
         "card_name": "Indiscriminate Shock 1,300,000 Volts",
-        "card_number": "14",
+        "card_release_number": 14,
+        "card_number_in_set": "14",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250742.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250742/universus-universus-my-hero-academia-indiscriminate-shock-1300000-volts",
         "set_name": "My Hero Academia",
@@ -4441,7 +4582,8 @@
     },
     {
         "card_name": "First Villain Encounter",
-        "card_number": "12",
+        "card_release_number": 200,
+        "card_number_in_set": "12",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250928.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250928/universus-universus-my-hero-academia-dlc-first-villain-encounter",
         "set_name": "My Hero Academia",
@@ -4464,7 +4606,8 @@
     },
     {
         "card_name": "Final Exam Gut Shot",
-        "card_number": "113",
+        "card_release_number": 325,
+        "card_number_in_set": "113",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270315.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270315/universus-universus-my-hero-academia-crimson-rampage-final-exam-gut-shot",
         "set_name": "Crimson Rampage",
@@ -4493,7 +4636,8 @@
     },
     {
         "card_name": "Brute Strength",
-        "card_number": "124",
+        "card_release_number": 124,
+        "card_number_in_set": "124",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250711.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250711/universus-universus-my-hero-academia-brute-strength",
         "set_name": "My Hero Academia",
@@ -4516,7 +4660,8 @@
     },
     {
         "card_name": "Late Riser",
-        "card_number": "34",
+        "card_release_number": 34,
+        "card_number_in_set": "34",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250917.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250917/universus-universus-my-hero-academia-late-riser",
         "set_name": "My Hero Academia",
@@ -4539,7 +4684,8 @@
     },
     {
         "card_name": "It Can't Be Fixed",
-        "card_number": "7",
+        "card_release_number": 7,
+        "card_number_in_set": "7",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250671.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250671/universus-universus-my-hero-academia-it-cant-be-fixed",
         "set_name": "My Hero Academia",
@@ -4561,7 +4707,8 @@
     },
     {
         "card_name": "Electromagnetic Stomp",
-        "card_number": "30",
+        "card_release_number": 242,
+        "card_number_in_set": "30",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270318.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270318/universus-universus-my-hero-academia-crimson-rampage-electromagnetic-stomp",
         "set_name": "Crimson Rampage",
@@ -4592,7 +4739,8 @@
     },
     {
         "card_name": "Kyoka Jiro",
-        "card_number": "91",
+        "card_release_number": 91,
+        "card_number_in_set": "91",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250974.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250974/universus-universus-my-hero-academia-kyoka-jiro",
         "set_name": "My Hero Academia",
@@ -4618,7 +4766,8 @@
     },
     {
         "card_name": "Summon Dark Shadow",
-        "card_number": "38",
+        "card_release_number": 38,
+        "card_number_in_set": "38",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250653.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250653/universus-universus-my-hero-academia-summon-dark-shadow",
         "set_name": "My Hero Academia",
@@ -4643,7 +4792,8 @@
     },
     {
         "card_name": "Specialist of Sound",
-        "card_number": "99",
+        "card_release_number": 99,
+        "card_number_in_set": "99",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/251001.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/251001/universus-universus-my-hero-academia-specialist-of-sound",
         "set_name": "My Hero Academia",
@@ -4666,7 +4816,8 @@
     },
     {
         "card_name": "Staff Strike",
-        "card_number": "113",
+        "card_release_number": 113,
+        "card_number_in_set": "113",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250639.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250639/universus-universus-my-hero-academia-staff-strike",
         "set_name": "My Hero Academia",
@@ -4696,7 +4847,8 @@
     },
     {
         "card_name": "Heroic Strike",
-        "card_number": "60",
+        "card_release_number": 60,
+        "card_number_in_set": "60",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250854.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250854/universus-universus-my-hero-academia-heroic-strike",
         "set_name": "My Hero Academia",
@@ -4723,7 +4875,8 @@
     },
     {
         "card_name": "Airstream Driver",
-        "card_number": "2",
+        "card_release_number": 214,
+        "card_number_in_set": "2",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270179.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270179/universus-universus-my-hero-academia-crimson-rampage-airstream-driver",
         "set_name": "Crimson Rampage",
@@ -4753,7 +4906,8 @@
     },
     {
         "card_name": "Desperate Times",
-        "card_number": "107",
+        "card_release_number": 107,
+        "card_number_in_set": "107",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250983.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250983/universus-universus-my-hero-academia-desperate-times",
         "set_name": "My Hero Academia",
@@ -4775,7 +4929,8 @@
     },
     {
         "card_name": "Leaping Right Hook",
-        "card_number": "13",
+        "card_release_number": 225,
+        "card_number_in_set": "13",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270224.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270224/universus-universus-my-hero-academia-crimson-rampage-leaping-right-hook",
         "set_name": "Crimson Rampage",
@@ -4804,7 +4959,8 @@
     },
     {
         "card_name": "YEEAAHHHHHH!!!",
-        "card_number": "101",
+        "card_release_number": 313,
+        "card_number_in_set": "101",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270225.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270225/universus-universus-my-hero-academia-crimson-rampage-yeeaahhhhhh",
         "set_name": "Crimson Rampage",
@@ -4834,7 +4990,8 @@
     },
     {
         "card_name": "All Might",
-        "card_number": "1",
+        "card_release_number": 1,
+        "card_number_in_set": "1",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250626.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250626/universus-universus-my-hero-academia-all-might",
         "set_name": "My Hero Academia",
@@ -4860,7 +5017,8 @@
     },
     {
         "card_name": "Giant Bite Detention",
-        "card_number": "114",
+        "card_release_number": 326,
+        "card_number_in_set": "114",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270320.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270320/universus-universus-my-hero-academia-crimson-rampage-giant-bite-detention",
         "set_name": "Crimson Rampage",
@@ -4890,7 +5048,8 @@
     },
     {
         "card_name": "Texas Smash",
-        "card_number": "5",
+        "card_release_number": 5,
+        "card_number_in_set": "5",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250652.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250652/universus-universus-my-hero-academia-texas-smash",
         "set_name": "My Hero Academia",
@@ -4920,7 +5079,8 @@
     },
     {
         "card_name": "Burst Speed",
-        "card_number": "85",
+        "card_release_number": 85,
+        "card_number_in_set": "85",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250946.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250946/universus-universus-my-hero-academia-burst-speed",
         "set_name": "My Hero Academia",
@@ -4942,7 +5102,8 @@
     },
     {
         "card_name": "Forcing Surrender",
-        "card_number": "24",
+        "card_release_number": 236,
+        "card_number_in_set": "24",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270286.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270286/universus-universus-my-hero-academia-crimson-rampage-forcing-surrender",
         "set_name": "Crimson Rampage",
@@ -4965,10 +5126,11 @@
     },
     {
         "card_name": "The Price for Peace",
-        "card_number": "MHA-PS01 6",
+        "card_release_number": 6,
+        "card_number_in_set": "MHA-PS01 6",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/268216.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/268216/universus-universus-my-hero-academia-the-price-for-peace",
-        "set_name": "My Hero Academia",
+        "set_name": "Provisional Showdown",
         "card_type": "Action",
         "card_rarity": "Promo",
         "card_description": [
@@ -4988,7 +5150,8 @@
     },
     {
         "card_name": "First Day of Class",
-        "card_number": "6",
+        "card_release_number": 194,
+        "card_number_in_set": "6",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250910.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250910/universus-universus-my-hero-academia-dlc-first-day-of-class",
         "set_name": "My Hero Academia",
@@ -5012,7 +5175,8 @@
     },
     {
         "card_name": "Start With the Basics",
-        "card_number": "117",
+        "card_release_number": 117,
+        "card_number_in_set": "117",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250665.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250665/universus-universus-my-hero-academia-start-with-the-basics",
         "set_name": "My Hero Academia",
@@ -5034,7 +5198,8 @@
     },
     {
         "card_name": "Tenya Iida",
-        "card_number": "145",
+        "card_release_number": 145,
+        "card_number_in_set": "145",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250863.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250863/universus-universus-my-hero-academia-tenya-iida",
         "set_name": "My Hero Academia",
@@ -5059,7 +5224,8 @@
     },
     {
         "card_name": "Defrosting",
-        "card_number": "60",
+        "card_release_number": 272,
+        "card_number_in_set": "60",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270352.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270352/universus-universus-my-hero-academia-crimson-rampage-defrosting",
         "set_name": "Crimson Rampage",
@@ -5085,7 +5251,8 @@
     },
     {
         "card_name": "Going Out To Fight Some Villains",
-        "card_number": "7",
+        "card_release_number": 219,
+        "card_number_in_set": "7",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270203.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270203/universus-universus-my-hero-academia-crimson-rampage-going-out-to-fight-some-villains",
         "set_name": "Crimson Rampage",
@@ -5110,7 +5277,8 @@
     },
     {
         "card_name": "Charged Up",
-        "card_number": "15",
+        "card_release_number": 15,
+        "card_number_in_set": "15",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250751.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250751/universus-universus-my-hero-academia-charged-up",
         "set_name": "My Hero Academia",
@@ -5132,7 +5300,8 @@
     },
     {
         "card_name": "Faith's Shield",
-        "card_number": "93",
+        "card_release_number": 305,
+        "card_number_in_set": "93",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270163.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270163/universus-universus-my-hero-academia-crimson-rampage-faiths-shield",
         "set_name": "Crimson Rampage",
@@ -5155,7 +5324,8 @@
     },
     {
         "card_name": "Sticky Balls",
-        "card_number": "108",
+        "card_release_number": 108,
+        "card_number_in_set": "108",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250986.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250986/universus-universus-my-hero-academia-sticky-balls",
         "set_name": "My Hero Academia",
@@ -5180,7 +5350,8 @@
     },
     {
         "card_name": "Preparing for Battle",
-        "card_number": "115",
+        "card_release_number": 115,
+        "card_number_in_set": "115",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250651.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250651/universus-universus-my-hero-academia-preparing-for-battle",
         "set_name": "My Hero Academia",
@@ -5205,7 +5376,8 @@
     },
     {
         "card_name": "Tape Stream Jab",
-        "card_number": "83",
+        "card_release_number": 295,
+        "card_number_in_set": "83",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270273.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270273/universus-universus-my-hero-academia-crimson-rampage-tape-stream-jab",
         "set_name": "Crimson Rampage",
@@ -5234,7 +5406,8 @@
     },
     {
         "card_name": "Navel Laser Beam",
-        "card_number": "175",
+        "card_release_number": 175,
+        "card_number_in_set": "175",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250839.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250839/universus-universus-my-hero-academia-navel-laser-beam",
         "set_name": "My Hero Academia",
@@ -5264,7 +5437,8 @@
     },
     {
         "card_name": "Training Knife Strike",
-        "card_number": "49",
+        "card_release_number": 261,
+        "card_number_in_set": "49",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270372.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270372/universus-universus-my-hero-academia-crimson-rampage-training-knife-strike",
         "set_name": "Crimson Rampage",
@@ -5294,7 +5468,8 @@
     },
     {
         "card_name": "Exploding Pride",
-        "card_number": "75",
+        "card_release_number": 75,
+        "card_number_in_set": "75",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250896.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250896/universus-universus-my-hero-academia-exploding-pride",
         "set_name": "My Hero Academia",
@@ -5323,7 +5498,8 @@
     },
     {
         "card_name": "Dabi",
-        "card_number": "73",
+        "card_release_number": 285,
+        "card_number_in_set": "73",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270211.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270211/universus-universus-my-hero-academia-crimson-rampage-dabi",
         "set_name": "Crimson Rampage",
@@ -5349,7 +5525,8 @@
     },
     {
         "card_name": "Crow and Frog Takedown",
-        "card_number": "MHA-PU01 2",
+        "card_release_number": 202,
+        "card_number_in_set": "MHA-PU01 2",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/251686.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/251686/universus-universus-my-hero-academia-crow-and-frog-takedown",
         "set_name": "My Hero Academia",
@@ -5378,7 +5555,8 @@
     },
     {
         "card_name": "Stronger in Darkness",
-        "card_number": "45",
+        "card_release_number": 45,
+        "card_number_in_set": "45",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250725.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250725/universus-universus-my-hero-academia-stronger-in-darkness",
         "set_name": "My Hero Academia",
@@ -5400,7 +5578,8 @@
     },
     {
         "card_name": "Mei Hatsume",
-        "card_number": "28",
+        "card_release_number": 240,
+        "card_number_in_set": "28",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270310.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270310/universus-universus-my-hero-academia-crimson-rampage-mei-hatsume",
         "set_name": "Crimson Rampage",
@@ -5424,7 +5603,8 @@
     },
     {
         "card_name": "Mashirao Ojiro",
-        "card_number": "MHA-PU01 6",
+        "card_release_number": 206,
+        "card_number_in_set": "MHA-PU01 6",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/251687.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/251687/universus-universus-my-hero-academia-mashirao-ojiro",
         "set_name": "My Hero Academia",
@@ -5449,7 +5629,8 @@
     },
     {
         "card_name": "Yuga Aoyama",
-        "card_number": "172",
+        "card_release_number": 172,
+        "card_number_in_set": "172",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250814.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250814/universus-universus-my-hero-academia-yuga-aoyama",
         "set_name": "My Hero Academia",
@@ -5474,7 +5655,8 @@
     },
     {
         "card_name": "Float Combo",
-        "card_number": "5",
+        "card_release_number": 193,
+        "card_number_in_set": "5",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250912.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250912/universus-universus-my-hero-academia-dlc-float-combo",
         "set_name": "My Hero Academia",
@@ -5504,7 +5686,8 @@
     },
     {
         "card_name": "Facepalm Takedown",
-        "card_number": "7",
+        "card_release_number": 339,
+        "card_number_in_set": "7",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/272836.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/272836/universus-universus-my-hero-academia-crimson-rampage-facepalm-takedown",
         "set_name": "Crimson Rampage",
@@ -5533,7 +5716,8 @@
     },
     {
         "card_name": "Latent Skill",
-        "card_number": "89",
+        "card_release_number": 89,
+        "card_number_in_set": "89",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250964.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250964/universus-universus-my-hero-academia-latent-skill",
         "set_name": "My Hero Academia",
@@ -5555,7 +5739,8 @@
     },
     {
         "card_name": "Pop Off Step",
-        "card_number": "103",
+        "card_release_number": 103,
+        "card_number_in_set": "103",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250957.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250957/universus-universus-my-hero-academia-pop-off-step",
         "set_name": "My Hero Academia",
@@ -5583,7 +5768,8 @@
     },
     {
         "card_name": "Zero Gravity Lift",
-        "card_number": "131",
+        "card_release_number": 131,
+        "card_number_in_set": "131",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250759.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250759/universus-universus-my-hero-academia-zero-gravity-lift",
         "set_name": "My Hero Academia",
@@ -5612,7 +5798,8 @@
     },
     {
         "card_name": "Gotcha",
-        "card_number": "51",
+        "card_release_number": 51,
+        "card_number_in_set": "51",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250786.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250786/universus-universus-my-hero-academia-gotcha",
         "set_name": "My Hero Academia",
@@ -5634,7 +5821,8 @@
     },
     {
         "card_name": "Shock Treatment",
-        "card_number": "17",
+        "card_release_number": 17,
+        "card_number_in_set": "17",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250761.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250761/universus-universus-my-hero-academia-shock-treatment",
         "set_name": "My Hero Academia",
@@ -5657,7 +5845,8 @@
     },
     {
         "card_name": "Fourth Kind",
-        "card_number": "1",
+        "card_release_number": 333,
+        "card_number_in_set": "1",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/272828.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/272828/universus-universus-my-hero-academia-crimson-rampage-fourth-kind",
         "set_name": "Crimson Rampage",
@@ -5683,7 +5872,8 @@
     },
     {
         "card_name": "Ochaco Uraraka",
-        "card_number": "127",
+        "card_release_number": 127,
+        "card_number_in_set": "127",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250732.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250732/universus-universus-my-hero-academia-ochaco-uraraka",
         "set_name": "My Hero Academia",
@@ -5707,39 +5897,9 @@
         "card_keywords": []
     },
     {
-        "card_name": "Pillar Swing (Victory)",
-        "card_number": "MHA-PU01 10",
-        "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/257509.jpg",
-        "card_tcg_url": "https://www.tcgplayer.com/product/257509/universus-universus-my-hero-academia-pillar-swing-victory",
-        "set_name": "My Hero Academia",
-        "card_type": "Attack",
-        "card_rarity": "Promo",
-        "card_description": [
-            "Enhance: If this attack is completely blocked, add it to your momentum.",
-            "Enhance: The damage of this attack cannot be reduced below printed."
-        ],
-        "card_resource_symbols": [
-            "All",
-            "Chaos",
-            "Death"
-        ],
-        "card_check": 3,
-        "card_difficulty": 6,
-        "card_block_modifier": 2,
-        "card_block_zone": "Low",
-        "card_attack_speed": 3,
-        "card_attack_zone": "Mid",
-        "card_attack_damage": 8,
-        "card_keywords": [
-            "Charge",
-            "Slam",
-            "Stun: 2",
-            "Weapon"
-        ]
-    },
-    {
         "card_name": "Tutoring Kirishima",
-        "card_number": "27",
+        "card_release_number": 239,
+        "card_number_in_set": "27",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270303.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270303/universus-universus-my-hero-academia-crimson-rampage-tutoring-kirishima",
         "set_name": "Crimson Rampage",
@@ -5764,7 +5924,8 @@
     },
     {
         "card_name": "Shoto Todoroki",
-        "card_number": "55",
+        "card_release_number": 267,
+        "card_number_in_set": "55",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270326.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270326/universus-universus-my-hero-academia-crimson-rampage-shoto-todoroki",
         "set_name": "Crimson Rampage",
@@ -5790,7 +5951,8 @@
     },
     {
         "card_name": "Flying Thruster Kick",
-        "card_number": "147",
+        "card_release_number": 147,
+        "card_number_in_set": "147",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250630.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250630/universus-universus-my-hero-academia-flying-thruster-kick",
         "set_name": "My Hero Academia",
@@ -5820,7 +5982,8 @@
     },
     {
         "card_name": "Pillar Swing",
-        "card_number": "MHA-PU01 10",
+        "card_release_number": 210,
+        "card_number_in_set": "MHA-PU01 10",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/251691.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/251691/universus-universus-my-hero-academia-pillar-swing",
         "set_name": "My Hero Academia",
@@ -5851,7 +6014,8 @@
     },
     {
         "card_name": "Amplified Sound Blast",
-        "card_number": "93",
+        "card_release_number": 93,
+        "card_number_in_set": "93",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250984.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250984/universus-universus-my-hero-academia-amplified-sound-blast",
         "set_name": "My Hero Academia",
@@ -5881,7 +6045,8 @@
     },
     {
         "card_name": "What's Their Plan?",
-        "card_number": "54",
+        "card_release_number": 54,
+        "card_number_in_set": "54",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250800.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250800/universus-universus-my-hero-academia-whats-their-plan",
         "set_name": "My Hero Academia",
@@ -5911,7 +6076,8 @@
     },
     {
         "card_name": "Smash",
-        "card_number": "4",
+        "card_release_number": 4,
+        "card_number_in_set": "4",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250641.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250641/universus-universus-my-hero-academia-smash",
         "set_name": "My Hero Academia",
@@ -5939,7 +6105,8 @@
     },
     {
         "card_name": "Staggering Positivity",
-        "card_number": "3",
+        "card_release_number": 191,
+        "card_number_in_set": "3",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250903.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250903/universus-universus-my-hero-academia-dlc-staggering-positivity",
         "set_name": "My Hero Academia",
@@ -5961,7 +6128,8 @@
     },
     {
         "card_name": "Capture Evil-Doers",
-        "card_number": "MHA-Q01 3",
+        "card_release_number": 186,
+        "card_number_in_set": "MHA-Q01 3",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/251196.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/251196/universus-universus-my-hero-academia-capture-evil-doers",
         "set_name": "My Hero Academia",
@@ -5986,7 +6154,8 @@
     },
     {
         "card_name": "Shock Absorption",
-        "card_number": "125",
+        "card_release_number": 125,
+        "card_number_in_set": "125",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250717.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250717/universus-universus-my-hero-academia-shock-absorption",
         "set_name": "My Hero Academia",
@@ -6008,7 +6177,8 @@
     },
     {
         "card_name": "Touch of Decay",
-        "card_number": "158",
+        "card_release_number": 158,
+        "card_number_in_set": "158",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250710.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250710/universus-universus-my-hero-academia-touch-of-decay",
         "set_name": "My Hero Academia",
@@ -6038,7 +6208,8 @@
     },
     {
         "card_name": "Mentor Legacy Punch",
-        "card_number": "9",
+        "card_release_number": 341,
+        "card_number_in_set": "9",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/272841.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/272841/universus-universus-my-hero-academia-crimson-rampage-mentor-legacy-punch",
         "set_name": "Crimson Rampage",
@@ -6067,7 +6238,8 @@
     },
     {
         "card_name": "Calling for Backup",
-        "card_number": "150",
+        "card_release_number": 150,
+        "card_number_in_set": "150",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250656.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250656/universus-universus-my-hero-academia-calling-for-backup",
         "set_name": "My Hero Academia",
@@ -6089,7 +6261,8 @@
     },
     {
         "card_name": "Celebrity Status",
-        "card_number": "6",
+        "card_release_number": 6,
+        "card_number_in_set": "6",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250659.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250659/universus-universus-my-hero-academia-celebrity-status",
         "set_name": "My Hero Academia",
@@ -6111,7 +6284,8 @@
     },
     {
         "card_name": "Instant Explosive Release",
-        "card_number": "77",
+        "card_release_number": 77,
+        "card_number_in_set": "77",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250904.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250904/universus-universus-my-hero-academia-instant-explosive-release",
         "set_name": "My Hero Academia",
@@ -6139,7 +6313,8 @@
     },
     {
         "card_name": "Rapid Tape Strike",
-        "card_number": "48",
+        "card_release_number": 48,
+        "card_number_in_set": "48",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250749.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250749/universus-universus-my-hero-academia-rapid-tape-strike",
         "set_name": "My Hero Academia",
@@ -6168,7 +6343,8 @@
     },
     {
         "card_name": "Knife Slice",
-        "card_number": "86",
+        "card_release_number": 298,
+        "card_number_in_set": "86",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270287.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270287/universus-universus-my-hero-academia-crimson-rampage-knife-slice",
         "set_name": "Crimson Rampage",
@@ -6196,7 +6372,8 @@
     },
     {
         "card_name": "Amphibious Ambush",
-        "card_number": "MHA-Q01 2",
+        "card_release_number": 185,
+        "card_number_in_set": "MHA-Q01 2",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/251195.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/251195/universus-universus-my-hero-academia-amphibious-ambush",
         "set_name": "My Hero Academia",
@@ -6225,7 +6402,8 @@
     },
     {
         "card_name": "First Impressions",
-        "card_number": "6",
+        "card_release_number": 218,
+        "card_number_in_set": "6",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270199.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270199/universus-universus-my-hero-academia-crimson-rampage-first-impressions",
         "set_name": "Crimson Rampage",
@@ -6247,7 +6425,8 @@
     },
     {
         "card_name": "Clever Distraction",
-        "card_number": "43",
+        "card_release_number": 43,
+        "card_number_in_set": "43",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250705.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250705/universus-universus-my-hero-academia-clever-distraction",
         "set_name": "My Hero Academia",
@@ -6269,7 +6448,8 @@
     },
     {
         "card_name": "Giant Ice Wall",
-        "card_number": "138",
+        "card_release_number": 138,
+        "card_number_in_set": "138",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270150.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270150/universus-universus-my-hero-academia-giant-ice-wall",
         "set_name": "My Hero Academia",
@@ -6299,7 +6479,8 @@
     },
     {
         "card_name": "Tight Lipped",
-        "card_number": "180",
+        "card_release_number": 180,
+        "card_number_in_set": "180",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250866.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250866/universus-universus-my-hero-academia-tight-lipped",
         "set_name": "My Hero Academia",
@@ -6321,7 +6502,8 @@
     },
     {
         "card_name": "Hardened Chop",
-        "card_number": "20",
+        "card_release_number": 20,
+        "card_number_in_set": "20",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250783.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250783/universus-universus-my-hero-academia-hardened-chop",
         "set_name": "My Hero Academia",
@@ -6350,7 +6532,8 @@
     },
     {
         "card_name": "Apathetic",
-        "card_number": "123",
+        "card_release_number": 123,
+        "card_number_in_set": "123",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250702.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250702/universus-universus-my-hero-academia-apathetic",
         "set_name": "My Hero Academia",
@@ -6372,7 +6555,8 @@
     },
     {
         "card_name": "Manly Friendship",
-        "card_number": "108",
+        "card_release_number": 320,
+        "card_number_in_set": "108",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270280.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270280/universus-universus-my-hero-academia-crimson-rampage-manly-friendship",
         "set_name": "Crimson Rampage",
@@ -6396,7 +6580,8 @@
     },
     {
         "card_name": "Tape Swing",
-        "card_number": "50",
+        "card_release_number": 50,
+        "card_number_in_set": "50",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250776.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250776/universus-universus-my-hero-academia-tape-swing",
         "set_name": "My Hero Academia",
@@ -6426,7 +6611,8 @@
     },
     {
         "card_name": "Electric Jolt",
-        "card_number": "12",
+        "card_release_number": 12,
+        "card_number_in_set": "12",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250718.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250718/universus-universus-my-hero-academia-electric-jolt",
         "set_name": "My Hero Academia",
@@ -6457,7 +6643,8 @@
     },
     {
         "card_name": "Graceful Maneuvers",
-        "card_number": "43",
+        "card_release_number": 255,
+        "card_number_in_set": "43",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270381.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270381/universus-universus-my-hero-academia-crimson-rampage-graceful-maneuvers",
         "set_name": "Crimson Rampage",
@@ -6479,7 +6666,8 @@
     },
     {
         "card_name": "Hardened Jab",
-        "card_number": "22",
+        "card_release_number": 22,
+        "card_number_in_set": "22",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250804.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250804/universus-universus-my-hero-academia-hardened-jab",
         "set_name": "My Hero Academia",
@@ -6506,7 +6694,8 @@
     },
     {
         "card_name": "Keen Observation",
-        "card_number": "160",
+        "card_release_number": 160,
+        "card_number_in_set": "160",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250722.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250722/universus-universus-my-hero-academia-keen-observation",
         "set_name": "My Hero Academia",
@@ -6528,7 +6717,8 @@
     },
     {
         "card_name": "Nomu",
-        "card_number": "118",
+        "card_release_number": 118,
+        "card_number_in_set": "118",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250672.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250672/universus-universus-my-hero-academia-nomu",
         "set_name": "My Hero Academia",
@@ -6553,7 +6743,8 @@
     },
     {
         "card_name": "Hellflame Cross Punch",
-        "card_number": "8",
+        "card_release_number": 340,
+        "card_number_in_set": "8",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/272837.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/272837/universus-universus-my-hero-academia-crimson-rampage-hellflame-cross-punch",
         "set_name": "Crimson Rampage",
@@ -6582,7 +6773,8 @@
     },
     {
         "card_name": "Someone With Style",
-        "card_number": "179",
+        "card_release_number": 179,
+        "card_number_in_set": "179",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250862.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250862/universus-universus-my-hero-academia-someone-with-style",
         "set_name": "My Hero Academia",
@@ -6605,7 +6797,8 @@
     },
     {
         "card_name": "Neito Monoma",
-        "card_number": "97",
+        "card_release_number": 309,
+        "card_number_in_set": "97",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270206.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270206/universus-universus-my-hero-academia-crimson-rampage-neito-monoma",
         "set_name": "Crimson Rampage",
@@ -6630,7 +6823,8 @@
     },
     {
         "card_name": "Plug-In",
-        "card_number": "98",
+        "card_release_number": 98,
+        "card_number_in_set": "98",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250998.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250998/universus-universus-my-hero-academia-plug-in",
         "set_name": "My Hero Academia",
@@ -6653,7 +6847,8 @@
     },
     {
         "card_name": "Coordinated Effort",
-        "card_number": "24",
+        "card_release_number": 24,
+        "card_number_in_set": "24",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250824.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250824/universus-universus-my-hero-academia-coordinated-effort",
         "set_name": "My Hero Academia",
@@ -6677,29 +6872,9 @@
         ]
     },
     {
-        "card_name": "Plus Ultra! (Victory)",
-        "card_number": "MHA-PU01 11",
-        "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/257510.jpg",
-        "card_tcg_url": "https://www.tcgplayer.com/product/257510/universus-universus-my-hero-academia-plus-ultra-victory",
-        "set_name": "My Hero Academia",
-        "card_type": "Action",
-        "card_rarity": "Promo",
-        "card_description": [
-            "When attempting to block with this card, reduce the speed of your rival's attack to 0.",
-            "MHA01 First Enhance Discard 1 momentum: Double your attack's speed or damage."
-        ],
-        "card_resource_symbols": [
-            "Infinity"
-        ],
-        "card_check": 5,
-        "card_difficulty": 2,
-        "card_block_modifier": 5,
-        "card_block_zone": "Mid",
-        "card_keywords": []
-    },
-    {
         "card_name": "You're So Obvious",
-        "card_number": "9",
+        "card_release_number": 9,
+        "card_number_in_set": "9",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250684.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250684/universus-universus-my-hero-academia-youre-so-obvious",
         "set_name": "My Hero Academia",
@@ -6722,7 +6897,8 @@
     },
     {
         "card_name": "Creeping Vine Eruption",
-        "card_number": "92",
+        "card_release_number": 304,
+        "card_number_in_set": "92",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270160.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270160/universus-universus-my-hero-academia-crimson-rampage-creeping-vine-eruption",
         "set_name": "Crimson Rampage",
@@ -6748,38 +6924,9 @@
         ]
     },
     {
-        "card_name": "Giant Ice Wall (Misprint)",
-        "card_number": "138",
-        "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250812.jpg",
-        "card_tcg_url": "https://www.tcgplayer.com/product/250812/universus-universus-my-hero-academia-giant-ice-wall-misprint",
-        "set_name": "My Hero Academia",
-        "card_type": "Attack",
-        "card_rarity": "Rare",
-        "card_description": [
-            "Enhance Commit 1 foundation: Your attack gets+1 damage for every 2 Ranged attacks in your discard pile.",
-            "Response Commit, discard the top 3 cards of your deck: After your rival plays an Enhance ability on a non-character card, cancel it."
-        ],
-        "card_resource_symbols": [
-            "Chaos",
-            "Fire",
-            "Water"
-        ],
-        "card_check": 3,
-        "card_difficulty": 5,
-        "card_block_modifier": 2,
-        "card_block_zone": "High",
-        "card_attack_speed": 3,
-        "card_attack_zone": "High",
-        "card_attack_damage": 5,
-        "card_keywords": [
-            "Breaker: 1",
-            "Ranged",
-            "Stun: 2"
-        ]
-    },
-    {
         "card_name": "New Training Method",
-        "card_number": "18",
+        "card_release_number": 230,
+        "card_number_in_set": "18",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270253.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270253/universus-universus-my-hero-academia-crimson-rampage-new-training-method",
         "set_name": "Crimson Rampage",
@@ -6802,10 +6949,11 @@
     },
     {
         "card_name": "Midnight",
-        "card_number": "MHA-PS01 3",
+        "card_release_number": 3,
+        "card_number_in_set": "MHA-PS01 3",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/268198.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/268198/universus-universus-my-hero-academia-midnight",
-        "set_name": "My Hero Academia",
+        "set_name": "Provisional Showdown",
         "card_type": "Character",
         "card_rarity": "Promo",
         "card_description": [
@@ -6827,7 +6975,8 @@
     },
     {
         "card_name": "Snipe",
-        "card_number": "4",
+        "card_release_number": 336,
+        "card_number_in_set": "4",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/272833.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/272833/universus-universus-my-hero-academia-crimson-rampage-snipe",
         "set_name": "Crimson Rampage",
@@ -6853,7 +7002,8 @@
     },
     {
         "card_name": "Sudden Tape Shot",
-        "card_number": "49",
+        "card_release_number": 49,
+        "card_number_in_set": "49",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250772.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250772/universus-universus-my-hero-academia-sudden-tape-shot",
         "set_name": "My Hero Academia",
@@ -6883,10 +7033,11 @@
     },
     {
         "card_name": "Present Mic",
-        "card_number": "MHA-PS01 4",
+        "card_release_number": 4,
+        "card_number_in_set": "MHA-PS01 4",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/268214.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/268214/universus-universus-my-hero-academia-present-mic",
-        "set_name": "My Hero Academia",
+        "set_name": "Provisional Showdown",
         "card_type": "Character",
         "card_rarity": "Promo",
         "card_description": [
@@ -6908,7 +7059,8 @@
     },
     {
         "card_name": "Cool Student",
-        "card_number": "44",
+        "card_release_number": 44,
+        "card_number_in_set": "44",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250712.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250712/universus-universus-my-hero-academia-cool-student",
         "set_name": "My Hero Academia",
@@ -6933,7 +7085,8 @@
     },
     {
         "card_name": "Dark Shadow Dive",
-        "card_number": "80",
+        "card_release_number": 292,
+        "card_number_in_set": "80",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270251.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270251/universus-universus-my-hero-academia-crimson-rampage-dark-shadow-dive",
         "set_name": "Crimson Rampage",
@@ -6963,10 +7116,11 @@
     },
     {
         "card_name": "Rikido Sato",
-        "card_number": "MHA-PS01 5",
+        "card_release_number": 5,
+        "card_number_in_set": "MHA-PS01 5",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/268215.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/268215/universus-universus-my-hero-academia-rikido-sato",
-        "set_name": "My Hero Academia",
+        "set_name": "Provisional Showdown",
         "card_type": "Character",
         "card_rarity": "Promo",
         "card_description": [
@@ -6988,7 +7142,8 @@
     },
     {
         "card_name": "Final Exam Failures",
-        "card_number": "12",
+        "card_release_number": 344,
+        "card_number_in_set": "12",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/272847.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/272847/universus-universus-my-hero-academia-crimson-rampage-final-exam-failures",
         "set_name": "Crimson Rampage",
@@ -7010,7 +7165,8 @@
     },
     {
         "card_name": "Class 1-A President",
-        "card_number": "9",
+        "card_release_number": 197,
+        "card_number_in_set": "9",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250921.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250921/universus-universus-my-hero-academia-dlc-class-1-a-president",
         "set_name": "My Hero Academia",
@@ -7032,7 +7188,8 @@
     },
     {
         "card_name": "Battle Resolve",
-        "card_number": "16",
+        "card_release_number": 228,
+        "card_number_in_set": "16",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270244.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270244/universus-universus-my-hero-academia-crimson-rampage-battle-resolve",
         "set_name": "Crimson Rampage",
@@ -7055,7 +7212,8 @@
     },
     {
         "card_name": "Fumikage Tokoyami",
-        "card_number": "79",
+        "card_release_number": 291,
+        "card_number_in_set": "79",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270247.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270247/universus-universus-my-hero-academia-crimson-rampage-fumikage-tokoyami",
         "set_name": "Crimson Rampage",
@@ -7080,7 +7238,8 @@
     },
     {
         "card_name": "Fumikage Tokoyami",
-        "card_number": "37",
+        "card_release_number": 37,
+        "card_number_in_set": "37",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250642.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250642/universus-universus-my-hero-academia-fumikage-tokoyami",
         "set_name": "My Hero Academia",
@@ -7105,7 +7264,8 @@
     },
     {
         "card_name": "Hardened Frenzy",
-        "card_number": "21",
+        "card_release_number": 21,
+        "card_number_in_set": "21",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250797.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250797/universus-universus-my-hero-academia-hardened-frenzy",
         "set_name": "My Hero Academia",
@@ -7134,7 +7294,8 @@
     },
     {
         "card_name": "Tetsutetsu Fist",
-        "card_number": "107",
+        "card_release_number": 319,
+        "card_number_in_set": "107",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270274.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270274/universus-universus-my-hero-academia-crimson-rampage-tetsutetsu-fist",
         "set_name": "Crimson Rampage",
@@ -7163,7 +7324,8 @@
     },
     {
         "card_name": "Observant Student",
-        "card_number": "169",
+        "card_release_number": 169,
+        "card_number_in_set": "169",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250787.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250787/universus-universus-my-hero-academia-observant-student",
         "set_name": "My Hero Academia",
@@ -7186,7 +7348,8 @@
     },
     {
         "card_name": "Ultra Compressed Weights",
-        "card_number": "6",
+        "card_release_number": 338,
+        "card_number_in_set": "6",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/272835.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/272835/universus-universus-my-hero-academia-crimson-rampage-ultra-compressed-weights",
         "set_name": "Crimson Rampage",
@@ -7210,7 +7373,8 @@
     },
     {
         "card_name": "Amphibious",
-        "card_number": "168",
+        "card_release_number": 168,
+        "card_number_in_set": "168",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250774.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250774/universus-universus-my-hero-academia-amphibious",
         "set_name": "My Hero Academia",
@@ -7232,7 +7396,8 @@
     },
     {
         "card_name": "Challenging The Fakes",
-        "card_number": "69",
+        "card_release_number": 281,
+        "card_number_in_set": "69",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270191.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270191/universus-universus-my-hero-academia-crimson-rampage-challenging-the-fakes",
         "set_name": "Crimson Rampage",
@@ -7256,7 +7421,8 @@
     },
     {
         "card_name": "Binding Kick",
-        "card_number": "32",
+        "card_release_number": 32,
+        "card_number_in_set": "32",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250885.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250885/universus-universus-my-hero-academia-binding-kick",
         "set_name": "My Hero Academia",
@@ -7285,7 +7451,8 @@
     },
     {
         "card_name": "Surviving The Final",
-        "card_number": "96",
+        "card_release_number": 308,
+        "card_number_in_set": "96",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270196.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270196/universus-universus-my-hero-academia-crimson-rampage-surviving-the-final",
         "set_name": "Crimson Rampage",
@@ -7307,7 +7474,8 @@
     },
     {
         "card_name": "Specialized Sound Waves",
-        "card_number": "95",
+        "card_release_number": 95,
+        "card_number_in_set": "95",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250991.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250991/universus-universus-my-hero-academia-specialized-sound-waves",
         "set_name": "My Hero Academia",
@@ -7337,7 +7505,8 @@
     },
     {
         "card_name": "Tape",
-        "card_number": "52",
+        "card_release_number": 52,
+        "card_number_in_set": "52",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250789.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250789/universus-universus-my-hero-academia-tape",
         "set_name": "My Hero Academia",
@@ -7360,7 +7529,8 @@
     },
     {
         "card_name": "Acid Fling",
-        "card_number": "40",
+        "card_release_number": 252,
+        "card_number_in_set": "40",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270369.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270369/universus-universus-my-hero-academia-crimson-rampage-acid-fling",
         "set_name": "Crimson Rampage",
@@ -7388,7 +7558,8 @@
     },
     {
         "card_name": "Double Blade Slash",
-        "card_number": "65",
+        "card_release_number": 277,
+        "card_number_in_set": "65",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270177.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270177/universus-universus-my-hero-academia-crimson-rampage-double-blade-slash",
         "set_name": "Crimson Rampage",
@@ -7418,7 +7589,8 @@
     },
     {
         "card_name": "Excited For Blood",
-        "card_number": "87",
+        "card_release_number": 299,
+        "card_number_in_set": "87",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270294.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270294/universus-universus-my-hero-academia-crimson-rampage-excited-for-blood",
         "set_name": "Crimson Rampage",
@@ -7441,7 +7613,8 @@
     },
     {
         "card_name": "Berserker Blow",
-        "card_number": "119",
+        "card_release_number": 119,
+        "card_number_in_set": "119",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250677.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250677/universus-universus-my-hero-academia-berserker-blow",
         "set_name": "My Hero Academia",
@@ -7470,7 +7643,8 @@
     },
     {
         "card_name": "Internship With Best Jeanist",
-        "card_number": "25",
+        "card_release_number": 237,
+        "card_number_in_set": "25",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270293.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270293/universus-universus-my-hero-academia-crimson-rampage-internship-with-best-jeanist",
         "set_name": "Crimson Rampage",
@@ -7492,7 +7666,8 @@
     },
     {
         "card_name": "Howitzer Impact Cyclone",
-        "card_number": "23",
+        "card_release_number": 235,
+        "card_number_in_set": "23",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270281.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270281/universus-universus-my-hero-academia-crimson-rampage-howitzer-impact-cyclone",
         "set_name": "Crimson Rampage",
@@ -7523,7 +7698,8 @@
     },
     {
         "card_name": "Recipro Acceleration Kick",
-        "card_number": "MHA-PU01 12",
+        "card_release_number": 212,
+        "card_number_in_set": "MHA-PU01 12",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/251693.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/251693/universus-universus-my-hero-academia-recipro-acceleration-kick",
         "set_name": "My Hero Academia",
@@ -7553,7 +7729,8 @@
     },
     {
         "card_name": "Recipro Burst",
-        "card_number": "148",
+        "card_release_number": 148,
+        "card_number_in_set": "148",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250638.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250638/universus-universus-my-hero-academia-recipro-burst",
         "set_name": "My Hero Academia",
@@ -7583,7 +7760,8 @@
     },
     {
         "card_name": "Recipro Extend",
-        "card_number": "149",
+        "card_release_number": 149,
+        "card_number_in_set": "149",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250643.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250643/universus-universus-my-hero-academia-recipro-extend",
         "set_name": "My Hero Academia",
@@ -7612,7 +7790,8 @@
     },
     {
         "card_name": "Ice Gliding",
-        "card_number": "62",
+        "card_release_number": 274,
+        "card_number_in_set": "62",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270162.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270162/universus-universus-my-hero-academia-crimson-rampage-ice-gliding",
         "set_name": "Crimson Rampage",
@@ -7634,7 +7813,8 @@
     },
     {
         "card_name": "Back Alley Haymaker",
-        "card_number": "11",
+        "card_release_number": 223,
+        "card_number_in_set": "11",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270220.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270220/universus-universus-my-hero-academia-crimson-rampage-back-alley-haymaker",
         "set_name": "Crimson Rampage",
@@ -7664,7 +7844,8 @@
     },
     {
         "card_name": "Tongue Whip",
-        "card_number": "11",
+        "card_release_number": 199,
+        "card_number_in_set": "11",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250927.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250927/universus-universus-my-hero-academia-dlc-tongue-whip",
         "set_name": "My Hero Academia",
@@ -7692,7 +7873,8 @@
     },
     {
         "card_name": "Endeavor",
-        "card_number": "76",
+        "card_release_number": 288,
+        "card_number_in_set": "76",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270236.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270236/universus-universus-my-hero-academia-crimson-rampage-endeavor",
         "set_name": "Crimson Rampage",
@@ -7717,7 +7899,8 @@
     },
     {
         "card_name": "Shrapnel Cloud Release",
-        "card_number": "48",
+        "card_release_number": 260,
+        "card_number_in_set": "48",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270370.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270370/universus-universus-my-hero-academia-crimson-rampage-shrapnel-cloud-release",
         "set_name": "Crimson Rampage",
@@ -7746,7 +7929,8 @@
     },
     {
         "card_name": "Gale Force Punch",
-        "card_number": "120",
+        "card_release_number": 120,
+        "card_number_in_set": "120",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250683.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250683/universus-universus-my-hero-academia-gale-force-punch",
         "set_name": "My Hero Academia",
@@ -7775,7 +7959,8 @@
     },
     {
         "card_name": "Villainous Entrance",
-        "card_number": "162",
+        "card_release_number": 162,
+        "card_number_in_set": "162",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250736.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250736/universus-universus-my-hero-academia-villainous-entrance",
         "set_name": "My Hero Academia",
@@ -7798,7 +7983,8 @@
     },
     {
         "card_name": "Katsuki Bakugo",
-        "card_number": "73",
+        "card_release_number": 73,
+        "card_number_in_set": "73",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250887.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250887/universus-universus-my-hero-academia-katsuki-bakugo",
         "set_name": "My Hero Academia",
@@ -7823,7 +8009,8 @@
     },
     {
         "card_name": "Ice Storm",
-        "card_number": "139",
+        "card_release_number": 139,
+        "card_number_in_set": "139",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250815.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250815/universus-universus-my-hero-academia-ice-storm",
         "set_name": "My Hero Academia",
@@ -7853,7 +8040,8 @@
     },
     {
         "card_name": "Full-Power Clash",
-        "card_number": "12",
+        "card_release_number": 224,
+        "card_number_in_set": "12",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270222.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270222/universus-universus-my-hero-academia-crimson-rampage-full-power-clash",
         "set_name": "Crimson Rampage",
@@ -7882,7 +8070,8 @@
     },
     {
         "card_name": "Wall Cling",
-        "card_number": "171",
+        "card_release_number": 171,
+        "card_number_in_set": "171",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250796.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250796/universus-universus-my-hero-academia-wall-cling",
         "set_name": "My Hero Academia",
@@ -7904,7 +8093,8 @@
     },
     {
         "card_name": "Mt. Lady",
-        "card_number": "MHA-PU01 9",
+        "card_release_number": 209,
+        "card_number_in_set": "MHA-PU01 9",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/251690.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/251690/universus-universus-my-hero-academia-mt-lady",
         "set_name": "My Hero Academia",
@@ -7929,7 +8119,8 @@
     },
     {
         "card_name": "Wire Arrow",
-        "card_number": "32",
+        "card_release_number": 244,
+        "card_number_in_set": "32",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270327.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270327/universus-universus-my-hero-academia-crimson-rampage-wire-arrow",
         "set_name": "Crimson Rampage",
@@ -7959,7 +8150,8 @@
     },
     {
         "card_name": "Home Run Comet",
-        "card_number": "128",
+        "card_release_number": 128,
+        "card_number_in_set": "128",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250738.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250738/universus-universus-my-hero-academia-home-run-comet",
         "set_name": "My Hero Academia",
@@ -7989,7 +8181,8 @@
     },
     {
         "card_name": "Grape Rush Attack",
-        "card_number": "102",
+        "card_release_number": 102,
+        "card_number_in_set": "102",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250950.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250950/universus-universus-my-hero-academia-grape-rush-attack",
         "set_name": "My Hero Academia",
@@ -8018,7 +8211,8 @@
     },
     {
         "card_name": "Passing the Torch",
-        "card_number": "68",
+        "card_release_number": 68,
+        "card_number_in_set": "68",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250949.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250949/universus-universus-my-hero-academia-passing-the-torch",
         "set_name": "My Hero Academia",
@@ -8041,7 +8235,8 @@
     },
     {
         "card_name": "High Engine Kick",
-        "card_number": "8",
+        "card_release_number": 196,
+        "card_number_in_set": "8",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250918.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250918/universus-universus-my-hero-academia-dlc-high-engine-kick",
         "set_name": "My Hero Academia",
@@ -8068,7 +8263,8 @@
     },
     {
         "card_name": "Copy: Harden",
-        "card_number": "98",
+        "card_release_number": 310,
+        "card_number_in_set": "98",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270212.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270212/universus-universus-my-hero-academia-crimson-rampage-copy-harden",
         "set_name": "Crimson Rampage",
@@ -8096,7 +8292,8 @@
     },
     {
         "card_name": "Rescue Completed",
-        "card_number": "170",
+        "card_release_number": 170,
+        "card_number_in_set": "170",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250794.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250794/universus-universus-my-hero-academia-rescue-completed",
         "set_name": "My Hero Academia",
@@ -8119,7 +8316,8 @@
     },
     {
         "card_name": "Resistance",
-        "card_number": "27",
+        "card_release_number": 27,
+        "card_number_in_set": "27",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250846.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250846/universus-universus-my-hero-academia-resistance",
         "set_name": "My Hero Academia",
@@ -8144,7 +8342,8 @@
     },
     {
         "card_name": "Good Impression",
-        "card_number": "66",
+        "card_release_number": 66,
+        "card_number_in_set": "66",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250939.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250939/universus-universus-my-hero-academia-good-impression",
         "set_name": "My Hero Academia",
@@ -8166,7 +8365,8 @@
     },
     {
         "card_name": "Missouri Smash",
-        "card_number": "3",
+        "card_release_number": 3,
+        "card_number_in_set": "3",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250635.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250635/universus-universus-my-hero-academia-missouri-smash",
         "set_name": "My Hero Academia",
@@ -8194,7 +8394,8 @@
     },
     {
         "card_name": "Electric Surge",
-        "card_number": "13",
+        "card_release_number": 13,
+        "card_number_in_set": "13",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250729.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250729/universus-universus-my-hero-academia-electric-surge",
         "set_name": "My Hero Academia",
@@ -8224,7 +8425,8 @@
     },
     {
         "card_name": "Back to Back",
-        "card_number": "42",
+        "card_release_number": 42,
+        "card_number_in_set": "42",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250695.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250695/universus-universus-my-hero-academia-back-to-back",
         "set_name": "My Hero Academia",
@@ -8249,7 +8451,8 @@
     },
     {
         "card_name": "Fruit Of Our Labors",
-        "card_number": "116",
+        "card_release_number": 328,
+        "card_number_in_set": "116",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270329.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270329/universus-universus-my-hero-academia-crimson-rampage-fruit-of-our-labors",
         "set_name": "Crimson Rampage",
@@ -8272,7 +8475,8 @@
     },
     {
         "card_name": "Hero Killer",
-        "card_number": "70",
+        "card_release_number": 282,
+        "card_number_in_set": "70",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270193.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270193/universus-universus-my-hero-academia-crimson-rampage-hero-killer",
         "set_name": "Crimson Rampage",
@@ -8295,7 +8499,8 @@
     },
     {
         "card_name": "Making A Stand",
-        "card_number": "63",
+        "card_release_number": 275,
+        "card_number_in_set": "63",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270169.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270169/universus-universus-my-hero-academia-crimson-rampage-making-a-stand",
         "set_name": "Crimson Rampage",
@@ -8318,7 +8523,8 @@
     },
     {
         "card_name": "A Precious Lesson",
-        "card_number": "114",
+        "card_release_number": 114,
+        "card_number_in_set": "114",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250647.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250647/universus-universus-my-hero-academia-a-precious-lesson",
         "set_name": "My Hero Academia",
@@ -8340,7 +8546,8 @@
     },
     {
         "card_name": "Cinder Convection",
-        "card_number": "56",
+        "card_release_number": 268,
+        "card_number_in_set": "56",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270333.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270333/universus-universus-my-hero-academia-crimson-rampage-cinder-convection",
         "set_name": "Crimson Rampage",
@@ -8370,33 +8577,9 @@
         ]
     },
     {
-        "card_name": "Midnight (Top 8)",
-        "card_number": "MHA-PS01 3",
-        "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/268224.jpg",
-        "card_tcg_url": "https://www.tcgplayer.com/product/268224/universus-universus-my-hero-academia-midnight-top-8",
-        "set_name": "My Hero Academia",
-        "card_type": "Character",
-        "card_rarity": "Promo",
-        "card_description": [
-            "Enhance Commit: Discard any number of cards and draw 1 card for each card discarded.",
-            "Enhance Commit 1 foundation: This attack gets +1 or -1 speed for each of its keywords. Playable while committed."
-        ],
-        "card_resource_symbols": [
-            "All",
-            "Chaos",
-            "Void"
-        ],
-        "card_check": 6,
-        "card_difficulty": 6,
-        "card_block_modifier": 0,
-        "card_block_zone": "Mid",
-        "card_hand_size": 6,
-        "card_vitality": 28,
-        "card_keywords": []
-    },
-    {
         "card_name": "Sinister Paralyzation",
-        "card_number": "67",
+        "card_release_number": 279,
+        "card_number_in_set": "67",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270183.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270183/universus-universus-my-hero-academia-crimson-rampage-sinister-paralyzation",
         "set_name": "Crimson Rampage",
@@ -8425,7 +8608,8 @@
     },
     {
         "card_name": "Cavalry Chariot Advance",
-        "card_number": "111",
+        "card_release_number": 323,
+        "card_number_in_set": "111",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270302.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270302/universus-universus-my-hero-academia-crimson-rampage-cavalry-chariot-advance",
         "set_name": "Crimson Rampage",
@@ -8455,7 +8639,8 @@
     },
     {
         "card_name": "Choosing A Hero Name",
-        "card_number": "42",
+        "card_release_number": 254,
+        "card_number_in_set": "42",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270376.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270376/universus-universus-my-hero-academia-crimson-rampage-choosing-a-hero-name",
         "set_name": "Crimson Rampage",
@@ -8478,7 +8663,8 @@
     },
     {
         "card_name": "Long-Lasting Explosion",
-        "card_number": "78",
+        "card_release_number": 78,
+        "card_number_in_set": "78",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250906.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250906/universus-universus-my-hero-academia-long-lasting-explosion",
         "set_name": "My Hero Academia",
@@ -8506,7 +8692,8 @@
     },
     {
         "card_name": "Gutter Punk Elbow",
-        "card_number": "MHA-PU01 4",
+        "card_release_number": 204,
+        "card_number_in_set": "MHA-PU01 4",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/251683.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/251683/universus-universus-my-hero-academia-gutter-punk-elbow",
         "set_name": "My Hero Academia",
@@ -8535,33 +8722,9 @@
         ]
     },
     {
-        "card_name": "Midnight (Champion)",
-        "card_number": "MHA-PS01 3",
-        "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/268223.jpg",
-        "card_tcg_url": "https://www.tcgplayer.com/product/268223/universus-universus-my-hero-academia-midnight-champion",
-        "set_name": "My Hero Academia",
-        "card_type": "Character",
-        "card_rarity": "Promo",
-        "card_description": [
-            "Enhance Commit: Discard any number of cards and draw 1 card for each card discarded.",
-            "Enhance Commit 1 foundation: This attack gets +1 or -1 speed for each of its keywords. Playable while committed."
-        ],
-        "card_resource_symbols": [
-            "All",
-            "Chaos",
-            "Void"
-        ],
-        "card_check": 6,
-        "card_difficulty": 6,
-        "card_block_modifier": 0,
-        "card_block_zone": "Mid",
-        "card_hand_size": 6,
-        "card_vitality": 28,
-        "card_keywords": []
-    },
-    {
         "card_name": "Rising Starlet",
-        "card_number": "116",
+        "card_release_number": 116,
+        "card_number_in_set": "116",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250658.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250658/universus-universus-my-hero-academia-rising-starlet",
         "set_name": "My Hero Academia",
@@ -8585,7 +8748,8 @@
     },
     {
         "card_name": "Detroit Smash",
-        "card_number": "2",
+        "card_release_number": 2,
+        "card_number_in_set": "2",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250631.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250631/universus-universus-my-hero-academia-detroit-smash",
         "set_name": "My Hero Academia",
@@ -8616,7 +8780,8 @@
     },
     {
         "card_name": "Net Gun Surprise!",
-        "card_number": "31",
+        "card_release_number": 243,
+        "card_number_in_set": "31",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270322.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270322/universus-universus-my-hero-academia-crimson-rampage-net-gun-surprise",
         "set_name": "Crimson Rampage",
@@ -8646,7 +8811,8 @@
     },
     {
         "card_name": "Villains Defeated",
-        "card_number": "MHA-Q01 5",
+        "card_release_number": 188,
+        "card_number_in_set": "MHA-Q01 5",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/251198.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/251198/universus-universus-my-hero-academia-villains-defeated",
         "set_name": "My Hero Academia",
@@ -8669,7 +8835,8 @@
     },
     {
         "card_name": "Piercing Descent",
-        "card_number": "66",
+        "card_release_number": 278,
+        "card_number_in_set": "66",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270178.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270178/universus-universus-my-hero-academia-crimson-rampage-piercing-descent",
         "set_name": "Crimson Rampage",
@@ -8698,7 +8865,8 @@
     },
     {
         "card_name": "Mall Day!",
-        "card_number": "44",
+        "card_release_number": 256,
+        "card_number_in_set": "44",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270385.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270385/universus-universus-my-hero-academia-crimson-rampage-mall-day",
         "set_name": "Crimson Rampage",
@@ -8723,7 +8891,8 @@
     },
     {
         "card_name": "Downward Frost Spike",
-        "card_number": "57",
+        "card_release_number": 269,
+        "card_number_in_set": "57",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270337.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270337/universus-universus-my-hero-academia-crimson-rampage-downward-frost-spike",
         "set_name": "Crimson Rampage",
@@ -8752,7 +8921,8 @@
     },
     {
         "card_name": "Izuku Midoriya",
-        "card_number": "55",
+        "card_release_number": 55,
+        "card_number_in_set": "55",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250807.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250807/universus-universus-my-hero-academia-izuku-midoriya",
         "set_name": "My Hero Academia",
@@ -8778,7 +8948,8 @@
     },
     {
         "card_name": "Unwavering Slash",
-        "card_number": "96",
+        "card_release_number": 96,
+        "card_number_in_set": "96",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250994.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250994/universus-universus-my-hero-academia-unwavering-slash",
         "set_name": "My Hero Academia",
@@ -8808,7 +8979,8 @@
     },
     {
         "card_name": "Evade And Copy",
-        "card_number": "99",
+        "card_release_number": 311,
+        "card_number_in_set": "99",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270214.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270214/universus-universus-my-hero-academia-crimson-rampage-evade-and-copy",
         "set_name": "Crimson Rampage",
@@ -8833,7 +9005,8 @@
     },
     {
         "card_name": "Classmate Introductions",
-        "card_number": "105",
+        "card_release_number": 105,
+        "card_number_in_set": "105",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250970.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250970/universus-universus-my-hero-academia-classmate-introductions",
         "set_name": "My Hero Academia",
@@ -8856,7 +9029,8 @@
     },
     {
         "card_name": "Double Front Beat-Down",
-        "card_number": "MHA-PU01 3",
+        "card_release_number": 203,
+        "card_number_in_set": "MHA-PU01 3",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/251682.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/251682/universus-universus-my-hero-academia-double-front-beat-down",
         "set_name": "My Hero Academia",
@@ -8884,7 +9058,8 @@
     },
     {
         "card_name": "Heroic Lineage",
-        "card_number": "152",
+        "card_release_number": 152,
+        "card_number_in_set": "152",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250663.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250663/universus-universus-my-hero-academia-heroic-lineage",
         "set_name": "My Hero Academia",
@@ -8908,7 +9083,8 @@
     },
     {
         "card_name": "Recovery Girl's Kiss",
-        "card_number": "70",
+        "card_release_number": 70,
+        "card_number_in_set": "70",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250963.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250963/universus-universus-my-hero-academia-recovery-girls-kiss",
         "set_name": "My Hero Academia",
@@ -8930,7 +9106,8 @@
     },
     {
         "card_name": "Gift From Mom",
-        "card_number": "65",
+        "card_release_number": 65,
+        "card_number_in_set": "65",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250931.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250931/universus-universus-my-hero-academia-gift-from-mom",
         "set_name": "My Hero Academia",
@@ -8952,7 +9129,8 @@
     },
     {
         "card_name": "Tongue Smack",
-        "card_number": "167",
+        "card_release_number": 167,
+        "card_number_in_set": "167",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250764.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250764/universus-universus-my-hero-academia-tongue-smack",
         "set_name": "My Hero Academia",
@@ -8981,7 +9159,8 @@
     },
     {
         "card_name": "In Danger",
-        "card_number": "88",
+        "card_release_number": 88,
+        "card_number_in_set": "88",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250958.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250958/universus-universus-my-hero-academia-in-danger",
         "set_name": "My Hero Academia",
@@ -9003,7 +9182,8 @@
     },
     {
         "card_name": "Ricochet Charge",
-        "card_number": "5",
+        "card_release_number": 217,
+        "card_number_in_set": "5",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270192.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270192/universus-universus-my-hero-academia-crimson-rampage-ricochet-charge",
         "set_name": "Crimson Rampage",
@@ -9032,7 +9212,8 @@
     },
     {
         "card_name": "Nitro Explosion: Ignition",
-        "card_number": "181",
+        "card_release_number": 181,
+        "card_number_in_set": "181",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250876.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250876/universus-universus-my-hero-academia-nitro-explosion-ignition",
         "set_name": "My Hero Academia",
@@ -9061,7 +9242,8 @@
     },
     {
         "card_name": "Hottest Performances, Guaranteed",
-        "card_number": "102",
+        "card_release_number": 314,
+        "card_number_in_set": "102",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270234.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270234/universus-universus-my-hero-academia-crimson-rampage-hottest-performances-guaranteed",
         "set_name": "Crimson Rampage",
@@ -9088,7 +9270,8 @@
     },
     {
         "card_name": "Eat My Sticky Balls",
-        "card_number": "101",
+        "card_release_number": 101,
+        "card_number_in_set": "101",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250941.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250941/universus-universus-my-hero-academia-eat-my-sticky-balls",
         "set_name": "My Hero Academia",
@@ -9116,7 +9299,8 @@
     },
     {
         "card_name": "Agitation",
-        "card_number": "83",
+        "card_release_number": 83,
+        "card_number_in_set": "83",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250935.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250935/universus-universus-my-hero-academia-agitation",
         "set_name": "My Hero Academia",
@@ -9138,10 +9322,11 @@
     },
     {
         "card_name": "Kurogiri",
-        "card_number": "MHA-PS01 2",
+        "card_release_number": 2,
+        "card_number_in_set": "MHA-PS01 2",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/268187.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/268187/universus-universus-my-hero-academia-kurogiri",
-        "set_name": "My Hero Academia",
+        "set_name": "Provisional Showdown",
         "card_type": "Character",
         "card_rarity": "Promo",
         "card_description": [
@@ -9163,7 +9348,8 @@
     },
     {
         "card_name": "Bonds of Friendship",
-        "card_number": "64",
+        "card_release_number": 64,
+        "card_number_in_set": "64",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250897.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250897/universus-universus-my-hero-academia-bonds-of-friendship",
         "set_name": "My Hero Academia",
@@ -9185,7 +9371,8 @@
     },
     {
         "card_name": "Future Charge",
-        "card_number": "59",
+        "card_release_number": 59,
+        "card_number_in_set": "59",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250841.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250841/universus-universus-my-hero-academia-future-charge",
         "set_name": "My Hero Academia",
@@ -9213,7 +9400,8 @@
     },
     {
         "card_name": "Successful Sales Pitch",
-        "card_number": "35",
+        "card_release_number": 247,
+        "card_number_in_set": "35",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270345.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270345/universus-universus-my-hero-academia-crimson-rampage-successful-sales-pitch",
         "set_name": "Crimson Rampage",
@@ -9235,7 +9423,8 @@
     },
     {
         "card_name": "Dark Shadow Slash",
-        "card_number": "40",
+        "card_release_number": 40,
+        "card_number_in_set": "40",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250676.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250676/universus-universus-my-hero-academia-dark-shadow-slash",
         "set_name": "My Hero Academia",
@@ -9265,7 +9454,8 @@
     },
     {
         "card_name": "Glamorous",
-        "card_number": "178",
+        "card_release_number": 178,
+        "card_number_in_set": "178",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250856.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250856/universus-universus-my-hero-academia-glamorous",
         "set_name": "My Hero Academia",
@@ -9288,7 +9478,8 @@
     },
     {
         "card_name": "Blast Rush Turbo",
-        "card_number": "74",
+        "card_release_number": 74,
+        "card_number_in_set": "74",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250891.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250891/universus-universus-my-hero-academia-blast-rush-turbo",
         "set_name": "My Hero Academia",
@@ -9316,7 +9507,8 @@
     },
     {
         "card_name": "Ectoplasm",
-        "card_number": "2",
+        "card_release_number": 334,
+        "card_number_in_set": "2",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/272829.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/272829/universus-universus-my-hero-academia-crimson-rampage-ectoplasm",
         "set_name": "Crimson Rampage",
@@ -9341,7 +9533,8 @@
     },
     {
         "card_name": "Gran Torino",
-        "card_number": "1",
+        "card_release_number": 213,
+        "card_number_in_set": "1",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270170.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/270170/universus-universus-my-hero-academia-crimson-rampage-gran-torino",
         "set_name": "Crimson Rampage",
@@ -9363,5 +9556,31 @@
         "card_hand_size": 6,
         "card_vitality": 26,
         "card_keywords": []
+    },
+    {
+        "card_name": "Box Full Of Babies",
+        "card_release_number": 241,
+        "card_number": "29",
+        "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/270314.jpg",
+        "card_tcg_url": "https://www.tcgplayer.com/product/270314/universus-universus-my-hero-academia-crimson-rampage-box-full-of-babies",
+        "set_name": "Crimson Rampage",
+        "card_type": "Asset",
+        "card_rarity": "Rare",
+        "card_description": [
+            "Enhance [Once per turn, your turn]: Draw 1 card. Discard 1 card unless your character is Mei Hatsume.",
+            "Enhance Commit: Your Tech or Weapon attack gets +1 speed and +1 damage."
+        ],
+        "card_resource_symbols": [
+            "All",
+            "Evil",
+            "Life"
+        ],
+        "card_check": 5,
+        "card_difficulty": 1,
+        "card_block_modifier": 2,
+        "card_block_zone": "mid",
+        "card_keywords": [
+            "Tech"
+        ]
     }
 ]

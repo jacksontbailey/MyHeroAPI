@@ -6,7 +6,7 @@ from pyparsing import Opt
 import card_page.constants as const
 from enum import Enum
 from typing import Annotated, Optional, Literal, Union
-from pydantic import BaseModel, Field, HttpUrl, ValidationError, validator
+from pydantic import BaseModel, Field, HttpUrl, Json, ValidationError, validator
 
 
 class Zone(str, Enum):
@@ -49,15 +49,16 @@ class AssetCard(BaseModel):
     type: Literal['Asset']
 
 class AllCards(BaseModel):
-    id: str
+    id: int
     name: str
+    set: str
 
 class Card(BaseModel):
     block_modifier: int
     block_zone: str
     check: int
     description: list[str | list[str]] | None = None
-    id: str
+    id: int
     image_url: HttpUrl | None = None
     keyword: list[str] | None = None
     name: str
@@ -72,7 +73,7 @@ class UpdateCard(BaseModel):
     block_zone: Optional[str] = None
     check: Optional[int] = None
     description: Optional[list[str]] = None
-    id: Optional[str] = None
+    id: Optional[int] = None
     image_url: Optional[HttpUrl]= None
     keyword: Optional[list[str]] = None
     name: Optional[str] = None

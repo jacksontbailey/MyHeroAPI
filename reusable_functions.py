@@ -4,6 +4,9 @@ import card_page.constants as const
 from card_page.data_collector import Card_Page
 
 
+#def get_set_card_number(unparsed_number, card_set):
+
+
 
 def multi_list_comparator(all_urls, json_file_urls):
     # -- Converts both of my lists into a set in order to use symmetric difference to compare

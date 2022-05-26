@@ -4,21 +4,28 @@ import json, cards
 from cards import *
 app = FastAPI()
 
-with open("./MHAcards.json") as f:
+with open(f"./{const.JSON_FILE_URL}") as f:
     card_database = json.load(f)
     u = Unicode_Parser()
 
+    basic_information = []
     full_card_results = []
 
     for val, card in enumerate(card_database):
         c = card_database[val]
         ct = card.get("card_type")
 
+
+        single_card_basic_info = AllCards(id=c["card_release_number"], name=c['card_name'], set=c["set_name"])
+        basic_information.append(single_card_basic_info)
+
+
+
         # -- Parses cards by their types since each type has a different amount of 
         # -- attributes that it paseses in.  
         if ct == "Attack":
             new_card = Card(name=c["card_name"], 
-                            id=c["card_number"],
+                            id=c["card_release_number"],
                             set=c["set_name"],
                             type_attributes= {"type": ct,
                                 "attack_zone": c['card_attack_zone'],
@@ -36,30 +43,10 @@ with open("./MHAcards.json") as f:
                             check=c["card_check"],
                             )
             full_card_results.append(new_card)
-            #print(full_card_results)
 
-        elif ct == "Asset":
+        elif (ct == "Action") or (ct == "Asset") or (ct == "Foundation"):
             new_card = Card(name=c["card_name"], 
-                            id=c["card_number"],
-                            set=c["set_name"],
-                            type_attributes={"type": ct},
-                            rarity=c["card_rarity"],
-                            card_type=c["card_type"],
-                            play_difficulty=c['card_difficulty'],
-                            block_modifier= c['card_block_modifier'],
-                            block_zone=c['card_block_zone'],
-                            description=c["card_description"],
-                            symbols=c["card_resource_symbols"],
-                            check=c["card_check"],
-                            keyword=c["card_keywords"]
-                            )
-            full_card_results.append(new_card)
-            #print(full_card_results)
-
-
-        elif ct == "Action":
-            new_card = Card(name=c["card_name"], 
-                            id=c["card_number"],
+                            id=c["card_release_number"],
                             set=c["set_name"],
                             type_attributes= {"type": ct},
                             rarity=c["card_rarity"],
@@ -72,11 +59,10 @@ with open("./MHAcards.json") as f:
                             keyword=c["card_keywords"]
                             )
             full_card_results.append(new_card)
-            #print(full_card_results)
 
         elif ct == "Character":
             new_card = Card(name=c["card_name"], 
-                            id=c["card_number"],
+                            id=c["card_release_number"],
                             set=c["set_name"],
                             type_attributes= {
                                 "type": ct,
@@ -93,24 +79,6 @@ with open("./MHAcards.json") as f:
                             keyword=c["card_keywords"],
                             )
             full_card_results.append(new_card)
-            #print(full_card_results)
-
-        elif ct == "Foundation":
-            new_card = Card(name=c["card_name"], 
-                            id=c["card_number"],
-                            set=c["set_name"],
-                            type_attributes= {"type": ct},
-                            rarity=c["card_rarity"],
-                            play_difficulty=c['card_difficulty'],
-                            block_modifier= c['card_block_modifier'],
-                            block_zone=c['card_block_zone'],
-                            description=c["card_description"],
-                            symbols=c["card_resource_symbols"],
-                            check=c["card_check"],
-                            keyword=c["card_keywords"],
-                            )
-            full_card_results.append(new_card)
-            #print(full_card_results)
 
         else:
             print("Card not in types")
@@ -125,7 +93,8 @@ async def home():
 
 @app.get("/v1/cards")
 async def card_list():
-    return{"card_list": full_card_results}
+    #return{"card_list": full_card_results}
+    return{"card_list": sorted(basic_information, key=lambda x: x.id)}
 
 @app.get("/v1/get-card/{card_id}")
 async def get_card(card_id: int = Path(None, description="The ID of the item you'd like to add.")):
