@@ -49,9 +49,10 @@ class AssetCard(BaseModel):
     type: Literal['Asset']
 
 class AllCards(BaseModel):
+
     id: int
     name: str
-    set: str
+    url: str
 
 class Card(BaseModel):
     block_modifier: int

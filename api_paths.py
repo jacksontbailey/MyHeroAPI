@@ -8,16 +8,23 @@ with open(f"./{const.JSON_FILE_URL}") as f:
     card_database = json.load(f)
     u = Unicode_Parser()
 
-    basic_information = []
+    regular_cards = []
+    provisional_cards = []
     full_card_results = []
+    full_prov_card_results = []
 
     for val, card in enumerate(card_database):
         c = card_database[val]
         ct = card.get("card_type")
+        cs = card.get("set_name")
 
+        if cs == "Provisional Showdown":
+            single_card_basic_info = AllCards(id=c["card_release_number"], name=c['card_name'], url=f"localhost:8000/v1/prov-cards/{c['card_release_number']}")
+            provisional_cards.append(single_card_basic_info)
+        else:
+            single_card_basic_info = AllCards(id=c["card_release_number"], name=c['card_name'], url=f"localhost:8000/v1/cards/{c['card_release_number']}")
+            regular_cards.append(single_card_basic_info)
 
-        single_card_basic_info = AllCards(id=c["card_release_number"], name=c['card_name'], set=c["set_name"])
-        basic_information.append(single_card_basic_info)
 
 
 
@@ -42,7 +49,11 @@ with open(f"./{const.JSON_FILE_URL}") as f:
                             symbols=c["card_resource_symbols"],
                             check=c["card_check"],
                             )
-            full_card_results.append(new_card)
+            if cs == "Provisional Showdown":
+                full_prov_card_results.append(new_card)
+
+            else:
+                full_card_results.append(new_card)
 
         elif (ct == "Action") or (ct == "Asset") or (ct == "Foundation"):
             new_card = Card(name=c["card_name"], 
@@ -58,7 +69,11 @@ with open(f"./{const.JSON_FILE_URL}") as f:
                             check=c["card_check"],
                             keyword=c["card_keywords"]
                             )
-            full_card_results.append(new_card)
+            if cs == "Provisional Showdown":
+                full_prov_card_results.append(new_card)
+
+            else:
+                full_card_results.append(new_card)
 
         elif ct == "Character":
             new_card = Card(name=c["card_name"], 
@@ -78,7 +93,11 @@ with open(f"./{const.JSON_FILE_URL}") as f:
                             check=c["card_check"],
                             keyword=c["card_keywords"],
                             )
-            full_card_results.append(new_card)
+            if cs == "Provisional Showdown":
+                full_prov_card_results.append(new_card)
+
+            else:
+                full_card_results.append(new_card)
 
         else:
             print("Card not in types")
@@ -93,17 +112,52 @@ async def home():
 
 @app.get("/v1/cards")
 async def card_list():
-    #return{"card_list": full_card_results}
-    return{"card_list": sorted(basic_information, key=lambda x: x.id)}
+    return{"count": len(regular_cards), "card_list": sorted(regular_cards, key=lambda x: x.id)}
 
-@app.get("/v1/get-card/{card_id}")
-async def get_card(card_id: int = Path(None, description="The ID of the item you'd like to add.")):
-    return full_card_results[card_id]
+@app.get("/v1/cards/{card_id}")
+async def get_card(card_id: int = Path(ge=0)):
+    for card in full_card_results:
+        if card.id == card_id:
+            return card
+    return{"Data": "Not found"}
 
-@app.get("/v1/get-card-by-name")
+@app.get("/v1/cards/{card_name}")
+async def get_prov_card(card_name: str):
+    for card in full_prov_card_results:
+        regex_card = re.sub(" ", "_", card.name)
+        print(regex_card)
+        if regex_card.upper() == card_name.upper():
+            return card
+    return{"Data": "Not found"}
+
+
+@app.get("/v1/prov-cards")
+async def prov_card_list():
+    return{"count": len(provisional_cards), "provisional_card_list": sorted(provisional_cards, key=lambda x: x.id)}
+
+@app.get("/v1/prov-cards/{card_id}")
+async def get_card(card_id: int = Path(ge=0)):
+    for card in full_prov_card_results:
+        if card.id == card_id:
+            return card
+    return{"Data": "Not found"}
+
+@app.get("/v1/prov-cards/{card_name}")
+async def get_prov_card(card_name: str):
+    for card in full_prov_card_results:
+        regex_card = re.sub(" ", "_", card.name)
+        if regex_card.upper() == card_name.upper():
+            return card
+    return{"Data": "Not found"}
+
+
+
+
+
+@app.get("/v1/cards/{card_name}")
 async def get_card(name: str = Query(None, title = "Name", description="Name of item.")):
     for card_id in full_card_results:
-        if full_card_results[card_id].name == name:
+        if card_id[card_id].name == name:
             return full_card_results[card_id]
     return {"Data": "Not found"}
 
@@ -113,73 +167,8 @@ async def get_card( *, card_id: int, name: Optional[str] = None, test: int):
         if full_card_results[card_id].name == name:
             return full_card_results[card_id]
     return {"Data": "Not found"}
-
-
-@app.post("/v1/add-card/{card_id}")
-async def add_card(card_id: int, card: cards.Card):
-    if card_id in full_card_results:
-        return{"Error": "Card already exists in database."}
-    
-    full_card_results[card_id] = card
-    return full_card_results[card_id]
-
-@app.put("/v1/update-card/{card_id}")
-async def update_card(card_id: int, card: cards.UpdateCard):
-    if card_id not in full_card_results:
-        return{"Error": "Card does not exist in database."}
-    
-    if card.id != None:
-        full_card_results[card_id].id = card.id
-
-    if card.set != None:
-        full_card_results[card_id].set = card.set
-    
-    if card.image_url != None:
-        full_card_results[card_id].image_url = card.image_url
-    
-    if card.name != None:
-        full_card_results[card_id].name = card.name
-    
-    if card.type != None:
-        full_card_results[card_id].type = card.type
-    
-    if card.rarity != None:
-        full_card_results[card_id].rarity = card.rarity
-    
-    if card.play_difficulty != None:
-        full_card_results[card_id].play_difficulty = card.play_difficulty
-
-    if card.block_modifier != None:
-        full_card_results[card_id].block_modifier = card.block_modifier
-    
-    if card.block_zone != None:
-        full_card_results[card_id].block_zone = card.block_zone
-    
-    if card.description != None:
-        full_card_results[card_id].description = card.description
-    
-    if card.symbols != None:
-        full_card_results[card_id].symbols = card.symbols
-
-    if card.check != None:
-        full_card_results[card_id].check = card.check
-
-    if card.keyword != None:
-        full_card_results[card_id].keyword = card.keyword
-
-    return full_card_results[card_id]
-
-@app.delete("/v1/delete-card")
-async def delete_card(card_id: int = Query(..., description= "The ID of the card to delete must be greater than or equal to 0.", gt=0)):
-    if card_id not in card_database:
-        return {"Error": "ID does not exist."}
-    
-    del card_database[card_id]
-    return{"Success": "Item deleted"}
 # / root with api explaination
 # /card-names
 # /cards-by-index/{index}
-# /get-random-card
-# /add-card
-# /get-card-by-name?{}
+
 # -- uvicorn api_paths:app --reload
