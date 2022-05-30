@@ -4396,7 +4396,7 @@
     },
     {
         "card_name": "All Might",
-        "card_release_number": 201,
+        "card_release_number": 189,
         "card_number_in_set": "1",
         "card_image": "https://product-images.tcgplayer.com/fit-in/331x331/250900.jpg",
         "card_tcg_url": "https://www.tcgplayer.com/product/250900/universus-universus-my-hero-academia-dlc-all-might",
@@ -9582,5 +9582,31 @@
         "card_keywords": [
             "Tech"
         ]
+    },
+    {
+        "card_name": "All Might (Plus Ultra Pack)",
+        "card_release_number": 201,
+        "card_number": "MHA-PU01 1",
+        "card_image": "https://product-images.tcgplayer.com/fit-in/334x334/251685.jpg",
+        "card_tcg_url": "https://www.tcgplayer.com/product/251685/universus-universus-my-hero-academia-all-might-plus-ultra-pack",
+        "set_name": "My Hero Academia",
+        "card_type": "Character",
+        "card_rarity": "Promo",
+        "card_description": [
+            "Enhance Commit, commit 1 foundation: Draw 2 cards.",
+            "Enhance: Your Fury or Punch attack gets +1 speed or +1 damage for each card in your rival\u2019s hand. Playable while committed."
+        ],
+        "card_resource_symbols": [
+            "Chaos",
+            "Life",
+            "Water"
+        ],
+        "card_check": 6,
+        "card_difficulty": 6,
+        "card_block_modifier": 0,
+        "card_block_zone": "mid",
+        "card_hand_size": 6,
+        "card_vitality": 30,
+        "card_keywords": []
     }
 ]

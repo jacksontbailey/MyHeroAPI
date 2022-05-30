@@ -10,7 +10,7 @@ from requests.exceptions import HTTPError
 
 
 class Card_Page(webdriver.Chrome):
-    def __init__(self, driver_path = const.WORK_DRIVER, teardown=False):
+    def __init__(self, driver_path = const.HOME_FOLDER, teardown=False):
         options = webdriver.ChromeOptions()
         options.headless = True
         options.add_experimental_option('excludeSwitches', ['enable-logging'])
@@ -58,7 +58,7 @@ class Card_Page(webdriver.Chrome):
         options.add_experimental_option('excludeSwitches', ['enable-logging', 'enable-automation'])
         options.add_experimental_option('useAutomationExtension', False)
 
-        driver = webdriver.Chrome(const.WORK_DRIVER, options=options)
+        driver = webdriver.Chrome(const.HOME_FOLDER, options=options)
         driver.get(url)
         
         try:

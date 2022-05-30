@@ -1,6 +1,9 @@
+from sys import flags
 from typing import Optional
 from fastapi import FastAPI, Path, Query, status, Response
 import json, cards
+
+from numpy import full
 from cards import *
 app = FastAPI()
 
@@ -110,10 +113,13 @@ with open(f"./{const.JSON_FILE_URL}") as f:
 async def home():
     return {"Greeting": "Welcome to the My Hero Academia Card Game API! This is a fan-made API that any developer is free to use. The only thing I ask is that you give me some credit when you use it, and/or buy me a coffee. This carbon-based lifeform needs Java installed..."}
 
+# -- List of all cards
 @app.get("/v1/cards")
 async def card_list():
     return{"count": len(regular_cards), "card_list": sorted(regular_cards, key=lambda x: x.id)}
 
+
+# -- Searches for cards with either the card ID or the card Name
 @app.get("/v1/cards/{card_id}")
 async def get_card(card_id: int = Path(ge=0)):
     for card in full_card_results:
@@ -131,10 +137,12 @@ async def get_prov_card(card_name: str):
     return{"Data": "Not found"}
 
 
+# -- List of all provisional cards
 @app.get("/v1/prov-cards")
 async def prov_card_list():
     return{"count": len(provisional_cards), "provisional_card_list": sorted(provisional_cards, key=lambda x: x.id)}
 
+# -- Searches for provisional cards people win at tournaments with either the card ID or the card Name
 @app.get("/v1/prov-cards/{card_id}")
 async def get_card(card_id: int = Path(ge=0)):
     for card in full_prov_card_results:
@@ -151,8 +159,73 @@ async def get_prov_card(card_name: str):
     return{"Data": "Not found"}
 
 
+@app.get("/v1/cards/")
+async def card_search(
+        t: str | None = Query(
+            default = None, 
+            title = "Type", 
+            description = "Query cards in database that have 'x' type. Types available: Attack, Asset, Action, Character, Foundation"
+            ), 
+        r: str | None =  Query(
+            default = None, 
+            title = "Rarity", 
+            description = "Query cards in database that have 'x' rarity. Rarities available: Common, Uncommon, Rare, Ultra Rare, Starter Exclusive, Promo, Secret Rare"
+            ), 
+        sm: Symbol | None = Query(
+            default = None, 
+            title = "Symbol", 
+            description = "Query cards in database that have 'x' symbol(s). Symbols available: Air, All, Chaos, Death, Earth, Evil, Fire, Good, Infinity, Life, Order, Void, Water"
+            ),
+        s: str | None = Query(
+            default = None, 
+            title = "Set", 
+            description = "Query cards in database that are in 'x' set. Sets available: My Hero Academia, Crimson Rampage, Provisional Showdown"
+            )):
+    
+    results = {"cards": []} 
 
+    for card in full_card_results:
+        if t != None:
+            if card.type_attributes.type == t.capitalize():
+                results["cards"] += [card]
+        if r != None:            
+            if card.rarity == r.capitalize():
+                results["cards"] += [card]
+        if sm != None:
+            sm = sm.capitalize()
+            for symbol in card.symbols:
+                if symbol == sm:
+                    results["cards"] += [card]
+        if s != None:
+            s = re.sub(" ","_", s)
+            set = card.set
+            set = re.sub(" ", "_", set)
+            if set.upper() == s.upper():
+                results["cards"] += [card]
 
+    
+    for card in full_prov_card_results:    
+        if t != None:
+            if card.type_attributes.type == t.capitalize():
+                results["cards"] += [card]
+        if r != None:            
+            if card.rarity == r.capitalize():
+                results["cards"] += [card]
+        if sm != None:
+            sm = sm.capitalize()
+            for symbol in card.symbols:
+                if symbol == sm:
+                    results["cards"] += [card]
+        if s != None:
+            s = re.sub(" ","_", s)
+            set = card.set
+            set = re.sub(" ", "_", set)
+            if set.upper() == s.upper():
+                results["cards"] += [card]
+
+    
+    return results
+        
 
 @app.get("/v1/cards/{card_name}")
 async def get_card(name: str = Query(None, title = "Name", description="Name of item.")):

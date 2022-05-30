@@ -23,7 +23,7 @@ def run_test():
 
                 #json_file_urls = retrieve_json_items(filename)
                 #needed_urls = multi_list_comparator(get_all_urls, json_file_urls)
-                retrieve_card_data = universal_card_info(["https://www.tcgplayer.com/product/270314/universus-universus-my-hero-academia-crimson-rampage-box-full-of-babies"])
+                retrieve_card_data = universal_card_info(["https://www.tcgplayer.com/product/251685/universus-universus-my-hero-academia-all-might-plus-ultra-pack" ])
                 
                 for i in retrieve_card_data:
                     json_card_data.append(i)
@@ -63,5 +63,5 @@ def refactor_keywords():
         file.truncate()
 
 
-run_test()
-#refactor_keywords()
+#run_test()
+refactor_keywords()
