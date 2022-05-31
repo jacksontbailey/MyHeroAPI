@@ -1,5 +1,4 @@
-import re
-import unicodedata
+import re, unicodedata
 
 from pyparsing import Opt
 
@@ -7,7 +6,21 @@ import card_page.constants as const
 from enum import Enum
 from typing import Annotated, Optional, Literal, Union
 from pydantic import BaseModel, Field, HttpUrl, Json, ValidationError, validator
+from starlette.requests import Request
 
+class LowerCaseMiddleware:
+    def __init__(self) -> None:
+        self.DECODE_FORMAT = "latin-1"
+
+    async def __call__(self, request: Request, call_next):
+        raw = request.scope["query_string"].decode(self.DECODE_FORMAT).lower()
+        request.scope["query_string"] = raw.encode(self.DECODE_FORMAT)
+
+        path = request.scope["path"].lower()
+        request.scope["path"] = path
+
+        response = await call_next(request)
+        return response
 
 class Zone(str, Enum):
     high = "High"
@@ -28,6 +41,10 @@ class Symbol(str, Enum):
     void = "Void"
     water = "Water"
 
+class Set(str, Enum):
+    s1 = "My Hero Academia"
+    s2 = "Crimson Rampage"
+    special = "Provisional Showdown"
 class CharacterCard(BaseModel):
     max_health: int
     starting_hand_size: int
@@ -65,9 +82,12 @@ class Card(BaseModel):
     name: str
     play_difficulty: int
     rarity: str
-    set: str
+    set: Set
     symbols: list[Symbol]
     type_attributes: Annotated[Union[CharacterCard, AttackCard, AssetCard, ActionCard,FoundationCard], Field(discriminator='type')]
+
+    class Config:
+        case_sensitive = False
 
 class UpdateCard(BaseModel):
     block_modifier: Optional[int] = None
@@ -80,7 +100,7 @@ class UpdateCard(BaseModel):
     name: Optional[str] = None
     play_difficulty: Optional[int] = None
     rarity: Optional[str] = None
-    set: Optional[str] = None
+    set: Optional[Set] = None
     symbols: Optional[list[Symbol]] = None
     type_attributes: Optional[str] = None
 

@@ -15,6 +15,9 @@ with open(f"./{const.JSON_FILE_URL}") as f:
     provisional_cards = []
     full_card_results = []
     full_prov_card_results = []
+    my_middleware = LowerCaseMiddleware()
+    app.middleware("http")(my_middleware)
+
 
     for val, card in enumerate(card_database):
         c = card_database[val]
@@ -70,7 +73,7 @@ with open(f"./{const.JSON_FILE_URL}") as f:
                             description=c["card_description"],
                             symbols= c["card_resource_symbols"],
                             check=c["card_check"],
-                            keyword=c["card_keywords"]
+                            keyword=c["card_keywords"],
                             )
             if cs == "Provisional Showdown":
                 full_prov_card_results.append(new_card)
@@ -116,7 +119,7 @@ async def home():
 # -- List of all cards
 @app.get("/v1/cards")
 async def card_list():
-    return{"count": len(regular_cards), "card_list": sorted(regular_cards, key=lambda x: x.id)}
+    return{"count": len(regular_cards), "card_list": sorted(regular_cards, key=lambda x: x.id, )}
 
 
 # -- Searches for cards with either the card ID or the card Name
@@ -171,7 +174,7 @@ async def card_search(
             title = "Rarity", 
             description = "Query cards in database that have 'x' rarity. Rarities available: Common, Uncommon, Rare, Ultra Rare, Starter Exclusive, Promo, Secret Rare"
             ), 
-        sm: Symbol | None = Query(
+        sm: str  | None = Query(
             default = None, 
             title = "Symbol", 
             description = "Query cards in database that have 'x' symbol(s). Symbols available: Air, All, Chaos, Death, Earth, Evil, Fire, Good, Infinity, Life, Order, Void, Water"
@@ -182,49 +185,47 @@ async def card_search(
             description = "Query cards in database that are in 'x' set. Sets available: My Hero Academia, Crimson Rampage, Provisional Showdown"
             )):
     
-    results = {"cards": []} 
+    results = [] 
 
     for card in full_card_results:
         if t != None:
-            if card.type_attributes.type == t.capitalize():
-                results["cards"] += [card]
+            if card.type_attributes.type.upper() == t.upper():
+                results.append(card)
         if r != None:            
-            if card.rarity == r.capitalize():
-                results["cards"] += [card]
+            if card.rarity.upper() == r.upper():
+                results.append(card)
         if sm != None:
-            sm = sm.capitalize()
             for symbol in card.symbols:
-                if symbol == sm:
-                    results["cards"] += [card]
+                if symbol.upper() == sm.upper():
+                    results.append(card)
+
         if s != None:
             s = re.sub(" ","_", s)
             set = card.set
             set = re.sub(" ", "_", set)
             if set.upper() == s.upper():
-                results["cards"] += [card]
+                results.append(card)
 
     
     for card in full_prov_card_results:    
         if t != None:
-            if card.type_attributes.type == t.capitalize():
-                results["cards"] += [card]
+            if card.type_attributes.type.upper() == t.upper():
+                results.append(card)
         if r != None:            
-            if card.rarity == r.capitalize():
-                results["cards"] += [card]
+            if card.rarity.upper() == r.upper():
+                results.append(card)
         if sm != None:
-            sm = sm.capitalize()
             for symbol in card.symbols:
-                if symbol == sm:
-                    results["cards"] += [card]
+                if symbol.upper() == sm.upper():
+                    results.append(card)
+
         if s != None:
             s = re.sub(" ","_", s)
             set = card.set
             set = re.sub(" ", "_", set)
             if set.upper() == s.upper():
-                results["cards"] += [card]
-
-    
-    return results
+                results.append(card)
+    return {"cards": sorted(results, key= lambda x:x.id)}
         
 
 @app.get("/v1/cards/{card_name}")
@@ -240,6 +241,9 @@ async def get_card( *, card_id: int, name: Optional[str] = None, test: int):
         if full_card_results[card_id].name == name:
             return full_card_results[card_id]
     return {"Data": "Not found"}
+
+
+
 # / root with api explaination
 # /card-names
 # /cards-by-index/{index}
