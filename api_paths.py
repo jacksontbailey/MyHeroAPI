@@ -191,9 +191,11 @@ async def card_search(
         if t != None:
             if card.type_attributes.type.upper() == t.upper():
                 results.append(card)
+        
         if r != None:            
             if card.rarity.upper() == r.upper():
                 results.append(card)
+        
         if sm != None:
             for symbol in card.symbols:
                 if symbol.upper() == sm.upper():
@@ -211,9 +213,11 @@ async def card_search(
         if t != None:
             if card.type_attributes.type.upper() == t.upper():
                 results.append(card)
+        
         if r != None:            
             if card.rarity.upper() == r.upper():
                 results.append(card)
+        
         if sm != None:
             for symbol in card.symbols:
                 if symbol.upper() == sm.upper():
