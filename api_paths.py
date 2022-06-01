@@ -1,10 +1,9 @@
-from sys import flags
-from typing import Optional
-from fastapi import FastAPI, Path, Query, status, Response
-import json, cards
-
-from numpy import full
+import json
+from fastapi import FastAPI, Path, Query, status, Response, Depends
+from fastapi.security import OAuth2PasswordBearer
 from cards import *
+
+
 app = FastAPI()
 
 with open(f"./{const.JSON_FILE_URL}") as f:
@@ -36,133 +35,69 @@ with open(f"./{const.JSON_FILE_URL}") as f:
 
         # -- Parses cards by their types since each type has a different amount of 
         # -- attributes that it paseses in.  
+        new_card = Card(
+                    block_modifier= c['card_block_modifier'],
+                    block_zone=c['card_block_zone'],
+                    check=c["card_check"],
+                    description=c["card_description"],
+                    id=c["card_release_number"],
+                    name=c["card_name"],
+                    play_difficulty=c['card_difficulty'],
+                    rarity=c["card_rarity"],
+                    set=c["set_name"],
+                    symbols=c["card_resource_symbols"],
+                )
+        
         if ct == "Attack":
-            new_card = Card(name=c["card_name"], 
-                            id=c["card_release_number"],
-                            set=c["set_name"],
-                            type_attributes= {"type": ct,
-                                "attack_zone": c['card_attack_zone'],
-                                "speed": c["card_attack_speed"],
+                new_card.type_attributes = {
                                 "attack_keywords": c["card_keywords"],
-                                "damage": c["card_attack_damage"]
-                            },
-                            card_type=c["card_type"],
-                            rarity=c["card_rarity"],
-                            play_difficulty=c['card_difficulty'],
-                            block_modifier= c['card_block_modifier'],
-                            block_zone=c['card_block_zone'],
-                            description=c["card_description"],
-                            symbols=c["card_resource_symbols"],
-                            check=c["card_check"],
-                            )
-            if cs == "Provisional Showdown":
-                full_prov_card_results.append(new_card)
-
-            else:
-                full_card_results.append(new_card)
-
-        elif (ct == "Action") or (ct == "Asset") or (ct == "Foundation"):
-            new_card = Card(name=c["card_name"], 
-                            id=c["card_release_number"],
-                            set=c["set_name"],
-                            type_attributes= {"type": ct},
-                            rarity=c["card_rarity"],
-                            play_difficulty=c['card_difficulty'],
-                            block_modifier= c['card_block_modifier'],
-                            block_zone=c['card_block_zone'],
-                            description=c["card_description"],
-                            symbols= c["card_resource_symbols"],
-                            check=c["card_check"],
-                            keyword=c["card_keywords"],
-                            )
-            if cs == "Provisional Showdown":
-                full_prov_card_results.append(new_card)
-
-            else:
-                full_card_results.append(new_card)
+                                "attack_zone": c['card_attack_zone'],
+                                "damage": c["card_attack_damage"],
+                                "speed": c["card_attack_speed"],
+                                "type": ct
+                                }
 
         elif ct == "Character":
-            new_card = Card(name=c["card_name"], 
-                            id=c["card_release_number"],
-                            set=c["set_name"],
-                            type_attributes= {
-                                "type": ct,
+            new_card.type_attributes = {
+                                "max_health": c["card_vitality"],
                                 "starting_hand_size": c["card_hand_size"],
-                                "max_health": c["card_vitality"]
-                                },
-                            rarity=c["card_rarity"],
-                            play_difficulty=c['card_difficulty'],
-                            block_modifier= c['card_block_modifier'],
-                            block_zone=c['card_block_zone'],
-                            description=c["card_description"],
-                            symbols=c["card_resource_symbols"],
-                            check=c["card_check"],
-                            keyword=c["card_keywords"],
-                            )
-            if cs == "Provisional Showdown":
-                full_prov_card_results.append(new_card)
+                                "type": ct,
+                                }
 
-            else:
-                full_card_results.append(new_card)
+            new_card.keyword = c["card_keywords"]
+
+        elif (ct == "Action") or (ct == "Asset") or (ct == "Foundation"):
+                new_card.type_attributes = {"type": ct}
+                new_card.keyword=c["card_keywords"]
 
         else:
             print("Card not in types")
 
-#print(full_card_results)
+
+        # -- Determines if the card is a provisional card or normal card (provisional cards are ones that are specially released for tournament participants but aren't in any set list)
+        if cs == "Provisional Showdown":
+            full_prov_card_results.append(new_card)
+
+        else:
+            full_card_results.append(new_card)
+
+
+
     
 
-
-@app.get("/")
-async def home():
-    return {"Greeting": "Welcome to the My Hero Academia Card Game API! This is a fan-made API that any developer is free to use. The only thing I ask is that you give me some credit when you use it, and/or buy me a coffee. This carbon-based lifeform needs Java installed..."}
-
-# -- List of all cards
-@app.get("/v1/cards")
-async def card_list():
-    return{"count": len(regular_cards), "card_list": sorted(regular_cards, key=lambda x: x.id, )}
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 
-# -- Searches for cards with either the card ID or the card Name
-@app.get("/v1/cards/{card_id}")
-async def get_card(card_id: int = Path(ge=0)):
-    for card in full_card_results:
-        if card.id == card_id:
-            return card
-    return{"Data": "Not found"}
+@app.get("/", status_code=status.HTTP_200_OK)
+async def home(token: str = Depends(oauth2_scheme)):
+    return {"token": token, "Greeting": "Welcome to the My Hero Academia Card Game API! This is a fan-made API that any developer is free to use. The only thing I ask is that you give me some credit when you use it, and/or buy me a coffee. This carbon-based lifeform needs Java installed..."}
 
-@app.get("/v1/cards/{card_name}")
-async def get_prov_card(card_name: str):
-    for card in full_prov_card_results:
-        regex_card = re.sub(" ", "_", card.name)
-        print(regex_card)
-        if regex_card.upper() == card_name.upper():
-            return card
-    return{"Data": "Not found"}
+@app.get("/v1", status_code=status.HTTP_200_OK)
+async def api_introduction():
+    return{"Guide": "Here are all of the different get requests you can make using this API."}
 
-
-# -- List of all provisional cards
-@app.get("/v1/prov-cards")
-async def prov_card_list():
-    return{"count": len(provisional_cards), "provisional_card_list": sorted(provisional_cards, key=lambda x: x.id)}
-
-# -- Searches for provisional cards people win at tournaments with either the card ID or the card Name
-@app.get("/v1/prov-cards/{card_id}")
-async def get_card(card_id: int = Path(ge=0)):
-    for card in full_prov_card_results:
-        if card.id == card_id:
-            return card
-    return{"Data": "Not found"}
-
-@app.get("/v1/prov-cards/{card_name}")
-async def get_prov_card(card_name: str):
-    for card in full_prov_card_results:
-        regex_card = re.sub(" ", "_", card.name)
-        if regex_card.upper() == card_name.upper():
-            return card
-    return{"Data": "Not found"}
-
-
-@app.get("/v1/cards/")
+# -- Uses queries to find all cards within provided parameters
+@app.get("/v1/", status_code=status.HTTP_200_OK)
 async def card_search(
         t: str | None = Query(
             default = None, 
@@ -189,7 +124,7 @@ async def card_search(
 
     for card in full_card_results:
         if t != None:
-            if card.type_attributes.type.upper() == t.upper():
+            if card.type_attributes["type"].upper() == t.upper():
                 results.append(card)
         
         if r != None:            
@@ -211,7 +146,7 @@ async def card_search(
     
     for card in full_prov_card_results:    
         if t != None:
-            if card.type_attributes.type.upper() == t.upper():
+            if card.type_attributes["type"].upper() == t.upper():
                 results.append(card)
         
         if r != None:            
@@ -230,21 +165,53 @@ async def card_search(
             if set.upper() == s.upper():
                 results.append(card)
     return {"cards": sorted(results, key= lambda x:x.id)}
-        
+
+
+# -- List of all cards
+@app.get("/v1/cards", status_code=status.HTTP_200_OK)
+async def card_list():
+    return{"count": len(regular_cards), "card_list": sorted(regular_cards, key=lambda x: x.id, )}
+
+
+# -- Searches for cards with either the card ID or the card Name
+@app.get("/v1/cards/{card_id}", status_code=status.HTTP_200_OK)
+async def card_id(card_id: int = Path(ge=0)):
+    for card in full_card_results:
+        if card.id == card_id:
+            return card
+
+    return{"Data": "Not found"}
 
 @app.get("/v1/cards/{card_name}")
-async def get_card(name: str = Query(None, title = "Name", description="Name of item.")):
-    for card_id in full_card_results:
-        if card_id[card_id].name == name:
-            return full_card_results[card_id]
-    return {"Data": "Not found"}
+async def card_name(card_name: str):
+    for card in full_card_results:
+        regex_card = re.sub(" ", "_", card.name)
+        print(regex_card)
+        if regex_card.upper() == card_name.upper():
+            return card
+    return{"Data": "Not found"}
 
-@app.get("/v1/get-card-by-name/{card_id}")
-async def get_card( *, card_id: int, name: Optional[str] = None, test: int):
-    for card_id in full_card_results:
-        if full_card_results[card_id].name == name:
-            return full_card_results[card_id]
-    return {"Data": "Not found"}
+
+# -- List of all provisional cards
+@app.get("/v1/prov-cards", status_code=status.HTTP_200_OK)
+async def prov_card_list():
+    return{"count": len(provisional_cards), "provisional_card_list": sorted(provisional_cards, key=lambda x: x.id)}
+
+# -- Searches for provisional cards people win at tournaments with either the card ID or the card Name
+@app.get("/v1/prov-cards/{card_id}")
+async def provisional_card_id(card_id: int = Path(ge=0)):
+    for card in full_prov_card_results:
+        if card.id == card_id:
+            return card
+    return{"Data": "Not found"}
+
+@app.get("/v1/prov-cards/{card_name}", status_code=status.HTTP_200_OK)
+async def provisional_card_name(card_name: str):
+    for card in full_prov_card_results:
+        regex_card = re.sub(" ", "_", card.name)
+        if regex_card.upper() == card_name.upper():
+            return card
+    return{"Data": "Not found"}
 
 
 

@@ -84,7 +84,7 @@ class Card(BaseModel):
     rarity: str
     set: Set
     symbols: list[Symbol]
-    type_attributes: Annotated[Union[CharacterCard, AttackCard, AssetCard, ActionCard,FoundationCard], Field(discriminator='type')]
+    type_attributes: Annotated[Union[CharacterCard, AttackCard, AssetCard, ActionCard, FoundationCard], Field(discriminator='type')] | None = None
 
     class Config:
         case_sensitive = False
@@ -102,7 +102,7 @@ class UpdateCard(BaseModel):
     rarity: Optional[str] = None
     set: Optional[Set] = None
     symbols: Optional[list[Symbol]] = None
-    type_attributes: Optional[str] = None
+    type_attributes: Optional[Annotated[Union[CharacterCard, AttackCard, AssetCard, ActionCard, FoundationCard], Field(discriminator='type')]] = None
 
 
 class Unicode_Parser():
