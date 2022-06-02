@@ -1,5 +1,5 @@
 import json
-from fastapi import FastAPI, Path, Query, status, Response, Depends
+from fastapi import FastAPI, Header, Path, Query, status, Response, Depends
 from fastapi.security import OAuth2PasswordBearer
 from cards import *
 
@@ -114,7 +114,7 @@ async def card_search(
             title = "Symbol", 
             description = "Query cards in database that have 'x' symbol(s). Symbols available: Air, All, Chaos, Death, Earth, Evil, Fire, Good, Infinity, Life, Order, Void, Water"
             ),
-        s: str | None = Query(
+        s: str | None = Header(
             default = None, 
             title = "Set", 
             description = "Query cards in database that are in 'x' set. Sets available: My Hero Academia, Crimson Rampage, Provisional Showdown"
@@ -137,9 +137,9 @@ async def card_search(
                     results.append(card)
 
         if s != None:
-            s = re.sub(" ","_", s)
+            s = re.sub(" ","-", s)
             set = card.set
-            set = re.sub(" ", "_", set)
+            set = re.sub(" ", "-", set)
             if set.upper() == s.upper():
                 results.append(card)
 
@@ -159,15 +159,16 @@ async def card_search(
                     results.append(card)
 
         if s != None:
-            s = re.sub(" ","_", s)
+            s = re.sub(" ","-", s)
             set = card.set
-            set = re.sub(" ", "_", set)
+            set = re.sub(" ", "-", set)
             if set.upper() == s.upper():
                 results.append(card)
     return {"cards": sorted(results, key= lambda x:x.id)}
 
 
 # -- List of all cards
+
 @app.get("/v1/cards", status_code=status.HTTP_200_OK)
 async def card_list():
     return{"count": len(regular_cards), "card_list": sorted(regular_cards, key=lambda x: x.id, )}
