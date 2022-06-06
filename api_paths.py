@@ -1,5 +1,5 @@
 import json
-from fastapi import FastAPI, Header, Path, Query, status, Response, Depends
+from fastapi import FastAPI, Header, Path, Query, status, Response, Depends, Form
 from fastapi.security import OAuth2PasswordBearer
 from cards import *
 
@@ -97,7 +97,7 @@ async def api_introduction():
     return{"Guide": "Here are all of the different get requests you can make using this API."}
 
 # -- Uses queries to find all cards within provided parameters
-@app.get("/v1/", status_code=status.HTTP_200_OK)
+@app.get("/v1/", status_code=status.HTTP_200_OK, tags=["All Cards"])
 async def card_search(
         t: str | None = Query(
             default = None, 
@@ -169,13 +169,13 @@ async def card_search(
 
 # -- List of all cards
 
-@app.get("/v1/cards", status_code=status.HTTP_200_OK)
+@app.get("/v1/cards", status_code=status.HTTP_200_OK, tags=["Normal Cards"])
 async def card_list():
     return{"count": len(regular_cards), "card_list": sorted(regular_cards, key=lambda x: x.id, )}
 
 
 # -- Searches for cards with either the card ID or the card Name
-@app.get("/v1/cards/{card_id}", status_code=status.HTTP_200_OK)
+@app.get("/v1/cards/{card_id}", status_code=status.HTTP_200_OK, tags=["Normal Cards"])
 async def card_id(card_id: int = Path(ge=0)):
     for card in full_card_results:
         if card.id == card_id:
@@ -183,7 +183,7 @@ async def card_id(card_id: int = Path(ge=0)):
 
     return{"Data": "Not found"}
 
-@app.get("/v1/cards/{card_name}")
+@app.get("/v1/cards/{card_name}", tags=["Normal Cards"])
 async def card_name(card_name: str):
     for card in full_card_results:
         regex_card = re.sub(" ", "_", card.name)
@@ -194,19 +194,19 @@ async def card_name(card_name: str):
 
 
 # -- List of all provisional cards
-@app.get("/v1/prov-cards", status_code=status.HTTP_200_OK)
+@app.get("/v1/prov-cards", status_code=status.HTTP_200_OK, tags=["Tournament Prize Cards"])
 async def prov_card_list():
     return{"count": len(provisional_cards), "provisional_card_list": sorted(provisional_cards, key=lambda x: x.id)}
 
 # -- Searches for provisional cards people win at tournaments with either the card ID or the card Name
-@app.get("/v1/prov-cards/{card_id}")
+@app.get("/v1/prov-cards/{card_id}", status_code=status.HTTP_200_OK, tags=["Tournament Prize Cards"])
 async def provisional_card_id(card_id: int = Path(ge=0)):
     for card in full_prov_card_results:
         if card.id == card_id:
             return card
     return{"Data": "Not found"}
 
-@app.get("/v1/prov-cards/{card_name}", status_code=status.HTTP_200_OK)
+@app.get("/v1/prov-cards/{card_name}", status_code=status.HTTP_200_OK, tags=["Tournament Prize Cards"])
 async def provisional_card_name(card_name: str):
     for card in full_prov_card_results:
         regex_card = re.sub(" ", "_", card.name)
