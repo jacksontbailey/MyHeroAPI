@@ -1,4 +1,4 @@
-from security_class import *
+from api_base.security_classes import User, UserInDB
 from fastapi import HTTPException, Depends, FastAPI, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 

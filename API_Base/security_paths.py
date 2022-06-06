@@ -1,18 +1,19 @@
-from security_class import UserInDB, User
-from security_funct import fake_hash_password, fake_users_db, get_current_active_user
-from fastapi import FastAPI, Depends, HTTPException, Form
+from api_base.security_classes import User, UserInDB
+from api_base.security_funct import fake_hash_password, fake_users_db, get_current_active_user
+from fastapi import Depends, HTTPException, Form, APIRouter
 from fastapi.security import OAuth2PasswordRequestForm
 
-app = FastAPI()
+
+router = APIRouter()
 
 
 # -- All of the different get and post request for authentication --
 
-@app.post("/login/")
+@router.post("/login/")
 async def login(username: str = Form(), password: str = Form()):
     return {"username":  username}
 
-@app.post("/token")
+@router.post("/token")
 async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     user_dict = fake_users_db.get(form_data.username)
     
@@ -28,6 +29,7 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
 
 
 
-@app.get("/users/me")
+@router.get("/users/me")
 async def read_users_me(current_user: User = Depends(get_current_active_user)):
     return current_user
+

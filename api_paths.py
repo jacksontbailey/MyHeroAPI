@@ -1,8 +1,10 @@
 import json
-from fastapi import FastAPI, Header, Path, Query, status, Response, Depends, Form
-from fastapi.security import OAuth2PasswordBearer
+from fastapi import FastAPI, Header, Path, Query, status, Response, Depends, Form, HTTPException
+#from fastapi.security import OAuth2PasswordRequestForm
+#from api_base.security_classes import User, UserInDB
+#from api_base.security_funct import fake_hash_password, fake_users_db, get_current_active_user
+from api_base import security_paths
 from cards import *
-
 
 app = FastAPI()
 
@@ -82,19 +84,15 @@ with open(f"./{const.JSON_FILE_URL}") as f:
             full_card_results.append(new_card)
 
 
-
-    
-
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
-
-
 @app.get("/", status_code=status.HTTP_200_OK)
-async def home(token: str = Depends(oauth2_scheme)):
-    return {"token": token, "Greeting": "Welcome to the My Hero Academia Card Game API! This is a fan-made API that any developer is free to use. The only thing I ask is that you give me some credit when you use it, and/or buy me a coffee. This carbon-based lifeform needs Java installed..."}
+async def home():
+    return {"Greeting": "Welcome to the My Hero Academia Card Game API! This is a fan-made API that any developer is free to use. The only thing I ask is that you give me some credit when you use it, and/or buy me a coffee. This carbon-based lifeform needs Java installed..."}
 
 @app.get("/v1", status_code=status.HTTP_200_OK)
 async def api_introduction():
     return{"Guide": "Here are all of the different get requests you can make using this API."}
+
+app.include_router(security_paths.router)
 
 # -- Uses queries to find all cards within provided parameters
 @app.get("/v1/", status_code=status.HTTP_200_OK, tags=["All Cards"])
@@ -213,7 +211,6 @@ async def provisional_card_name(card_name: str):
         if regex_card.upper() == card_name.upper():
             return card
     return{"Data": "Not found"}
-
 
 
 # / root with api explaination
