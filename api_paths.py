@@ -1,10 +1,10 @@
 import json
-from fastapi import FastAPI, Header, Path, Query, status, Response, Depends, Form, HTTPException
-#from fastapi.security import OAuth2PasswordRequestForm
-#from api_base.security_classes import User, UserInDB
-#from api_base.security_funct import fake_hash_password, fake_users_db, get_current_active_user
+from fastapi import FastAPI, Header, Path, Query, status
 from api_base import security_paths
+from card_page.constants import ORIGINS
 from cards import *
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
 
@@ -82,6 +82,15 @@ with open(f"./{const.JSON_FILE_URL}") as f:
 
         else:
             full_card_results.append(new_card)
+
+@app.add_middleware(
+    CORSMiddleware,
+    allow_origins = ORIGINS,
+    allow_credentials = True,
+    allow_methods = ["*"],
+    allow_headers = ["*"],
+)
+
 
 
 @app.get("/", status_code=status.HTTP_200_OK)

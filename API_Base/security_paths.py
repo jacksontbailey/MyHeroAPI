@@ -1,10 +1,9 @@
 from datetime import timedelta
 from .security_classes import Token, User
-from .security_consts import ACCESS_TOKEN_EXPIRE_MINUTES
+from .security_consts import ACCESS_TOKEN_EXPIRE_MINUTES, ORIGINS
 from .security_funct import authenticate_user, create_access_token, fake_users_db, get_current_active_user
 from fastapi import Depends, HTTPException, Form, APIRouter, status
 from fastapi.security import OAuth2PasswordRequestForm
-
 
 router = APIRouter()
 

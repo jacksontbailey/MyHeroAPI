@@ -18,3 +18,11 @@ SPACE_DIGIT = r"((^ \d)|(^ \d ))"
 SPACE_START_END = r"((^ )|( $))"
 RELEASE_SET_PARSER = r"((: )(\w+|\s)+)$"
 RELEASE_SET_STRING = r"(\w)(\w+|\s)+$"
+
+
+# -- Middleware
+
+ORIGINS = [
+    "http://localhost",
+    "http://localhost:8080",
+]
