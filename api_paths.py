@@ -1,6 +1,6 @@
 import json
 from fastapi import FastAPI, Header, Path, Query, status
-from api_base import security_paths
+from API_Base import security_paths
 from card_page.constants import ORIGINS
 from cards import *
 from fastapi.middleware.cors import CORSMiddleware
