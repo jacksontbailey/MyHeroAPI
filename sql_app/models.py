@@ -39,6 +39,10 @@ class Symbol(Base):
 
     owner = relationship("Card", back_populates="symbols")
 
+class Type(Base):
+    __tablename__ = "types"
+    type = Column(String, primary_key = True, index = True)
+
 class Character_Type(Base):
     __tablename__ = "character"
 
