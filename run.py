@@ -1,4 +1,4 @@
-import json
+import json, os
 from os import path
 from fastapi import FastAPI
 
@@ -6,7 +6,11 @@ import card_page.constants as const
 from reusable_functions import *
 from card_page.data_collector import Card_Page
 from cards import Unicode_Parser
+from dotenv import load_dotenv
 
+load_dotenv()
+
+API_KEY = os.getenv("PROJECT_KEY")
 app = FastAPI()
 
 def run_test():
