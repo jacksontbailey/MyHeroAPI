@@ -3,9 +3,9 @@ from os import path
 from fastapi import FastAPI
 
 import card_page.constants as const
-from reusable_functions import *
+from card_page.reusable_functions import *
 from card_page.data_collector import Card_Page
-from cards import Unicode_Parser
+from card_page.card_classes import Unicode_Parser
 from dotenv import load_dotenv
 
 load_dotenv()

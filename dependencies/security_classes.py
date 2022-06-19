@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-
+from typing import List, Union
 
 class User(BaseModel):
     username: str
@@ -16,3 +16,4 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     username: str | None = None
+    scopes: List[str] = []

@@ -1,13 +1,16 @@
 from datetime import datetime, timedelta
 from .security_classes import *
 from .security_consts import *
-from fastapi import HTTPException, Depends, status
-from fastapi.security import OAuth2PasswordBearer
+from fastapi import HTTPException, Depends, status, Security
+from fastapi.security import OAuth2PasswordBearer, SecurityScopes
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+oauth2_scheme = OAuth2PasswordBearer(
+    tokenUrl="token",
+    scopes={"me": "Read information about the current user.", "cards": "Read cards."},
+    )
 
 
 fake_users_db = {
@@ -64,11 +67,16 @@ def get_user(db, username: str):
         return UserInDB(**user_dict)
 
 
-async def get_current_user(token: str = Depends(oauth2_scheme)):
+async def get_current_user(security_scopes: SecurityScopes, token: str = Depends(oauth2_scheme)):
+    if security_scopes.scopes:
+        authenticate_value = f'Bearer scope="{security_scopes.scope_str}"'
+    else:
+        authenticate_value = f"Bearer"
+    
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
-        headers={"WWW-Authenticate": "Bearer"}
+        headers={"WWW-Authenticate": authenticate_value},
     )
 
     try:
@@ -83,10 +91,19 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
     user = get_user(fake_users_db, username= token_data.username)
     if user is None:
         raise credentials_exception
+    
+    for scope in security_scopes.scopes:
+        if scope not in token_data.scopes:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Not enough permissions",
+                headers={"WWW-Authenticate": authenticate_value},
+            )
+    
     return user
 
 
-async def get_current_active_user(current_user: User = Depends(get_current_user)):
+async def get_current_active_user(current_user: User = Security(get_current_user, scopes=['me'])):
     if current_user.disabled:
         raise HTTPException(status_code = 400, detail = "Inactive user")
     return current_user

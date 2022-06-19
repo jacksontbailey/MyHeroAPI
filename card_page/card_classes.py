@@ -26,8 +26,6 @@ class Zone(str, Enum):
     high = "High"
     low = "Low"
     mid = "Mid"
-    class Config:
-        orm_mode = True
 
 class Symbol(str, Enum):
     air = "Air"
@@ -44,23 +42,17 @@ class Symbol(str, Enum):
     void = "Void"
     water = "Water"
 
-    class Config:
-        orm_mode = True
 
 class Set(str, Enum):
     s1 = "My Hero Academia"
     s2 = "Crimson Rampage"
     special = "Provisional Showdown"
-    class Config:
-        orm_mode = True
 
 class CharacterCard(BaseModel):
     max_health: int
     starting_hand_size: int
     type: Literal['Character']
 
-    class Config:
-        orm_mode = True
 
 class AttackCard(BaseModel):
     ability: str | None
@@ -70,23 +62,14 @@ class AttackCard(BaseModel):
     speed: int
     type: Literal['Attack']
 
-    class Config:
-        orm_mode = True
-
 class FoundationCard(BaseModel):
     type: Literal['Foundation']
-    class Config:
-        orm_mode = True
 
 class ActionCard(BaseModel):
     type: Literal['Action']
-    class Config:
-        orm_mode = True
 
 class AssetCard(BaseModel):
     type: Literal['Asset']
-    class Config:
-        orm_mode = True
 
 
 class AllCards(BaseModel):
@@ -114,8 +97,7 @@ class Card(BaseModel):
         case_sensitive = False
         orm_mode = True
 
-class CreateCard(Card):
-    pass
+
 class UpdateCard(BaseModel):
     block_modifier: Optional[int] = None
     block_zone: Optional[str] = None
