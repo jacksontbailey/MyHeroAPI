@@ -105,17 +105,13 @@ with open(f"./{const.JSON_FILE_URL}") as f:
 #)
 
 
-@router.get("/", status_code=status.HTTP_200_OK)
-async def home():
-    return {"Greeting": "Welcome to the My Hero Academia Card Game API! This is a fan-made API that any developer is free to use. The only thing I ask is that you give me some credit when you use it, and/or buy me a coffee. This carbon-based lifeform needs Java installed..."}
-
-@router.get("/v1", status_code=status.HTTP_200_OK)
+@router.get("", status_code=status.HTTP_200_OK)
 async def api_introduction():
     return{"Guide": "Here are all of the different get requests you can make using this API."}
 
 
 # -- Uses queries to find all cards within provided parameters
-@router.get("/v1/users/me/", status_code=status.HTTP_200_OK, tags=["All Cards"])
+@router.get("/", status_code=status.HTTP_200_OK, tags=["All Cards"])
 async def card_search(
         t: str | None = Query(
             default = None, 
@@ -192,13 +188,13 @@ async def card_search(
 #    return c
 
 # -- List of all cards
-@router.get("/v1/users/me/cards", status_code=status.HTTP_200_OK, tags=["Normal Cards"])
+@router.get("/cards", status_code=status.HTTP_200_OK, tags=["Normal Cards"])
 async def card_list():
     return{"count": len(regular_cards), "card_list": sorted(regular_cards, key=lambda x: x.id, )}
 
 
 # -- Searches for cards with either the card ID or the card Name
-@router.get("/v1/users/me/cards/{card_id}", status_code=status.HTTP_200_OK, tags=["Normal Cards"])
+@router.get("/cards/{card_id}", status_code=status.HTTP_200_OK, tags=["Normal Cards"])
 async def card_id(card_id: int = Path(ge=0)):
     for card in full_card_results:
         if card.id == card_id:
@@ -206,7 +202,7 @@ async def card_id(card_id: int = Path(ge=0)):
 
     return JSONResponse({"message": "card not found"}, status_code= status.HTTP_404_NOT_FOUND)
 
-@router.get("/v1/users/me/cards/{card_name}", tags=["Normal Cards"])
+@router.get("/cards/{card_name}", tags=["Normal Cards"])
 async def card_name(card_name: str):
     for card in full_card_results:
         regex_card = re.sub(" ", "_", card.name)
@@ -223,29 +219,23 @@ async def card_name(card_name: str):
 #    return c
 
 # -- List of all provisional cards
-@router.get("/v1/users/me/prov-cards", status_code=status.HTTP_200_OK, tags=["Tournament Prize Cards"])
+@router.get("/prov-cards", status_code=status.HTTP_200_OK, tags=["Tournament Prize Cards"])
 async def prov_card_list():
     return{"count": len(provisional_cards), "provisional_card_list": sorted(provisional_cards, key=lambda x: x.id)}
 
 
 # -- Searches for provisional cards people win at tournaments with either the card ID or the card Name
-@router.get("/v1/users/me/prov-cards/{card_id}", status_code=status.HTTP_200_OK, tags=["Tournament Prize Cards"])
+@router.get("/prov-cards/{card_id}", status_code=status.HTTP_200_OK, tags=["Tournament Prize Cards"])
 async def provisional_card_id(card_id: int = Path(ge=0)):
     for card in full_prov_card_results:
         if card.id == card_id:
             return card
     return{"Data": "Not found"}
 
-@router.get("/v1/users/me/prov-cards/{card_name}", status_code=status.HTTP_200_OK, tags=["Tournament Prize Cards"])
-async def provisional_card_name(card_name: str, current_user: User = Security(get_current_active_user, scopes=["cards"])):
+@router.get("/prov-cards/{card_name}", status_code=status.HTTP_200_OK, tags=["Tournament Prize Cards"])
+async def provisional_card_name(card_name: str):
     for card in full_prov_card_results:
         regex_card = re.sub(" ", "_", card.name)
         if regex_card.upper() == card_name.upper():
             return card
     return{"Data": "Not found"}
-
-# / root with api explaination
-# /card-names
-# /cards-by-index/{index}
-
-# -- uvicorn routers.card_paths:app --reload
