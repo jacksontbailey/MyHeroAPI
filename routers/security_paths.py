@@ -7,7 +7,8 @@ from fastapi.security import OAuth2PasswordRequestForm
 
 router = APIRouter(
     prefix="/users",
-    tags=["security"]
+    tags=["security"],
+    dependencies=[Depends(get_current_active_user)]
 )
 
 
@@ -29,15 +30,14 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
         )
     access_token_expires = timedelta(minutes = ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
-        data = {"sub": user.username, "scopes": form_data.scopes},
-        expires_delta = access_token_expires,
+        data = {"sub": user.username}, expires_delta = access_token_expires
     )
     
     return {"access_token": access_token, "token_type": "bearer"}
 
 
 
-@router.get("/me", response_model = User)
+@router.get("/me/", response_model = User)
 async def read_current_user(current_user: User = Depends(get_current_active_user)):
     return current_user
 

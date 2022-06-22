@@ -7,7 +7,7 @@ from dependencies.security_classes import User
 from dependencies.security_funct import get_current_active_user
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from deta import Deta
+#from deta import Deta
 
 
 #deta = Deta() # configure your Deta project
@@ -16,7 +16,7 @@ from deta import Deta
 
 router = APIRouter(
     prefix = "/v1",
-    dependencies=[Depends(get_current_active_user)],
+    dependencies= [Depends(get_current_active_user)]
 
 )
 

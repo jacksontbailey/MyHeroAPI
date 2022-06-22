@@ -5,7 +5,7 @@ WORK_DRIVER = r"C:\Users\jbailey\Selenium\chromedriver.exe"
 HOME_FOLDER = r"C:\Program Files (x86)\chromedriver.exe"
 
 
-JSON_FILE_URL = r"MHAcards.json"
+JSON_FILE_URL = r"card_page\MHAcards.json"
 
 # -- Regex Expressions
 BASE_URL_REGEX = r"(product\/)\d+\/(universus-universus-my-hero-academia)((?!((\-.+)+)((booster-(box)|(pack))|pack|box|promo|judge)))((\-.+)+)((?<!\-xr)$)((?<!\-xsr)$)"
