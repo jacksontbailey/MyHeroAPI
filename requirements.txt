@@ -1,5 +1,6 @@
+cryptography
 fastapi >= 0.77.0
+passlib[bcrypt]
 pydantic >= 1.9.0
 python-jose[cryptography]
-cryptography
-passlib[bcrypt]
+python-multipart

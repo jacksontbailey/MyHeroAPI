@@ -5,11 +5,7 @@ from dependencies.security_funct import authenticate_user, create_access_token, 
 from fastapi import Depends, HTTPException, Form, APIRouter, status
 from fastapi.security import OAuth2PasswordRequestForm
 
-router = APIRouter(
-    prefix="/users",
-    tags=["security"],
-    dependencies=[Depends(get_current_active_user)]
-)
+router = APIRouter()
 
 
 # -- All of the different get and post request for authentication --

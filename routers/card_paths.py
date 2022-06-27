@@ -14,11 +14,7 @@ from fastapi.responses import JSONResponse
 #cards = deta.Base('regular_cards')  # access your DB
 #prov_cards = deta.Base('provisional_cards')
 
-router = APIRouter(
-    prefix = "/v1",
-    dependencies= [Depends(get_current_active_user)]
-
-)
+router = APIRouter()
 
 
 with open(f"./{const.JSON_FILE_URL}") as f:

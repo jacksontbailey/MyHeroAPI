@@ -12,13 +12,22 @@ app = FastAPI()
 my_middleware = LowerCaseMiddleware()
 app.middleware("http")(my_middleware)
 
-app.include_router(security_paths.router)
-app.include_router(card_paths.router)
+app.include_router(
+    security_paths.router,
+    prefix="/users",
+    tags=["security"],
+)
+
+app.include_router(
+    card_paths.router,
+    prefix = "/v1",
+    dependencies= [Depends(get_current_active_user)]
+)
 app.include_router(
     admin.router,
     prefix="/admin",
     tags=["admin"],
-    dependencies=[Security(get_current_active_user)],
+    dependencies=[Depends(get_current_active_user)],
     responses={418: {"description": "I'm a teapot"}},
 )
 

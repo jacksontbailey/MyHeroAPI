@@ -3,12 +3,11 @@ from datetime import datetime, timedelta
 from pydantic import ValidationError
 from .security_classes import *
 from .security_consts import *
-from fastapi import HTTPException, Depends, status, Security
-from fastapi.security import OAuth2PasswordBearer, SecurityScopes
+from fastapi import HTTPException, Depends, status
+from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
-from passlib.context import CryptContext
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+## https://www.fastapitutorial.com/blog/password-hashing-fastapi/
 oauth2_scheme = OAuth2PasswordBearer(
     tokenUrl="token"
     )
@@ -42,12 +41,6 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
 
 # -- Password Functions
 
-def verify_password(plain_password, hashed_password):
-    return pwd_context.verify(plain_password, hashed_password)
-
-def get_password_hash(password):
-    return pwd_context.hash(password)
-
 
 # -- Username Functions
 
@@ -56,7 +49,7 @@ def authenticate_user(fake_db, username: str, password: str):
     if not user:
         return False
     
-    if not verify_password(password, get_password_hash(user.hashed_password)):
+    if not Hasher.verify_password(password, Hasher.get_password_hash(password)):
         return False
     
     return user
@@ -88,7 +81,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
     return user
 
 
-async def get_current_active_user(current_user: User = Security(get_current_user, scopes=['me', 'cards'])):
+async def get_current_active_user(current_user: User = Depends(get_current_user)):
     if current_user.disabled:
         raise HTTPException(status_code = 400, detail = "Inactive user")
     return current_user
