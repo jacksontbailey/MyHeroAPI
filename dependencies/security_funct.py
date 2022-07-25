@@ -9,7 +9,7 @@ from jose import JWTError, jwt
 
 ## https://www.fastapitutorial.com/blog/password-hashing-fastapi/
 oauth2_scheme = OAuth2PasswordBearer(
-    tokenUrl="token"
+    tokenUrl="/token"
     )
 
 

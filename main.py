@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from dependencies.security_funct import get_current_active_user 
 from internal import admin
-from routers import security_paths, card_paths
+from routers import security_paths, card_paths, token_paths
 from card_page.constants import *
 from card_page.card_classes import *
 
@@ -23,6 +23,12 @@ app.include_router(
     prefix = "/v1",
     dependencies= [Depends(get_current_active_user)]
 )
+
+app.include_router(
+    token_paths.router,
+    prefix = "/token",
+)
+
 app.include_router(
     admin.router,
     prefix="/admin",
