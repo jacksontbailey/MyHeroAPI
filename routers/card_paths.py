@@ -1,11 +1,6 @@
 import json
-from fastapi import APIRouter, Depends, Header, Path, Query, status, Security
-from routers import security_paths
-from card_page.constants import ORIGINS
+from fastapi import APIRouter, Header, Path, Query, status
 from card_page.card_classes import *
-from dependencies.security_classes import User
-from dependencies.security_funct import get_current_active_user
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 #from deta import Deta
 

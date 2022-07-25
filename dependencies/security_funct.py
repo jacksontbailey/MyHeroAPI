@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta
 
-from pydantic import ValidationError
 from .security_classes import *
 from .security_consts import *
 from fastapi import HTTPException, Depends, status
