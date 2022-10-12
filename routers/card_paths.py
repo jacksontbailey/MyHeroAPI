@@ -1,15 +1,22 @@
 import json
-from fastapi import APIRouter, Header, Path, Query, status
+import database as db
+from fastapi import APIRouter, HTTPException, Header, Path, Query, status
 from card_page.card_classes import *
 from fastapi.responses import JSONResponse
-#from deta import Deta
 
 
-#deta = Deta() # configure your Deta project
-#cards = deta.Base('regular_cards')  # access your DB
-#prov_cards = deta.Base('provisional_cards')
 
 router = APIRouter()
+
+
+from database import (
+    fetch_all_cards,
+    fetch_card_by_id,
+    fetch_card_by_name,
+    create_card,
+    update_card,
+    remove_card
+)
 
 
 with open(f"./{const.JSON_FILE_URL}") as f:
@@ -47,6 +54,7 @@ with open(f"./{const.JSON_FILE_URL}") as f:
                     check=c["card_check"],
                     description=c["card_description"],
                     id=c["card_release_number"],
+                    image_url=c["card_image"],
                     name=c["card_name"],
                     play_difficulty=c['card_difficulty'],
                     rarity=c["card_rarity"],
@@ -86,14 +94,6 @@ with open(f"./{const.JSON_FILE_URL}") as f:
 
         else:
             full_card_results.append(new_card)
-
-#router.add_middleware(
-#    CORSMiddleware,
-#    allow_origins = ORIGINS,
-#    allow_credentials = True,
-#    allow_methods = ["*"],
-#    allow_headers = ["*"],
-#)
 
 
 @router.get("", status_code=status.HTTP_200_OK)
@@ -172,61 +172,35 @@ async def card_search(
     return {"cards": sorted(results, key= lambda x:x.id)}
 
 
-# -- Creates new provisional cards
-#@router.post("/v1/users/me/cards", status_code=status.HTTP_201_CREATED, tags=["Normal Cards"])
-#async def create_card(card: Card):
-#    c = cards.put(card.dict())
-#    return c
-
-# -- List of all cards
 @router.get("/cards", status_code=status.HTTP_200_OK, tags=["Normal Cards"])
 async def card_list():
-    return{"count": len(regular_cards), "card_list": sorted(regular_cards, key=lambda x: x.id, )}
+    response = await fetch_all_cards()
+    if response:
+        return response
+    raise HTTPException(
+        status_code= status.HTTP_404_NOT_FOUND,
+        detail="There is no card in our database with that name",
+    )
 
 
-# -- Searches for cards with either the card ID or the card Name
-@router.get("/cards/{card_id}", status_code=status.HTTP_200_OK, tags=["Normal Cards"])
-async def card_id(card_id: int = Path(ge=0)):
-    for card in full_card_results:
-        if card.id == card_id:
-            return card
 
-    return JSONResponse({"message": "card not found"}, status_code= status.HTTP_404_NOT_FOUND)
+# -- Searches for cards with the card Name or ID
+@router.get("/cards/{id}", status_code=status.HTTP_200_OK, tags=["Normal Cards"], response_model=Card)
+async def card_name(id: int | str):
+    response = None
 
-@router.get("/cards/{card_name}", tags=["Normal Cards"])
-async def card_name(card_name: str):
-    for card in full_card_results:
-        regex_card = re.sub(" ", "_", card.name)
-        print(regex_card)
-        if regex_card.upper() == card_name.upper():
-            return card
-    return{"Data": "Not found"}
+    if type(id) == int:
+        response = await fetch_card_by_id(id)
+    elif type(id) == str:
+        card = id.replace("_", " ")
+        response = await fetch_card_by_name(card)
+    else:
+        return("Invalid Type")
 
+    if response:
+        return response
 
-# -- Creates new provisional cards
-#@router.post("/v1/users/me/prov-cards", status_code=status.HTTP_201_CREATED, tags=["Tournament Prize Cards"])
-#async def create_prov_card(card: Card):
-#    c = prov_cards.put(card.dict())
-#    return c
-
-# -- List of all provisional cards
-@router.get("/prov-cards", status_code=status.HTTP_200_OK, tags=["Tournament Prize Cards"])
-async def prov_card_list():
-    return{"count": len(provisional_cards), "provisional_card_list": sorted(provisional_cards, key=lambda x: x.id)}
-
-
-# -- Searches for provisional cards people win at tournaments with either the card ID or the card Name
-@router.get("/prov-cards/{card_id}", status_code=status.HTTP_200_OK, tags=["Tournament Prize Cards"])
-async def provisional_card_id(card_id: int = Path(ge=0)):
-    for card in full_prov_card_results:
-        if card.id == card_id:
-            return card
-    return{"Data": "Not found"}
-
-@router.get("/prov-cards/{card_name}", status_code=status.HTTP_200_OK, tags=["Tournament Prize Cards"])
-async def provisional_card_name(card_name: str):
-    for card in full_prov_card_results:
-        regex_card = re.sub(" ", "_", card.name)
-        if regex_card.upper() == card_name.upper():
-            return card
-    return{"Data": "Not found"}
+    raise HTTPException(
+        status_code= status.HTTP_404_NOT_FOUND,
+        detail="There is no card in our database with that name",
+    )

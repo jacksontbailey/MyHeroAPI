@@ -56,7 +56,7 @@ class CharacterCard(BaseModel):
 
 class AttackCard(BaseModel):
     ability: str | None
-    attack_keywords: list[str]
+    attack_keywords: list[str] | None
     attack_zone: Zone
     damage: int
     speed: int

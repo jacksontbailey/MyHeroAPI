@@ -9,6 +9,7 @@ from card_page.card_classes import *
 
 app = FastAPI()
 
+
 my_middleware = LowerCaseMiddleware()
 app.middleware("http")(my_middleware)
 
