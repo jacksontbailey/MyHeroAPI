@@ -11,6 +11,7 @@ router = APIRouter()
 
 from database import (
     fetch_all_cards,
+    fetch_all_matches,
     fetch_card_by_id,
     fetch_card_by_name,
     create_card,
@@ -114,7 +115,7 @@ async def card_search(
             title = "Rarity", 
             description = "Query cards in database that have 'x' rarity. Rarities available: Common, Uncommon, Rare, Ultra Rare, Starter Exclusive, Promo, Secret Rare"
             ), 
-        sm: str  | None = Query(
+        sm: str | None = Query(
             default = None, 
             title = "Symbol", 
             description = "Query cards in database that have 'x' symbol(s). Symbols available: Air, All, Chaos, Death, Earth, Evil, Fire, Good, Infinity, Life, Order, Void, Water"
@@ -123,53 +124,51 @@ async def card_search(
             default = None, 
             title = "Set", 
             description = "Query cards in database that are in 'x' set. Sets available: My Hero Academia, Crimson Rampage, Provisional Showdown"
-            )):
+            ),
+        limit: int = 10  
+            ):
     
-    results = [] 
-
-    for card in full_card_results:
-        if t != None:
-            if card.type_attributes["type"].upper() == t.upper():
-                results.append(card)
-        
-        if r != None:            
-            if card.rarity.upper() == r.upper():
-                results.append(card)
-        
-        if sm != None:
-            for symbol in card.symbols:
-                if symbol.upper() == sm.upper():
-                    results.append(card)
-
-        if s != None:
-            s = re.sub(" ","-", s)
-            set = card.set
-            set = re.sub(" ", "-", set)
-            if set.upper() == s.upper():
-                results.append(card)
-
     
-    for card in full_prov_card_results:    
-        if t != None:
-            if card.type_attributes["type"].upper() == t.upper():
-                results.append(card)
-        
-        if r != None:            
-            if card.rarity.upper() == r.upper():
-                results.append(card)
-        
-        if sm != None:
-            for symbol in card.symbols:
-                if symbol.upper() == sm.upper():
-                    results.append(card)
+    search_queries = {}
+    if t != None:
+        t_items = t.split(", ")
+        key= 'type_attributes.type'
+        value = {'$in': t_items}
+        search_queries[key] = value
+    
+    if r != None:
+        r_items = r.split(", ")
+        key = 'rarity'
+        value = {'$in': r_items}
+        search_queries[key] = value
+    
+    if sm != None:
+        sm_items = sm.split(", ")
+        key = 'symbols'
+        value = {'$in': sm_items}
+        search_queries[key] = value
 
-        if s != None:
-            s = re.sub(" ","-", s)
-            set = card.set
-            set = re.sub(" ", "-", set)
-            if set.upper() == s.upper():
-                results.append(card)
-    return {"cards": sorted(results, key= lambda x:x.id)}
+    if s != None:
+        s_items = s.split(", ")
+        key = 'set'
+        value = {'$in': s_items}
+        search_queries[key] = value
+          
+    
+    results = None
+    if len(search_queries)>0:
+        results = await fetch_all_matches(queries=search_queries, amount_limited=limit)
+    else:
+        print("No search queries were provided.")
+    
+    
+    if results:
+        print("results returned!!!")
+        return {"cards": results}
+    raise HTTPException(
+        status_code= status.HTTP_404_NOT_FOUND,
+        detail="There is no card in our database with that name",
+    )
 
 
 @router.get("/cards", status_code=status.HTTP_200_OK, tags=["Normal Cards"])
