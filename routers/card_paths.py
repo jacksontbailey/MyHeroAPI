@@ -1,8 +1,8 @@
 import json
-import database as db
-from fastapi import APIRouter, HTTPException, Header, Path, Query, status
+import database
+
+from fastapi import APIRouter, HTTPException, Header, Query, status
 from card_page.card_classes import *
-from fastapi.responses import JSONResponse
 
 
 
@@ -18,83 +18,6 @@ from database import (
     update_card,
     remove_card
 )
-
-
-with open(f"./{const.JSON_FILE_URL}") as f:
-    card_database = json.load(f)
-    u = Unicode_Parser()
-
-    regular_cards = []
-    provisional_cards = []
-    full_card_results = []
-    full_prov_card_results = []
-    #my_middleware = LowerCaseMiddleware()
-    #router.middleware("http")(my_middleware)
-
-
-    for val, card in enumerate(card_database):
-        c = card_database[val]
-        ct = card.get("card_type")
-        cs = card.get("set_name")
-
-        if cs == "Provisional Showdown":
-            single_card_basic_info = AllCards(id=c["card_release_number"], name=c['card_name'], url=f"localhost:8000/v1/prov-cards/{c['card_release_number']}")
-            provisional_cards.append(single_card_basic_info)
-        else:
-            single_card_basic_info = AllCards(id=c["card_release_number"], name=c['card_name'], url=f"localhost:8000/v1/cards/{c['card_release_number']}")
-            regular_cards.append(single_card_basic_info)
-
-
-
-
-        # -- Parses cards by their types since each type has a different amount of 
-        # -- attributes that it paseses in.  
-        new_card = Card(
-                    block_modifier= c['card_block_modifier'],
-                    block_zone=c['card_block_zone'],
-                    check=c["card_check"],
-                    description=c["card_description"],
-                    id=c["card_release_number"],
-                    image_url=c["card_image"],
-                    name=c["card_name"],
-                    play_difficulty=c['card_difficulty'],
-                    rarity=c["card_rarity"],
-                    set=c["set_name"],
-                    symbols=c["card_resource_symbols"],
-                )
-        
-        if ct == "Attack":
-                new_card.type_attributes = {
-                                "attack_keywords": c["card_keywords"],
-                                "attack_zone": c['card_attack_zone'],
-                                "damage": c["card_attack_damage"],
-                                "speed": c["card_attack_speed"],
-                                "type": ct
-                                }
-
-        elif ct == "Character":
-            new_card.type_attributes = {
-                                "max_health": c["card_vitality"],
-                                "starting_hand_size": c["card_hand_size"],
-                                "type": ct,
-                                }
-
-            new_card.keyword = c["card_keywords"]
-
-        elif (ct == "Action") or (ct == "Asset") or (ct == "Foundation"):
-                new_card.type_attributes = {"type": ct}
-                new_card.keyword=c["card_keywords"]
-
-        else:
-            print("Card not in types")
-
-
-        # -- Determines if the card is a provisional card or normal card (provisional cards are ones that are specially released for tournament participants but aren't in any set list)
-        if cs == "Provisional Showdown":
-            full_prov_card_results.append(new_card)
-
-        else:
-            full_card_results.append(new_card)
 
 
 @router.get("", status_code=status.HTTP_200_OK)
@@ -125,8 +48,12 @@ async def card_search(
             title = "Set", 
             description = "Query cards in database that are in 'x' set. Sets available: My Hero Academia, Crimson Rampage, Provisional Showdown"
             ),
-        limit: int = 10  
-            ):
+        limit: int = Header(
+            default = 10,
+            title = "Limit",
+            description = "Amount of cards you get back from each search"
+            )
+        ):
     
     
     search_queries = {}
@@ -163,8 +90,7 @@ async def card_search(
     
     
     if results:
-        print("results returned!!!")
-        return {"cards": results}
+        return({'count': results[0], 'cards': results[1]})
     raise HTTPException(
         status_code= status.HTTP_404_NOT_FOUND,
         detail="There is no card in our database with that name",
@@ -175,7 +101,7 @@ async def card_search(
 async def card_list():
     response = await fetch_all_cards()
     if response:
-        return response
+        return({'count': response[0], 'cards': response[1]})
     raise HTTPException(
         status_code= status.HTTP_404_NOT_FOUND,
         detail="There is no card in our database with that name",

@@ -32,7 +32,7 @@ async def fetch_all_cards():
     async for card in cursor:
         cards.append(Card(**card))
     
-    return cards
+    return(len(cards), cards)
 
 
 async def fetch_all_matches(queries, amount_limited):
@@ -41,7 +41,7 @@ async def fetch_all_matches(queries, amount_limited):
     async for card in cursor:
         cards.append(Card(**card))
     
-    return cards
+    return(len(cards), cards)
 
 
 async def create_card(card):
