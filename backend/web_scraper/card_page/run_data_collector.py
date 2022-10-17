@@ -5,7 +5,7 @@ from fastapi import FastAPI
 import card_page.constants as const
 from card_page.reusable_functions import *
 from card_page.data_collector import Card_Page
-from card_page.card_classes import Unicode_Parser
+from backend.schemas.card_classes import Unicode_Parser
 from dotenv import load_dotenv
 
 load_dotenv()

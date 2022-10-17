@@ -1,4 +1,4 @@
-from card_page.card_classes import Card
+from backend.schemas.card_classes import Card
 from pymongo.collation import Collation
 
 #MongoDB driver
