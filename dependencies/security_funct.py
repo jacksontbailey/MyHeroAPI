@@ -19,7 +19,14 @@ fake_users_db = {
         "email": "johndoe@example.com",
         "hashed_password": "secret",
         "disabled": False,
-    }
+    },
+    "poptart": {
+        "username": "poptart",
+        "full_name": "poptart Doe",
+        "email": "poptart@example.com",
+        "hashed_password": "secret3",
+        "disabled": False,
+    }    
 }
 
 # -- Token Authentication Functions
@@ -33,9 +40,22 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
     if expires_delta:
         expire = datetime.utcnow() + expires_delta
     else:
-        expire = datetime.utcnow() + timedelta(minutes=15)
+        expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    encoded_jwt = jwt.encode(to_encode, settings.JWT_SECRET_KEY, algorithm=ALGORITHM)
+    
+    return encoded_jwt
+
+def create_refresh_token(data: dict, expires_delta: timedelta | None = None):
+    to_encode = data.copy()
+    if expires_delta is not None:
+        expires = datetime.utcnow() + expires_delta
+    else:
+        expires = datetime.utcnow() + timedelta(minutes=settings.REFRESH_TOKEN_EXPIRE_MINUTES)
+    
+    to_encode.update({"exp": expires})
+    encoded_jwt = jwt.encode(to_encode, settings.JWT_REFRESH_SECRET_KEY, ALGORITHM)
+    
     return encoded_jwt
 
 # -- Password Functions
@@ -48,7 +68,7 @@ def authenticate_user(fake_db, username: str, password: str):
     if not user:
         return False
     
-    if not Hasher.verify_password(password, Hasher.get_password_hash(password)):
+    if not Hasher.verify_password(user.hashed_password, Hasher.get_password_hash(password)):
         return False
     
     return user
@@ -67,7 +87,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        payload = jwt.decode(token, settings.JWT_SECRET_KEY, algorithms=[ALGORITHM])
         username: str = payload.get("sub")
         if username is None:
             raise credentials_exception

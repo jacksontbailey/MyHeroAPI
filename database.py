@@ -2,9 +2,10 @@ from card_page.card_classes import Card
 from pymongo.collation import Collation
 
 #MongoDB driver
-import motor.motor_asyncio
+from motor.motor_asyncio import AsyncIOMotorClient
 
-client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://localhost:27017')
+
+client = AsyncIOMotorClient('mongodb://localhost:27017')
 database = client.carddb
 collection = database.card
 

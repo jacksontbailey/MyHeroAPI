@@ -1,13 +1,23 @@
 from fastapi import Depends, FastAPI, Security, status
 from fastapi.middleware.cors import CORSMiddleware
+from motor.motor_asyncio import AsyncIOMotorClient
+from beanie import init_beanie
+
 
 from dependencies.security_funct import get_current_active_user 
+from dependencies.security_classes import settings
 from internal import admin
 from routers import security_paths, card_paths, token_paths
 from card_page.constants import *
 from card_page.card_classes import *
 
-app = FastAPI()
+
+
+#https://www.freecodecamp.org/news/how-to-add-jwt-authentication-in-fastapi/
+app = FastAPI(
+    title= settings.PROJECT_NAME,
+    openapi_url= f"{settings.API_V1_STR}/openapi.json"
+)
 
 
 my_middleware = LowerCaseMiddleware()
@@ -45,6 +55,23 @@ app.add_middleware(
     allow_methods = ["*"],
     allow_headers = ["*"],
 )
+
+@app.on_event("startup")
+async def app_init():
+    """
+        initialize crucial application services
+    """ 
+
+    db_client = AsyncIOMotorClient(settings.MONGO_CONNECTION_STRING).carddb
+
+    await init_beanie(
+        database=db_client,
+        document_models=[]
+    )
+
+#@app.post('/signup', summary="Create new user", response_model=UserOut)
+#async def create_user(data: UserAuth):
+#    user = db.get(data.email, None)
 
 @app.get("/", status_code=status.HTTP_200_OK)
 async def home():
