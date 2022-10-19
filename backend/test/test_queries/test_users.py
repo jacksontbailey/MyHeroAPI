@@ -1,3 +1,4 @@
+import json
 import os
 from pymongo import MongoClient
 from pathlib import Path
@@ -15,4 +16,14 @@ local_uri = "mongodb://localhost:27017"
 client = MongoClient(local_uri)
 db = client['carddb']
 user_coll = db['user']
-card_coll = db['card']
+
+def test_create_user(client):
+    data = {"username":"testuser", "full_name":"Test User", "email":"testuser@nofoobar.com","password":"testing", "disabled": False}
+    response = client.insert_one(data).inserted_id
+    assert response.json()["email"] == "testuser@nofoobar.com"
+    assert response.json()["is_active"] == True
+
+
+test_create_user(client=user_coll)
+
+client.close()

@@ -1,7 +1,8 @@
-from backend.schemas.security_classes import User
+from schemas.security_classes import User
 from schemas.users import UserCreate
-from dependencies.security_funct import get_current_active_user
+from db.repository.users import get_current_active_user, create_new_user
 from fastapi import Depends, Form, APIRouter
+from db.session import client
 
 
 router = APIRouter()
@@ -11,7 +12,7 @@ router = APIRouter()
 
 
 @router.post("/")
-def create_user(user: UserCreate, db: Session = Depends(get_db)):
+def create_user(user: UserCreate, db: client):
     user = create_new_user(user = user, db = db)
     return user
 

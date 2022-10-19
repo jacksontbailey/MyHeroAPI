@@ -2,7 +2,7 @@ import re, unicodedata
 
 from pyparsing import Opt
 
-import card_page.constants as const
+import web_scraper.constants as const
 from enum import Enum
 from typing import Annotated, Optional, Literal, Union
 from pydantic import BaseModel, Field, HttpUrl, Json, ValidationError, validator

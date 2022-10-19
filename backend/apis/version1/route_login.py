@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-from backend.schemas.security_classes import *
+from schemas.security_classes import *
 from fastapi import HTTPException, Depends, status, APIRouter
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt

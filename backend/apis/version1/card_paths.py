@@ -1,15 +1,14 @@
 import json
-import database
 
 from fastapi import APIRouter, HTTPException, Header, Query, status
-from card_page.card_classes import *
+from schemas.card_classes import *
 
 
 
 router = APIRouter()
 
 
-from database import (
+from db.database import (
     fetch_all_cards,
     fetch_all_matches,
     fetch_card_by_id,
