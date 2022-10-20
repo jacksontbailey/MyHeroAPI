@@ -29,15 +29,15 @@ class Hasher():
 
     @staticmethod
     def get_password_hash(password):
-        return pwd_context.hash(password)
+        return pwd_context.hash(password, secret=settings.JWT_SECRET_KEY)
 
 
 class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
     JWT_SECRET_KEY: str = os.getenv("JWT_SECRET_KEY")
     JWT_REFRESH_SECRET_KEY: str = os.getenv("JWT_REFRESH_SECRET_KEY")
-    ALGORITHM = "HS256"
-    ACCESS_TOKEN_EXPIRATION: int =  15
+    ALGORITHM: str = os.getenv("ALGORITHM")
+    ACCESS_TOKEN_EXPIRE_MINUTES: int =  30
     REFRESH_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7  #7 days
     PROJECT_NAME: str = "My Hero API"
 

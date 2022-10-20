@@ -14,6 +14,9 @@ oauth2_scheme = OAuth2PasswordBearer(
 
 def authenticate_user(username: str, password: str):
     user = get_user(username)
+    print(f"user is {user}")
+    print(Hasher.get_password_hash(password))
+    print(user.hashed_password)
     if not user:
         return False
     
@@ -25,9 +28,10 @@ def authenticate_user(username: str, password: str):
 
 
 def get_user(username: str, db = user_coll):
-    if username in db:
-        user_dict = db[username]
-        return UserInDB(**user_dict)
+    document = db.find_one({"username":username})
+    if document:
+        print(type(document), document)
+        return UserInDB(**document)
 
 
 
@@ -60,8 +64,6 @@ async def get_current_active_user(current_user: User = Depends(get_current_user)
 
 
 async def create_new_user(user, db = user_coll):
-
-    print(f"user is {type(user), user}\n username data is: {type(user['username']), user['username']}\n Password is: {type(user['password']), user['password']} \n Email is {type(user['email']), user['email']}")
     new_user = User(
         username = user['username'],
         email = user['email'],
@@ -69,7 +71,6 @@ async def create_new_user(user, db = user_coll):
         is_active = True,
         is_superuser = False,
         ).dict()
-    print(type(new_user), new_user)
 
     db.insert_one(new_user)
     return(user)

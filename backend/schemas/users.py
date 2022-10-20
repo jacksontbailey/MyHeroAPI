@@ -1,8 +1,4 @@
-from beanie import PydanticObjectId
-from pydantic import BaseModel, EmailStr, Field
-from bson.objectid import ObjectId
-import pydantic
-
+from pydantic import BaseModel, EmailStr
 class UserCreate(BaseModel):
     username: str
     email: EmailStr
