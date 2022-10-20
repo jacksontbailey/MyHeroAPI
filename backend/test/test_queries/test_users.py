@@ -3,6 +3,8 @@ import os
 from pymongo import MongoClient
 from pathlib import Path
 from dotenv import load_dotenv
+from schemas.users import UserCreate
+from schemas.security_classes import *
 
 env_path = Path('.') / '.env'
 
@@ -24,6 +26,21 @@ def test_create_user(client):
     assert response.json()["is_active"] == True
 
 
-test_create_user(client=user_coll)
+def test_create_new_user(user: UserCreate, db = user_coll):
+    user = User(
+        username = user.username,
+        email = user.email,
+        hashed_password = Hasher.get_password_hash(user.password),
+        is_active = True,
+        is_superuser = False
+        )
+
+    db.insert_one(user).inserted_id
+    return(user)
+
+
+#test_create_user(client=user_coll)
+test_create_new_user(user={"username": "fancypants", "email":"fancy.pants@noshirtsgiven.com", "password":"321drowssaP"})
+
 
 client.close()

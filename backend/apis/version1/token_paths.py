@@ -1,6 +1,7 @@
 from datetime import timedelta
-from backend.schemas.security_classes import Token
-from dependencies.security_funct import authenticate_user, create_access_token, fake_users_db
+from schemas.security_classes import Token
+from dependencies.security_funct import create_access_token
+from db.repository.users import authenticate_user
 from fastapi import Depends, HTTPException, APIRouter, status
 from fastapi.security import OAuth2PasswordRequestForm
 
@@ -8,7 +9,7 @@ router = APIRouter()
 
 @router.post("", response_model = Token)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
-    user = authenticate_user(fake_users_db, form_data.username, form_data.password)
+    user = authenticate_user(form_data.username, form_data.password)
 
     if not user:
         raise HTTPException(

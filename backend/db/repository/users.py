@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+import json
 
 from schemas.security_classes import *
 from schemas.users import UserCreate
@@ -53,20 +53,23 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
 
 
 async def get_current_active_user(current_user: User = Depends(get_current_user)):
-    if current_user.disabled:
+    if not current_user.is_active:
         raise HTTPException(status_code = 400, detail = "Inactive user")
     return current_user
 
 
 
-def create_new_user(user: UserCreate, db: user_coll):
-    user = User(
-        username = user.username,
-        email = user.email,
-        hashed_password = Hasher.get_password_hash(user.password),
-        is_active = True,
-        is_superuser = False
-        )
+async def create_new_user(user, db = user_coll):
 
-    db.insert_one(user).inserted_id
+    print(f"user is {type(user), user}\n username data is: {type(user['username']), user['username']}\n Password is: {type(user['password']), user['password']} \n Email is {type(user['email']), user['email']}")
+    new_user = User(
+        username = user['username'],
+        email = user['email'],
+        hashed_password = Hasher.get_password_hash(user['password']),
+        is_active = True,
+        is_superuser = False,
+        ).dict()
+    print(type(new_user), new_user)
+
+    db.insert_one(new_user)
     return(user)

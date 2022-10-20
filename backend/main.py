@@ -1,14 +1,12 @@
-from fastapi import Depends, FastAPI, Security, status
+from fastapi import Depends, FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
-from beanie import init_beanie
-
 
 from db.repository.users import get_current_active_user
 from schemas.security_classes import settings
 from internal import admin
-from apis.version1 import security_paths, card_paths, token_paths
 from web_scraper.constants import *
 from schemas.card_classes import *
+from apis.version1 import security_paths,card_paths, token_paths
 
 
 

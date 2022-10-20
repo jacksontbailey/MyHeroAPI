@@ -1,13 +1,7 @@
-from backend.schemas.card_classes import Card
+from schemas.card_classes import Card
 from pymongo.collation import Collation
+from db.session import card_coll
 
-#MongoDB driver
-from motor.motor_asyncio import AsyncIOMotorClient
-
-
-client = AsyncIOMotorClient('mongodb://localhost:27017')
-database = client.carddb
-collection = database.card
 
 # - Collation allows for case-insensitive lookups
 colla = Collation(
@@ -18,18 +12,18 @@ colla = Collation(
                 )
 
 async def fetch_card_by_name(name):
-    card = await collection.find_one({"name": name}).collation(colla)
+    card = await card_coll.find_one({"name": name}).collation(colla)
     return card
 
 
 async def fetch_card_by_id(id):
-    card = await collection.find_one({"id": id})
+    card = await card_coll.find_one({"id": id})
     return card
 
 
 async def fetch_all_cards():
     cards = []
-    cursor = collection.find({})
+    cursor = card_coll.find({})
     async for card in cursor:
         cards.append(Card(**card))
     
@@ -38,7 +32,7 @@ async def fetch_all_cards():
 
 async def fetch_all_matches(queries, amount_limited):
     cards = []
-    cursor = collection.find(queries).collation(colla).limit(amount_limited)
+    cursor = card_coll.find(queries).collation(colla).limit(amount_limited)
     async for card in cursor:
         cards.append(Card(**card))
     
@@ -47,7 +41,7 @@ async def fetch_all_matches(queries, amount_limited):
 
 async def create_card(card):
     document = card
-    result = await collection.insert_one(document)
+    result = await card_coll.insert_one(document)
     return result
 
 
@@ -56,18 +50,18 @@ async def update_card(block_modifier, block_zone, check, description,
                         rarity, set, symbols, type_attributes
                     ):
 
-    await collection.update_one({"name": name, "id": id},{"$set": {
+    await card_coll.update_one({"name": name, "id": id},{"$set": {
         "block_modifier": block_modifier, "block_zone": block_zone,
         "check": check, "description": description, "image_url": image_url,
         "keyword": keyword, "play_difficulty": play_difficulty, "rarity": rarity,
         "set": set, "symbols": symbols, "type_attributes": type_attributes
     }})
     
-    document = await collection.find_one({"name": name, "id": id})
+    document = await card_coll.find_one({"name": name, "id": id})
     return document
 
 
 async def remove_card(name):
-    await collection.delete_one({"name": name})
+    await card_coll.delete_one({"name": name})
     return True
 

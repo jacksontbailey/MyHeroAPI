@@ -7,9 +7,10 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 class User(BaseModel):
     username: str
-    email: str | None = None
-    full_name: str | None = None
-    disabled: bool | None = None
+    email: str
+    hashed_password: str
+    is_active: bool
+    is_superuser: bool
 
 class UserInDB(User):
     hashed_password: str
