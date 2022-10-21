@@ -2,7 +2,6 @@ from fastapi import Depends, FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
 
 from db.repository.users import get_current_active_user
-from schemas.security_classes import settings
 from internal import admin
 from web_scraper.constants import *
 from schemas.card_classes import *
@@ -11,10 +10,7 @@ from apis.version1 import security_paths,card_paths, token_paths
 
 
 #https://www.freecodecamp.org/news/how-to-add-jwt-authentication-in-fastapi/
-app = FastAPI(
-    title= settings.PROJECT_NAME,
-    openapi_url= f"{settings.API_V1_STR}/openapi.json"
-)
+app = FastAPI()
 
 
 my_middleware = LowerCaseMiddleware()

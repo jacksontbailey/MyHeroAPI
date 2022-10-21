@@ -1,8 +1,8 @@
 import json
 
 from schemas.security_classes import *
+from dependencies.constants import ALGORITHM, JWT_SECRET_KEY, USER_COLL
 from schemas.users import UserCreate
-from db.session import user_coll
 from fastapi import HTTPException, Depends, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
@@ -15,19 +15,20 @@ oauth2_scheme = OAuth2PasswordBearer(
 def authenticate_user(username: str, password: str):
     user = get_user(username)
     print(f"user is {user}")
-    print(Hasher.get_password_hash(password))
+    print(password)
     print(user.hashed_password)
+    print(Hasher.verify_password(password, user.hashed_password))
     if not user:
         return False
     
-    if not Hasher.verify_password(user.hashed_password, Hasher.get_password_hash(password)):
+    if not Hasher.verify_password(password, user.hashed_password):
         return False
     
     return user
 
 
 
-def get_user(username: str, db = user_coll):
+def get_user(username: str, db = USER_COLL):
     document = db.find_one({"username":username})
     if document:
         print(type(document), document)
@@ -42,7 +43,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        payload = jwt.decode(token, settings.JWT_SECRET_KEY, algorithms=[status.ALGORITHM])
+        payload = jwt.decode(token, JWT_SECRET_KEY, algorithms=[ALGORITHM])
         username: str = payload.get("sub")
         if username is None:
             raise credentials_exception
@@ -63,7 +64,7 @@ async def get_current_active_user(current_user: User = Depends(get_current_user)
 
 
 
-async def create_new_user(user, db = user_coll):
+async def create_new_user(user, db = USER_COLL):
     new_user = User(
         username = user['username'],
         email = user['email'],
