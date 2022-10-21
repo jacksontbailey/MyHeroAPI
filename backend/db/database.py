@@ -1,6 +1,6 @@
-from schemas.card_classes import Card
+from schemas.schema_card import Card
 from pymongo.collation import Collation
-from dependencies.constants import CARD_COLL
+from core.config import settings
 
 # - Collation allows for case-insensitive lookups
 colla = Collation(
@@ -11,19 +11,19 @@ colla = Collation(
                 )
 
 async def fetch_card_by_name(name):
-    card = await CARD_COLL.find_one({"name": name}).collation(colla)
+    card = settings.CARD_COLL.find_one({"name": name}).collation(colla)
     return card
 
 
 async def fetch_card_by_id(id):
-    card = await CARD_COLL.find_one({"id": id})
+    card = settings.CARD_COLL.find_one({"id": id})
     return card
 
 
 async def fetch_all_cards():
     cards = []
-    cursor = CARD_COLL.find({})
-    async for card in cursor:
+    cursor = settings.CARD_COLL.find({})
+    for card in cursor:
         cards.append(Card(**card))
     
     return(len(cards), cards)
@@ -31,8 +31,8 @@ async def fetch_all_cards():
 
 async def fetch_all_matches(queries, amount_limited):
     cards = []
-    cursor = CARD_COLL.find(queries).collation(colla).limit(amount_limited)
-    async for card in cursor:
+    cursor = settings.CARD_COLL.find(queries).collation(colla).limit(amount_limited)
+    for card in cursor:
         cards.append(Card(**card))
     
     return(len(cards), cards)
@@ -40,7 +40,7 @@ async def fetch_all_matches(queries, amount_limited):
 
 async def create_card(card):
     document = card
-    result = await CARD_COLL.insert_one(document)
+    result = settings.CARD_COLL.insert_one(document)
     return result
 
 
@@ -49,18 +49,18 @@ async def update_card(block_modifier, block_zone, check, description,
                         rarity, set, symbols, type_attributes
                     ):
 
-    await CARD_COLL.update_one({"name": name, "id": id},{"$set": {
+    settings.CARD_COLL.update_one({"name": name, "id": id},{"$set": {
         "block_modifier": block_modifier, "block_zone": block_zone,
         "check": check, "description": description, "image_url": image_url,
         "keyword": keyword, "play_difficulty": play_difficulty, "rarity": rarity,
         "set": set, "symbols": symbols, "type_attributes": type_attributes
     }})
     
-    document = await CARD_COLL.find_one({"name": name, "id": id})
+    document = settings.CARD_COLL.find_one({"name": name, "id": id})
     return document
 
 
 async def remove_card(name):
-    await CARD_COLL.delete_one({"name": name})
+    await settings.CARD_COLL.delete_one({"name": name})
     return True
 

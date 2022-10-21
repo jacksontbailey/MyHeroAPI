@@ -1,14 +1,14 @@
 import json
 
-from schemas.security_classes import *
-from dependencies.constants import ALGORITHM, JWT_SECRET_KEY, USER_COLL
-from schemas.users import UserCreate
+from schemas.schema_token import Hasher, TokenData
+from core.config import settings
+from schemas.schema_user import User, UserInDB
 from fastapi import HTTPException, Depends, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 
 oauth2_scheme = OAuth2PasswordBearer(
-    tokenUrl="/token"
+    tokenUrl="/login"
     )
 
 
@@ -28,7 +28,7 @@ def authenticate_user(username: str, password: str):
 
 
 
-def get_user(username: str, db = USER_COLL):
+def get_user(username: str, db = settings.USER_COLL):
     document = db.find_one({"username":username})
     if document:
         print(type(document), document)
@@ -43,7 +43,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        payload = jwt.decode(token, JWT_SECRET_KEY, algorithms=[ALGORITHM])
+        payload = jwt.decode(token, settings.JWT_SECRET_KEY, algorithms=[settings.ALGORITHM])
         username: str = payload.get("sub")
         if username is None:
             raise credentials_exception
@@ -64,7 +64,7 @@ async def get_current_active_user(current_user: User = Depends(get_current_user)
 
 
 
-async def create_new_user(user, db = USER_COLL):
+async def create_new_user(user, db = settings.USER_COLL):
     new_user = User(
         username = user['username'],
         email = user['email'],

@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from dependencies.constants import ACCESS_TOKEN_EXPIRE_MINUTES, ALGORITHM, JWT_REFRESH_SECRET_KEY, JWT_SECRET_KEY, REFRESH_TOKEN_EXPIRE_MINUTES
+from core.config import settings
 from jose import jwt
 
 
@@ -10,10 +10,10 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
     if expires_delta:
         expire = datetime.utcnow() + expires_delta
     else:
-        expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+        expire = datetime.utcnow() + timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
     to_encode.update({"exp": expire})
-    print(f"Algorithm: {ALGORITHM}")
-    encoded_jwt = jwt.encode(to_encode, JWT_SECRET_KEY, algorithm=ALGORITHM)
+    print(f"Algorithm: {settings.ALGORITHM}")
+    encoded_jwt = jwt.encode(to_encode, settings.JWT_SECRET_KEY, algorithm=settings.ALGORITHM)
     
     return encoded_jwt
 
@@ -23,9 +23,9 @@ def create_refresh_token(data: dict, expires_delta: timedelta | None = None):
     if expires_delta is not None:
         expires = datetime.utcnow() + expires_delta
     else:
-        expires = datetime.utcnow() + timedelta(minutes= REFRESH_TOKEN_EXPIRE_MINUTES)
+        expires = datetime.utcnow() + timedelta(minutes= settings.REFRESH_TOKEN_EXPIRE_MINUTES)
     
     to_encode.update({"exp": expires})
-    encoded_jwt = jwt.encode(to_encode, JWT_REFRESH_SECRET_KEY, algorithm = ALGORITHM)
+    encoded_jwt = jwt.encode(to_encode, settings.JWT_REFRESH_SECRET_KEY, algorithm = settings.ALGORITHM)
     
     return encoded_jwt

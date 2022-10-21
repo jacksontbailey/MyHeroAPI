@@ -1,4 +1,13 @@
 from pydantic import BaseModel, EmailStr
+
+
+class User(BaseModel):
+    username: str
+    email: str
+    hashed_password: str
+    is_active: bool
+    is_superuser: bool
+
 class UserCreate(BaseModel):
     username: str
     email: EmailStr
@@ -11,3 +20,7 @@ class ShowUser(BaseModel):
 
     class Config():
         orm_mode = True
+
+
+class UserInDB(User):
+    hashed_password: str

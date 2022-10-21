@@ -1,5 +1,5 @@
 import re, requests
-import card_page.constants as const
+import web_scraper.constants as const
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -119,7 +119,3 @@ class Card_Page(webdriver.Chrome):
             
         except:
             driver.quit()
-
-                
-
-#https://www.youtube.com/watch?v=j7VZsCCnptM

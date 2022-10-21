@@ -1,22 +1,16 @@
-import json
-
 from fastapi import APIRouter, HTTPException, Header, Query, status
-from schemas.card_classes import *
-
-
+from schemas.schema_card import *
 
 router = APIRouter()
-
 
 from db.database import (
     fetch_all_cards,
     fetch_all_matches,
     fetch_card_by_id,
     fetch_card_by_name,
-    create_card,
-    update_card,
-    remove_card
 )
+
+
 
 
 @router.get("", status_code=status.HTTP_200_OK)
@@ -25,7 +19,7 @@ async def api_introduction():
 
 
 # -- Uses queries to find all cards within provided parameters
-@router.get("/", status_code=status.HTTP_200_OK, tags=["All Cards"])
+@router.get("/cards/", status_code=status.HTTP_200_OK)
 async def card_search(
         t: str | None = Query(
             default = None, 
@@ -96,7 +90,7 @@ async def card_search(
     )
 
 
-@router.get("/cards", status_code=status.HTTP_200_OK, tags=["Normal Cards"])
+@router.get("/cards", status_code=status.HTTP_200_OK)
 async def card_list():
     response = await fetch_all_cards()
     if response:
@@ -109,7 +103,7 @@ async def card_list():
 
 
 # -- Searches for cards with the card Name or ID
-@router.get("/cards/{id}", status_code=status.HTTP_200_OK, tags=["Normal Cards"], response_model=Card)
+@router.get("/cards/{id}", status_code=status.HTTP_200_OK, response_model=Card)
 async def card_name(id: int | str):
     response = None
 
@@ -117,6 +111,7 @@ async def card_name(id: int | str):
         response = await fetch_card_by_id(id)
     elif type(id) == str:
         card = id.replace("_", " ")
+        print(card)
         response = await fetch_card_by_name(card)
     else:
         return("Invalid Type")

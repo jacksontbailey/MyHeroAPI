@@ -1,48 +1,19 @@
-from fastapi import Depends, FastAPI, status
+from apis.base import api_router
+from core.config import settings
+from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
-
-from db.repository.users import get_current_active_user
-from internal import admin
+from schemas.schema_card import *
 from web_scraper.constants import *
-from schemas.card_classes import *
-from apis.version1 import security_paths,card_paths, token_paths
 
 
+def include_router(app):
+	app.include_router(api_router)
 
-#https://www.freecodecamp.org/news/how-to-add-jwt-authentication-in-fastapi/
-app = FastAPI()
+def include_middleware(app):
+    my_middleware = LowerCaseMiddleware()
+    app.middleware("http")(my_middleware)
 
-
-my_middleware = LowerCaseMiddleware()
-app.middleware("http")(my_middleware)
-
-
-app.include_router(
-    security_paths.router,
-    prefix="/users",
-    tags=["security"],
-)
-
-app.include_router(
-    card_paths.router,
-    prefix = "/v1",
-    dependencies= [Depends(get_current_active_user)]
-)
-
-app.include_router(
-    token_paths.router,
-    prefix = "/token",
-)
-
-app.include_router(
-    admin.router,
-    prefix="/admin",
-    tags=["admin"],
-    dependencies=[Depends(get_current_active_user)],
-    responses={418: {"description": "I'm a teapot"}},
-)
-
-app.add_middleware(
+    app.add_middleware(
     CORSMiddleware,
     allow_origins = ORIGINS,
     allow_credentials = True,
@@ -50,8 +21,21 @@ app.add_middleware(
     allow_headers = ["*"],
 )
 
-@app.get("/", status_code=status.HTTP_200_OK)
-async def home():
-    return {"Greeting": "Welcome to the My Hero Academia Card Game API! This is a fan-made API that any developer is free to use. The only thing I ask is that you give me some credit when you use it, and/or buy me a coffee. This carbon-based lifeform needs Java installed..."}
 
+def start_application():
+    app = FastAPI(
+        title = settings.PROJECT_NAME,
+        version = settings.PROJECT_VERSION
+    )
+    include_middleware(app)
+    include_router(app)
+
+    @app.get("/", status_code=status.HTTP_200_OK)
+    async def home():
+        return {"Greeting": "Welcome to the My Hero Academia Card Game API! This is a fan-made API that any developer is free to use. The only thing I ask is that you give me some credit when you use it, and/or buy me a coffee. This carbon-based lifeform needs Java installed..."}
+    
+    return app
+
+
+app = start_application()
 # -- uvicorn main:app --reload

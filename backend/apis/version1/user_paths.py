@@ -1,7 +1,6 @@
-from schemas.security_classes import User
-from schemas.users import UserCreate
+from schemas.schema_user import UserCreate, User
 from db.repository.users import get_current_active_user, create_new_user
-from fastapi import Depends, Form, APIRouter, HTTPException
+from fastapi import Depends, APIRouter, HTTPException
 
 
 router = APIRouter()
@@ -16,11 +15,6 @@ async def create_user(user: UserCreate):
     if response:
         return response
     raise HTTPException(400, "Bad Request")
-
-@router.post("/login/")
-async def login(username: str = Form(), password: str = Form()):
-    return {"username":  username}
-
 
 
 @router.get("/me/", response_model = User)

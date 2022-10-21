@@ -1,18 +1,8 @@
-from pydantic import BaseModel, BaseSettings
+from pydantic import BaseModel
 from passlib.context import CryptContext
 
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
-class User(BaseModel):
-    username: str
-    email: str
-    hashed_password: str
-    is_active: bool
-    is_superuser: bool
-
-class UserInDB(User):
-    hashed_password: str
 
 class Token(BaseModel):
     access_token: str

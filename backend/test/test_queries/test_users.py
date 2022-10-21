@@ -1,9 +1,9 @@
-from dependencies.constants import USER_COLL, CLIENT
-from schemas.users import UserCreate
-from schemas.security_classes import *
+from core.config import settings
+from schemas.schema_user import UserCreate, User
+from schemas.schema_token import *
 
 
-client = CLIENT
+client = settings.CLIENT
 
 def test_create_user(client):
     data = {"username":"testuser", "full_name":"Test User", "email":"testuser@nofoobar.com","password":"testing", "disabled": False}
@@ -12,7 +12,7 @@ def test_create_user(client):
     assert response.json()["is_active"] == True
 
 
-def test_create_new_user(user: UserCreate, db = USER_COLL):
+def test_create_new_user(user: UserCreate, db = settings.USER_COLL):
     user = User(
         username = user.username,
         email = user.email,

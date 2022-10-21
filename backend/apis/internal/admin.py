@@ -1,5 +1,5 @@
 from fastapi import APIRouter, status
-from schemas.card_classes import Card
+from schemas.schema_card import Card
 
 router = APIRouter()
 
