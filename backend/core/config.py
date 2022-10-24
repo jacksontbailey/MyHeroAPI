@@ -23,7 +23,7 @@ class Settings:
     REFRESH_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7  #7 days
     TEST_USER_EMAIL = "test@example.com"
 
-    CLIENT = MongoClient(LOCAL_SERVER)
+    CLIENT = MongoClient(LIVE_SERVER)
     DB = CLIENT['carddb']
     USER_COLL = DB['user']
     CARD_COLL = DB['card']

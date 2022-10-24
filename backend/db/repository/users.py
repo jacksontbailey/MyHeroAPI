@@ -6,6 +6,7 @@ from schemas.schema_user import User, UserInDB
 from fastapi import HTTPException, Depends, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
+from pymongo import MongoClient
 
 oauth2_scheme = OAuth2PasswordBearer(
     tokenUrl="/login"
@@ -64,7 +65,7 @@ async def get_current_active_user(current_user: User = Depends(get_current_user)
 
 
 
-async def create_new_user(user, db = settings.USER_COLL):
+async def create_new_user(user):
     new_user = User(
         username = user['username'],
         email = user['email'],
@@ -72,6 +73,5 @@ async def create_new_user(user, db = settings.USER_COLL):
         is_active = True,
         is_superuser = False,
         ).dict()
-
-    db.insert_one(new_user)
-    return(user)
+    
+    return(new_user)
