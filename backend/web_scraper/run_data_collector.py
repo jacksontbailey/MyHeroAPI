@@ -4,7 +4,7 @@ from os import path
 import web_scraper.constants as const
 from web_scraper.reusable_functions import *
 from web_scraper.data_collector import Card_Page
-from backend.schemas.schema_card import Unicode_Parser
+from schemas.schema_card import Unicode_Parser
 
 
 def run_test():
@@ -62,4 +62,3 @@ def refactor_keywords():
 
 
 #run_test()
-refactor_keywords()

@@ -1,13 +1,12 @@
-import json, re
+import json, re, sys
 from typing_extensions import Self
-import card_page.constants as const
-from card_page.data_collector import Card_Page
+from web_scraper.image_scraper import download_image_from_url
+import web_scraper.constants as const
+from web_scraper.data_collector import Card_Page
+from db.database import fetch_all_images
 
 
 #def get_set_card_number(unparsed_number, card_set):
-
-
-
 def multi_list_comparator(all_urls, json_file_urls):
     # -- Converts both of my lists into a set in order to use symmetric difference to compare
     # -- the items in the list without worrying about their order. Then converts back to a list.
@@ -156,3 +155,11 @@ def character_card_info(description):
     card_keywords_unparsed = check_for_matching_attribute(description, "Keywords")
 
     return(card_hand_size, card_vitality, card_keywords_unparsed)
+
+
+
+def download_images():
+    urls = fetch_all_images()
+    download_image_from_url(urls)
+    return(urls)
+

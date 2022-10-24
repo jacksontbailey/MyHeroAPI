@@ -1,4 +1,4 @@
-from apis.internal import admin
+from apis.internal import admin_paths
 from apis.version1 import card_paths
 from apis.version1 import token_paths
 from apis.version1 import user_paths
@@ -30,7 +30,7 @@ api_router.include_router(
 )
 
 api_router.include_router(
-    admin.router,
+    admin_paths.router,
     prefix="/admin",
     tags=["Admin"],
     dependencies=[Depends(get_current_active_user)],

@@ -2,6 +2,7 @@ import os
 from pymongo import MongoClient
 from pathlib import Path
 from dotenv import load_dotenv
+from pymongo.collation import Collation
 
 
 from dotenv import load_dotenv
@@ -27,5 +28,22 @@ class Settings:
     DB = CLIENT['carddb']
     USER_COLL = DB['user']
     CARD_COLL = DB['card']
+
+    # - searches for matches that are case sensitive in MongoDB
+    SENSITIVE = Collation(
+                    locale = "en_US",
+                    strength = 3,
+                    numericOrdering = True,
+                    backwards = False
+                )
+                
+    # - searches for matches that are case insensitive in MongoDB
+    INSENSITIVE = Collation(
+                    locale = "en_US",
+                    strength = 1,
+                    numericOrdering = True,
+                    backwards = False
+                )
+
 
 settings = Settings()

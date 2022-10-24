@@ -18,6 +18,19 @@ async def api_introduction():
     return{"Guide": "Here are all of the different get requests you can make using this API."}
 
 
+
+@router.get("/cards", status_code=status.HTTP_200_OK)
+async def card_list():
+    response = await fetch_all_cards()
+    if response:
+        return({'count': response[0], 'cards': response[1]})
+    raise HTTPException(
+        status_code= status.HTTP_404_NOT_FOUND,
+        detail="There is no card in our database with that name",
+    )
+
+
+
 # -- Uses queries to find all cards within provided parameters
 @router.get("/cards/", status_code=status.HTTP_200_OK)
 async def card_search(
@@ -88,18 +101,6 @@ async def card_search(
         status_code= status.HTTP_404_NOT_FOUND,
         detail="There is no card in our database with that name",
     )
-
-
-@router.get("/cards", status_code=status.HTTP_200_OK)
-async def card_list():
-    response = await fetch_all_cards()
-    if response:
-        return({'count': response[0], 'cards': response[1]})
-    raise HTTPException(
-        status_code= status.HTTP_404_NOT_FOUND,
-        detail="There is no card in our database with that name",
-    )
-
 
 
 # -- Searches for cards with the card Name or ID

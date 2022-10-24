@@ -1,6 +1,6 @@
 from datetime import timedelta
 from schemas.schema_token import Token
-from dependencies.security_funct import create_access_token
+from core.security_funct import create_access_token
 from core.config import settings
 from db.repository.users import authenticate_user
 from fastapi import Depends, HTTPException, APIRouter, status

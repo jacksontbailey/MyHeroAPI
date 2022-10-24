@@ -64,6 +64,11 @@ async def get_current_active_user(current_user: User = Depends(get_current_user)
     return current_user
 
 
+async def check_if_user_is_admin(current_user: User = Depends(get_current_active_user)) -> User:
+    if not current_user.is_superuser:
+        raise HTTPException(status_code=401, detail="You have not enough privileges")
+    return current_user
+
 
 async def create_new_user(user):
     new_user = User(
@@ -75,3 +80,7 @@ async def create_new_user(user):
         ).dict()
     
     return(new_user)
+
+async def remove_user(id):
+    await settings.USER_COLL.delete_one({"_id": f"ObjectId('{id}')"})
+    return True
