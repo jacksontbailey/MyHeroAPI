@@ -1,19 +1,27 @@
+import Head from 'next/head'
 import Image from 'next/image'
-import styles from './page.module.css'
+import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
     <div className={styles.container}>
+      <Head>
+        <title>My Hero API</title>
+        <meta name="description" content="Fan made API for the My Hero Academia card game" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to My Hero API
+          My Hero API
         </h1>
-        <div>  
+        <section>
           <p>
-            All of the My Hero Academia card game data you'll ever need, easily accessible through a modern RESTful API.
+            All the MHA card game data you'll ever need in one place,
+            <br/> easily accessible through a modern RESTful API.
           </p>
-          <a href="docs/v1">Check out the docs!</a>
-        </div>
+          <a href='/docs/v1'>Check out the docs!</a>
+        </section>
         <section>
           <button>New User</button>
           <button>Existing User</button>
