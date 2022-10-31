@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -20,11 +21,15 @@ export default function Home() {
             All the MHA card game data you'll ever need in one place,
             <br/> easily accessible through a modern RESTful API.
           </p>
-          <a href='/docs/v1'>Check out the docs!</a>
+          <Link href='/v1'><a>Check out the docs!</a></Link>
         </section>
         <section>
-          <button>New User</button>
-          <button>Existing User</button>
+          <Link href='/login/new'>
+            <a className={styles.btn}>New User</a>
+          </Link>
+          <Link href='/login'>
+            <a className={styles.btn}>Existing User</a>
+          </Link>
         </section>
       </main>
 
