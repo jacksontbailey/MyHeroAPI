@@ -1,3 +1,11 @@
+:root{
+  --middle-grey: #8C7F75ff;
+  --kombu-green: #304739ff;
+  --deku-green: #28625Aff;
+  --black: #000000ff;
+  --black-2: #000001ff;
+}
+
 html,
 body {
   padding: 0;
@@ -13,4 +21,43 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  min-height: 10vh;
+  border: 1px solid red;
+}
+
+nav a{
+  margin-left: 12px;
+}
+
+nav .logo{
+  margin-right: auto; 
+}
+
+
+/* Footer */
+footer{
+  display: block;
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 60px;
+  color: var(--middle-grey);
+  border-top: 1px solid var(--kombu-green);
+}
+
+
+/* 404 page */
+.not-found{
+  text-align: center;
+}
+
+.not-found a{
+  color: orangered;
 }
