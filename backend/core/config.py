@@ -44,6 +44,11 @@ class Settings:
                     numericOrdering = True,
                     backwards = False
                 )
-
+    ORIGINS = [
+        "http://localhost:3000",
+        "https://localhost:3000",
+        "http://localhost",
+        "http://localhost:8080",
+    ]
 
 settings = Settings()
