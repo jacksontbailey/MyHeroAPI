@@ -31,6 +31,19 @@ async def fetch_all_cards():
     return(len(cards), cards)
 
 
+async def fetch_all_card_urls():
+    cards=[]
+    cursor = settings.CARD_COLL.find({}, {'name': 1, 'id': 1})
+    for card in cursor:
+        name = card['name']
+        url = f"http://localhost:3000/v1/cards/{card['id']}"
+        cards.append({"name": name, "url": url})
+    
+    return (len(cards), cards)
+        
+        
+
+
 
 async def fetch_all_matches(queries, amount_limited):
     cards = []

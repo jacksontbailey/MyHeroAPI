@@ -19,13 +19,13 @@ api_router.include_router(
 
 api_router.include_router(
     user_paths.router,
-    prefix = "new",
+    prefix = "/new",
     tags = ["Users"]
 )
 
 api_router.include_router(
     token_paths.router,
-    prefix = "login",
+    prefix = "/login",
     tags = ["Login"]
 )
 

@@ -4,7 +4,7 @@ from schemas.schema_card import *
 router = APIRouter()
 
 from db.database import (
-    fetch_all_cards,
+    fetch_all_card_urls,
     fetch_all_matches,
     fetch_card_by_id,
     fetch_card_by_name,
@@ -15,15 +15,15 @@ from db.database import (
 
 @router.get("", status_code=status.HTTP_200_OK)
 async def api_introduction():
-    return{"Guide": "Here are all of the different get requests you can make using this API."}
+    return{"guide": "Here are all of the different get requests you can make using this API."}
 
 
 
 @router.get("/cards", status_code=status.HTTP_200_OK)
 async def card_list():
-    response = await fetch_all_cards()
+    response = await fetch_all_card_urls()
     if response:
-        return({'count': response[0], 'cards': response[1]})
+        return([{'count': response[0], 'cards': response[1]}])
     raise HTTPException(
         status_code= status.HTTP_404_NOT_FOUND,
         detail="There is no card in our database with that name",
