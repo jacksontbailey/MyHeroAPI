@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-export default function Admin() {
+export default function Profile() {
   const [user, setUser] = useState(null);
   const router = useRouter();
 
@@ -25,11 +25,9 @@ export default function Admin() {
 
   return (
     <div>
-      <h1>Admin</h1>
-
-      {user && (
-        <p>{user.username}</p>
-      )}
+      <h1>Your Info</h1>
+      {user && (<p>{user.username}</p>)}
+      {user && (<p>{user.email}</p>)}
     </div>
   )
 }

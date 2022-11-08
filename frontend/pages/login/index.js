@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [remember, setRemember] = useState(false);
   const router = useRouter();
 
 
@@ -24,10 +25,19 @@ export default function Login() {
       method: 'POST',
       body: formData
     });
-    if (res.status == 200) {
+
+    if ((res.status == 200) && (remember === true)) {
       const json = await res.json();
       localStorage.setItem('token', json.access_token);
-      router.push("admin");
+      localStorage.setItem('username', username);
+      localStorage.setItem('password', password);
+      router.push("profile");
+
+    } else if (res.status == 200) {
+      const json = await res.json();
+      localStorage.setItem('token', json.access_token);
+      router.push("profile");
+
     } else {
       alert('Login failed.')
     }
@@ -80,6 +90,8 @@ export default function Login() {
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
+                  value={remember}
+                  onClick={() => setRemember(!remember)}
                 />
                 <label htmlFor="remember-me">
                   Remember me
