@@ -7,7 +7,7 @@ from fastapi import HTTPException, status
 
 async def fetch_card_by_name(name):
     cards=[]
-    match = settings.CARD_COLL.find({"name": name}).collation(settings.SENSITIVE).limit(1)
+    match = settings.CARD_COLL.find({"name": name}).collation(settings.INSENSITIVE).limit(1)
     
     for card in match:
         cards.append(Card(**card))
@@ -49,6 +49,7 @@ async def fetch_all_matches(queries, amount_limited):
     cards = []
     cursor = settings.CARD_COLL.find(queries).collation(settings.SENSITIVE).limit(amount_limited)
     for card in cursor:
+        print(card)
         cards.append(Card(**card))
     
     return(len(cards), cards)

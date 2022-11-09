@@ -32,7 +32,7 @@ async def card_list():
 
 
 # -- Uses queries to find all cards within provided parameters
-@router.get("/cards/", status_code=status.HTTP_200_OK)
+@router.get("/cards/find", status_code=status.HTTP_200_OK)
 async def card_search(
         t: str | None = Query(
             default = None, 
@@ -107,12 +107,11 @@ async def card_search(
 @router.get("/cards/{id}", status_code=status.HTTP_200_OK, response_model=Card)
 async def card_name(id: int | str):
     response = None
-
+    print(f"The id is: {id} and is a type: {type(id)}")
     if type(id) == int:
         response = await fetch_card_by_id(id)
     elif type(id) == str:
         card = id.replace("_", " ")
-        print(card)
         response = await fetch_card_by_name(card)
     else:
         return("Invalid Type")

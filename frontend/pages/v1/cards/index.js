@@ -27,7 +27,7 @@ export default function Cards(){
                 return(
                     <div key={index}>
                         <h2>{card.count}</h2>
-                        {card.cards.map((card, index) =>{
+                        {card.cards.map((card, index) => {
                             return(
                                 <div key={index}>
                                     <h3>{card.name}</h3>
