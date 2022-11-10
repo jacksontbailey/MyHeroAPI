@@ -110,11 +110,11 @@ async def card_name(id: int | str):
     print(f"The id is: {id} and is a type: {type(id)}")
     if type(id) == int:
         response = await fetch_card_by_id(id)
-    elif type(id) == str:
+    elif type(id) == str and id.isdigit():
+        response = await fetch_card_by_id(int(id))
+    else:
         card = id.replace("_", " ")
         response = await fetch_card_by_name(card)
-    else:
-        return("Invalid Type")
 
     if response:
         return response

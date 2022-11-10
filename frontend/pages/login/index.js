@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { setCookie } from 'cookies-next';
 import { useRouter } from 'next/router';
 
 export default function Login() {
@@ -28,14 +29,14 @@ export default function Login() {
 
     if ((res.status == 200) && (remember === true)) {
       const json = await res.json();
-      localStorage.setItem('token', json.access_token);
-      localStorage.setItem('username', username);
-      localStorage.setItem('password', password);
+      setCookie('token', json.access_token);
+      setCookie('username', username);
+      setCookie('password', password);
       router.push("profile");
 
     } else if (res.status == 200) {
       const json = await res.json();
-      localStorage.setItem('token', json.access_token);
+      setCookie('token', json.access_token);
       router.push("profile");
 
     } else {

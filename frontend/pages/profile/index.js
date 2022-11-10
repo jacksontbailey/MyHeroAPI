@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { getCookie } from 'cookies-next'
+
 
 export default function Profile() {
   const [user, setUser] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = getCookie('token');
     async function fetchUser() {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login/me`, {
         headers: {

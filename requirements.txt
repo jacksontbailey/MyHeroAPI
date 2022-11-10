@@ -8,3 +8,4 @@ uvicorn
 motor
 python-decouple
 beanie
+cookies-next

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import { getCookie } from 'cookies-next'
 
 export default function Cards(){
     const [cards, setCards] = useState([])
     
     useEffect(() => {
-        const token = localStorage.getItem('token');
+        const token = getCookie('token');
         async function getCards(){
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/cards`, {
                 headers: {
