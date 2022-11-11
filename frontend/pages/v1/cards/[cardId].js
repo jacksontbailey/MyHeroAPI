@@ -1,35 +1,37 @@
-import {useRouter} from 'next/router'
 import { getCookie } from 'cookies-next'
-import { useEffect, useState } from "react";
 
-/* export async function getServerSideProps({params}){
+
+export async function getServerSideProps({params}){
     const token = getCookie('token');
     let cardId = params.cardId.replace(/\-/g, '+')
-     checks if the id is a card number or card name and changes the type if it's a card number 
+     //checks if the id is a card number or card name and changes the type if it's a card number
     cardId = Number(cardId) !== NaN ? Number(cardId) : String(cardId);
 
-    const cards = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/cards/`+cardId, {
+    console.log(`${process.env.NEXT_PUBLIC_API_URL}/v1/cards/${cardId}`)
+    
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/cards/${cardId}`, {
         headers: {
             'Authorization': `Bearer ${token}`
-        },
-        }).then(res=>res.json());
-    return {
-        props: {
-            cardId,
-            cards
         }
+    })
+    if (res.ok){
+        let data = await res.json();
+        return { props: { data } }
+    } else {
+        alert("HTTP-Error: " + res.status);
     }
 }
 
-export default function CardSearch({cards, cardId}) {
-    console.log(cards, cardId)
+
+export default function CardSearch({data}) {
+    console.log(data)
     return(
         <div>
-            <h1>Card: ${cards.name}</h1>
+            <h1>Card: ${data.name}</h1>
         </div>
     )
-} */
-
+}
+/*
 const CardSearch = () => {
     const router = useRouter()
     const {cardId} = router.query
@@ -62,4 +64,4 @@ const CardSearch = () => {
     );
 }
  
-export default CardSearch;
+export default CardSearch; */
