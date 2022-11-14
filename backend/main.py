@@ -42,5 +42,5 @@ def start_application():
 app_start = start_application()
 
 if __name__ == "__main__":
-    uvicorn.run(app_start, host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app_start", host="0.0.0.0", port=8001, reload=True)
 # -- uvicorn main:app_start --reload

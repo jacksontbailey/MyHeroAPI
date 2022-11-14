@@ -6,7 +6,6 @@ from schemas.schema_user import User, UserInDB
 from fastapi import HTTPException, Depends, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
-from pymongo import MongoClient
 
 oauth2_scheme = OAuth2PasswordBearer(
     tokenUrl="/login"

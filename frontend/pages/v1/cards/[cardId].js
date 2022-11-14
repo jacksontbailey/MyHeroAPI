@@ -1,47 +1,29 @@
 import { getCookie } from 'cookies-next'
+import { useRouter } from 'next/router'
+import {useState, useEffect} from 'react'
 
 
-export async function getServerSideProps({params}){
-    const token = getCookie('token');
+export async function getServerSideProps({params, req, res}){
+    const token = getCookie('token', {req, res});
+    console.log(`my token is ${token} and is type ${typeof(token)}`)
     let cardId = params.cardId.replace(/\-/g, '+')
      //checks if the id is a card number or card name and changes the type if it's a card number
     cardId = Number(cardId) !== NaN ? Number(cardId) : String(cardId);
 
-    console.log(`${process.env.NEXT_PUBLIC_API_URL}/v1/cards/${cardId}`)
-    
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/cards/${cardId}`, {
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
-    })
-    if (res.ok){
-        let data = await res.json();
-        return { props: { data } }
-    } else {
-        alert("HTTP-Error: " + res.status);
-    }
+    return { props: { cardId } }
 }
 
 
-export default function CardSearch({data}) {
-    console.log(data)
-    return(
-        <div>
-            <h1>Card: ${data.name}</h1>
-        </div>
-    )
-}
-/*
-const CardSearch = () => {
+const CardSearch = ({res, req}) => {
     const router = useRouter()
-    const {cardId} = router.query
     const [card, setCard] = useState([])
+    const {cardId} = router.query
     
     useEffect(() => {
-        const token = getCookie('token');
-        console.log('CID is:', {cardId})
+        const token = getCookie('token', {res, req});
         async function getCard(){
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/cards/${cardId}`, {
+                mode: 'cors',
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -49,7 +31,6 @@ const CardSearch = () => {
 
             if (res.status == 200) {
                 const result = await res.json();
-                console.log(`Result type and result: ${type(result)}, ${result}`)
                 setCard(result)
             }
         }
@@ -64,4 +45,4 @@ const CardSearch = () => {
     );
 }
  
-export default CardSearch; */
+export default CardSearch;

@@ -6,6 +6,7 @@ export default function Cards(){
     
     useEffect(() => {
         const token = getCookie('token');
+
         async function getCards(){
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/cards`, {
                 headers: {
