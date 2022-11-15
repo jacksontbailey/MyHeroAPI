@@ -32,7 +32,7 @@ async def card_list():
 
 
 # -- Uses queries to find all cards within provided parameters
-@router.get("/cards/find", status_code=status.HTTP_200_OK)
+@router.get("/cards/search", status_code=status.HTTP_200_OK)
 async def card_search(
         t: str | None = Query(
             default = None, 

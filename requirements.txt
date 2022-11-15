@@ -2,10 +2,14 @@ cryptography
 fastapi >= 0.77.0
 passlib[bcrypt]
 pydantic >= 1.9.0
+pyadntic[email]
 python-jose[cryptography]
 python-multipart
 uvicorn
 motor
+python-dotenv
 python-decouple
+pyparsing
+pymongo
 beanie
 cookies-next

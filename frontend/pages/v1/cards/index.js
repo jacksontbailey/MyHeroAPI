@@ -3,7 +3,7 @@ import { getCookie } from 'cookies-next'
 
 export default function Cards(){
     const [cards, setCards] = useState([])
-    
+
     useEffect(() => {
         const token = getCookie('token');
 

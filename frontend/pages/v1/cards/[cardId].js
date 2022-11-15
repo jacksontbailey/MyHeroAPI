@@ -3,10 +3,8 @@ import { useRouter } from 'next/router'
 import {useState, useEffect} from 'react'
 
 
-export async function getServerSideProps({params, req, res}){
-    const token = getCookie('token', {req, res});
-    console.log(`my token is ${token} and is type ${typeof(token)}`)
-    let cardId = params.cardId.replace(/\-/g, '+')
+export async function getServerSideProps({params}){
+    let cardId = params.cardId
      //checks if the id is a card number or card name and changes the type if it's a card number
     cardId = Number(cardId) !== NaN ? Number(cardId) : String(cardId);
 
@@ -14,7 +12,7 @@ export async function getServerSideProps({params, req, res}){
 }
 
 
-const CardSearch = ({res, req}) => {
+const CardId = ({res, req}) => {
     const router = useRouter()
     const [card, setCard] = useState([])
     const {cardId} = router.query
@@ -45,4 +43,4 @@ const CardSearch = ({res, req}) => {
     );
 }
  
-export default CardSearch;
+export default CardId;

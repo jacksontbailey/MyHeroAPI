@@ -47,7 +47,7 @@ async def fetch_all_card_urls():
 
 async def fetch_all_matches(queries, amount_limited):
     cards = []
-    cursor = settings.CARD_COLL.find(queries).collation(settings.SENSITIVE).limit(amount_limited)
+    cursor = settings.CARD_COLL.find(queries).collation(settings.INSENSITIVE).limit(amount_limited)
     for card in cursor:
         print(card)
         cards.append(Card(**card))
