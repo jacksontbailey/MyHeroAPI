@@ -9,6 +9,7 @@ export async function getServerSideProps(context){
     }
 }
 
+
 const CardSearch = () => {
     const router = useRouter()
     const [cards, setCards] = useState()
@@ -34,105 +35,45 @@ const CardSearch = () => {
         }
         getCard();
     }, [])
+
+    let parsed =
+            cards?.cards.forEach(card => {
+                Object.entries(card).forEach(item => {
+                    <>
+                        <h3>{item[0]}</h3>
+                        {(Object.prototype.toString.call(item[1]) === '[object Array]') ? Object.entries(item[1]).forEach(i => {
+                            <p>{i[0]}: {i[1]}</p>
+                        })
+        
+                        : (Object.prototype.toString.call(item[1]) === '[object Object]') ? Object.entries(item[1]).forEach(i => {
+                                <>
+                                    <h4>{i[0]}</h4>
+                                    {
+                                        (Object.prototype.toString.call(i[1]) === '[object Array]') ? Object.entries(i[1]).forEach(a => {
+                                            <p>{a[0]}: {a[1]}</p>
+                                        })
+                                                                    
+                                        :<p>{i[1]}</p>
+                                    }
+                                </>
+                        })
+        
+                        : <p>{item[1]}</p>
+                        }
+                    </>
+                })
+            })
+
     return (
-        <>
+        <main>
             <h1>Cards</h1>
             {(cards === undefined)? <p>No items</p> :
-                cards.cards.forEach(card => {
-                    (Object.prototype.toString.call(card) === '[object Object]') ? Object.entries(card).forEach(item => {console.log(item)})
-                    : (Object.prototype.toString.call(card) === '[object Array]') ? Object.entries(card).forEach(item => {console.log(item)})
-                    : (Object.prototype.toString.call(card) === '[object Null]') ? console.log('Null')
-                    : console.log(Object.entries(card))
-                })
-            
-               /* Object.values(cards).map((b, g) => {
-                    if(Array.isArray(b)){
-                        return(
-                            <div key={`${b}-${g}`}>
-                            {Object.values(b).map((c, h) => {
-                                console.log(c)
-                                return(
-                                    <div key={`${c}-${h}`}>
-                                        <h2>{c}</h2>
-                                        {Object.entries(c).map(([d, e], i) => {
-                                            if(Array.isArray(e)){
-                                                console.log(e)
-                                                return(
-                                                    <div key={`${d}-${i}`}>
-                                                        <h3>{d}</h3>
-                                                        <div>
-                                                            <h4>{e}</h4>
-                                                            <ul>{e.map((item, j) =>{
-                                                                console.log(item)
-                                                                return (
-                                                                    <li key={`${item}-${j}`}>{item}</li>
-                                                                )
-                                                            })}</ul>
-                                                        </div>
-                                                    </div>
-                                                )
-                                            } else if (Object.prototype.toString.call(e) === '[object Object]'){
-                                                Object.entries(e).map(([ea, eb], i) => {
-                                                    console.log(`THIS IS AN OBJECT ${eb}`)
-                                                    if(Array.isArray(eb)){
-                                                        return(
-                                                            <div key={`${ea}-${i}`}>
-                                                                <h5>{ea}</h5>
-                                                                <div>
-                                                                    <h6>{eb}</h6>
-                                                                    <ul>{eb.map((item, j) =>{
-                                                                        console.log(item)
-                                                                        return (
-                                                                            <li key={`${item}-${j}`}>{item}</li>
-                                                                        )
-                                                                    })}</ul>
-                                                                </div>
-                                                            </div>
-                                                        )
-                                                    } else if (Object.prototype.toString.call(eb) === '[object Null]'){
-                                                        return(
-                                                            <div key={`${ea}-${i}`}>  
-                                                                <h5>{ea}</h5>
-                                                                <p>Null</p>
-                                                            </div>
-                                                        )
-                                                    } else {
-                                                        return(
-                                                            <div key={`${eb}-${i}`}>
-                                                                <h5>{ea}</h5>
-                                                                <p>{eb}</p>
-                                                            </div>
-                                                        )
-                                                    }
-                                                })
-                                            } else if (Object.prototype.toString.call(e) === '[object Null]'){
-                                                return(
-                                                    <div key={`${d}-${i}`}>  
-                                                        <h3>{d}</h3>
-                                                        <p>Null</p>
-                                                    </div>
-                                                )
-                                            } else {
-                                                return(
-                                                    <div key={`${d}-${i}`}>
-                                                        <h3>{d}</h3>
-                                                        <p>{e}</p>
-                                                    </div>
-                                                )
-                                            }
-            
-                                            }
-                                        )} 
-                                    </div>
-                                )
-                            })}
-                            </div>
-
-                        )
-                    }
-                })
-            */}
-        </>
+                <>
+                    <p>yay</p>
+                    {parsed}
+                </>
+            }
+        </main>
     );
 }
 export default CardSearch
