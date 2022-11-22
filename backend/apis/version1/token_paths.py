@@ -20,11 +20,17 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
             headers= {"WWW-Authenticate": "Bearer"}
         )
     access_token_expires = timedelta(minutes = settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+    refresh_token_expires = timedelta(minutes = settings.REFRESH_TOKEN_EXPIRE_MINUTES)
+
     access_token = create_access_token(
         data = {"sub": user.username}, expires_delta = access_token_expires
     )
+    refresh_token = create_access_token(
+        data = {"sub": user.username}, expires_delta = refresh_token_expires
+    )
+
     print({"access_token": access_token, "token_type": "bearer"})
-    return {"access_token": access_token, "token_type": "bearer"}
+    return {"access_token": access_token, "refresh_token": refresh_token, "token_type": "bearer"}
 
 @router.get("/me", response_model = User)
 async def read_current_user(current_user: User = Depends(get_current_active_user)):

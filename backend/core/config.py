@@ -20,7 +20,7 @@ class Settings:
     JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
     JWT_REFRESH_SECRET_KEY = os.getenv("JWT_REFRESH_SECRET_KEY")
     ALGORITHM = os.getenv("ALGO")
-    ACCESS_TOKEN_EXPIRE_MINUTES: int =  30
+    ACCESS_TOKEN_EXPIRE_MINUTES: int =  60
     REFRESH_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7  #7 days
     TEST_USER_EMAIL = "test@example.com"
 

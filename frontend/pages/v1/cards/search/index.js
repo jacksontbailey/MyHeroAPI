@@ -63,19 +63,20 @@ const CardSearch = () => {
                                                             <>
                                                                 {
                                                                     (Object.prototype.toString.call(i[1]) === '[object Array]') 
-                                                                        ?   <dl key={`${i[1]}-${index}`}>
-                                                                                <dt>{i[0]}</dt>
-                                                                                {
-                                                                                    Object.entries(i[1]).map((a, index) => {
-                                                                                        return(
-                                                                                            <dd key={`${a[1]}-${index}`}>{`${a[0]}: ${a[1]}`}</dd>
-                                                                                        )
-                                                                                    })
-                                                                                }
-                                                                            </dl>
-        
+                                                                        ?   <dd key={`${i[1]}-${index}`}>
+                                                                                <dl>
+                                                                                    <dt>{i[0]}</dt>
+                                                                                    {
+                                                                                        Object.entries(i[1]).map((a, index) => {
+                                                                                            return(
+                                                                                                <dd key={`${a[1]}-${index}`}>{`${a[0]}: ${a[1]}`}</dd>
+                                                                                            )
+                                                                                        })
+                                                                                    }
+                                                                                </dl>
+                                                                            </dd>
                                                                 
-                                                                    :   (Object.prototype.toString.call(i[1]) === ('[object Null]' ||'[object Undefined]')) ? <dd>{`${i[0]}: Null`}</dd>                         
+                                                                    //:   (Object.prototype.toString.call(i[1]) === ('[object Null]' ||'[object Undefined]')) ? <dd>{`${i[0]}: Null`}</dd>                         
                                                                 
                                                                     :   <dd>{`${i[0]}: ${i[1]}`}</dd>
                                                                 
