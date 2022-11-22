@@ -20,7 +20,6 @@ const CardSearch = () => {
         const token = getCookie('token');
         const query = router.query
         async function getCard(){
-            console.log(query)
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/cards/search?${new URLSearchParams(query)}`, {
                 mode: 'cors',
                 headers: {
@@ -36,43 +35,70 @@ const CardSearch = () => {
         getCard();
     }, [])
 
-    let parsed =
-            cards?.cards.forEach(card => {
-                Object.entries(card).forEach(item => {
-                    <>
-                        <h3>{item[0]}</h3>
-                        {(Object.prototype.toString.call(item[1]) === '[object Array]') ? Object.entries(item[1]).forEach(i => {
-                            <p>{i[0]}: {i[1]}</p>
-                        })
+    let parsedCards =
+        cards?.cards.map((card, index) => {
+            return (
+                <section key={`card-${index}`}>
+                    {Object.entries(card).map((item, index) => {
+                        return(
+                            <>
+                                {
+                                    (Object.prototype.toString.call(item[1]) === '[object Array]') 
+                                        ?   <dl key={`${item[1]}-${index}`}>
+                                                <dt>{item[0]}</dt>
+                                                {
+                                                    Object.entries(item[1]).map((i, index) => {
+                                                        return(
+                                                            <dd key={`${i[0]}-${index}`}>{i[1]}</dd>
+                                                        )
+                                                    })
+                                                }
+                                            </dl>  
+                
+                                    :   (Object.prototype.toString.call(item[1]) === '[object Object]') 
+                                            ?   <dl key={`${item[1]}-${index}`}>
+                                                    <dt>{item[0]}</dt>
+                                                    {Object.entries(item[1]).map((i, index) => {
+                                                        return(
+                                                            <>
+                                                                {
+                                                                    (Object.prototype.toString.call(i[1]) === '[object Array]') 
+                                                                        ?   <dl key={`${i[1]}-${index}`}>
+                                                                                <dt>{i[0]}</dt>
+                                                                                {
+                                                                                    Object.entries(i[1]).map((a, index) => {
+                                                                                        return(
+                                                                                            <dd key={`${a[1]}-${index}`}>{`${a[0]}: ${a[1]}`}</dd>
+                                                                                        )
+                                                                                    })
+                                                                                }
+                                                                            </dl>
         
-                        : (Object.prototype.toString.call(item[1]) === '[object Object]') ? Object.entries(item[1]).forEach(i => {
-                                <>
-                                    <h4>{i[0]}</h4>
-                                    {
-                                        (Object.prototype.toString.call(i[1]) === '[object Array]') ? Object.entries(i[1]).forEach(a => {
-                                            <p>{a[0]}: {a[1]}</p>
-                                        })
-                                                                    
-                                        :<p>{i[1]}</p>
-                                    }
-                                </>
-                        })
+                                                                
+                                                                    :   (Object.prototype.toString.call(i[1]) === ('[object Null]' ||'[object Undefined]')) ? <dd>{`${i[0]}: Null`}</dd>                         
+                                                                
+                                                                    :   <dd>{`${i[0]}: ${i[1]}`}</dd>
+                                                                
+                                                                }
+                                                            </>
+                                                        )
+                                                    })}
+                                                </dl>
+                
+                                : <p>{`${item[0]}: ${item[1]}`}</p>
+                                }
+                            </>
+                        )}
+                    )}
+                </section>
+            )
+        })
         
-                        : <p>{item[1]}</p>
-                        }
-                    </>
-                })
-            })
 
     return (
         <main>
             <h1>Cards</h1>
-            {(cards === undefined)? <p>No items</p> :
-                <>
-                    <p>yay</p>
-                    {parsed}
-                </>
-            }
+            {parsedCards}
         </main>
     );
 }
