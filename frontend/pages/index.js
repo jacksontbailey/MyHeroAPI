@@ -24,7 +24,7 @@ export default function Home() {
             <Link href='/v1'>Check out the docs!</Link>
         </section>
         <section className={styles.login}>
-          <Link href='/login/new' className={styles.btn}>
+          <Link href='/new' className={styles.btn}>
             New User
           </Link>
           <Link href='/login' className={styles.btn}>

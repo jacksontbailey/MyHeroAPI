@@ -10,9 +10,10 @@ router = APIRouter()
 
 
 
-@router.post("/", response_model=UserCreate)
+@router.post("", response_model=UserCreate)
 async def create_user(user: UserCreate):
     # - Instance of User Collection in DB
+    print(user)
     db = settings.USER_COLL
 
     # - Makes sure the data matches the User model, hashes the password, then returns data 
