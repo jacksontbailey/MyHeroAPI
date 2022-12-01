@@ -21,18 +21,23 @@ const NewAccount = () => {
     
     async function handleSubmit(e) {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append('username', username);
-        formData.append('password', password);
-        formData.append('email', email);
 
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/new`, {
           method: 'POST',
-          body: formData
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({"username": username, "email": email, "password": password})
         })
 
-        if (res.ok){
+        if (res.status === 200){
+            const json = await res.json()
+            console.log(json)
             router.push('/new/success')
+        } else {
+            const json = await res.json()
+            alert(json.detail)
         }
     }
     
