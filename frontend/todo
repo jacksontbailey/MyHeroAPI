@@ -1,0 +1,25 @@
+# Functionality to Add
+
+## Log out functionality
+
+## Email new user to authenticate email and make user active
+
+### Email users who forgot username or password
+
+## Token generation to retrieve data from api
+
+### Show time until expiration
+
+### Button to create new token upon request
+
+## Make sure JSON is returned to user when requested
+
+## Have data stored in LS for x amount of time to prevent constant database requests
+
+## If logged in, homepage won't show login stuff
+
+## Styling
+
+## Box with scroll functionality with JSON parsed
+
+## Button with fillable url and search option section

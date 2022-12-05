@@ -1,7 +1,6 @@
 from schemas.schema_user import UserCreate
 from db.repository.users import create_new_user
 from fastapi import APIRouter, HTTPException, status
-from fastapi.responses import PlainTextResponse
 from core.config import settings
 
 

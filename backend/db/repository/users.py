@@ -31,7 +31,6 @@ def authenticate_user(username: str, password: str):
 def get_user(username: str, db = settings.USER_COLL):
     document = db.find_one({"username":username})
     if document:
-        print(type(document), document)
         return UserInDB(**document)
 
 
