@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [remember, setRemember] = useState(false);
   const router = useRouter();
 
 
@@ -24,23 +23,22 @@ export default function Login() {
     formData.append('password', password);
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
       method: 'POST',
-      body: formData
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: formData,
     });
 
-    if ((res.status == 200) && (remember === true)) {
+    if (res.status === 200){
       const json = await res.json();
       setCookie('token', json.access_token);
-      setCookie('username', username);
-      setCookie('password', password);
-      router.push("profile");
-
-    } else if (res.status == 200) {
-      const json = await res.json();
-      setCookie('token', json.access_token);
-      router.push("profile");
+      router.push("/");
 
     } else {
-      alert('Login failed.')
+      const json = await res.json()
+      console.log(json.detail)
+      alert(json.detail)
     }
   }
 
@@ -86,19 +84,6 @@ export default function Login() {
             </div>
 
             <div>
-              <div>
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  value={remember}
-                  onClick={() => setRemember(!remember)}
-                />
-                <label htmlFor="remember-me">
-                  Remember me
-                </label>
-              </div>
-
               <div>
                 <a href="#">
                   Forgot your password?
