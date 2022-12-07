@@ -1,12 +1,13 @@
-import { useState } from 'react';
-import { setCookie } from 'cookies-next';
+import { useEffect, useState } from 'react';
+import { setCookie, hasCookie } from 'cookies-next';
 import { useRouter } from 'next/router';
+
 
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
-
+  const token = hasCookie('token')
 
   function handleUsernameChange(e) {
     setUsername(e.target.value);
@@ -22,10 +23,10 @@ export default function Login() {
     formData.append('username', username);
     formData.append('password', password);
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
+      mode: 'cors',
       method: 'POST',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
       },
       body: formData,
     });
@@ -41,6 +42,13 @@ export default function Login() {
       alert(json.detail)
     }
   }
+ 
+  // Checks if authentication token exists and redirects the user to the homepage if it does.
+  useEffect(() => {
+    if (token){
+      router.push('/')
+    }
+  }, [])
 
   return (
     <>

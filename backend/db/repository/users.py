@@ -14,10 +14,7 @@ oauth2_scheme = OAuth2PasswordBearer(
 
 def authenticate_user(username: str, password: str):
     user = get_user(username)
-    print(f"user is {user}")
-    print(password)
-    print(user.hashed_password)
-    print(Hasher.verify_password(password, user.hashed_password))
+
     if not user:
         return False
     
@@ -32,7 +29,6 @@ def get_user(username: str, db = settings.USER_COLL):
     document = db.find_one({"username":username})
     if document:
         return UserInDB(**document)
-
 
 
 async def get_current_user(token: str = Depends(oauth2_scheme)):

@@ -34,6 +34,7 @@ function Home(){
                 </button>
             </>
           )}
+
           {loggedOut && (
             <>
               <Link href='/login'>Login</Link>
@@ -41,6 +42,7 @@ function Home(){
               <Link href='/new'>Sign Up</Link>
             </>
           )}
+          
         </section>
       </main>
     </>
