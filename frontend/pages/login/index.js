@@ -38,7 +38,6 @@ export default function Login() {
 
     } else {
       const json = await res.json()
-      console.log(json.detail)
       alert(json.detail)
     }
   }
