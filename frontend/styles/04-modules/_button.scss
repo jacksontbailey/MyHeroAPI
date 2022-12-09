@@ -1,0 +1,36 @@
+@use '../01-helpers/index' as *;
+
+//https://codepen.io/kjbrum/details/wBBLXx
+[class^="btn-"] {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    @include size(100%, $btn-height);
+    max-width: $btn-width;
+    margin: 1rem auto;
+    text-transform: uppercase;
+    border: 1px solid currentColor;
+}
+
+.btn {
+    display: block;
+    width: 150px;
+    padding: 8px 0;
+    margin: 20px auto;
+    background-color: var(--deku-green);
+    border: 1px solid var(--deku-green);
+    border-radius: 4px;
+    color: whitesmoke;
+    text-align: center;
+}
+  
+.btn:hover,
+.btn:focus,
+.btn:active {
+    background-color: whitesmoke;
+    color: var(--deku-green);
+}
+
+.btn-main {
+    @include animatedButton($chosenColor: $kombu-green);
+}

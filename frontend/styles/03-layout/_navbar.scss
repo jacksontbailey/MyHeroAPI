@@ -1,0 +1,15 @@
+nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    min-height: 10vh;
+    border: 1px solid red;
+}
+
+nav a{
+    margin-right: 15px;
+}
+  
+nav .logo{
+    margin-right: auto; 
+}

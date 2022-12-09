@@ -26,6 +26,7 @@ function Home(){
               <p>Welcome {user.email}!</p>
               <Link href='/v1'>Check out the docs!</Link>
               <button
+                className= "btn-main" 
                 onClick={() =>{
                   deleteCookie('token');
                   mutate();
@@ -37,7 +38,7 @@ function Home(){
 
           {loggedOut && (
             <>
-              <Link href='/login'>Login</Link>
+              <Link href='/login'><button className='btn-main'>Login</button></Link>
               <p>or</p>
               <Link href='/new'>Sign Up</Link>
             </>

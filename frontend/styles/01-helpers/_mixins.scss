@@ -1,0 +1,90 @@
+@use './color' as *;
+@use './variables' as v;
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  transition: 0.5s ease-in-out;
+}
+
+*:before,
+*:after {
+  z-index: -1;
+}
+
+@mixin size($width, $height: $width) {
+	width: $width;
+	height: $height;
+}
+
+// Advanced Positioning
+@mixin position($type,
+                $top: v.$position-default,
+                $right: v.$position-default,
+                $bottom: v.$position-default,
+                $left: v.$position-default) {
+	position: $type;
+	$allowed_types: absolute relative fixed;
+	@if not index($allowed_types, $type) {
+		@warn "Unknown position: #{$type}.";
+	}
+	@each $data in top $top, right $right, bottom $bottom, left $left {
+		#{nth($data, 1)}: nth($data, 2);
+	}
+}
+
+@mixin absolute($top: v.$position-default, $right: v.$position-default, $bottom: v.$position-default, $left: v.$position-default) {
+	@include position(absolute, $top, $right, $bottom, $left);
+}
+
+@mixin relative($top: v.$position-default, $right: v.$position-default, $bottom: v.$position-default, $left: v.$position-default) {
+	@include position(relative, $top, $right, $bottom, $left);
+}
+
+@mixin fixed($top: v.$position-default, $right: v.$position-default, $bottom: v.$position-default, $left: v.$position-default) {
+	@include position(fixed, $top, $right, $bottom, $left);
+}
+
+
+// Buttons
+@mixin animatedButton($chosenColor: $deku-green){
+    position: relative;
+    color: $chosenColor;
+    $btn-color-dark: shade($chosenColor, 40%);
+    
+    &:before,
+    &:after {
+      @include absolute(50%);
+      content: '';
+      @include size(20px);
+      background-color: $chosenColor;
+      border-radius: 50%;
+    }
+    
+    &:before {
+      left: -20px;
+      transform: translate(-50%, -50%);
+      // animation: criss-cross-left 0.8s reverse;
+    }
+    
+    &:after {
+      right: -20px;
+      transform: translate(50%, -50%);
+      // animation: criss-cross-right 0.8s reverse;
+    }
+    
+    &:hover {
+      color: tint($chosenColor, 75%);
+      
+      &:before {
+        animation: criss-cross-left 0.8s both;
+        animation-direction: alternate;
+      }
+      
+      &:after {
+        animation: criss-cross-right 0.8s both;
+        animation-direction: alternate;
+      }
+    }
+  }

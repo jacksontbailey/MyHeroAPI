@@ -1,0 +1,33 @@
+@use "01-helpers/index" as *;
+
+h1{
+    color: $deku-green;
+    font-size: xx-large;
+    font: $main-font;
+}
+
+h2 {
+    color: $kombu-green;
+    font-size: large;
+}
+
+h3 {
+    color: $middle-grey;
+    font-size: 30px;
+}
+
+h4 {
+    color: $black;
+    font-size: 25px;
+}
+
+h5{
+    color: $black-2;
+    font-size: 20px;
+}
+
+h6 {
+    color: $deku-green;
+    font-size: 18px;
+    font-style: italic;
+}

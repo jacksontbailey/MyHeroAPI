@@ -1,0 +1,36 @@
+@use './mixins' as a;
+@use './variables' as *;
+
+@keyframes criss-cross-left {
+    0% {
+      left: -20px;
+    }
+    50% {
+      left: 50%;
+      @include a.size(20px);
+    }
+    100% {
+      left: 50%;
+      @include a.size($btn-width*1.5);
+    }
+}
+  
+@keyframes criss-cross-right {
+    0% {
+      right: -20px;
+    }
+    50% {
+      right: 50%;
+      @include a.size(20px);
+    }
+    100% {
+      right: 50%;
+      @include a.size($btn-width*1.5);
+    }
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

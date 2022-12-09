@@ -5,9 +5,11 @@ const Navbar = () => {
             <div className="logo">
                 <p>MHA API</p>
             </div>
-            <Link href='/'>Home</Link>
-            <Link href='/about'>About</Link>
-            <Link href='/v1'>API Data</Link>
+            <div className="links">
+                <Link href='/'>Home</Link>
+                <Link href='/about'>About</Link>
+                <Link href='/v1'>API Data</Link>
+            </div>
         </nav>
     );
 }
