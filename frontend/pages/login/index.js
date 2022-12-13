@@ -3,6 +3,7 @@ import { setCookie, hasCookie } from 'cookies-next';
 import { useRouter } from 'next/router';
 
 
+
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -51,58 +52,47 @@ export default function Login() {
 
   return (
     <>
-      <div>
-        <div>
+      <div className='form'>
+        <div className='form-box'>
           <div>
-            <h2>Sign in to your account</h2>
+            <h1>Sign In</h1>
           </div>
-          <form action="#" method="POST" onSubmit={handleSubmit}>
-            <input type="hidden" name="remember" defaultValue="true" />
-            <div>
-              <div>
-                <label htmlFor="username">
-                  Username
-                </label>
-                <input
-                  id="username"
-                  name="username"
-                  type="text"
-                  autoComplete="username"
-                  required
-                  placeholder="Username"
-                  value={username}
-                  onChange={handleUsernameChange}
-                />
-              </div>
-              <div>
-                <label htmlFor="password">
-                  Password
-                </label>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
-                  required
-                  value={password}
-                  onChange={handlePasswordChange}
-                />
-              </div>
-            </div>
+          <form action="#" method="POST" onSubmit={handleSubmit} className="form-content">
+              <section className='form-fillable'>
+                <div className='field-wrap'>
+                  <label htmlFor="username">
+                    Username<span className='req'>*</span>
+                  </label>
+                  <input
+                    id="username"
+                    name="username"
+                    type="text"
+                    autoComplete="username"
+                    required
+                    placeholder="Username"
+                    value={username}
+                    onChange={handleUsernameChange}
+                  />
+                </div>
+                <div className='field-wrap'>
+                  <label htmlFor="password">
+                    Password<span className='req'>*</span>
+                  </label>
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    autoComplete="current-password"
+                    required
+                    value={password}
+                    onChange={handlePasswordChange}
+                  />
+                </div>
+              </section>
 
-            <div>
-              <div>
-                <a href="#">
-                  Forgot your password?
-                </a>
-              </div>
-            </div>
+              <p className="forgot"><a href="#">Forgot password?</a></p>
 
-            <div>
-              <button type="submit">
-                Sign in
-              </button>
-            </div>
+              <button type="submit" className='btn'>Log In</button>
           </form>
         </div>
       </div>

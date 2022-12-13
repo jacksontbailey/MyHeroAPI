@@ -6,31 +6,38 @@
     display: block;
     overflow: hidden;
     @include size(100%, $btn-height);
+    width: $btn-width;
     max-width: $btn-width;
     margin: 1rem auto;
     text-transform: uppercase;
     border: 1px solid currentColor;
+    background-color: white;
+    z-index: 1;
 }
 
 .btn {
     display: block;
-    width: 150px;
+    text-align: center;
+    justify-self: center;
+    border-radius: 4px;
+    width: 100%;
     padding: 8px 0;
-    margin: 20px auto;
     background-color: var(--deku-green);
     border: 1px solid var(--deku-green);
-    border-radius: 4px;
     color: whitesmoke;
-    text-align: center;
+    cursor: pointer;
 }
   
 .btn:hover,
 .btn:focus,
 .btn:active {
-    background-color: whitesmoke;
-    color: var(--deku-green);
+    background-color: $kombu-green;
 }
 
 .btn-main {
-    @include animatedButton($chosenColor: $kombu-green);
+    @include animatedButton($chosenColor: $deku-green);
+}
+
+.btn-secondary {
+    @include animatedButton($chosenColor: $middle-grey)
 }

@@ -1,5 +1,6 @@
 @use './color' as *;
 @use './variables' as v;
+@use './functions' as f;
 
 *,
 *:before,
@@ -13,12 +14,16 @@
   z-index: -1;
 }
 
+// Sizing
+// -------------------------------------
 @mixin size($width, $height: $width) {
 	width: $width;
 	height: $height;
 }
 
+
 // Advanced Positioning
+// -------------------------------------
 @mixin position($type,
                 $top: v.$position-default,
                 $right: v.$position-default,
@@ -48,8 +53,10 @@
 
 
 // Buttons
-@mixin animatedButton($chosenColor: $deku-green){
+// --------------------------------------
+@mixin animatedButton($chosenColor: red){
     position: relative;
+    cursor: pointer;
     color: $chosenColor;
     $btn-color-dark: shade($chosenColor, 40%);
     
@@ -75,7 +82,7 @@
     }
     
     &:hover {
-      color: tint($chosenColor, 75%);
+      color: f.tint($chosenColor, 75%);
       
       &:before {
         animation: criss-cross-left 0.8s both;

@@ -40,7 +40,7 @@ function Home(){
             <>
               <Link href='/login'><button className='btn-main'>Login</button></Link>
               <p>or</p>
-              <Link href='/new'>Sign Up</Link>
+              <Link href='/new'><button className='btn-secondary'>Sign Up</button></Link>
             </>
           )}
           

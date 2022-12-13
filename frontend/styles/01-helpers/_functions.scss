@@ -1,0 +1,11 @@
+// Mix white with another color
+// ----------------------------
+@function tint($color, $percent: $mix-percent-default){
+	@return mix(white, $color, $percent);
+}
+ 
+// Mix black with another color
+// ----------------------------
+@function shade($color, $percent: $mix-percent-default){
+	@return mix(black, $color, $percent);
+}

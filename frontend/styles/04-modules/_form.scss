@@ -1,0 +1,73 @@
+@use '../01-helpers/index' as *;
+
+.form{
+    display: flex;
+    justify-content: center;
+}
+
+.form-box{
+    display: grid;
+    max-width: 600px;
+    padding: 40px;
+    background-color: darkgray;
+}
+
+.form-content{
+    display: grid;
+}
+
+.form-fillable{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.field-wrap {
+    display: grid;
+    gap: 10px;
+}
+
+.forgot{
+    font-size: 10px;
+    text-align: right;
+    margin-top: 20px;
+}
+
+label {
+    transform:translateY(6px);
+    left:13px;
+    color:rgba(white,.5);
+    transition:all 0.25s ease;
+    backface-visibility: hidden;
+    pointer-events: none;
+    font-size:22px;
+    .req {
+        margin:2px;
+        color: $deku-green;
+    }
+}
+
+label.active {
+    transform:translateY(50px);
+    left:2px;
+    font-size:14px;
+    .req {
+      opacity:0;
+    }
+}
+
+label.highlight {
+	color:white;
+}
+
+input{
+    width: 100%;
+    background: none;
+    border: 1px solid grey;
+    color: white;
+    border-radius: border-color .25s ease, box-shadow .25 ease;
+    &:focus{
+        outline:0;
+        border-color: aquamarine;
+    }
+}
