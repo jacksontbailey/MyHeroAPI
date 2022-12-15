@@ -7,6 +7,7 @@
 
 .form-box{
     display: grid;
+    width: 90vw;
     max-width: 600px;
     padding: 40px;
     background-color: darkgray;
@@ -20,11 +21,6 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
-
-.field-wrap {
-    display: grid;
-    gap: 10px;
 }
 
 .forgot{
@@ -62,10 +58,11 @@ label.highlight {
 
 input{
     width: 100%;
+    padding: .5em;
     background: none;
     border: 1px solid grey;
     color: white;
-    border-radius: border-color .25s ease, box-shadow .25 ease;
+    font-size: 20px;
     &:focus{
         outline:0;
         border-color: aquamarine;
