@@ -26,12 +26,18 @@
     border: 1px solid var(--deku-green);
     color: whitesmoke;
     cursor: pointer;
+
+    &:hover{
+        background-color: red;
+    }
 }
-  
-.btn:hover,
-.btn:focus,
-.btn:active {
-    background-color: $kombu-green;
+
+.btn.active {
+    background-color: blue;
+
+    &:hover {
+        background-color:purple
+    }
 }
 
 .btn-main {

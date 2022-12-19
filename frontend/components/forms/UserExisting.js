@@ -31,15 +31,9 @@ const UserExisting = ({currentForm}) => {
           body: formData,
         });
     
-        if (res.status === 200){
-          const json = await res.json();
-          setCookie('token', json.access_token);
-          router.push("/");
-    
-        } else {
-          const json = await res.json()
-          alert(json.detail)
-        }
+        (res.status === 200) 
+          ? await res.json().then(res => {setCookie('token', res.access_token)})
+          : await res.json().then(res => {alert(res.detail)})
       }
     
     useEffect(() => {

@@ -1,5 +1,11 @@
 @use '../01-helpers/index' as *;
 
+.forgot{
+    font-size: 10px;
+    text-align: right;
+    margin-top: 20px;
+}
+
 .form{
     display: flex;
     justify-content: center;
@@ -28,10 +34,23 @@
     display: none;
 }
 
-.forgot{
-    font-size: 10px;
-    text-align: right;
-    margin-top: 20px;
+.form-multiple-options{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+
+input{
+    width: 100%;
+    padding: .5em;
+    background: none;
+    border: 1px solid grey;
+    color: white;
+    font-size: 20px;
+    &:focus{
+        outline:0;
+        border-color: aquamarine;
+    }
 }
 
 label {
@@ -59,17 +78,4 @@ label.active {
 
 label.highlight {
 	color:white;
-}
-
-input{
-    width: 100%;
-    padding: .5em;
-    background: none;
-    border: 1px solid grey;
-    color: white;
-    font-size: 20px;
-    &:focus{
-        outline:0;
-        border-color: aquamarine;
-    }
 }
