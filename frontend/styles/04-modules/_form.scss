@@ -9,18 +9,23 @@
     display: grid;
     width: 90vw;
     max-width: 600px;
-    padding: 40px;
     background-color: darkgray;
 }
 
 .form-content{
     display: grid;
+    padding: 40px;
 }
 
 .form-fillable{
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding-bottom: 40px;
+}
+
+.form-invisible{
+    display: none;
 }
 
 .forgot{

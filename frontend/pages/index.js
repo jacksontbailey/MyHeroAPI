@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
-import {deleteCookie, getCookie} from 'cookies-next'
+import {deleteCookie} from 'cookies-next'
 import useUser from '../data/use-user'
+import UserCombo from '../components/forms/UserCombo'
 
 
 function Home(){
@@ -37,11 +38,7 @@ function Home(){
           )}
 
           {loggedOut && (
-            <>
-              <Link href='/login'><button className='btn-main'>Login</button></Link>
-              <p>or</p>
-              <Link href='/new'><button className='btn-secondary'>Sign Up</button></Link>
-            </>
+            <UserCombo />
           )}
           
         </section>
