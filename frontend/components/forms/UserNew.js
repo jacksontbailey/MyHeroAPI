@@ -77,7 +77,7 @@ const UserNew = ({currentForm}) => {
                         onChange={handleNewPasswordChange}
                     />
                 </section>
-                <button type="submit" className='btn'>Create Account</button>
+                <button type="submit" className='btnSubmit'>Create Account</button>
             </form>
         </>
     );

@@ -1,13 +1,15 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
-import {deleteCookie} from 'cookies-next'
 import useUser from '../data/use-user'
 import UserCombo from '../components/forms/UserCombo'
+import { logout } from '../libs/auth'
 
 
 function Home(){
-  const {user, mutate, loggedOut} = useUser();
+  const {loading, user, mutate, loggedOut} = useUser();
+
+  if(loading) return <div className='loader'></div>
 
   return(
     <>
@@ -16,11 +18,13 @@ function Home(){
         <meta name="description" content="Fan made API for the My Hero Academia card game" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <section className={styles.header}>
 
+      <main className={styles.main}>
+        
+        <section className={styles.header}>
           <h1>Easy Login</h1>
         </section>
+
         <section className={styles.login}>
           {user && !loggedOut && (
             <>
@@ -29,7 +33,7 @@ function Home(){
               <button
                 className= "btn-main" 
                 onClick={() =>{
-                  deleteCookie('token');
+                  logout('token');
                   mutate();
                 }}>
                   Logout
@@ -37,11 +41,10 @@ function Home(){
             </>
           )}
 
-          {loggedOut && (
-            <UserCombo />
-          )}
+          {loggedOut && (<UserCombo/>)}
           
         </section>
+      
       </main>
     </>
   )

@@ -16,34 +16,25 @@
 }
 
 .btn {
-    display: block;
-    text-align: center;
-    justify-self: center;
-    border-radius: 4px;
-    width: 100%;
-    padding: 8px 0;
-    background-color: var(--deku-green);
-    border: 1px solid var(--deku-green);
-    color: whitesmoke;
-    cursor: pointer;
-
-    &:hover{
-        background-color: red;
-    }
+    @include regularButton($padding: 40px 0, $fontSize: 20px)
 }
 
 .btn.active {
     background-color: blue;
 
     &:hover {
-        background-color:purple
+        background-color:black
     }
 }
 
 .btn-main {
-    @include animatedButton($chosenColor: $deku-green);
+    @include animatedDotButton($chosenColor: $deku-green);
 }
 
 .btn-secondary {
-    @include animatedButton($chosenColor: $middle-grey)
+    @include animatedDotButton($chosenColor: $middle-grey)
+}
+
+.btnSubmit {
+    @include regularButton
 }

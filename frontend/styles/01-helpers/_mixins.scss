@@ -54,7 +54,26 @@
 
 // Buttons
 // --------------------------------------
-@mixin animatedButton($chosenColor: red){
+@mixin regularButton($bordRadius: 0px, $width: 100%, $padding: 8px 0, $color: white, $backColor:green, $bordColor:red, $hoverBackColor: purple, $fontSize: 16px){
+  position: relative;
+  justify-self: center;
+  text-align: center;
+  cursor: pointer;
+  border-radius: $bordRadius;
+  width: $width;
+  padding: $padding;
+  color: $color;
+  background-color: $backColor;
+  border-color: $bordColor;
+  font-size: $fontSize;
+  
+  &:hover{
+    background-color: $hoverBackColor;
+  }
+}
+
+
+@mixin animatedDotButton($chosenColor: red){
     position: relative;
     cursor: pointer;
     color: $chosenColor;

@@ -32,7 +32,7 @@ const UserExisting = ({currentForm}) => {
         });
     
         (res.status === 200) 
-          ? await res.json().then(res => {setCookie('token', res.access_token)})
+          ? await res.json().then(res => {setCookie('token', res.access_token)}).then(() => {router.reload()})
           : await res.json().then(res => {alert(res.detail)})
       }
     
@@ -44,33 +44,38 @@ const UserExisting = ({currentForm}) => {
     
     return (
         <>
-            <form action="#" method="POST" onSubmit={handleSubmit} className= {(currentForm === "Login") ? 'form-content': 'form-invisible'}>
+            <form action="#" 
+                  className= {(currentForm === "Login") ? 'form-content': 'form-invisible'}
+                  method="POST" 
+                  name= "login-form" 
+                  onSubmit={handleSubmit} 
+              >
                 <section className='form-fillable user-existing'>
-                <input
-                    id="username"
-                    name="username"
-                    type="text"
-                    autoComplete="username"
-                    aria-label='Username'
-                    placeholder="Username"
-                    required
-                    value={username}
-                    onChange={handleUsernameChange}
-                />
-                <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    autoComplete="current-password"
-                    aria-label='Password'
-                    placeholder='Password'
-                    required
-                    value={password}
-                    onChange={handlePasswordChange}
-                />
+                  <input
+                      aria-label='Username'
+                      autoComplete="username"
+                      id="username"
+                      placeholder="Username"
+                      required
+                      name="username"
+                      onChange={handleUsernameChange}
+                      type="text"
+                      value={username}
+                  />
+                  <input
+                      aria-label='Password'
+                      autoComplete="current-password"
+                      id="password"
+                      placeholder='Password'
+                      required
+                      name="password"
+                      onChange={handlePasswordChange}
+                      type="password"
+                      value={password}
+                  />
                 </section>
                 <p className="forgot"><a href="#">Forgot password?</a></p>
-                <button type="submit" className='btn'>Log In</button>
+                <button type="submit" className='btnSubmit'>Log In</button>
             </form>
         </>
     );
