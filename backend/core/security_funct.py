@@ -28,3 +28,16 @@ def create_refresh_token(data: dict, expires_delta: timedelta | None = None):
     encoded_jwt = jwt.encode(to_encode, settings.JWT_REFRESH_SECRET_KEY, algorithm = settings.ALGORITHM)
     
     return encoded_jwt
+
+
+def generate_verification_token(email: str):
+    token = jwt.encode(
+        {
+            "sub": email,
+            "exp": datetime.utcnow() + timedelta(hours=24),
+        },
+        settings.JWT_VERFICATION_SECRET,
+        algorithm=settings.ALGORITHM,
+    ).decode("utf-8")
+
+    return token

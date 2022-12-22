@@ -19,6 +19,7 @@ class Settings:
     LIVE_SERVER = f"mongodb+srv://{USER}:{PASSWORD}@cluster0.itnndfb.mongodb.net/test"
     JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
     JWT_REFRESH_SECRET_KEY = os.getenv("JWT_REFRESH_SECRET_KEY")
+    JWT_VERFICATION_SECRET = os.getenv("JWT_VERFICATION_SECRET")
     ALGORITHM = os.getenv("ALGO")
     ACCESS_TOKEN_EXPIRE_MINUTES: int =  60
     REFRESH_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7  #7 days
@@ -28,6 +29,7 @@ class Settings:
     DB = CLIENT['carddb']
     USER_COLL = DB['user']
     CARD_COLL = DB['card']
+    VERIFY_COLL = DB['verification_token']
 
     # - searches for matches that are case sensitive in MongoDB
     SENSITIVE = Collation(
@@ -51,4 +53,13 @@ class Settings:
         "http://localhost:8080",
     ]
 
+
+class GoogleInfo:
+    INFO = {
+        "email_password": os.getenv("GMPASSWORD"),
+        "email_sender": os.getenv("SENDER"),
+        "sender_name": os.getenv("SENDER_NAME")
+    }
+
 settings = Settings()
+ginfo = GoogleInfo()
