@@ -4,7 +4,7 @@ export function logout(cookie){
     deleteCookie(cookie)
 }
 
-async function verifyUser({email, token}) {
+export async function verifyUser({email, token}) {
     try {
         const response = await fetch(`/api/verify?email=${email}&token=${token}`);
         const data = await response.json();
