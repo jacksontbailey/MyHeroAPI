@@ -1,7 +1,8 @@
 from schemas.schema_user import UserCreate
 from db.repository.users import create_new_user
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, HTTPException, status, BackgroundTasks
 from core.config import settings
+from core.background import send_verification_email
 
 
 router = APIRouter()
@@ -11,9 +12,8 @@ router = APIRouter()
 
 
 @router.post("", response_model=UserCreate)
-async def create_user(user: UserCreate):
+async def create_user(user: UserCreate, background_tasks: BackgroundTasks):
     # - Instance of User Collection in DB
-    print(user)
     db = settings.USER_COLL
 
     # - Makes sure the data matches the User model, hashes the password, then returns data 
@@ -37,7 +37,12 @@ async def create_user(user: UserCreate):
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Email is linked to an existing account already.")
 
         else:
+            # Insert new user into database
             db.insert_one(new_user)
+
+            # Send verification email to new user to activate account
+            background_tasks.add_task(send_verification_email, new_user['email'])
+            
             return(user.dict())
 
     raise HTTPException(400, "Bad Request")

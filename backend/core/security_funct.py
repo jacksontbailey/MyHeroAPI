@@ -38,6 +38,6 @@ def generate_verification_token(email: str):
         },
         settings.JWT_VERFICATION_SECRET,
         algorithm=settings.ALGORITHM,
-    ).decode("utf-8")
+    )
 
     return token
