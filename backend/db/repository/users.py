@@ -24,6 +24,14 @@ def authenticate_user(username: str, password: str):
     return user
 
 
+def check_verification_status(username: str):
+    user=get_user(username)
+
+    if not user.is_verified:
+        return False
+    
+    return True
+
 
 def get_user(username: str, db = settings.USER_COLL):
     document = db.find_one({"username":username})

@@ -47,7 +47,6 @@ def generate_verification_email(email: str, verification_token: str, host: str) 
 
 def send_email(message: EmailMessage):
     # Connect to the SMTP server
-    print(message)
     context= ssl.create_default_context()
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as smtp:

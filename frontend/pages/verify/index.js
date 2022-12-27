@@ -2,10 +2,10 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import verifyUser from '../../libs/auth'
 
-const VerificationPage = async ({email, token}) => {
+const VerificationPage = async ({emailArg, tokenArg}) => {
     const router = useRouter()
     const { email, token } = router.query
-    const result = await verifyUser(email, token);
+    const result = await verifyUser(emailArg, tokenArg);
 
     if (result.error){
         return <ResponseMessage messageType="error" message="Invalid token" />

@@ -1,4 +1,5 @@
 import {deleteCookie} from 'cookies-next'
+import { useEffect } from 'react';
 
 export function logout(cookie){
     deleteCookie(cookie)
@@ -6,7 +7,7 @@ export function logout(cookie){
 
 export async function verifyUser({email, token}) {
     try {
-        const response = await fetch(`/api/verify?email=${email}&token=${token}`);
+        const response = await fetch(`/verification/verify?email=${email}&token=${token}`);
         const data = await response.json();
         return data
 

@@ -1,11 +1,11 @@
 cryptography
-fastapi >= 0.77.0
+fastapi[all] >= 0.77.0
 passlib[bcrypt]
 pydantic >= 1.9.0
-pyadntic[email]
+pydantic[email]
 python-jose[cryptography]
 python-multipart
-uvicorn
+uvicorn[standard]
 motor
 python-dotenv
 python-decouple
@@ -13,3 +13,4 @@ pyparsing
 pymongo
 beanie
 cookies-next
+bcrypt
