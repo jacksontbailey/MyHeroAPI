@@ -1,12 +1,12 @@
-import React from 'react';
-import Link from 'next/link';
+import {useRouter} from "next/router";
 
 const ResponseMessage = ({ messageType, message }) => {
+    const router = useRouter()
     let boxColor = messageType === 'error' ? 'red' : 'green';
     let timeout = messageType === 'error' ? 5000 : 3000;
 
     setTimeout(() => {
-        Link.push('/');
+        router.push('/');
     }, timeout);
 
     return (
