@@ -12,6 +12,7 @@ oauth2_scheme = OAuth2PasswordBearer(
     )
 
 
+
 def authenticate_user(username: str, password: str):
     user = get_user(username)
 
@@ -24,6 +25,7 @@ def authenticate_user(username: str, password: str):
     return user
 
 
+
 def check_verification_status(username: str):
     user=get_user(username)
 
@@ -33,10 +35,22 @@ def check_verification_status(username: str):
     return True
 
 
-def get_user(username: str, db = settings.USER_COLL):
-    document = db.find_one({"username":username})
+
+def get_user(username: str | None = None, email: str | None = None, db = settings.USER_COLL):
+    # Create the query dictionary
+    query = {}
+    if username:
+        query["username"] = username
+    if email:
+        query["email"] = email
+
+    # Find the user
+    document = db.find_one(query)
+
+    # Return the user as a UserInDB object if it exists
     if document:
         return UserInDB(**document)
+
 
 
 async def get_current_user(token: str = Depends(oauth2_scheme)):
@@ -66,10 +80,12 @@ async def get_current_active_user(current_user: User = Depends(get_current_user)
     return current_user
 
 
+
 async def check_if_user_is_admin(current_user: User = Depends(get_current_active_user)) -> User:
     if not current_user.is_superuser:
         raise HTTPException(status_code=401, detail="You have not enough privileges")
     return current_user
+
 
 
 async def create_new_user(user):
@@ -83,6 +99,8 @@ async def create_new_user(user):
         ).dict()
     
     return(new_user)
+
+
 
 async def remove_user(id):
     await settings.USER_COLL.delete_one({"_id": f"ObjectId('{id}')"})

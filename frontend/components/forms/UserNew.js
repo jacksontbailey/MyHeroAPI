@@ -34,7 +34,6 @@ const UserNew = ({currentForm}) => {
     
         if (res.status === 200){
             const json = await res.json()
-            console.log(json)
             router.push('/new/success')
         } else {
             const json = await res.json()

@@ -1,11 +1,8 @@
-import { useRouter } from 'next/router'
-
-export async function getServerSideProps(context){
-    return {
-        props: {}
+export default async function verifyUser({email, token}) {
+    try{
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/verification/verify?token=${token}&email=${email}`)
+        return res.status
+    } catch(error) {
+        return error
     }
-}
-
-export default async (url) => {
-   return await fetch(url, {headers: {'mode': `no-cors`}}).then(res => (res.status === 202) ? res.json() : alert(res.json().detail))
 }

@@ -1,4 +1,4 @@
-from schemas.schema_user import UserCreate
+from schemas.schema_user import UserCreate, UserPassChange
 from db.repository.users import create_new_user
 from fastapi import APIRouter, HTTPException, status, BackgroundTasks
 from core.config import settings
@@ -8,8 +8,6 @@ from core.background import send_verification_email
 router = APIRouter()
 
 # - searches for matches that are case insensitive in MongoDB
-
-
 
 @router.post("", response_model=UserCreate)
 async def create_user(user: UserCreate, background_tasks: BackgroundTasks):
@@ -41,10 +39,23 @@ async def create_user(user: UserCreate, background_tasks: BackgroundTasks):
             db.insert_one(new_user)
 
             # Send verification email to new user to activate account
-            background_tasks.add_task(send_verification_email, new_user['email'])
+            background_tasks.add_task(send_verification_email, email = new_user['email'], host = settings.ORIGINS[0])
             
             return(user.dict())
 
     raise HTTPException(400, "Bad Request")
+
+
+@router.post("/password", response_model=UserPassChange)
+async def forgotPassword(email: UserPassChange, background_tasks: BackgroundTasks):
+    # - Instance of User Collection in DB
+    db = settings.USER_COLL
+    
+    email_match = db.find({'email': email['email']}).collation(settings.INSENSITIVE)
+
+    if not email_match:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Email not found.")
+    else:
+        background_tasks.add_task(send_verification_email, email = email['email'], host = settings.ORIGINS[0])
 
 

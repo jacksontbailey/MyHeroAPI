@@ -30,13 +30,13 @@ def create_refresh_token(data: dict, expires_delta: timedelta | None = None):
     return encoded_jwt
 
 
-def generate_verification_token(email: str):
+def generate_token(email: str, secret: str):
     token = jwt.encode(
         {
             "sub": email,
             "exp": datetime.utcnow() + timedelta(hours=24),
         },
-        settings.JWT_VERFICATION_SECRET,
+        key=secret,
         algorithm=settings.ALGORITHM,
     )
 

@@ -12,7 +12,6 @@ router = APIRouter()
 @router.post("", response_model = Token)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
     user = authenticate_user(form_data.username, form_data.password)
-    verified = check_verification_status(form_data.username)
 
     if not user:
         raise HTTPException(
@@ -21,6 +20,8 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
             headers= {"WWW-Authenticate": "Bearer"}
         )
     
+    verified = check_verification_status(form_data.username)
+
     if not verified:
         raise HTTPException(
             status_code= status.HTTP_401_UNAUTHORIZED,
@@ -40,6 +41,9 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
 
     print({"access_token": access_token, "refresh_token": refresh_token, "token_type": "bearer"})
     return {"access_token": access_token, "refresh_token": refresh_token, "token_type": "bearer"}
+
+
+
 
 @router.get("/me", response_model = User)
 async def read_current_user(current_user: User = Depends(get_current_active_user)):

@@ -1,34 +1,34 @@
 from core.config import settings
 from datetime import datetime, timedelta
-
-verification_tokens_collection = settings.VERIFY_COLL
-
+from schemas.schema_token import Hasher
 
 
-def save_verification_token(email: str, token: str):
+def save_token(collection, email: str, token: str):
     # Save the token to the database
-    verification_tokens_collection.insert_one(
+    collection.insert_one(
         {
             "email": email,
-            "token": token,
             "expires_at": datetime.utcnow() + timedelta(hours=24),
+            "token": token,
+            "used": False
         }
     )
 
 
-
-def is_valid_verification_token(token: str, email: str):
+def is_valid_token(collection, token: str, email: str):
     # Look up the token in the database
-    verification_token = verification_tokens_collection.find({"token": token, "email": email}).collation(settings.INSENSITIVE).limit(1)
+    verification_token = collection.find_one({"token": token, "email": email})
 
-    # Check if the token has expired
-    if verification_token[0] is None:
+    # Check if the token exists, has expired, or already been used
+    if verification_token is None:
         return False
-    if verification_token[0]["expires_at"] < datetime.utcnow():
+    if verification_token["expires_at"] < datetime.utcnow():
+        return False
+    if verification_token["used"] is True:
         return False
 
     return True
-
+    
 
 
 def mark_as_verified(email: str):
@@ -43,3 +43,34 @@ def mark_as_verified(email: str):
     )
 
     return verified_user
+
+
+def update_token(email: str):
+    # Connect to the database
+    token_collection = settings.VERIFY_COLL
+    
+    # Find the token with the matching email and update it's used status"
+    updated_token = token_collection.find_one_and_update(
+        filter = {"email" : email, 'used': False},
+        update = {"$set": {'used': True}}
+    )
+
+    return updated_token
+
+
+
+def change_password(email: str, password: str):
+    # Encrypt the password
+    hashed_password = Hasher.get_password_hash(password=password)
+
+    # Connect to the database
+    users_collection = settings.USER_COLL
+
+    # Find the user with the matching email. If the user exists, update their verification status
+    password_change = users_collection.find_one_and_update(
+        filter = {"email" : email},
+        update = {"$set": {'hashed_password': hashed_password}},
+        return_document=True
+    )
+
+    return password_change
