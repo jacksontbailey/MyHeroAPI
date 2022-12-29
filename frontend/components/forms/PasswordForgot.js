@@ -5,8 +5,8 @@ import ResponseMessage from '../ResponseMessage';
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const formRef = useRef(null)
+    //const [isSubmitting, setIsSubmitting] = useState(false);
+    //const formRef = useRef(null)
 
     function handleEmailChange(e) {
         setEmail(e.target.value);
@@ -14,26 +14,33 @@ const ForgotPassword = () => {
     
     async function handleNewSubmit(e) {
         e.preventDefault();
-        setIsSubmitting(true);
+        //setIsSubmitting(true);
     
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/new/password`, {
-          method: 'POST',
-          headers: {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/new/password/${email}`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({"email": email})
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+            },
         })
-        
-        formRef.current.reset();
 
-        return (<ResponseMessage messageType="success" message={`A password reset has been sent to ${email}.`} />)
-      }
+        //formRef.current.reset();
+        if (res.status === 200){
+            return (<ResponseMessage messageType="success" message={`A password reset has been sent to ${email}.`} />)
+        } else {
+            const json = await res.json()
+            alert(json.detail)
+        }
+
+    }
 
 
     return (
         <>
-            <form ref={formRef} action="#" method="POST" onSubmit={handleNewSubmit} className='form-forgot-password'>
+            <form /*ref={formRef}*/ action="#" method="POST" onSubmit={handleNewSubmit} name='forgot-password' className='form-content forgot-password'>
+                
                 <section className='form-fillable user-new'>
                     <input
                         id="email"
@@ -46,7 +53,7 @@ const ForgotPassword = () => {
                         onChange={handleEmailChange}
                     />
                 </section>
-                <button type="submit" className='btnSubmit' disabled={isSubmitting}>Create Account</button>
+                <button type="submit" className='btnSubmit' /*disabled={isSubmitting}*/>Submit</button>
             </form>
         </>
     );

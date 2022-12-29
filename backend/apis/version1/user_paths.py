@@ -1,8 +1,9 @@
 from schemas.schema_user import UserCreate, UserPassChange
 from db.repository.users import create_new_user
 from fastapi import APIRouter, HTTPException, status, BackgroundTasks
+from fastapi.encoders import jsonable_encoder
 from core.config import settings
-from core.background import send_verification_email
+from core.background import send_verification_email, send_password_reset_email
 
 
 router = APIRouter()
@@ -46,16 +47,17 @@ async def create_user(user: UserCreate, background_tasks: BackgroundTasks):
     raise HTTPException(400, "Bad Request")
 
 
-@router.post("/password", response_model=UserPassChange)
-async def forgotPassword(email: UserPassChange, background_tasks: BackgroundTasks):
+@router.get("/password/{email}")
+async def forgotPassword(background_tasks: BackgroundTasks, email: str):
+    print(f'passed into password backend: {email}, type is {type(email)}')
     # - Instance of User Collection in DB
     db = settings.USER_COLL
     
-    email_match = db.find({'email': email['email']}).collation(settings.INSENSITIVE)
-
+    email_match = db.find({'email': email}).collation(settings.INSENSITIVE)
+    
     if not email_match:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Email not found.")
     else:
-        background_tasks.add_task(send_verification_email, email = email['email'], host = settings.ORIGINS[0])
+        background_tasks.add_task(send_password_reset_email, email = email, host = settings.ORIGINS[0])
 
 

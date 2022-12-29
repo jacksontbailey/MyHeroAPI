@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import ResponseMessage from '../ResponseMessage';
 
 
-const ChangePassword = ({token, email}) => {
+const PasswordReset = ({token, email}) => {
     const [newPassword, setNewPassword] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const formRef = useRef(null)
@@ -52,4 +52,4 @@ const ChangePassword = ({token, email}) => {
     );
 }
  
-export default ChangePassword;
+export default PasswordReset;

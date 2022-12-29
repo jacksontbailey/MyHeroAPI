@@ -101,7 +101,6 @@ async def create_new_user(user):
     return(new_user)
 
 
-
 async def remove_user(id):
     await settings.USER_COLL.delete_one({"_id": f"ObjectId('{id}')"})
     return True
