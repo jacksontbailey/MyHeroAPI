@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { setCookie, hasCookie } from 'cookies-next';
 import { useRouter } from 'next/router';
+import Link from 'next/link'
+
 
 
 const UserExisting = ({currentForm}) => {
@@ -74,7 +76,7 @@ const UserExisting = ({currentForm}) => {
                       value={password}
                   />
                 </section>
-                <p className="forgot"><a href="#">Forgot password?</a></p>
+                <Link href='/forgot-password'><a className='forgot-link'>Forgot password?</a></Link>
                 <button type="submit" className='btnSubmit'>Log In</button>
             </form>
         </>
