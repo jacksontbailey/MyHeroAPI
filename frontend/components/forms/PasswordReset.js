@@ -5,8 +5,8 @@ import ResponseMessage from '../ResponseMessage';
 
 const PasswordReset = ({token, email}) => {
     const [newPassword, setNewPassword] = useState('');
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const formRef = useRef(null)
+    //const [isSubmitting, setIsSubmitting] = useState(false);
+    //const formRef = useRef(null)
 
     function handlePasswordChange(e) {
         setNewPassword(e.target.value);
@@ -14,26 +14,33 @@ const PasswordReset = ({token, email}) => {
     
     async function handleNewSubmit(e) {
         e.preventDefault();
-        setIsSubmitting(true);
+        //setIsSubmitting(true);
     
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/verification/forgot-password`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/verification/reset-password`, {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
           },
-          body: JSON.stringify({"token": token, "email": email, "password": password})
+          body: JSON.stringify({"token": token, "email": email, "password": newPassword})
         })
         
-        formRef.current.reset();
+        //formRef.current.reset();
 
-        return (<ResponseMessage messageType="success" message={`Your password has been reset.`} />)
+        if (res.status === 200){
+            return (<ResponseMessage messageType="success" message={`Your password has been reset.`} />)
+        } else {
+            const json = await res.json()
+            alert(json.detail)
+        }
+
       }
 
 
     return (
         <>
-            <form ref={formRef} action="#" method="POST" onSubmit={handleNewSubmit} className='form-forgot-password'>
+            <form /*ref={formRef}*/ action="#" method="POST" onSubmit={handleNewSubmit} className='form-reset-password'>
                 <section className='form-fillable user-new'>
                 <input
                         id="newPassword"
@@ -46,7 +53,7 @@ const PasswordReset = ({token, email}) => {
                         onChange={handlePasswordChange}
                     />
                 </section>
-                <button type="submit" className='btnSubmit' disabled={isSubmitting}>Create Account</button>
+                <button type="submit" className='btnSubmit' /*disabled={isSubmitting}*/>Create Account</button>
             </form>
         </>
     );

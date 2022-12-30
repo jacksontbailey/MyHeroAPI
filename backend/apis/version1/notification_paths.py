@@ -28,7 +28,7 @@ async def verify(token: str, email: str):
 
 
 
-@router.get('/reset-password')
+@router.post('/reset-password')
 async def resetPassword(token: str, email: str, password: str):
     # Validate the token
     if not is_valid_token(collection = settings.PASSRESET_COLL, token = token, email = email):

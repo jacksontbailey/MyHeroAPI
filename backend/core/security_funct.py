@@ -39,5 +39,4 @@ def generate_token(email: str, secret: str):
         key=secret,
         algorithm=settings.ALGORITHM,
     )
-
     return token
