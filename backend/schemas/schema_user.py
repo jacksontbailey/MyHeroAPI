@@ -17,6 +17,11 @@ class UserCreate(BaseModel):
 class UserPassChange(BaseModel):
     email: str
 
+class UserPassReset(BaseModel):
+    token: str
+    email: EmailStr
+    password: str
+
 class ShowUser(BaseModel):
     username: str
     email: EmailStr

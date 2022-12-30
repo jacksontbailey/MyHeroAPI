@@ -15,15 +15,15 @@ const PasswordReset = ({token, email}) => {
     async function handleNewSubmit(e) {
         e.preventDefault();
         //setIsSubmitting(true);
+        const data = {"token": token,"email": email,"password": newPassword}
+        console.log(data)
     
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/verification/reset-password`, {
           method: 'POST',
           headers: {
-            'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
           },
-          body: JSON.stringify({"token": token, "email": email, "password": newPassword})
+          body: JSON.stringify(data)
         })
         
         //formRef.current.reset();

@@ -45,9 +45,9 @@ def mark_as_verified(email: str):
     return verified_user
 
 
-def update_token(email: str):
+def update_token(collection, email: str):
     # Connect to the database
-    token_collection = settings.VERIFY_COLL
+    token_collection = collection
     
     # Find the token with the matching email and update it's used status"
     updated_token = token_collection.find_one_and_update(
