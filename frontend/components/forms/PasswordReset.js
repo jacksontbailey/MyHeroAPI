@@ -1,33 +1,29 @@
-import { useState } from 'react';
-import { useRef } from 'react';
+import { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import ResponseMessage from '../ResponseMessage';
 
 
 const PasswordReset = ({token, email}) => {
-    const [newPassword, setNewPassword] = useState('');
-    //const [isSubmitting, setIsSubmitting] = useState(false);
-    //const formRef = useRef(null)
+    const { register, handleSubmit, reset, formState, formState:{isSubmitSuccessful}, errors } = useForm();    
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    
+    useEffect(() => {
+        if(isSubmitSuccessful){
+            reset()
+        }
+    }, [formState, reset])
 
-    function handlePasswordChange(e) {
-        setNewPassword(e.target.value);
-    }
-    
-    async function handleNewSubmit(e) {
-        e.preventDefault();
-        //setIsSubmitting(true);
-        const data = {"token": token,"email": email,"password": newPassword}
-        console.log(data)
-    
+    async function onSubmit(data) {
+        setIsSubmitting(true);
+        
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/verification/reset-password`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data)
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({"token": token,"email": email,"password": data.password})
         })
         
-        //formRef.current.reset();
-
         if (res.status === 200){
             return (<ResponseMessage messageType="success" message={`Your password has been reset.`} />)
         } else {
@@ -40,7 +36,7 @@ const PasswordReset = ({token, email}) => {
 
     return (
         <>
-            <form /*ref={formRef}*/ action="#" method="POST" onSubmit={handleNewSubmit} className='form-reset-password'>
+            <form onSubmit={handleSubmit(onSubmit)} className='form-reset-password'>
                 <section className='form-fillable user-new'>
                 <input
                         id="newPassword"
@@ -49,11 +45,10 @@ const PasswordReset = ({token, email}) => {
                         placeholder="Password*"
                         aria-label='Password'
                         required
-                        value={newPassword}
-                        onChange={handlePasswordChange}
+                        {...register("password", {required: true, minLength: {value: 6, message: 'Password must be at least 6 characters long.'}})}
                     />
                 </section>
-                <button type="submit" className='btnSubmit' /*disabled={isSubmitting}*/>Create Account</button>
+                <button type="submit" className='btnSubmit' disabled={isSubmitting}>Create Account</button>
             </form>
         </>
     );
