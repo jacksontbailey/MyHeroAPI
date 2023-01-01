@@ -1,6 +1,7 @@
 import { getCookie } from 'cookies-next'
 import { useRouter } from 'next/router'
 import {useState, useEffect} from 'react'
+import Card from '../../../components/cards/Card'
 
 
 export async function getServerSideProps({params}){
@@ -35,10 +36,9 @@ const CardId = ({res, req}) => {
         getCard();
     }, [])
 
-
     return (
         <>
-            <h1>{card.name}</h1>
+            <Card data={card}/>
         </>
     );
 }
