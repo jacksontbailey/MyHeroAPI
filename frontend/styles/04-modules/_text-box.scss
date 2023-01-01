@@ -1,0 +1,37 @@
+.text-box {
+    &__header {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+  
+    &__title {
+      flex: 1;
+    }
+  
+    &__icon {
+      font-size: 14px;
+    }
+  
+    &__content {
+      padding: 10px;
+    }
+  }
+  
+  .text-box-list {
+    max-height: 200px;
+    overflow-y: scroll;
+  }
+
+  
+.expand-icon {
+  transition: transform 0.2s ease;
+    
+  &__expanded {
+    transform: rotate(180deg);
+  }
+    
+  &__collapsed {
+    transform: rotate(0deg);
+  }
+}
