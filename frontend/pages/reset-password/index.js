@@ -1,7 +1,4 @@
 import { useRouter } from 'next/router'
-import resetPassword from '../../libs/auth'
-import { useEffect, useState } from 'react'
-import ResponseMessage from '../../components/ResponseMessage'
 import PasswordReset from '../../components/forms/PasswordReset'
 
 export async function getServerSideProps(context){

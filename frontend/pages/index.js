@@ -11,6 +11,7 @@ function Home(){
 
   if(loading) return <div className='loader'></div>
 
+  console.log(user)
   return(
     <>
       <Head>
