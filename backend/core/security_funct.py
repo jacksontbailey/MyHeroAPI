@@ -29,18 +29,6 @@ def create_refresh_token(data: dict, expires_delta: timedelta | None = None):
     return encoded_jwt
 
 
-def get_refresh_token(request: Request):
-    refresh_token = request.headers.get("Authorization".split(" "[1]))
-    if not refresh_token:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Refresh token is required.",
-            headers={"WWW-Authenticate": "Bearer"},
-        )
-    return refresh_token
-
-
-
 def verify_access_token(token: str):
     try:
         payload = jwt.decode(token, settings.JWT_SECRET_KEY, algorithms=settings.ALGORITHM)
@@ -51,9 +39,9 @@ def verify_access_token(token: str):
 
 def verify_refresh_token(token: str):
     try:
-        payload = jwt.decode(token, settings.JWT_REFRESH_SECRET_KEY, algorithms=settings.ALGORITHM)
+        payload = jwt.decode(token, settings.JWT_SECRET_KEY, algorithms=settings.ALGORITHM)
         return payload
-    except JWTError:
+    except JWTError as e:
         return None
 
 

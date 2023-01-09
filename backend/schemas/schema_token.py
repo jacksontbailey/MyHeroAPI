@@ -6,11 +6,16 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 class Token(BaseModel):
     access_token: str
+    refresh_token: str
     token_type: str
 
 class TokenData(BaseModel):
     username: str | None = None
 
+class AccessTokenRefreshed(BaseModel):
+    access_token: str
+    token_type: str | None = None
+    
 class Hasher():
     @staticmethod
     def verify_password(plain_password, hashed_password):

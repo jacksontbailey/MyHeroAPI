@@ -1,7 +1,7 @@
 from datetime import timedelta
-from schemas.schema_token import Token
+from schemas.schema_token import Token, AccessTokenRefreshed
 from schemas.schema_user import User
-from core.security_funct import create_access_token, verify_refresh_token, get_refresh_token
+from core.security_funct import create_access_token, verify_refresh_token, create_refresh_token
 from core.config import settings
 from db.repository.users import authenticate_user, get_current_active_user, check_verification_status, get_user
 from fastapi import Depends, HTTPException, APIRouter, status
@@ -35,25 +35,21 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     access_token = create_access_token(
         data = {"sub": user.username}, expires_delta = access_token_expires
     )
-    refresh_token = create_access_token(
+    refresh_token = create_refresh_token(
         data = {"sub": user.username}, expires_delta = refresh_token_expires
     )
 
-    print({"access_token": access_token, "refresh_token": refresh_token, "token_type": "bearer"})
     return {"access_token": access_token, "refresh_token": refresh_token, "token_type": "bearer"}
 
 
-@router.post("/refresh", response_model=Token)
-async def refresh_access_token(refresh_token: str = Depends(get_refresh_token)):
+
+@router.post("/refresh", response_model=AccessTokenRefreshed)
+async def refresh_access_token(refresh_token: str):
     try:
         payload = verify_refresh_token(refresh_token)
-    except Exception:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid refresh token",
-            headers={"WWW-Authenticate": "Bearer"},
-        )
-        
+    except Exception as error:
+        return error
+
     username = payload.get("sub")
     
     if not username:

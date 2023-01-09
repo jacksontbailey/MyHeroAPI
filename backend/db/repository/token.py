@@ -17,8 +17,8 @@ def save_token(collection, email: str, token: str):
 
 def is_valid_token(collection, token: str, email: str):
     # Look up the token in the database
-    verification_token = collection.find_one({"token": token, "email": email})
-
+    token_array = collection.find({"token": token, "email": email}).collation(settings.INSENSITIVE).limit(1)
+    verification_token = token_array[0]
     # Check if the token exists, has expired, or already been used
     if verification_token is None:
         return False

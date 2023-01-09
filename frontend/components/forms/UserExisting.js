@@ -34,7 +34,7 @@ const UserExisting = ({currentForm}) => {
         });
     
         (res.status === 200) 
-          ? await res.json().then(res => {setCookie('token', res.access_token)}).then(() => {router.reload()})
+          ? await res.json().then(res => {setCookie('token', res.access_token); setCookie('refresh_token', res.refresh_token)}).then(() => {router.reload()})
           : await res.json().then(res => {alert(res.detail)})
       }
     

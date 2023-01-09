@@ -11,16 +11,16 @@ def include_router(app):
 	app.include_router(api_router)
 
 def include_middleware(app):
-    my_middleware = LowerCaseMiddleware()
-    app.middleware("http")(my_middleware)
+    #my_middleware = LowerCaseMiddleware()
+    #app.middleware("http")(my_middleware)
 
     app.add_middleware(
-    CORSMiddleware,
-    allow_origins = settings.ORIGINS,
-    allow_credentials = True,
-    allow_methods = ["*"],
-    allow_headers = ["*"],
-)
+        CORSMiddleware,
+        allow_origins = settings.ORIGINS,
+        allow_credentials = True,
+        allow_methods = ["*"],
+        allow_headers = ["*"],
+    )
 
 
 def start_application():
