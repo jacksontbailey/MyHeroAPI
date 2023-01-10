@@ -32,7 +32,7 @@ export default function Cards() {
                 {total: count},
                 cards.map((card, index) => ({
                     title: card.name,
-                    content: card.url,
+                    content: <p>{card.url}</p>,
                     id: index
                 }))
             )).flat()

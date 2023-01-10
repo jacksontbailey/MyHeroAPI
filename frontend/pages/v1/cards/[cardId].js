@@ -1,7 +1,8 @@
 import { getCookie } from 'cookies-next'
 import { useRouter } from 'next/router'
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useMemo} from 'react'
 import Card from '../../../components/cards/Card'
+import TextBox from '../../../components/textbox/TextBox'
 
 
 export async function getServerSideProps({params}){
@@ -16,11 +17,13 @@ export async function getServerSideProps({params}){
 const CardId = ({res, req}) => {
     const router = useRouter()
     const [card, setCard] = useState([])
+    const [isLoading, setIsLoading] = useState(false);
     const {cardId} = router.query
     
     useEffect(() => {
         const token = getCookie('token', {res, req});
         async function getCard(){
+            setIsLoading(true);
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/cards/${cardId}`, {
                 mode: 'cors',
                 headers: {
@@ -32,13 +35,19 @@ const CardId = ({res, req}) => {
                 const result = await res.json();
                 setCard(result)
             }
+            setIsLoading(false);
         }
         getCard();
     }, [])
 
+    const rememberCards = useMemo(() => {
+        return <Card data={card}/>
+    })
+
+    
     return (
         <>
-            <Card data={card}/>
+            {isLoading ? <p>Loading...</p> : <TextBox key={card.id} title={card.name} content={rememberCards}/>}
         </>
     );
 }

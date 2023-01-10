@@ -12,7 +12,7 @@ const TextBox = ({ title, content}) => {
             </div>
             {expanded && (
                 <div className="text-box__content">
-                    <p>{content}</p>
+                    {content}
                 </div>
             )}
         </div>
