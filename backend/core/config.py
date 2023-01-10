@@ -22,8 +22,8 @@ class Settings:
     JWT_VERFICATION_SECRET = os.getenv("JWT_VERFICATION_SECRET")
     JWT_PASSRESET_SECRET = os.getenv("JWT_PASSRESET_SECRET")
     ALGORITHM = os.getenv("ALGO")
-    ACCESS_TOKEN_EXPIRE_MINUTES: int =  3
-    REFRESH_TOKEN_EXPIRE_MINUTES: int = 10 #60 * 24 * 7  #7 days
+    ACCESS_TOKEN_EXPIRE_MINUTES: int =  60
+    REFRESH_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7  #7 days
     TEST_USER_EMAIL = "test@example.com"
 
     CLIENT = MongoClient(LIVE_SERVER)

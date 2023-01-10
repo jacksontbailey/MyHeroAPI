@@ -1,7 +1,6 @@
 const AttackCard = ({ data }) => {
     return (
-      <div>
-        <h2>{data.name}</h2>
+      <div className="card-type__attack">
         <p>Ability: {data.ability}</p>
         <p>Attack Keywords: {data.attack_keywords.join(', ')}</p>
         <p>Attack Zone: {data.attack_zone}</p>

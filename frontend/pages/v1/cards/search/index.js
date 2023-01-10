@@ -1,6 +1,8 @@
 import { getCookie } from 'cookies-next'
 import { useRouter } from 'next/router'
 import {useState, useEffect} from 'react'
+import CardList from '../../../../components/cards/CardList'
+
 
 
 export async function getServerSideProps(context){
@@ -34,73 +36,13 @@ const CardSearch = () => {
         }
         getCard();
     }, [])
+    let parsedCards = cards?.cards
 
-    let parsedCards =
-        cards?.cards.map((card, index) => {
-            return (
-                <section key={`card-${index}`}>
-                    {Object.entries(card).map((item, index) => {
-                        return(
-                            <>
-                                {
-                                    (Object.prototype.toString.call(item[1]) === '[object Array]') 
-                                        ?   <dl key={`${item[1]}-${index}`}>
-                                                <dt>{item[0]}</dt>
-                                                {
-                                                    Object.entries(item[1]).map((i, index) => {
-                                                        return(
-                                                            <dd key={`${i[0]}-${index}`}>{i[1]}</dd>
-                                                        )
-                                                    })
-                                                }
-                                            </dl>  
-                
-                                    :   (Object.prototype.toString.call(item[1]) === '[object Object]') 
-                                            ?   <dl key={`${item[1]}-${index}`}>
-                                                    <dt>{item[0]}</dt>
-                                                    {Object.entries(item[1]).map((i, index) => {
-                                                        return(
-                                                            <>
-                                                                {
-                                                                    (Object.prototype.toString.call(i[1]) === '[object Array]') 
-                                                                        ?   <dd key={`${i[1]}-${index}`}>
-                                                                                <dl>
-                                                                                    <dt>{i[0]}</dt>
-                                                                                    {
-                                                                                        Object.entries(i[1]).map((a, index) => {
-                                                                                            return(
-                                                                                                <dd key={`${a[1]}-${index}`}>{`${a[0]}: ${a[1]}`}</dd>
-                                                                                            )
-                                                                                        })
-                                                                                    }
-                                                                                </dl>
-                                                                            </dd>
-                                                                
-                                                                    //:   (Object.prototype.toString.call(i[1]) === ('[object Null]' ||'[object Undefined]')) ? <dd>{`${i[0]}: Null`}</dd>                         
-                                                                
-                                                                    :   <dd>{`${i[0]}: ${i[1]}`}</dd>
-                                                                
-                                                                }
-                                                            </>
-                                                        )
-                                                    })}
-                                                </dl>
-                
-                                : <p>{`${item[0]}: ${item[1]}`}</p>
-                                }
-                            </>
-                        )}
-                    )}
-                </section>
-            )
-        })
-        
-
-    return (
+    return(
         <main>
             <h1>Cards</h1>
-            {parsedCards}
+            {(parsedCards !== undefined) ? <CardList cards={parsedCards}/> : null}
         </main>
-    );
+    )
 }
 export default CardSearch

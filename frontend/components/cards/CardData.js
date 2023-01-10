@@ -4,8 +4,7 @@ const CardData = ({ data }) => {
   const [showImage, setShowImage] = useState(false);
 
   return (
-    <div>
-      <h2>{data.name}</h2>
+    <>
       <p>Description: {data.description.join(', ')}</p>
       <p>Set: {data.set}</p>
       <p>Block Modifier: {data.block_modifier}</p>
@@ -31,7 +30,7 @@ const CardData = ({ data }) => {
       <p>Play Difficulty: {data.play_difficulty}</p>
       <p>Rarity: {data.rarity}</p>
       <p>Symbols: {data.symbols.join(', ')}</p>
-    </div>
+    </>
   );
 };
 export default CardData;

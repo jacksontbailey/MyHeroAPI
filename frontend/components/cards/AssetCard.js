@@ -1,7 +1,6 @@
 const AssetCard = ({ data }) => {
     return (
-      <div>
-        <h2>{data.name}</h2>
+      <div className="card-type__asset">
         <p>Type: {data.type}</p>
       </div>
     );

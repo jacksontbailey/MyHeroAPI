@@ -1,8 +1,8 @@
 # Functionality to Add
 
-## Email new user to authenticate email and make user active
+## Email new user to authenticate email and make user active - done
 
-### Email users who forgot username or password
+### Email users who forgot username or password - done
 
 ## Token generation to retrieve data from api
 
@@ -10,11 +10,11 @@
 
 ### Button to create new token upon request
 
-## Make sure JSON is returned to user when requested
+## Make sure JSON is returned to user when requested - done
 
 ## Have data stored in LS for x amount of time to prevent constant database requests
 
-## If logged in, homepage won't show login stuff
+## If logged in, homepage won't show login stuff - done
 
 ## Styling
 

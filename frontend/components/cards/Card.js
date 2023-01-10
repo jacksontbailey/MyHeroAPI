@@ -13,42 +13,47 @@ const Card = ({ data }) => {
     switch (data.type_attributes.type) {
         case 'Character':
             return (
-                <div>
+                <section>
+                    <h2>{data.name}</h2>
                     <CharacterCard data={data.type_attributes} />
                     <CardData data={data} />
-                </div>
+                </section>
             );
 
         case 'Attack':
             return (
-                <div>
+                <section>
+                    <h2>{data.name}</h2>
                     <AttackCard data={data.type_attributes} />
                     <CardData data={data} />
-                </div>
+                </section>
             );
 
         case 'Asset':
             return (
-                <div>
+                <section>
+                    <h2>{data.name}</h2>
                     <AssetCard data={data.type_attributes} />
                     <CardData data={data} />
-                </div>
+                </section>
             );
 
         case 'Action':
             return (
-                <div>
+                <section>
+                    <h2>{data.name}</h2>
                     <ActionCard data={data.type_attributes} />
                     <CardData data={data} />
-                </div>
+                </section>
             );
 
         case 'Foundation':
             return (
-                <div>
+                <section>
+                    <h2>{data.name}</h2>
                     <FoundationCard data={data.type_attributes} />
                     <CardData data={data} />
-                </div>
+                </section>
             );
 
         default:
