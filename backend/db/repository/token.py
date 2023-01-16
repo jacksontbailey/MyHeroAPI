@@ -1,9 +1,13 @@
 from core.config import settings
+from fastapi import HTTPException
 from datetime import datetime, timedelta
 from schemas.schema_token import Hasher
+from jose import jwt
+from pymongo.errors import PyMongoError
 
 
-def save_token(collection, email: str, token: str):
+
+def save_verification_token(collection, email: str, token: str):
     # Save the token to the database
     collection.insert_one(
         {
@@ -74,3 +78,67 @@ def change_password(email: str, password: str):
     )
 
     return password_change
+
+
+# - For API Tokens JWT_API_SECRET
+
+def save_api_key(user, token, expires=True, status='active', time_limit=None):
+    exp_date = None
+    if expires and time_limit:
+        exp_date = datetime.utcnow() + timedelta(**time_limit)
+    settings.API_COLL.insert_one({
+        "user": user,
+        "exp_date": exp_date,
+        "token": jwt.encode({'token': token}, settings.JWT_API_SECRET, algorithm=settings.ALGORITHM).hex(),
+        "status": status
+    })
+
+
+
+def is_valid_api_key(token):
+    api_key = settings.API_COLL.find_one({"token": token})
+    if not api_key:
+        return False
+    decoded_token = jwt.decode(api_key["token"], settings.JWT_API_SECRET, algorithms=settings.ALGORITHM)
+    token = decoded_token["token"]
+    if api_key["status"] == "deactivated":
+        return False
+    if api_key["exp_date"] and api_key["exp_date"] < datetime.utcnow():
+        return False
+    return True
+
+
+def change_api_key_status(token, status):
+    api_key = settings.API_COLL.find_one({"token": token})
+    decoded_token = jwt.decode(api_key["token"], settings.JWT_API_SECRET, algorithms=settings.ALGORITHM)
+    token = decoded_token["token"]
+    settings.API_COLL.update_one({"token": token}, {"$set": {"status": status}})
+
+
+
+async def add_api_keys(user, api_keys):
+    # - This adds the api keys to the user database
+    try:
+        settings.USER_COLL.update_one(
+            {"username": user['username']},
+            {"$push": {"api_keys": {"$each": api_keys}}}
+        )
+        return {"message": "API keys added to user"}
+    except PyMongoError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+
+
+async def delete_api_key(username, api_key):
+    # - This deletes the api keys from the user database and api database
+
+    try:
+        settings.USER_COLL.update_one(
+            {"username": username},
+            {"$pull": {"api_keys": api_key}}
+        )
+        settings.API_COLL.delete_one({"token": api_key})
+        return {"message": "API key removed from user"}
+    except PyMongoError as e:
+        raise HTTPException(status_code=400, detail=str(e))

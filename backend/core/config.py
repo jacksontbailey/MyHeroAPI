@@ -18,9 +18,9 @@ class Settings:
     LOCAL_SERVER : str = "mongodb://localhost:27017"
     LIVE_SERVER = f"mongodb+srv://{USER}:{PASSWORD}@cluster0.itnndfb.mongodb.net/test"
     JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
-    JWT_REFRESH_SECRET_KEY = os.getenv("JWT_REFRESH_SECRET_KEY")
-    JWT_VERFICATION_SECRET = os.getenv("JWT_VERFICATION_SECRET")
+    JWT_API_SECRET = os.getenv("JWT_API_SECRET_KEY")
     JWT_PASSRESET_SECRET = os.getenv("JWT_PASSRESET_SECRET")
+    JWT_VERFICATION_SECRET = os.getenv("JWT_VERFICATION_SECRET")
     ALGORITHM = os.getenv("ALGO")
     ACCESS_TOKEN_EXPIRE_MINUTES: int =  60
     REFRESH_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7  #7 days
@@ -28,8 +28,9 @@ class Settings:
 
     CLIENT = MongoClient(LIVE_SERVER)
     DB = CLIENT['carddb']
-    USER_COLL = DB['user']
+    API_COLL = DB['api_keys']
     CARD_COLL = DB['card']
+    USER_COLL = DB['user']
     VERIFY_COLL = DB['verification_token']
     PASSRESET_COLL = DB['password_reset_token']
 

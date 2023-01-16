@@ -15,6 +15,18 @@ class TokenData(BaseModel):
 class AccessTokenRefreshed(BaseModel):
     access_token: str
     token_type: str | None = None
+
+
+class ApiTokenCreate(BaseModel):
+    user: str
+    expires: bool = True
+    time_limit: dict = None
+    status: str = 'active'
+
+class ApiTokenEdit(BaseModel):
+    token: str
+    status: str
+
     
 class Hasher():
     @staticmethod

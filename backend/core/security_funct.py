@@ -1,10 +1,8 @@
+import os
 from datetime import datetime, timedelta
 from core.config import settings
 from jose import jwt, JWTError
-from fastapi import HTTPException, status, Request
 
-
-from datetime import datetime, timedelta
 
 def create_access_token(data: dict, expires_delta: timedelta | None = None):
     to_encode = data.copy()
@@ -27,6 +25,10 @@ def create_refresh_token(data: dict, expires_delta: timedelta | None = None):
     to_encode.update({"exp": expires})
     encoded_jwt = jwt.encode(to_encode, settings.JWT_SECRET_KEY, algorithm=settings.ALGORITHM)
     return encoded_jwt
+
+
+def generate_token():
+    return  jwt.encode({"random": os.urandom(24)}, settings.JWT_API_SECRET, algorithm=settings.ALGORITHM).hex()
 
 
 def verify_access_token(token: str):

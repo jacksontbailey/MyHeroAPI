@@ -1,5 +1,3 @@
-import json
-
 from schemas.schema_token import Hasher, TokenData
 from core.config import settings
 from schemas.schema_user import User, UserInDB

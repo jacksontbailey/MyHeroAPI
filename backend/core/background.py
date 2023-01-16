@@ -2,7 +2,7 @@ import smtplib
 import ssl
 from core.security_funct import generate_token
 from core.config import ginfo, settings
-from db.repository.token import save_token
+from db.repository.token import save_verification_token
 from email.message import EmailMessage
 
 def generate_link(host: str, token: str, email: str, endpoint: str) -> str:
@@ -35,7 +35,7 @@ def send_email(message: EmailMessage):
 
 def send_token_email(email: str, host: str, token: str, collection: str, subject: str, html_content: str, endpoint: str):
     # Save the token to the database
-    save_token(collection=collection, email=email, token=token)
+    save_verification_token(collection=collection, email=email, token=token)
     
     # Generate the text and styling of the email
     message = generate_email(
