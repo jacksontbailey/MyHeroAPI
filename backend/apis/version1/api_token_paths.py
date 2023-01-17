@@ -14,7 +14,7 @@ async def create_api_token(token: ApiTokenCreate):
     Create a new api token.
     """
     new_token = generate_token()
-    save_api_key(token.user, new_token, token.expires, token.status, token.time_limit)
+    save_api_key(token.user, new_token, token.name, token.expires, token.status, token.time_limit)
     add_api_keys(token.user, new_token)
     return {"token": new_token}
 

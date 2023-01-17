@@ -82,12 +82,13 @@ def change_password(email: str, password: str):
 
 # - For API Tokens JWT_API_SECRET
 
-def save_api_key(user, token, expires=True, status='active', time_limit=None):
+def save_api_key(user, token, name, expires=True, status='active', time_limit=None):
     exp_date = None
     if expires and time_limit:
         exp_date = datetime.utcnow() + timedelta(**time_limit)
     settings.API_COLL.insert_one({
         "user": user,
+        "name": name,
         "exp_date": exp_date,
         "token": jwt.encode({'token': token}, settings.JWT_API_SECRET, algorithm=settings.ALGORITHM).hex(),
         "status": status

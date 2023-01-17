@@ -20,6 +20,7 @@ class AccessTokenRefreshed(BaseModel):
 class ApiTokenCreate(BaseModel):
     user: str
     expires: bool = True
+    name: str = 'default'
     time_limit: dict = None
     status: str = 'active'
 
