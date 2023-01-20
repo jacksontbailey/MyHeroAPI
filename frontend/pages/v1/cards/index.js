@@ -1,7 +1,7 @@
 import { useMemo, useEffect, useState } from "react";
 import { getCookie } from 'cookies-next';
 import TextBoxList from "../../../components/textbox/TextBoxList";
-import TextBox from "../../../components/textbox/TextBox";
+
 
 export default function Cards() {
     const [cards, setCards] = useState([]);

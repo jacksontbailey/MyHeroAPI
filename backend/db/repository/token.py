@@ -85,7 +85,8 @@ def change_password(email: str, password: str):
 def save_api_key(user, token, name, expires=True, status='active', time_limit=None):
     exp_date = None
     if expires and time_limit:
-        exp_date = datetime.utcnow() + timedelta(**time_limit)
+        
+        exp_date = datetime.utcnow() + timedelta(years = time_limit)
     settings.API_COLL.insert_one({
         "user": user,
         "name": name,

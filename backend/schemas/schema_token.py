@@ -18,10 +18,11 @@ class AccessTokenRefreshed(BaseModel):
 
 
 class ApiTokenCreate(BaseModel):
-    user: str
-    expires: bool = True
     name: str = 'default'
-    time_limit: dict = None
+    expires: bool = True
+    exp_date: str
+    exp_time: str
+    user: str
     status: str = 'active'
 
 class ApiTokenEdit(BaseModel):
