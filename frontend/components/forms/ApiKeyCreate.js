@@ -1,48 +1,44 @@
 import Button from "./reusable_form_components/Button";
+import ExpirationInput from "./reusable_form_components/ExpirationInput";
 import Form from "./reusable_form_components/Form";
 import Input from "./reusable_form_components/Input";
 import Option from "./reusable_form_components/Option";
 import Select from "./reusable_form_components/Select";
 import useUser from '../../data/use-user'
-import DatePicker from "react-datepicker";
 import { useState } from "react";
-import { getCookie } from "cookies-next";
-
-import "react-datepicker/dist/react-datepicker.css";
-import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import { getCookie, setCookie } from "cookies-next";
 
 
 const CreateApiKeyForm = () => {
     const {user} = useUser();
     const token = getCookie('token');
+    const [isExpirationVisible, setIsExpirationVisible] = useState(false);
+    const [startDate, setStartDate] = useState(new Date());
     const [formData, setFormData] = useState({
         name: '',
         hasExpiration: false,
         expiration: "",
-        time: "",
         username: ""
     });
-    const [selectedDate, setSelectedDate] = useState(new Date());
-    const [selectedTime, setSelectedTime] = useState("");
     
     const handleSubmit = async (event) => {
         event.preventDefault();
-        username = user.username
-        const { name, hasExpiration, expiration, time, username } = formData;
-        console.log(formData, token)
+        formData.username = user.username
+        const { name, hasExpiration, expiration, username} = formData;
 
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api_keys/create`, {
             method: 'POST',
-            headers: { 
+            headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token    
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${token}`    
             },
-            body: JSON.stringify({ name, hasExpiration, expiration, time, username }),
+            body: JSON.stringify({ name, hasExpiration, expiration, username }),
         });
 
         if (res.ok) {
             const data = await res.json();
-            console.log(data)
+            setCookie("api_key", data)
             // handle successful creation of api key
         } else {
             console.error("error", res.json())
@@ -52,7 +48,8 @@ const CreateApiKeyForm = () => {
 
 
     const handleHasExpirationChange = (e) => {
-        setFormData({ ...formData, hasExpiration: e.target.value});
+        setFormData({ ...formData, hasExpiration: Boolean(e.target.value)});
+        (e.target.value === "true") ? setIsExpirationVisible(true) : setIsExpirationVisible(false)
     };
 
     const handleNameChange = (e) => {
@@ -60,19 +57,14 @@ const CreateApiKeyForm = () => {
     };
 
     const handleDateChange = (date) => {
-        setSelectedDate(date);
+        setStartDate(date);
         setFormData({ ...formData, expiration: date});
     };
     
-    const handleTimeChange = (e) => {
-        setSelectedTime(e.target.value);
-        setFormData({ ...formData, time: e.target.value });
-    };
-
-
+        
     return (
-
-        <Form onSubmit={handleSubmit} className='form-content'>
+            
+            <Form onSubmit={handleSubmit} className='form-content'>
             <section className='form-fillable api-new'>
                 <Input
                     type="text"
@@ -89,31 +81,25 @@ const CreateApiKeyForm = () => {
                     label= "Set Expiration Date"
                     placeholder="Expiration"
                     onChange={handleHasExpirationChange}
-                    value={formData.hasExpiration}
-                    required
+                    selected={formData.hasExpiration.valueOf()}
                 >
                     <Option value={false} label="No"/>
-                    <Option value={true} label = "Yes" />
+                    <Option value={true} label="Yes" />
                 </Select>
-
-                {formData.hasExpiration && (
-                    <DatePicker
-                        selected={selectedDate}
-                        onChange={handleDateChange}
-                        placeholderText="Select expiration date"
-                    />,
-                    <Input
-                        type="time"
-                        placeholder="Select time"
-                        onChange={handleTimeChange}
-                        value={selectedTime}
+                {formData.hasExpiration && isExpirationVisible &&
+                    <ExpirationInput 
+                        handleDateChange={handleDateChange}
+                        startDate={startDate}
+                        placeholderText="Select a date and time"
+                        dateFormat="Pp"
+                        showTimeSelect
                     />
-                )}
+                }
+
+
             </section>
 
-            <Button type="submit" className='btnSubmit'>
-                Create Key
-            </Button>
+            <Button type="submit" className='btnSubmit' btnText={"Create Key"}/>
 
         </Form>
     );

@@ -13,7 +13,7 @@ const PasswordReset = ({token, email}) => {
         }
     }, [formState, reset])
 
-    async function onSubmit(data) {
+    const onSubmit = async(data) => {
         setIsSubmitting(true);
         
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/verification/reset-password`, {

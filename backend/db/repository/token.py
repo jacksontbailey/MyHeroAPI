@@ -82,16 +82,18 @@ def change_password(email: str, password: str):
 
 # - For API Tokens JWT_API_SECRET
 
-def save_api_key(user, token, name, expires=True, status='active', time_limit=None):
+async def save_api_key(username, token, name, hasExpiration, expiration, status):
     exp_date = None
-    if expires and time_limit:
-        
-        exp_date = datetime.utcnow() + timedelta(years = time_limit)
+    print(f"user = {username}, token = {token}, name = {name}, hasExpiration = {hasExpiration}, expiration = {expiration}, status = {status}")
+    if hasExpiration:
+        expiration = datetime.strptime(expiration, '%Y-%m-%dT%H:%M:%S.%fZ') 
+        exp_date = expiration
+
     settings.API_COLL.insert_one({
-        "user": user,
+        "user": username,
         "name": name,
         "exp_date": exp_date,
-        "token": jwt.encode({'token': token}, settings.JWT_API_SECRET, algorithm=settings.ALGORITHM).hex(),
+        "token": jwt.encode({'token': token}, settings.JWT_API_SECRET, algorithm=settings.ALGORITHM),
         "status": status
     })
 
@@ -118,12 +120,13 @@ def change_api_key_status(token, status):
 
 
 
-async def add_api_keys(user, api_keys):
+async def add_api_keys(username, api_keys):
     # - This adds the api keys to the user database
     try:
+        keys = jwt.encode({'token': api_keys}, settings.JWT_API_SECRET, algorithm=settings.ALGORITHM)
         settings.USER_COLL.update_one(
-            {"username": user['username']},
-            {"$push": {"api_keys": {"$each": api_keys}}}
+            {"username": username},
+            {"$push": {"api_keys": {"$each": [keys]}}}
         )
         return {"message": "API keys added to user"}
     except PyMongoError as e:

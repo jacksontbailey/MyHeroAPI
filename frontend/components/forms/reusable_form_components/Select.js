@@ -1,5 +1,3 @@
-import Option from "./Option"
-
 const Select = ({ name, label, children, ...props}) => {
   return (
     <div className="form-select">

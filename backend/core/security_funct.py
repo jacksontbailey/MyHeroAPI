@@ -27,8 +27,6 @@ def create_refresh_token(data: dict, expires_delta: timedelta | None = None):
     return encoded_jwt
 
 
-def generate_token():
-    return  jwt.encode({"random": os.urandom(24)}, settings.JWT_API_SECRET, algorithm=settings.ALGORITHM).hex()
 
 
 def verify_access_token(token: str):
@@ -58,3 +56,9 @@ def generate_token(email: str, secret: str):
         algorithm=settings.ALGORITHM,
     )
     return token
+
+
+
+async def generate_random_token():
+    random_string = os.urandom(24).hex()
+    return  jwt.encode({"random": random_string}, key=settings.JWT_API_SECRET, algorithm=settings.ALGORITHM)

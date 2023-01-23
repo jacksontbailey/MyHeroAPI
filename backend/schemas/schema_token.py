@@ -18,12 +18,11 @@ class AccessTokenRefreshed(BaseModel):
 
 
 class ApiTokenCreate(BaseModel):
-    name: str = 'default'
-    expires: bool = True
-    exp_date: str
-    exp_time: str
-    user: str
-    status: str = 'active'
+    name: str | None = 'default'
+    hasExpiration: bool | None = False
+    expiration: str | None = None
+    username: str
+    status: str | None = 'active'
 
 class ApiTokenEdit(BaseModel):
     token: str
