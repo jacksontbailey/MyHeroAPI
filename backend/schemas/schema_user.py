@@ -8,6 +8,7 @@ class User(BaseModel):
     is_active: bool
     is_superuser: bool
     is_verified: bool
+    api_keys: list | None
 
 class UserCreate(BaseModel):
     username: str

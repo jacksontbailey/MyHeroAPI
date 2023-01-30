@@ -13,3 +13,5 @@ export async function resetPassword({email, token, password}) {
         return error
     }
 }
+
+export function deleteKey()

@@ -62,6 +62,15 @@ def update_token(collection, email: str):
     return updated_token
 
 
+def decode_tokens(data):
+    decoded_api_keys = [{**item, "api_key": jwt.decode(token = item["api_key"], key=settings.JWT_API_SECRET, algorithms=settings.ALGORITHM).get('token')} for item in data]
+    final_decoded_api = [{**item, "api_key": jwt.decode(token = item["api_key"], key=settings.JWT_API_SECRET, algorithms=settings.ALGORITHM).get('random')} for item in decoded_api_keys]
+
+    return final_decoded_api
+
+
+
+
 
 def change_password(email: str, password: str):
     # Encrypt the password
@@ -90,11 +99,11 @@ async def save_api_key(username, token, name, hasExpiration, expiration, status)
         exp_date = expiration
 
     settings.API_COLL.insert_one({
-        "user": username,
-        "name": name,
+        "username": username,
+        "key_name": name,
         "exp_date": exp_date,
-        "token": jwt.encode({'token': token}, settings.JWT_API_SECRET, algorithm=settings.ALGORITHM),
-        "status": status
+        "api_key": jwt.encode({'token': token}, settings.JWT_API_SECRET, algorithm=settings.ALGORITHM),
+        "key_status": status
     })
 
 
@@ -120,15 +129,21 @@ def change_api_key_status(token, status):
 
 
 
-async def add_api_keys(username, api_keys):
+async def add_api_keys(username, api_keys, key_name, has_expiration, expiration, status):
     # - This adds the api keys to the user database
     try:
+        exp_date = None
+        if has_expiration:
+            expiration = datetime.strptime(expiration, '%Y-%m-%dT%H:%M:%S.%fZ') 
+            exp_date = expiration
+
         keys = jwt.encode({'token': api_keys}, settings.JWT_API_SECRET, algorithm=settings.ALGORITHM)
         settings.USER_COLL.update_one(
-            {"username": username},
-            {"$push": {"api_keys": {"$each": [keys]}}}
-        )
-        return {"message": "API keys added to user"}
+                {"username": username},
+                {"$push": {"api_keys": {"api_key": keys, "key_name": key_name, "key_status": status, "has_expiration": has_expiration, "exp_date": exp_date}}}
+            )
+
+        return {"message": "API key added to user's account"}
     except PyMongoError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -143,7 +158,7 @@ async def delete_api_key(username, api_key):
             {"username": username},
             {"$pull": {"api_keys": api_key}}
         )
-        settings.API_COLL.delete_one({"token": api_key})
+        settings.API_COLL.delete_one({"api_key": api_key})
         return {"message": "API key removed from user"}
     except PyMongoError as e:
         raise HTTPException(status_code=400, detail=str(e))

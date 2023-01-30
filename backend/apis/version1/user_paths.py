@@ -1,7 +1,6 @@
 from schemas.schema_user import UserCreate, UserPassChange
 from db.repository.users import create_new_user
 from fastapi import APIRouter, HTTPException, status, BackgroundTasks
-from fastapi.encoders import jsonable_encoder
 from core.config import settings
 from core.background import send_verification_email, send_password_reset_email
 

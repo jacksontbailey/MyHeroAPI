@@ -93,7 +93,8 @@ async def create_new_user(user):
         hashed_password = Hasher.get_password_hash(user['password']),
         is_active = True,
         is_superuser = False,
-        is_verified = False
+        is_verified = False,
+        api_keys = []
         ).dict()
     
     return(new_user)
