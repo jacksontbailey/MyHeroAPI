@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Body, HTTPException, Depends
 from schemas.schema_token import ApiTokenCreate, ApiTokenEdit
-from db.repository.token import save_api_key, change_api_key_status, add_api_keys, delete_api_key, decode_tokens
+from db.repository.token import save_api_key, change_api_key_status, add_api_keys, delete_api_key, encode_tokens, decode_tokens
 from db.repository.users import get_current_active_user
 from core.security_funct import generate_random_token
 from core.config import settings
@@ -22,7 +22,7 @@ async def create_api_token(token: ApiTokenCreate):
 
 
 
-@router.get("/list")
+@router.get("/list-keys")
 async def list_api_tokens(user = Depends(get_current_active_user)):
     """
     List all the api keys for a user.
@@ -40,7 +40,7 @@ async def list_api_tokens(user = Depends(get_current_active_user)):
 
 
 
-@router.put("/edit")
+@router.put("/edit-key")
 async def edit_api_key(api_key: ApiTokenEdit = Body(..., example={'token': 'your_api_token', 'status': 'inactive'})):
     """
     Edit the status of an api key.
@@ -53,14 +53,17 @@ async def edit_api_key(api_key: ApiTokenEdit = Body(..., example={'token': 'your
 
 
 
-@router.delete("/{key}")
+@router.delete("/delete-key")
 async def delete_inactive_api_key(key: str):
     """
     Delete an api key with a status of inactive.
     """
-    api_key = settings.API_COLL.find_one({"api_key": key})
-    if api_key and api_key['status'] == "inactive":
-        await delete_api_key(api_key['user'], key)
+
+    encoded_key = await encode_tokens(raw_key=key)
+    api_key = settings.API_COLL.find_one({"api_key": encoded_key})
+    print(f"total match: \n {api_key}")
+    if api_key and (api_key['key_status'] == "inactive"):
+        await delete_api_key(api_key['username'], encoded_key)
         return {"message": "API key deleted"}
     else:
         raise HTTPException(status_code=400, detail="Cannot delete active api key")

@@ -62,13 +62,20 @@ def update_token(collection, email: str):
     return updated_token
 
 
+
+async def encode_tokens(raw_key):
+    encoded_api_key = jwt.encode({"random": raw_key}, key=settings.JWT_API_SECRET, algorithm=settings.ALGORITHM)
+    final_encoded_api_key = jwt.encode({"token": encoded_api_key}, key=settings.JWT_API_SECRET, algorithm=settings.ALGORITHM)
+    
+    return final_encoded_api_key
+
+
+
 def decode_tokens(data):
     decoded_api_keys = [{**item, "api_key": jwt.decode(token = item["api_key"], key=settings.JWT_API_SECRET, algorithms=settings.ALGORITHM).get('token')} for item in data]
     final_decoded_api = [{**item, "api_key": jwt.decode(token = item["api_key"], key=settings.JWT_API_SECRET, algorithms=settings.ALGORITHM).get('random')} for item in decoded_api_keys]
 
     return final_decoded_api
-
-
 
 
 
@@ -109,12 +116,12 @@ async def save_api_key(username, token, name, hasExpiration, expiration, status)
 
 
 def is_valid_api_key(token):
-    api_key = settings.API_COLL.find_one({"token": token})
+    api_key = settings.API_COLL.find_one({"api_key": token})
     if not api_key:
         return False
-    decoded_token = jwt.decode(api_key["token"], settings.JWT_API_SECRET, algorithms=settings.ALGORITHM)
+    decoded_token = jwt.decode(api_key["api_key"], settings.JWT_API_SECRET, algorithms=settings.ALGORITHM)
     token = decoded_token["token"]
-    if api_key["status"] == "deactivated":
+    if api_key["status"] == "inactive":
         return False
     if api_key["exp_date"] and api_key["exp_date"] < datetime.utcnow():
         return False
@@ -156,7 +163,7 @@ async def delete_api_key(username, api_key):
     try:
         settings.USER_COLL.update_one(
             {"username": username},
-            {"$pull": {"api_keys": api_key}}
+            {"$pull": {"api_keys": {'$elemMatch': {'api_key': api_key}}}}
         )
         settings.API_COLL.delete_one({"api_key": api_key})
         return {"message": "API key removed from user"}
