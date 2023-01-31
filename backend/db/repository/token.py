@@ -161,11 +161,13 @@ async def delete_api_key(username, api_key):
     # - This deletes the api keys from the user database and api database
 
     try:
+
         settings.USER_COLL.update_one(
-            {"username": username},
-            {"$pull": {"api_keys": {'$elemMatch': {'api_key': api_key}}}}
+            {"username": username, "api_keys.api_key": api_key},
+            {"$pull": {"api_keys": {"api_key": api_key}}}
         )
         settings.API_COLL.delete_one({"api_key": api_key})
+        
         return {"message": "API key removed from user"}
     except PyMongoError as e:
         raise HTTPException(status_code=400, detail=str(e))

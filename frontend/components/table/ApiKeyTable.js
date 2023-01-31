@@ -25,8 +25,8 @@ const ApiKeyTable = ({ data,  handleToggleStatus, handleDelete, handleEdit }) =>
                         <TableData>{item.key_status}</TableData>
                         <TableData>{item.exp_date}</TableData>
                         <TableData>
-                            <button onClick={() => handleToggleStatus(item)}>Toggle Status</button>
-                            <button onClick={() => handleDelete(item)}>Delete</button>
+                            <button onClick={() => handleToggleStatus(item)}>Status</button>
+                            <button onClick={() => handleDelete(index)}>Delete</button>
                             <button onClick={() => handleEdit(item)}>Edit</button>
                         </TableData>
                     </TableRow>
