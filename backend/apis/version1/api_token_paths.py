@@ -14,9 +14,13 @@ async def create_api_token(token: ApiTokenCreate):
     """
     Create a new api token.
     """
+    print("started backend")
     new_token = await generate_random_token()
-    await save_api_key(token.username, new_token, token.name, token.hasExpiration, token.expiration, token.status)
-    await add_api_keys(token.username, new_token, token.name, token.hasExpiration, token.expiration, token.status)
+    print(f"New token is: {new_token}")
+    encrypted_token = await encode_tokens(new_token)
+    print(f"Encrypted token is: {new_token}")
+    save_api_key(token.username, encrypted_token, token.name, token.hasExpiration, token.expiration, token.status)
+    add_api_keys(token.username, encrypted_token, token.name, token.hasExpiration, token.expiration, token.status)
     
     return {"token": new_token}
 
@@ -46,7 +50,9 @@ async def edit_api_key(api_key: ApiTokenEdit = Body(..., example={'token': 'your
     Edit the status of an api key.
     """ 
     try:
-        change_api_key_status(api_key.token, api_key.status)
+        encoded_token = await encode_tokens(api_key.token)
+        final_encoded_token = await encode_tokens(encoded_token)
+        change_api_key_status(final_encoded_token, api_key.status)
         return {"message": "API key status updated successfully"}
     except:
         raise HTTPException(status_code=400, detail="Failed to update API key status")

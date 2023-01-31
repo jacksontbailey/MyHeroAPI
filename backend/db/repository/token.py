@@ -62,23 +62,6 @@ def update_token(collection, email: str):
     return updated_token
 
 
-
-async def encode_tokens(raw_key):
-    encoded_api_key = jwt.encode({"random": raw_key}, key=settings.JWT_API_SECRET, algorithm=settings.ALGORITHM)
-    final_encoded_api_key = jwt.encode({"token": encoded_api_key}, key=settings.JWT_API_SECRET, algorithm=settings.ALGORITHM)
-    
-    return final_encoded_api_key
-
-
-
-def decode_tokens(data):
-    decoded_api_keys = [{**item, "api_key": jwt.decode(token = item["api_key"], key=settings.JWT_API_SECRET, algorithms=settings.ALGORITHM).get('token')} for item in data]
-    final_decoded_api = [{**item, "api_key": jwt.decode(token = item["api_key"], key=settings.JWT_API_SECRET, algorithms=settings.ALGORITHM).get('random')} for item in decoded_api_keys]
-
-    return final_decoded_api
-
-
-
 def change_password(email: str, password: str):
     # Encrypt the password
     hashed_password = Hasher.get_password_hash(password=password)
@@ -98,9 +81,22 @@ def change_password(email: str, password: str):
 
 # - For API Tokens JWT_API_SECRET
 
+async def encode_tokens(raw_key):
+    encoded_api_key = jwt.encode({"api_key": raw_key}, key=settings.JWT_API_SECRET, algorithm=settings.ALGORITHM)
+    
+    return encoded_api_key
+
+
+
+def decode_tokens(data):
+    decoded_api_keys = [{**item, "api_key": jwt.decode(token=item["api_key"], key=settings.JWT_API_SECRET, algorithms=settings.ALGORITHM).get('api_key')} for item in data]
+
+    return decoded_api_keys
+
+
 async def save_api_key(username, token, name, hasExpiration, expiration, status):
     exp_date = None
-    print(f"user = {username}, token = {token}, name = {name}, hasExpiration = {hasExpiration}, expiration = {expiration}, status = {status}")
+    api_key = encode_tokens(raw_key=token)
     if hasExpiration:
         expiration = datetime.strptime(expiration, '%Y-%m-%dT%H:%M:%S.%fZ') 
         exp_date = expiration
@@ -109,7 +105,7 @@ async def save_api_key(username, token, name, hasExpiration, expiration, status)
         "username": username,
         "key_name": name,
         "exp_date": exp_date,
-        "api_key": jwt.encode({'token': token}, settings.JWT_API_SECRET, algorithm=settings.ALGORITHM),
+        "api_key": api_key,
         "key_status": status
     })
 
@@ -119,8 +115,8 @@ def is_valid_api_key(token):
     api_key = settings.API_COLL.find_one({"api_key": token})
     if not api_key:
         return False
-    decoded_token = jwt.decode(api_key["api_key"], settings.JWT_API_SECRET, algorithms=settings.ALGORITHM)
-    token = decoded_token["token"]
+    decoded_token = decode_tokens(data=token)
+    token = decoded_token["api_key"]
     if api_key["status"] == "inactive":
         return False
     if api_key["exp_date"] and api_key["exp_date"] < datetime.utcnow():
@@ -128,11 +124,13 @@ def is_valid_api_key(token):
     return True
 
 
-def change_api_key_status(token, status):
-    api_key = settings.API_COLL.find_one({"token": token})
-    decoded_token = jwt.decode(api_key["token"], settings.JWT_API_SECRET, algorithms=settings.ALGORITHM)
-    token = decoded_token["token"]
-    settings.API_COLL.update_one({"token": token}, {"$set": {"status": status}})
+def change_api_key_status(key, status):
+    try:
+        api_key = settings.API_COLL.find_one({"api_key": key})
+        print(api_key)
+        #settings.API_COLL.update_one({"api_key": api_key}, {"$set": {"status": status}})
+    except PyMongoError as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 
 
@@ -144,7 +142,7 @@ async def add_api_keys(username, api_keys, key_name, has_expiration, expiration,
             expiration = datetime.strptime(expiration, '%Y-%m-%dT%H:%M:%S.%fZ') 
             exp_date = expiration
 
-        keys = jwt.encode({'token': api_keys}, settings.JWT_API_SECRET, algorithm=settings.ALGORITHM)
+        keys = encode_tokens(raw_key=api_keys)
         settings.USER_COLL.update_one(
                 {"username": username},
                 {"$push": {"api_keys": {"api_key": keys, "key_name": key_name, "key_status": status, "has_expiration": has_expiration, "exp_date": exp_date}}}

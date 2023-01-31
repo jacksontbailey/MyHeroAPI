@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import keyFetcher from "../libs/api-user.js";
 
-export default function useKeys(){
+export default async function useKeys(){
     const {data, mutate, error, revalidate} = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api_keys/list-keys`, keyFetcher);
     const loading = !data && !error;
 

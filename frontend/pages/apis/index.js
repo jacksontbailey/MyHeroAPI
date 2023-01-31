@@ -37,7 +37,7 @@ const ApiCreationPage = () => {
             <div className='form new-api-form'>
                 <div className='form-box'>
                     <h1 className='form-header'>Generate API Key</h1>
-                    <CreateApiKeyForm refresh={mutate()}/>
+                    <CreateApiKeyForm/>
                 </div>
             </div>
         </main>

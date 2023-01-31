@@ -33,8 +33,8 @@ def verify_access_token(token: str):
     try:
         payload = jwt.decode(token, settings.JWT_SECRET_KEY, algorithms=settings.ALGORITHM)
         return payload
-    except JWTError:
-        return None
+    except JWTError as e:
+        raise e.with_traceback
 
 
 def verify_refresh_token(token: str):
@@ -42,7 +42,7 @@ def verify_refresh_token(token: str):
         payload = jwt.decode(token, settings.JWT_SECRET_KEY, algorithms=settings.ALGORITHM)
         return payload
     except JWTError as e:
-        return None
+        raise e.with_traceback
 
 
 
@@ -61,4 +61,4 @@ def generate_token(email: str, secret: str):
 
 async def generate_random_token():
     random_string = os.urandom(24).hex()
-    return  jwt.encode({"random": random_string}, key=settings.JWT_API_SECRET, algorithm=settings.ALGORITHM)
+    return random_string

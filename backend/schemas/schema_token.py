@@ -25,12 +25,8 @@ class ApiTokenCreate(BaseModel):
     status: str | None = 'active'
 
 class ApiTokenEdit(BaseModel):
-    api_key: str
-    key_name: str
-    key_status: str
-    has_expiration: bool
-    exp_date: str | None = None
-
+    token: str
+    status: str
     
 class Hasher():
     @staticmethod
