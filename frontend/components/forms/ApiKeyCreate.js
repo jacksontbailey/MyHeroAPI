@@ -9,7 +9,7 @@ import { useState } from "react";
 import { getCookie, setCookie } from "cookies-next";
 
 
-const CreateApiKeyForm = ({ refresh }) => {
+const CreateApiKeyForm = () => {
     const {user} = useUser();
     const token = getCookie('token');
     const [isExpirationVisible, setIsExpirationVisible] = useState(false);
@@ -44,7 +44,6 @@ const CreateApiKeyForm = ({ refresh }) => {
             console.error("error", res.json())
             // handle error
         }
-        refresh
     };
 
 

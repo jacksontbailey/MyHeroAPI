@@ -14,11 +14,8 @@ async def create_api_token(token: ApiTokenCreate):
     """
     Create a new api token.
     """
-    print("started backend")
-    new_token = await generate_random_token()
-    print(f"New token is: {new_token}")
+    new_token = generate_random_token()
     encrypted_token = await encode_tokens(new_token)
-    print(f"Encrypted token is: {new_token}")
     save_api_key(token.username, encrypted_token, token.name, token.hasExpiration, token.expiration, token.status)
     add_api_keys(token.username, encrypted_token, token.name, token.hasExpiration, token.expiration, token.status)
     
@@ -38,9 +35,10 @@ async def list_api_tokens(user = Depends(get_current_active_user)):
     if not user_data or "api_keys" not in user_data:
         raise HTTPException(status_code=404, detail="API keys not found for this account.")
     api_keys = list(user_data.get("api_keys"))
-    decoded_api_keys = decode_tokens(api_keys)
+    decoded_api_keys = await decode_tokens(api_keys)
+    final_decoded_keys = await decode_tokens(decoded_api_keys)
 
-    return decoded_api_keys
+    return final_decoded_keys
 
 
 

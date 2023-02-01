@@ -29,11 +29,13 @@ const ApiCreationPage = () => {
 
     return(
         <main className="api-page">
-            {apiKeys ? (
-                <section className="current-api-keys">
-                    <ApiKeyTable data={apiKeys} handleToggleStatus={handleToggleStatus} handleDelete={handleDelete} handleEdit={handleEdit}/>
-                </section>
-            ) : <p>No keys</p>}
+        
+        {!loading && apiKeys &&(
+            <section className="current-api-keys">
+                <ApiKeyTable data={apiKeys} handleToggleStatus={handleToggleStatus} handleDelete={handleDelete} handleEdit={handleEdit}/>
+            </section>
+        )}
+        
             <div className='form new-api-form'>
                 <div className='form-box'>
                     <h1 className='form-header'>Generate API Key</h1>

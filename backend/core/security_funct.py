@@ -34,7 +34,7 @@ def verify_access_token(token: str):
         payload = jwt.decode(token, settings.JWT_SECRET_KEY, algorithms=settings.ALGORITHM)
         return payload
     except JWTError as e:
-        raise e.with_traceback
+        raise e
 
 
 def verify_refresh_token(token: str):
@@ -42,7 +42,7 @@ def verify_refresh_token(token: str):
         payload = jwt.decode(token, settings.JWT_SECRET_KEY, algorithms=settings.ALGORITHM)
         return payload
     except JWTError as e:
-        raise e.with_traceback
+        raise e
 
 
 

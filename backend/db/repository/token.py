@@ -88,13 +88,13 @@ async def encode_tokens(raw_key):
 
 
 
-def decode_tokens(data):
+async def decode_tokens(data):
     decoded_api_keys = [{**item, "api_key": jwt.decode(token=item["api_key"], key=settings.JWT_API_SECRET, algorithms=settings.ALGORITHM).get('api_key')} for item in data]
 
     return decoded_api_keys
 
 
-async def save_api_key(username, token, name, hasExpiration, expiration, status):
+def save_api_key(username, token, name, hasExpiration, expiration, status):
     exp_date = None
     api_key = encode_tokens(raw_key=token)
     if hasExpiration:
@@ -127,14 +127,13 @@ def is_valid_api_key(token):
 def change_api_key_status(key, status):
     try:
         api_key = settings.API_COLL.find_one({"api_key": key})
-        print(api_key)
-        #settings.API_COLL.update_one({"api_key": api_key}, {"$set": {"status": status}})
+        settings.API_COLL.update_one({"api_key": api_key}, {"$set": {"status": status}})
     except PyMongoError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
 
 
-async def add_api_keys(username, api_keys, key_name, has_expiration, expiration, status):
+def add_api_keys(username, api_keys, key_name, has_expiration, expiration, status):
     # - This adds the api keys to the user database
     try:
         exp_date = None

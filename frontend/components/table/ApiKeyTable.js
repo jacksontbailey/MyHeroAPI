@@ -18,7 +18,7 @@ const ApiKeyTable = ({ data,  handleToggleStatus, handleDelete, handleEdit }) =>
                 </TableRow>
             </TableHead>
             <tbody>
-                {data.map((item, index) => (
+                {data ? data.map((item, index) => (
                     <TableRow key={index}>
                         <TableData>{item.api_key}</TableData>
                         <TableData>{item.key_name}</TableData>
@@ -30,7 +30,7 @@ const ApiKeyTable = ({ data,  handleToggleStatus, handleDelete, handleEdit }) =>
                             <button onClick={() => handleEdit(item)}>Edit</button>
                         </TableData>
                     </TableRow>
-                ))}
+                )): null}
             </tbody>
         </Table>
     );
