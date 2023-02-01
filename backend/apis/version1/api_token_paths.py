@@ -15,7 +15,7 @@ async def create_api_token(token: ApiTokenCreate):
     Create a new api token.
     """
     new_token = generate_random_token()
-    encrypted_token = await encode_tokens(new_token)
+    encrypted_token = encode_tokens(new_token)
     save_api_key(token.username, encrypted_token, token.name, token.hasExpiration, token.expiration, token.status)
     add_api_keys(token.username, encrypted_token, token.name, token.hasExpiration, token.expiration, token.status)
     
@@ -42,15 +42,15 @@ async def list_api_tokens(user = Depends(get_current_active_user)):
 
 
 
-@router.put("/edit-key")
-async def edit_api_key(api_key: ApiTokenEdit = Body(..., example={'token': 'your_api_token', 'status': 'inactive'})):
+@router.patch("/update-status")
+async def edit_api_key(key: str, status: str, user = Depends(get_current_active_user)):
     """
     Edit the status of an api key.
     """ 
     try:
-        encoded_token = await encode_tokens(api_key.token)
+        encoded_token = await encode_tokens(key)
         final_encoded_token = await encode_tokens(encoded_token)
-        change_api_key_status(final_encoded_token, api_key.status)
+        change_api_key_status(username = user.username, key = final_encoded_token, status = status)
         return {"message": "API key status updated successfully"}
     except:
         raise HTTPException(status_code=400, detail="Failed to update API key status")
@@ -64,10 +64,11 @@ async def delete_inactive_api_key(key: str):
     """
 
     encoded_key = await encode_tokens(raw_key=key)
-    api_key = settings.API_COLL.find_one({"api_key": encoded_key})
+    final_encoded_token = await encode_tokens(encoded_key)
+    api_key = settings.API_COLL.find_one({"api_key": final_encoded_token})
     print(f"total match: \n {api_key}")
     if api_key and (api_key['key_status'] == "inactive"):
-        await delete_api_key(api_key['username'], encoded_key)
+        await delete_api_key(api_key['username'], final_encoded_token)
         return {"message": "API key deleted"}
     else:
         raise HTTPException(status_code=400, detail="Cannot delete active api key")

@@ -29,10 +29,14 @@ export async function deleteKey(key){
     }
 }
 
-export function updateKeyName({ key }){
+export function updateKeyStatus(key, newStatus){
     try{
-        const res = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api_keys/update-key?${key}`, {
-            method:"DELETE"
+        const token = getCookie("token");
+        const res = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api_keys/update-status?key=${key}&status=${newStatus}`, {
+            method:"PATCH",
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            }
         })
         return res.status
     } catch(error) {

@@ -59,6 +59,6 @@ def generate_token(email: str, secret: str):
 
 
 
-async def generate_random_token():
+def generate_random_token():
     random_string = os.urandom(24).hex()
     return random_string

@@ -1,14 +1,16 @@
 import CreateApiKeyForm from "../../components/forms/ApiKeyCreate";
 import ApiKeyTable from "../../components/table/ApiKeyTable";
 import useKeys from "../../data/use-key";
-import { deleteKey } from '../../libs/auth'
+import { deleteKey, updateKeyStatus } from '../../libs/auth'
 
 const ApiCreationPage = () => {
     const {loading, apiKeys, mutate} = useKeys();
 
     const handleToggleStatus = (index) => {
         const updatedApiKeys = [...apiKeys];
-        updatedApiKeys[index].key_status = apiKeys[index].key_status === 'active' ? 'inactive' : 'active';
+        const keyToUpdate = updatedApiKeys[index]['api_key'] 
+        const newStatus = (updatedApiKeys[index]['key_status'] === 'active') ? 'inactive' : 'active';
+        updateKeyStatus(keyToUpdate, newStatus)
         mutate(updatedApiKeys);
     }
 
