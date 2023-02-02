@@ -48,8 +48,8 @@ async def edit_api_key(key: str, status: str, user = Depends(get_current_active_
     Edit the status of an api key.
     """ 
     try:
-        encoded_token = await encode_tokens(key)
-        final_encoded_token = await encode_tokens(encoded_token)
+        encoded_token = encode_tokens(key)
+        final_encoded_token = encode_tokens(encoded_token)
         change_api_key_status(username = user.username, key = final_encoded_token, status = status)
         return {"message": "API key status updated successfully"}
     except:
@@ -63,10 +63,9 @@ async def delete_inactive_api_key(key: str):
     Delete an api key with a status of inactive.
     """
 
-    encoded_key = await encode_tokens(raw_key=key)
-    final_encoded_token = await encode_tokens(encoded_key)
+    encoded_key = encode_tokens(raw_key=key)
+    final_encoded_token = encode_tokens(encoded_key)
     api_key = settings.API_COLL.find_one({"api_key": final_encoded_token})
-    print(f"total match: \n {api_key}")
     if api_key and (api_key['key_status'] == "inactive"):
         await delete_api_key(api_key['username'], final_encoded_token)
         return {"message": "API key deleted"}

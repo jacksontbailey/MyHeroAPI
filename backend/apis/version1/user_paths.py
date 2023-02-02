@@ -48,7 +48,6 @@ async def create_user(user: UserCreate, background_tasks: BackgroundTasks):
 
 @router.get("/password/{email}")
 async def forgotPassword(background_tasks: BackgroundTasks, email: str):
-    print(f'passed into password backend: {email}, type is {type(email)}')
     # - Instance of User Collection in DB
     db = settings.USER_COLL
     

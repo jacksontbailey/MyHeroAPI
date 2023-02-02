@@ -31,7 +31,6 @@ async def verify(token: str, email: str):
 
 @router.post('/reset-password')
 async def resetPassword(reset_data: UserPassReset):
-    print(f"token is: {reset_data.token}\nemail is: {reset_data.email}\npassword is {reset_data.password}")
     # Validate the token
     if not is_valid_token(collection = settings.PASSRESET_COLL, token = reset_data.token, email = reset_data.email):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Token couldn't be found or has already expired.")

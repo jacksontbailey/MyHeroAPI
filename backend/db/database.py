@@ -49,7 +49,6 @@ async def fetch_all_matches(queries, amount_limited):
     cards = []
     cursor = settings.CARD_COLL.find(queries).collation(settings.INSENSITIVE).limit(amount_limited)
     for card in cursor:
-        print(card)
         cards.append(Card(**card))
     
     return(len(cards), cards)

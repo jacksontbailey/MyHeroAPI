@@ -207,7 +207,6 @@ class Unicode_Parser():
 
     def parse_list(self, new_data):
         parse_new_data = new_data
-        print(f"Old data: {parse_new_data}")
         for number, string in enumerate(parse_new_data):
 
             ascii_code_checker = self.ascii_code(string)
@@ -226,5 +225,4 @@ class Unicode_Parser():
             parse_new_data[number] = unwanted_code_checker
             
         parse_new_data = self.delete_none(parse_new_data)
-        print(f"New data: {parse_new_data}")
         return parse_new_data

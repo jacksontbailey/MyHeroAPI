@@ -126,10 +126,9 @@ def is_valid_api_key(token):
 
 def change_api_key_status(username, key, status):
     try:
-        print(f"change_api_key_status: {username, key, status}")
         settings.USER_COLL.find_one_and_update(
             filter={"username": username, "api_keys.api_key": key}, 
-            update={'$set': {'api_keys.key_status': status}}
+            update={'$set': {'api_keys.$.key_status': status}}
         )
         settings.API_COLL.find_one_and_update(
             {"api_key": key}, 

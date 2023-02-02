@@ -1,6 +1,6 @@
 from schemas.schema_token import Hasher, TokenData
 from core.config import settings
-from schemas.schema_user import User, UserInDB
+from schemas.schema_user import User, UserInDB, UserWithKeys
 from fastapi import HTTPException, Depends, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
@@ -87,7 +87,7 @@ async def check_if_user_is_admin(current_user: User = Depends(get_current_active
 
 
 async def create_new_user(user):
-    new_user = User(
+    new_user = UserWithKeys(
         username = user['username'],
         email = user['email'],
         hashed_password = Hasher.get_password_hash(user['password']),
