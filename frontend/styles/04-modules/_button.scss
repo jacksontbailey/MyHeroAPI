@@ -38,3 +38,32 @@
 .btnSubmit {
     @include regularButton
 }
+
+
+//Toggle Buttons using Framer Motion
+.switch {
+    width: 50px;
+    height: 29px;
+    border-radius: 50px;
+    padding: 10px;
+    display: flex;
+    cursor: pointer;
+  }
+  
+.switch.active {
+    background-color: #22cc88;
+    justify-content: flex-end;
+}
+
+.switch.inactive {
+    background-color: #dddddd;
+    justify-content: flex-start;
+}
+
+.switch div {
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+    border-radius: 100px;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.02);
+}

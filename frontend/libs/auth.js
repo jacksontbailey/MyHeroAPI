@@ -1,38 +1,45 @@
-import {deleteCookie, getCookie} from 'cookies-next'
+import { deleteCookie, getCookie } from 'cookies-next'
 
 
-export function logout(cookie){
+export function logout(cookie) {
     deleteCookie(cookie)
 }
-  
-export async function resetPassword({email, token, password}) {
-    try{
+
+export async function resetPassword({ email, token, password }) {
+    try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/verification/reset-password?token=${token}&email=${email}&password=${password}`)
         return res.status
-    } catch(error) {
+    } catch (error) {
         return error
     }
 }
 
-export async function deleteKey(key){
-    try{
+export async function deleteKey(key) {
+    try {
         const token = getCookie("token");
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api_keys/delete-key?key=${key}`, {
-            method:"DELETE",
+            method: "DELETE",
             headers: {
                 'Authorization': `Bearer ${token}`,
             }
         })
         return res.status
-    } catch(error) {
+    } catch (error) {
         return error
     }
 }
 
-export function updateKeyStatus(key, newStatus){
+export function updateKey({currentKey, updateStatus = null, updateName = null}){
     try{
         const token = getCookie("token");
-        const res = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api_keys/update-status?key=${key}&status=${newStatus}`, {
+        let url = `${process.env.NEXT_PUBLIC_API_URL}/api_keys/edit-key?key=${currentKey}`;
+        if (updateStatus) {
+            url += `&status=${updateStatus}`;
+        }
+        if (updateName) {
+            url += `&name=${updateName}`;
+        }
+        const res = fetch(url, {
             method:"PATCH",
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -43,4 +50,5 @@ export function updateKeyStatus(key, newStatus){
         return error
     }
 }
+
 

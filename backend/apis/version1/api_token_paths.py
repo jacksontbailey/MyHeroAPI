@@ -1,6 +1,6 @@
-from fastapi import APIRouter, Body, HTTPException, Depends
-from schemas.schema_token import ApiTokenCreate, ApiTokenEdit
-from db.repository.token import save_api_key, change_api_key_status, add_api_keys, delete_api_key, encode_tokens, decode_tokens
+from fastapi import APIRouter, HTTPException, Depends
+from schemas.schema_token import ApiTokenCreate
+from db.repository.token import save_api_key, change_api_key_status, change_api_key_name, add_api_keys, delete_api_key, encode_tokens, decode_tokens
 from db.repository.users import get_current_active_user
 from core.security_funct import generate_random_token
 from core.config import settings
@@ -42,18 +42,27 @@ async def list_api_tokens(user = Depends(get_current_active_user)):
 
 
 
-@router.patch("/update-status")
-async def edit_api_key(key: str, status: str, user = Depends(get_current_active_user)):
+@router.patch("/edit-key")
+async def edit_api_key(key: str, status: str|None=None, name: str|None=None, user = Depends(get_current_active_user)):
     """
-    Edit the status of an api key.
+    Edit the status or name of an api key.
     """ 
     try:
         encoded_token = encode_tokens(key)
         final_encoded_token = encode_tokens(encoded_token)
-        change_api_key_status(username = user.username, key = final_encoded_token, status = status)
-        return {"message": "API key status updated successfully"}
+
+        if status:
+            change_api_key_status(username = user.username, key = final_encoded_token, status = status)
+            return {"message": "API key status updated successfully"}
+        elif name:
+            change_api_key_name(username = user.username, key = final_encoded_token, name = name)
+            return {"message": "API key name updated successfully"}
+        else:
+            raise HTTPException(status_code=400, detail="No updates provided")
+
     except:
-        raise HTTPException(status_code=400, detail="Failed to update API key status")
+        raise HTTPException(status_code=400, detail="Failed to update API key")
+
 
 
 

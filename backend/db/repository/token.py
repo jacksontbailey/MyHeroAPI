@@ -124,6 +124,7 @@ def is_valid_api_key(token):
     return True
 
 
+
 def change_api_key_status(username, key, status):
     try:
         settings.USER_COLL.find_one_and_update(
@@ -133,6 +134,22 @@ def change_api_key_status(username, key, status):
         settings.API_COLL.find_one_and_update(
             {"api_key": key}, 
             {'$set': {'key_status': status}}
+        )
+
+    except PyMongoError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+
+def change_api_key_name(username, key, name):
+    try:
+        settings.USER_COLL.find_one_and_update(
+            filter={"username": username, "api_keys.api_key": key}, 
+            update={'$set': {'api_keys.$.key_name': name}}
+        )
+        settings.API_COLL.find_one_and_update(
+            {"api_key": key}, 
+            {'$set': {'key_name': name}}
         )
 
     except PyMongoError as e:
