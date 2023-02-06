@@ -1,8 +1,8 @@
 import {motion} from "framer-motion"
 
 
-const ToggleButton = ({isActive, ...props}) => {
-    const className = `switch ${isActive ? "active" : "inactive"}`;
+const ToggleButton = ({toggleStatus, ...props}) => {
+    const className = `switch ${(toggleStatus === "active") ? "active" : "inactive"} table__button__key-status`;
 
     return (
         <motion.button animate className={className} {...props}>

@@ -45,7 +45,7 @@ export function updateKey({currentKey, updateStatus = null, updateName = null}){
                 'Authorization': `Bearer ${token}`,
             }
         })
-        return res.status
+        return res
     } catch(error) {
         return error
     }
