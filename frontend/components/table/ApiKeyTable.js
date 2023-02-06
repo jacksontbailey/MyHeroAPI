@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { TbEdit } from 'react-icons/tb'
-import {IoToggleSharp} from 'react-icons/io5'
+import { TbEdit, TbX } from 'react-icons/tb'
 import ToggleButton from '../forms/reusable_form_components/ToggleButton';
 import Table from './table_components/Table';
 import TableData from './table_components/TableData';
@@ -13,7 +12,6 @@ import { deleteKey, updateKey } from '../../libs/auth'
 
 const ApiKeyTable = () => {
     const {loading, apiKeys, mutate} = useKeys();
-    const [isOpen, setIsOpen] = useState(false);
     const [keyName, setKeyName] = useState('');
     const [selectedItem, setSelectedItem] = useState({});
 
@@ -36,18 +34,13 @@ const ApiKeyTable = () => {
     }
 
     const openPopup = (item) => {
-        setIsOpen(true);
+        keyNameDialog.showModal()
         setSelectedItem(item);
         setKeyName(item.key_name);
     };
 
     const handlePopupSubmit = () => {
         handleEdit(selectedItem.api_key, keyName);
-        setIsOpen(false);
-    };
-
-    const handlePopupCancel = () => {
-        setIsOpen(false);
     };
 
 
@@ -77,7 +70,7 @@ const ApiKeyTable = () => {
                                 <TableData>
                                     <ToggleButton toggleStatus={item.key_status} onClick={() => handleToggleStatus(index)}/>
                                     {item.key_status === "inactive" ? (
-                                        <button className={"table__button__delete-api-key"} onClick={() => handleDelete(index)}>Delete</button>
+                                        <TbX className={"table__button__delete-api-key"} onClick={() => handleDelete(index)} />
                                         ) : null
                                     }
 
@@ -88,18 +81,16 @@ const ApiKeyTable = () => {
                         : null}
                 </tbody>
             </Table>)}
-            {isOpen && (
-                <div style={{ position: 'fixed', top: '0', bottom: '0', left: '0', right: '0', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
-                    <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'white', color: 'black', padding: '20px', borderRadius: '10px' }}>
+                <dialog id = "keyNameDialog" className='dialog__key-name' inert>
+                    <form method='dialog' >
                         <div>
-                            <label>Key Name:</label>
-                            <input type="text" style={{color: 'black'}} value={keyName} onChange={(e) => setKeyName(e.target.value)} />
+                            <label>New Key Name:</label>
+                            <input type="text" style={{color: 'black'}} value={keyName} onChange={(e) => setKeyName(e.target.value)} autoFocus/>
                         </div>
-                        <button onClick={handlePopupSubmit}>Submit</button>
-                        <button onClick={handlePopupCancel}>Cancel</button>
-                    </div>
-                </div>
-            )}
+                        <button value="cancel">Cancel</button>
+                        <button value="submit" onClick={handlePopupSubmit}>Submit</button>
+                    </form>
+                </dialog>
         </>
     );
 };
