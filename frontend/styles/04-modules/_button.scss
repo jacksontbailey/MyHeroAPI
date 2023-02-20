@@ -39,6 +39,10 @@
     @include regularButton
 }
 
+.btnCancel {
+    @include regularButton($backColor: red, $hoverBackColor: orange)
+}
+
 
 //Toggle Buttons using Framer Motion
 .switch {

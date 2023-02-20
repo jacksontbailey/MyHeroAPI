@@ -6,18 +6,19 @@ const ApiCreationPage = () => {
     return(
         <main className="api-page">
         
-        
             <section className="current-api-keys">
                 <ApiKeyTable />
             </section>
-        
-        
-            <div className='form new-api-form'>
-                <div className='form-box'>
-                    <h1 className='form-header'>Generate API Key</h1>
-                    <CreateApiKeyForm/>
+            
+            <section className="new-key__section">
+                <div className='new-key__form'>
+                    <div className='new-key__form-box'>
+                        <h2 className='new-key__form-header'>Generate API Key</h2>
+                        <CreateApiKeyForm/>
+                    </div>
                 </div>
-            </div>
+            </section>
+        
         </main>
     )
 }

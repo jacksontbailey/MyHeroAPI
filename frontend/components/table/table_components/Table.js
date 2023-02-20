@@ -1,6 +1,6 @@
-const Table = ({ children }) => {
+const Table = ({ className, children }) => {
     return (
-        <table>
+        <table className={className}>
             {children}
         </table>
     );

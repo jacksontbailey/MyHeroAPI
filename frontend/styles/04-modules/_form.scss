@@ -1,85 +1,189 @@
 @use '../01-helpers/index' as *;
+@import "react-datepicker/dist/react-datepicker.css";
+@import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
-.forgot-link{
-    font-size: 10px;
-    text-align: right;
-    margin: 20px 0 5px 0;
-}
+
 
 .form{
     display: flex;
     justify-content: center;
-}
 
-.form-box{
-    display: grid;
-    width: 90vw;
-    max-width: 600px;
-    background-color: darkgray;
-}
+    .forgot-link{
+        font-size: 10px;
+        text-align: right;
+        margin: 20px 0 5px 0;
+    }
 
-.form-content{
-    display: grid;
-    padding: 40px;
-}
+    .form-box{
+        display: grid;
+        width: 90vw;
+        max-width: 600px;
+        background-color: darkgray;
 
-.form-header{
-    justify-self: center;
-}
+        .form-header{
+            justify-self: center;
+        }
 
-.form-fillable{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding-bottom: 40px;
-}
+        .form-content{
+            display: grid;
+            padding: 40px;
+        }
+    }
+    
+    .form-fillable{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-bottom: 40px;
+    }
+    
+    .form-invisible{
+        display: none;
+    }
+    
+    .form-multiple-options{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
 
-.form-invisible{
-    display: none;
-}
-
-.form-multiple-options{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-
-
-input{
-    width: 100%;
-    padding: .5em;
-    background: none;
-    border: 1px solid grey;
-    color: white;
-    font-size: 20px;
-    &:focus{
-        outline:0;
-        border-color: aquamarine;
+    input{
+        width: 100%;
+        padding: .5em;
+        background: none;
+        border: 1px solid grey;
+        color: white;
+        font-size: 20px;
+        &:focus{
+            outline:0;
+            border-color: aquamarine;
+        }
+    }
+    
+    label {
+        transform:translateY(6px);
+        left:13px;
+        color:rgba(white,.5);
+        transition:all 0.25s ease;
+        backface-visibility: hidden;
+        pointer-events: none;
+        font-size:22px;
+        .req {
+            margin:2px;
+            color: $deku-green;
+        }
+    
+        .active {
+            transform:translateY(50px);
+            left:2px;
+            font-size:14px;
+            .req {
+              opacity:0;
+            }
+        }
+    
+        .highlight {
+            color:white;
+        }
     }
 }
 
-label {
-    transform:translateY(6px);
-    left:13px;
-    color:rgba(white,.5);
-    transition:all 0.25s ease;
-    backface-visibility: hidden;
-    pointer-events: none;
-    font-size:22px;
-    .req {
-        margin:2px;
-        color: $deku-green;
+
+.new-key{
+    &__form-box{
+        display: grid;
+    }
+
+    &__form-content{
+        display: grid;
+        gap: 2rem;
+
+        input {
+            border: 1px solid $deku-green;
+            padding: .25rem;
+            width: 70%;
+
+            &:focus{
+                outline:0;
+                border-color: orange;
+            }    
+        }
+    }
+
+    &__form-fillable{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &__form-header{
+        justify-self: center;
+    }
+
+    &__form-select{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 70%;
+
+        :hover{
+            cursor: pointer;
+        }
+
+        select{
+            appearance: none;            
+            background-image:
+                linear-gradient(45deg, transparent 50%, $middle-grey 50%),
+                linear-gradient(135deg, $middle-grey 50%, transparent 50%),
+                linear-gradient(to right, $middle-grey, $middle-grey);
+            background-position:
+                calc(100% - 20px) calc(1em - 5px),
+                calc(100% - 13px) calc(1em - 5px),
+                calc(100% - 2.5em);
+            background-size:
+                5px 5px,
+                5px 5px,
+                1px .75em;
+            background-repeat: no-repeat;
+            border: 1px solid $deku-green;
+            line-height: 1rem;
+            padding: 0.25rem;
+
+            &:focus {
+                background-image:
+                  linear-gradient(45deg, $deku-green 50%, transparent 50%),
+                  linear-gradient(135deg, transparent 50%, $deku-green 50%),
+                  linear-gradient(to right, $deku-green, $deku-green);
+                background-position:
+                  calc(100% - 13px) calc(1em - 4px),
+                  calc(100% - 20px) calc(1em - 4px),
+                  calc(100% - 2.5em);
+                background-size:
+                  5px 5px,
+                  5px 5px,
+                  1px .75em;
+                background-repeat: no-repeat;
+                outline: 0;
+            }
+
+            &:focus-visible{
+                outline: $deku-green auto 1px;
+            }
+        }
+    }
+
+    &__form-submit{
+        @include regularButton
     }
 }
 
-label.active {
-    transform:translateY(50px);
-    left:2px;
-    font-size:14px;
-    .req {
-      opacity:0;
+.react-datepicker{
+    color: orange;
+    &__close-icon::after{
+        background-color: $deku-green;
     }
-}
-
-label.highlight {
-	color:white;
+    &__close-icon{
+        :hover{
+            background-color: blue;
+        }
+    }
 }

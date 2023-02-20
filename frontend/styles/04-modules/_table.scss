@@ -1,0 +1,46 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    
+    th {
+        padding: 10px;
+        background-color: white;
+    }
+
+    td {
+        border-top: 1px solid black;
+        padding: 8px;
+        margin: 10px;
+        text-align: left;
+    }
+  
+  
+    td:last-child {
+        border-radius: 0 5px 5px 0;
+    }
+
+    td pre {
+        background-color: lightgray;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+}
+
+
+.table__data__actions {
+    white-space: nowrap;
+    
+    button, svg {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+    
+    .delete-key, .edit-button{
+        height: 1.5rem;
+        width: 1.5rem;
+        cursor: pointer;
+    }
+}

@@ -1,6 +1,6 @@
-const Select = ({ name, label, children, ...props}) => {
+const Select = ({ name, className, label, children, ...props}) => {
   return (
-    <div className="form-select">
+    <div className={className}>
       <label htmlFor={name}>{label}</label>
       <select id={name} name={name} aria-label={label} {...props}>
         {children}

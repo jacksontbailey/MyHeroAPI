@@ -1,6 +1,6 @@
-const TableData = ({children}) => {
+const TableData = ({className, children}) => {
     return (
-        <td>
+        <td className={className}>
             {children}
         </td>
     );

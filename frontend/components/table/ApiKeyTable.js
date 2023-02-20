@@ -56,39 +56,38 @@ const ApiKeyTable = () => {
                         <TableHeading className={"table__heading"}>Key Name</TableHeading>
                         <TableHeading className={"table__heading"}>Status</TableHeading>
                         <TableHeading className={"table__heading"}>Expiration Date</TableHeading>
-                        <TableHeading className={"table__heading"}>Buttons</TableHeading>
+                        <TableHeading className={"table__heading"}>Actions</TableHeading>
                     </TableRow>
                 </TableHead>
-                <tbody className='className={"table__body"}'>
+                <tbody className='table__body'>
                     {apiKeys
                         ? apiKeys.map((item, index) => (
                             <TableRow key={index} className={"table__row"}>
-                                <TableData className={"table__data__api-key"}>{item.api_key}</TableData>
+                                <TableData className={"table__data__api-key"}><pre>{item.api_key}</pre></TableData>
                                 <TableData className={"table__data__key-name"}>{item.key_name}</TableData>
                                 <TableData className={"table__data__key-status"}>{item.key_status}</TableData>
                                 <TableData className={"table__data__exp-date"}>{item.exp_date}</TableData>
-                                <TableData>
-                                    <ToggleButton toggleStatus={item.key_status} onClick={() => handleToggleStatus(index)}/>
+                                <TableData className={"table__data__actions"}>
+                                    <ToggleButton toggleStatus={item.key_status} onClick={() => handleToggleStatus(index)} title="Change Key Status"/>
                                     {item.key_status === "inactive" ? (
-                                        <TbX className={"table__button__delete-api-key"} onClick={() => handleDelete(index)} />
-                                        ) : null
+                                        <TbX className={"delete-key"} onClick={() => handleDelete(index)} title="Delete API Key" />
+                                        ) : <TbEdit onClick={() => openPopup(item)} className={"edit-button"} title="Change Key Name"/>
                                     }
 
-                                    <TbEdit onClick={() => openPopup(item)} className={"table__button__edit-button"}/>
                                 </TableData>
                             </TableRow>
                         ))
                         : null}
                 </tbody>
             </Table>)}
-                <dialog id = "keyNameDialog" className='dialog__key-name' inert>
-                    <form method='dialog' >
-                        <div>
-                            <label>New Key Name:</label>
-                            <input type="text" style={{color: 'black'}} value={keyName} onChange={(e) => setKeyName(e.target.value)} autoFocus/>
-                        </div>
-                        <button value="cancel">Cancel</button>
-                        <button value="submit" onClick={handlePopupSubmit}>Submit</button>
+                <dialog id = "keyNameDialog" className='dialog__key-name'>
+                    <form className='dialog__form' method='dialog' >
+                        <section className='dialog__fillable'>
+                            <label className='dialog__label'>New Key Name:</label>
+                            <input className='dialog__input' type="text" value={keyName} onChange={(e) => setKeyName(e.target.value)} autoFocus/>
+                        </section>
+                        <button className='dialog__cancel btnCancel' value="cancel">Cancel</button>
+                        <button className='dialog__submit btnSubmit' value="submit" onClick={handlePopupSubmit}>Submit</button>
                     </form>
                 </dialog>
         </>

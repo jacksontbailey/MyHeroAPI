@@ -39,6 +39,7 @@ const CreateApiKeyForm = () => {
         if (res.ok) {
             const data = await res.json();
             setCookie("api_key", data)
+            window.location.reload()
             // handle successful creation of api key
         } else {
             console.error("error", res.json())
@@ -47,16 +48,16 @@ const CreateApiKeyForm = () => {
     };
 
 
-    const handleHasExpirationChange = (e) => {
+    const handleHasExpirationChange = async (e) => {
         setFormData({ ...formData, hasExpiration: Boolean(e.target.value)});
         (e.target.value === "true") ? setIsExpirationVisible(true) : setIsExpirationVisible(false)
     };
 
-    const handleNameChange = (e) => {
+    const handleNameChange = async (e) => {
         setFormData({ ...formData, name: e.target.value });
     };
 
-    const handleDateChange = (date) => {
+    const handleDateChange = async (date) => {
         setStartDate(date);
         setFormData({ ...formData, expiration: date});
     };
@@ -64,8 +65,8 @@ const CreateApiKeyForm = () => {
         
     return (
             
-            <Form onSubmit={handleSubmit} className='form-content'>
-            <section className='form-fillable api-new'>
+        <Form onSubmit={handleSubmit} className='new-key__form-content' id="external-form">
+            <section className='new-key__form-fillable'>
                 <Input
                     type="text"
                     name="name"
@@ -77,29 +78,32 @@ const CreateApiKeyForm = () => {
 
 
                 <Select
+                    className="new-key__form-select"
                     name="hasExpiration"
                     label= "Set Expiration Date"
                     placeholder="Expiration"
                     onChange={handleHasExpirationChange}
                     selected={formData.hasExpiration.valueOf()}
+                    required
                 >
                     <Option value={false} label="No"/>
                     <Option value={true} label="Yes" />
                 </Select>
                 {formData.hasExpiration && isExpirationVisible &&
-                    <ExpirationInput 
-                        handleDateChange={handleDateChange}
-                        startDate={startDate}
-                        placeholderText="Select a date and time"
+                    <ExpirationInput
                         dateFormat="Pp"
+                        handleDateChange={handleDateChange}
+                        placeholderText="Select a date and time"
                         showTimeSelect
+                        startDate={startDate}
+                        required
                     />
                 }
 
 
             </section>
 
-            <Button type="submit" className='btnSubmit' btnText={"Create Key"}/>
+            <Button type="submit" className='new-key__form-submit' btnText={"Create Key"}/>
 
         </Form>
     );

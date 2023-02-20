@@ -2,17 +2,7 @@
 @use './variables' as v;
 @use './functions' as f;
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  transition: 0.5s ease-in-out;
-}
 
-*:before,
-*:after {
-  z-index: -1;
-}
 
 // Sizing
 // -------------------------------------
@@ -69,6 +59,7 @@
   
   &:hover{
     background-color: $hoverBackColor;
+    transition: 0.5s ease-in-out;
   }
 }
 
@@ -79,13 +70,22 @@
     color: $chosenColor;
     $btn-color-dark: shade($chosenColor, 40%);
     
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+      transition: 0.5s ease-in-out;
+    }
+    
+
     &:before,
     &:after {
       @include absolute(50%);
-      content: '';
       @include size(20px);
+      content: '';
       background-color: $chosenColor;
       border-radius: 50%;
+      z-index: -1;
     }
     
     &:before {

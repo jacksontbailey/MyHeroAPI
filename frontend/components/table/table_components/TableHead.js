@@ -1,6 +1,6 @@
-const TableHead = ({ children }) => {
+const TableHead = ({ className, children }) => {
     return (
-        <thead>
+        <thead className={className}>
             {children}
         </thead>
     );

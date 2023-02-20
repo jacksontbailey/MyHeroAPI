@@ -1,6 +1,6 @@
-const TableRow = ({ children }) => {
+const TableRow = ({ className, children }) => {
     return (
-        <tr>
+        <tr className={className}>
             {children}
         </tr>
     );
