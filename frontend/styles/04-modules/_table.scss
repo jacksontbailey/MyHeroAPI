@@ -1,8 +1,9 @@
 table {
     width: 100%;
+    min-width: 600px;
     border-collapse: collapse;
     border-spacing: 0;
-    
+
     th {
         padding: 10px;
         background-color: white;
@@ -14,8 +15,7 @@ table {
         margin: 10px;
         text-align: left;
     }
-  
-  
+
     td:last-child {
         border-radius: 0 5px 5px 0;
     }
@@ -28,19 +28,35 @@ table {
 
 }
 
-
 .table__data__actions {
     white-space: nowrap;
-    
+
     button, svg {
         display: inline-block;
         vertical-align: middle;
         margin-right: 10px;
     }
-    
+
     .delete-key, .edit-button{
         height: 1.5rem;
         width: 1.5rem;
         cursor: pointer;
+    }
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+@media screen and (max-width: 767px) {
+    table {
+        min-width: 100%;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    table {
+        font-size: 12px;
     }
 }

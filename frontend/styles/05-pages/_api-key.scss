@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem;
+    gap: 5rem;
     align-items: flex-start;
   
     .current-api-keys,
@@ -28,6 +28,8 @@
       .new-key__section {
         width: 25%;
         order: 1;
+        display: flex;
+        flex-direction: column;
       }
     }
   }

@@ -4,6 +4,7 @@
 
 
 
+//Regular form used to log in or create a new account
 .form{
     display: flex;
     justify-content: center;
@@ -88,23 +89,28 @@
 }
 
 
+// Form to create new api keys
+
 .new-key{
     &__form-box{
         display: grid;
+        grid-template-columns: 15% 70% 15%;
     }
 
     &__form-content{
         display: grid;
+        grid-row: 2/3;
+        grid-column: 2/3;
         gap: 2rem;
 
         input {
+            align-self: flex-start;
             border: 1px solid $deku-green;
             padding: .25rem;
-            width: 70%;
 
             &:focus{
                 outline:0;
-                border-color: orange;
+                border-color: $middle-grey;
             }    
         }
     }
@@ -116,14 +122,15 @@
     }
 
     &__form-header{
-        justify-self: center;
+        grid-row: 1/2;
+        grid-column: 2/3;
+        text-align: center;
     }
 
     &__form-select{
         display: flex;
         flex-direction: column;
         gap: 5px;
-        width: 70%;
 
         :hover{
             cursor: pointer;
@@ -172,18 +179,6 @@
     }
 
     &__form-submit{
-        @include regularButton
-    }
-}
-
-.react-datepicker{
-    color: orange;
-    &__close-icon::after{
-        background-color: $deku-green;
-    }
-    &__close-icon{
-        :hover{
-            background-color: blue;
-        }
+        @include regularButton($justifySelf: flex-start)
     }
 }

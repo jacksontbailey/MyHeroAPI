@@ -1,0 +1,65 @@
+@use '../01-helpers/index' as *;
+@import "react-datepicker/dist/react-datepicker.css";
+@import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+
+
+//Calendar for creating new API keys. Uses the React Datepicker library. 
+.react-datepicker{
+    color: orange;
+    &__close-icon::after{
+        background-color: $deku-green;
+    }
+    &__close-icon{
+        &:hover::after{
+            background-color: blue;
+        }
+    }
+
+    &__current-month{
+        color: cadetblue;
+    }
+
+    &__day {
+        color: palegoldenrod
+    }
+
+    &__day-name {
+        color: salmon;
+    }
+
+    &__day--selected{
+        background-color: aqua;
+
+        &:hover{
+            background-color: orange;
+        }
+    }
+
+    &__header{
+        background-color: aquamarine;
+        border-bottom: 1px solid purple;
+    }
+
+    &-time__header{
+        color: cadetblue;
+    }
+
+    &__time-container{
+        border-left: 1px solid purple;
+    }
+
+    &__time-list-item {
+        &:hover{
+            background-color: aquamarine !important;
+        }
+
+        &--selected{
+            background-color: purple !important;
+        }
+    }
+
+    &__navigation-icon::before{
+        border-color: gold;
+    }
+
+}

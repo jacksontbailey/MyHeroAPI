@@ -44,9 +44,9 @@
 
 // Buttons
 // --------------------------------------
-@mixin regularButton($bordRadius: 0px, $width: 100%, $padding: 8px 0, $color: white, $backColor:green, $bordColor:red, $hoverBackColor: purple, $fontSize: 16px){
+@mixin regularButton($bordRadius: 0px, $justifySelf: center, $width: 100%, $padding: 8px 0, $color: white, $backColor:green, $bordColor:red, $hoverBackColor: purple, $fontSize: 16px){
   position: relative;
-  justify-self: center;
+  justify-self: $justifySelf;
   text-align: center;
   cursor: pointer;
   border-radius: $bordRadius;

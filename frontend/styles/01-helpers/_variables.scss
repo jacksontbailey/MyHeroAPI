@@ -1,5 +1,6 @@
 $btn-width: 150px !default;
 $btn-height: 50px !default;
 $btn-full: $btn-height+$btn-width !default;
+$btn-75: $btn-full*0.75 !default;
 $btn-half: $btn-full/2 !default;
 $position-default: null !default;

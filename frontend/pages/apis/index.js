@@ -1,5 +1,5 @@
 import CreateApiKeyForm from "../../components/forms/ApiKeyCreate";
-import ApiKeyTable from "../../components/table/ApiKeyTable";
+import ApiKeyList from "../../components/ApiKeyList";
 
 const ApiCreationPage = () => {
 
@@ -7,7 +7,7 @@ const ApiCreationPage = () => {
         <main className="api-page">
         
             <section className="current-api-keys">
-                <ApiKeyTable />
+                <ApiKeyList />
             </section>
             
             <section className="new-key__section">
