@@ -1,5 +1,5 @@
 @use '../01-helpers/index' as *;
-.api-key__grid {
+.api-key{
     width: 100%;
     min-width: 600px;
     display: grid;
@@ -8,7 +8,7 @@
     gap: 20px;
         
     
-    .api-key__item {
+    &__item {
         background-color: #FFFFFF;
         box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
         border-radius: 10px;
@@ -17,12 +17,12 @@
         justify-content: space-between;
         padding: 20px;
     
-        .api-key__item-header {
+        &-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
     
-            .api-key__item-title {
+            &-title {
                 margin: 0;
                 font-size: 1.6rem;
                 font-weight: 600;
@@ -43,38 +43,40 @@
             }
         }
     
-        .api-key__item-section {
+        &-section {
             display: flex;
             flex-direction: column;
             margin-top: 20px;
     
-            .api-key__item-title {
+            &-title {
                 margin: 0;
                 font-size: 1.4rem;
                 font-weight: 600;
                 color: #757575;
             }
     
-            .api-key__item-content {
+            &-content {
                 font-size: 1.4rem;
                 font-weight: 400;
                 color: #212121;
             }
         }
     
-        .api-key__item-footer {
-            display: flex;
+        &-action {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             align-items: center;
             margin-top: 20px;
-    
-            .delete-key, .edit-button{
-                height: 1.5rem;
-                width: 1.5rem;
-                cursor: pointer;
-                margin-right: 10px;
-            }
         }
-    }
+
+        .delete-key, .edit-button{
+            height: 1.5rem;
+            width: 1.5rem;
+            cursor: pointer;
+            margin-right: 10px;
+            color: orange;
+        }
+    }    
 }
 
 .dialog__overlay {

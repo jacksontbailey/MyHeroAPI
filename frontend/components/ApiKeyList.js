@@ -45,11 +45,11 @@ const ApiKeyList = () => {
     return (
         <>
             {!loading && apiKeys && (
-                <section className="api-key__grid">
+                <section className="api-key">
                     {apiKeys.map((item, index) => (
                         <article key={index} className="api-key__item">
                             <header className="api-key__item-section">
-                                <h3 className="api-key__item-title">Key Name</h3>
+                                <h2 className="api-key__item-title">Key Name</h2>
                                 <div className="api-key__item-content">{item.key_name}</div>
                             </header>
                             <section className="api-key__item-header">
@@ -64,13 +64,14 @@ const ApiKeyList = () => {
                                 <h3 className="api-key__item-title">Expiration Date</h3>
                                 <div className="api-key__item-content">{item.exp_date}</div>
                             </section>
-                            <footer className="api-key__item-footer">
+                            <section className="api-key__item-action">
+                                <h3>Actions</h3>
                                 <ToggleButton toggleStatus={item.key_status} onClick={() => handleToggleStatus(index)} title="Change Key Status" />
                                 {item.key_status === "inactive"
                                     ? <TbX className={"delete-key"} onClick={() => handleDelete(index)} title="Delete API Key" />
                                     : <TbEdit onClick={() => openPopup(item)} className={"edit-button"} title="Change Key Name" />
                                 }
-                            </footer>
+                            </section>
                         </article>
                     ))}
                     <dialog id = "keyNameDialog" className='dialog__key-name'>
