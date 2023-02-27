@@ -48,24 +48,23 @@ const ApiKeyList = () => {
                 <section className="api-key">
                     {apiKeys.map((item, index) => (
                         <article key={index} className="api-key__item">
-                            <header className="api-key__item-section">
-                                <h2 className="api-key__item-title">Key Name</h2>
-                                <div className="api-key__item-content">{item.key_name}</div>
+                            <header className="api-key__item-header">
+                                <h2 className="api-key__item-header-title">{item.key_name}</h2>
                             </header>
-                            <section className="api-key__item-header">
-                                <h3 className="api-key__item-title">Key</h3>
-                                <div className="api-key__item-content"><pre>{item.api_key}</pre></div>
+                            <section className="api-key__item-section">
+                                <h3 className="api-key__item-section-title">Key</h3>
+                                <div className="api-key__item-section-content"><pre>{item.api_key}</pre></div>
                             </section>
                             <section className="api-key__item-section">
-                                <h3 className="api-key__item-title">Status</h3>
-                                <div className="api-key__item-content">{item.key_status}</div>
+                                <h3 className="api-key__item-section-title">Status</h3>
+                                <p className="api-key__item-section-content">{item.key_status}</p>
                             </section>
                             <section className="api-key__item-section">
-                                <h3 className="api-key__item-title">Expiration Date</h3>
-                                <div className="api-key__item-content">{item.exp_date}</div>
+                                <h3 className="api-key__item-section-title">Expiration Date</h3>
+                                <p className="api-key__item-section-content">{(item.exp_date)? item.exp_date : "No Expiration"}</p>
                             </section>
                             <section className="api-key__item-action">
-                                <h3>Actions</h3>
+                                <h3 className='api-key__item-action-title'>Actions</h3>
                                 <ToggleButton toggleStatus={item.key_status} onClick={() => handleToggleStatus(index)} title="Change Key Status" />
                                 {item.key_status === "inactive"
                                     ? <TbX className={"delete-key"} onClick={() => handleDelete(index)} title="Delete API Key" />

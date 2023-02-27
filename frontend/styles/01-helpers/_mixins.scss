@@ -1,6 +1,7 @@
 @use './color' as *;
 @use './variables' as v;
 @use './functions' as f;
+@use './fonts' as fo;
 
 
 
@@ -114,3 +115,34 @@
       }
     }
   }
+
+
+// Navigation
+//------------------------------------
+@mixin nav-link {
+  font-size: clamp(14px, 1.2vw, 20px);
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  border-radius: 5px;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover,
+  &:focus {
+    background-color: #eee;
+  }
+
+  &:active {
+    background-color: #ddd;
+  }
+}
+
+
+// Headers
+// -------------------------------------------
+@mixin header-styles($color: $deku-green, $font-style: normal, $font-size: v.$font-size-0, $font-weight: medium) {
+  color: $color;
+  font: $font-style $font-weight $font-size fo.$main-font;
+}
