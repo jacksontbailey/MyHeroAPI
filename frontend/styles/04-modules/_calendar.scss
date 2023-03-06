@@ -10,6 +10,15 @@
         background-color: $deku-green;
     }
     &__close-icon{
+        padding: 0 10px;
+
+        &::after{
+            height: 19px;
+            width: 20px;
+            font-size: 14px;
+            font-family: $main-font;
+            vertical-align: baseline;
+        }
         &:hover::after{
             background-color: blue;
         }

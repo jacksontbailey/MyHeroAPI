@@ -53,7 +53,7 @@ const ApiKeyList = () => {
                             </header>
                             <section className="api-key__item-section">
                                 <h3 className="api-key__item-section-title">Key</h3>
-                                <div className="api-key__item-section-content"><pre>{item.api_key}</pre></div>
+                                <p className="api-key__item-section-content">{item.api_key}</p>
                             </section>
                             <section className="api-key__item-section">
                                 <h3 className="api-key__item-section-title">Status</h3>

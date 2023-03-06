@@ -89,30 +89,41 @@
 }
 
 
-// Form to create new api keys
 
+// API Key Form Styling
 .new-key{
-    &__form-box{
+    &__form-box {
         display: grid;
-        grid-template-columns: 15% 70% 15%;
+        grid-template-columns: 1fr;
+        row-gap: 2rem;
+        
     }
 
-    &__form-content{
+    &__form-calendar {
+        width: 100%;
+
+        background-image:
+            linear-gradient(to right, $middle-grey, $middle-grey);
+        
+        background-position:
+            calc(100% - 3em);
+        background-size:
+            1px .75em;
+        background-repeat: no-repeat;
+        border: 1px solid $deku-green;
+        padding: .25rem;
+
+        &:focus{
+            outline:0;
+            border-color: $middle-grey;
+        }    
+    }
+
+    &__form-content {
         display: grid;
         grid-row: 2/3;
-        grid-column: 2/3;
+        grid-column: 1/-1;
         gap: 2rem;
-
-        input {
-            align-self: flex-start;
-            border: 1px solid $deku-green;
-            padding: .25rem;
-
-            &:focus{
-                outline:0;
-                border-color: $middle-grey;
-            }    
-        }
     }
 
     &__form-fillable{
@@ -123,8 +134,10 @@
 
     &__form-header{
         grid-row: 1/2;
-        grid-column: 2/3;
+        grid-column: 1/-1;
         text-align: center;
+        overflow-wrap: normal;
+        font-size: $font-size-2;
     }
 
     &__form-select{
@@ -139,34 +152,33 @@
         select{
             appearance: none;            
             background-image:
-                linear-gradient(45deg, transparent 50%, $middle-grey 50%),
-                linear-gradient(135deg, $middle-grey 50%, transparent 50%),
+                linear-gradient(45deg, transparent 50%, $middle-grey 51%),
+                linear-gradient(135deg, $middle-grey 48%, transparent 47%),
                 linear-gradient(to right, $middle-grey, $middle-grey);
             background-position:
-                calc(100% - 20px) calc(1em - 5px),
-                calc(100% - 13px) calc(1em - 5px),
-                calc(100% - 2.5em);
+                calc(100% - 19px) calc(1em - 3px),
+                calc(100% - 13px) calc(1em - 3px),
+                calc(100% - 3em);
             background-size:
-                5px 5px,
-                5px 5px,
+                7px 7px,
+                7px 7px,
                 1px .75em;
             background-repeat: no-repeat;
             border: 1px solid $deku-green;
-            line-height: 1rem;
             padding: 0.25rem;
 
             &:focus {
                 background-image:
-                  linear-gradient(45deg, $deku-green 50%, transparent 50%),
-                  linear-gradient(135deg, transparent 50%, $deku-green 50%),
+                  linear-gradient(45deg, $deku-green 48%, transparent 47%),
+                  linear-gradient(135deg,transparent 50%, $deku-green 51%),
                   linear-gradient(to right, $deku-green, $deku-green);
                 background-position:
-                  calc(100% - 13px) calc(1em - 4px),
-                  calc(100% - 20px) calc(1em - 4px),
-                  calc(100% - 2.5em);
+                  calc(100% - 13px) calc(1em - 3px),
+                  calc(100% - 19px) calc(1em - 3px),
+                  calc(100% - 3em);
                 background-size:
-                  5px 5px,
-                  5px 5px,
+                  7px 7px,
+                  7px 7px,
                   1px .75em;
                 background-repeat: no-repeat;
                 outline: 0;
@@ -176,9 +188,33 @@
                 outline: $deku-green auto 1px;
             }
         }
+
+        @media(min-width: 768px) {
+            flex-basis: 30%;
+        }
     }
 
     &__form-submit{
-        @include regularButton($justifySelf: flex-start)
+        @include regularButton($justifySelf: flex-start);
+
+        @media(min-width: 768px) {
+            justify-self: flex-end;
+        }
+    }
+
+
+    @media(min-width: 641px) {
+        &__form-box{
+            grid-template-columns: 15% 70% 15%;
+        }
+
+        &__form-content {
+            grid-column: 2/3;
+        }
+        
+        &__form-header{
+            grid-column: 2/3;
+        }
+    
     }
 }

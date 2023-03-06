@@ -1,36 +1,42 @@
 .api-page {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 5rem;
-    align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5rem;
+  align-items: flex-start;
+  padding: 20px;
+
+  .current-api-keys,
+  .new-key__section {
+    width: 100%;
+  }
+
+  .new-key__section {
+    max-width: 400px;
+  }
   
-    .current-api-keys,
-    .new-key__section {
-      width: 90%;
+  
+  // Tablet Viewports
+  @media (min-width: 641px) {
+    .current-api-keys{
       max-width: 800px;
     }
-  
-    .current-api-keys {
-      order: 1;
-    }
-  
+
     .new-key__section {
-      order: 2;
-    }
-  
-    @media (min-width: 768px) {
-      .current-api-keys {
-        width: 75%;
-        order: 0;
-      }
-  
-      .new-key__section {
-        width: 25%;
-        order: 1;
-        display: flex;
-        flex-direction: column;
-      }
+      display: flex;
+      flex-direction: column;
+      max-width: 600px;
     }
   }
+
+  // Desktop Viewports
+  @media (min-width: 1025px) {
+    .current-api-keys{
+      max-width: 800px;
+    }
+    .new-key__section {
+      max-width: 600px;
+    }
+  }
+}
   

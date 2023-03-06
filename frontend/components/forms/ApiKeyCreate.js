@@ -68,20 +68,20 @@ const CreateApiKeyForm = () => {
         <Form onSubmit={handleSubmit} className='new-key__form-content' id="external-form">
             <section className='new-key__form-fillable'>
                 <Input
-                    type="text"
+                    className="new-key__form-key"
                     name="name"
-                    placeholder="Key Name"
                     onChange={handleNameChange}
-                    value={formData.name}
+                    placeholder="Key Name"
                     required
+                    type="text"
+                    value={formData.name}
                 />
-
 
                 <Select
                     className="new-key__form-select"
                     name="hasExpiration"
-                    label= "Set Expiration Date"
-                    placeholder="Expiration"
+                    label= "Do you want this key to expire?"
+                    placeholder="Do you want this key to expire?"
                     onChange={handleHasExpirationChange}
                     selected={formData.hasExpiration.valueOf()}
                     required
@@ -89,8 +89,10 @@ const CreateApiKeyForm = () => {
                     <Option value={false} label="No"/>
                     <Option value={true} label="Yes" />
                 </Select>
+
                 {formData.hasExpiration && isExpirationVisible &&
                     <ExpirationInput
+                        className="new-key__form-calendar"
                         dateFormat="Pp"
                         handleDateChange={handleDateChange}
                         placeholderText="Select a date and time"
