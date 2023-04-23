@@ -30,12 +30,6 @@
   font-size: 1.5rem;
 }
 
-.login{
-  display: flex;
-  flex-direction: row;
-  gap: 50px;
-}
-
 @media (max-width: 600px) {
   .grid {
     width: 100%;

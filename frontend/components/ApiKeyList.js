@@ -3,6 +3,7 @@ import { TbEdit, TbX } from 'react-icons/tb'
 import ToggleButton from './forms/reusable_form_components/ToggleButton';
 import useKeys from "../data/use-key";
 import { deleteKey, updateKey } from '../libs/auth'
+import User from '../models/user';
 
 
 const ApiKeyList = () => {
@@ -14,18 +15,18 @@ const ApiKeyList = () => {
         const updatedApiKeys = [...apiKeys];
         const keyToUpdate = updatedApiKeys[index]['api_key']
         const newStatus = (updatedApiKeys[index]['key_status'] === 'active') ? 'inactive' : 'active';
-        await updateKey({ currentKey: keyToUpdate, updateStatus: newStatus }).then(() => { mutate(updatedApiKeys) })
+        await User.updateKey( keyToUpdate, { key_status: newStatus }).then(() => { mutate(updatedApiKeys) })
     }
 
     const handleDelete = async (index) => {
         const updatedApiKeys = [...apiKeys];
         const keyToDelete = updatedApiKeys[index]['api_key']
-        await deleteKey(keyToDelete).then(() => { mutate(updatedApiKeys) })
+        await User.deleteApiKey(keyToDelete).then(() => { mutate(updatedApiKeys) })
     }
 
     const handleEdit = async (key, newKeyName) => {
         const updatedApiKeys = [...apiKeys];
-        await updateKey({ currentKey: key, updateName: newKeyName }).then(() => { mutate(updatedApiKeys) })
+        await User.updateApiKey(key, { key_name: newKeyName }).then(() => { mutate(updatedApiKeys) })
     }
 
     const openPopup = (item) => {
@@ -40,7 +41,6 @@ const ApiKeyList = () => {
 
 
     if (loading) return <div className='loader'></div>
-
 
     return (
         <>

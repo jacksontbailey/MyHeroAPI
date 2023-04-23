@@ -1,41 +1,42 @@
+@use '../01-helpers/index' as *;
+
 .api-page {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 5rem;
   align-items: flex-start;
-  padding: 20px;
+  padding: 100px 20px;
 
   .current-api-keys,
   .new-key__section {
     width: 100%;
   }
 
-  .new-key__section {
-    max-width: 400px;
+  .new-key__section{
+    background-color: aqua;
+    border-radius: 10px;
+    padding: 40px 20px;
   }
   
+  @media (max-width: $min-card-width) {
+    .current-api-keys,
+    .new-key__section {
+      max-width: 400px;
+    }
+  
+  }
   
   // Tablet Viewports
-  @media (min-width: 641px) {
+  @media (min-width: $min-card-width) {
     .current-api-keys{
-      max-width: 800px;
+      max-width: 900px;
     }
 
     .new-key__section {
       display: flex;
       flex-direction: column;
-      max-width: 600px;
-    }
-  }
-
-  // Desktop Viewports
-  @media (min-width: 1025px) {
-    .current-api-keys{
-      max-width: 800px;
-    }
-    .new-key__section {
-      max-width: 600px;
+      max-width: 400px;
     }
   }
 }

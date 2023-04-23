@@ -38,3 +38,23 @@ $font-size-5: clamp(2.80rem, calc(2.31rem + 2.43vw), 4.20rem);
 //Positions
 //---------------------------------------------------------------
 $position-default: null !default;
+
+
+//Cards
+//---------------------------------------------------------------
+/* Card widths */
+$card-sm: 400px;
+$card-reg: 450px;
+
+
+//Viewports
+//-------------------------------------------------------------
+/* Tablet | 768px - 1023px */
+$min-tablet-width: 768px;
+
+/* Desktop | 1024 */
+$min-desktop-width: 1024px;
+
+/* Card Special Viewports */
+$min-card-width: calc($card-sm * 2 + 60px);
+

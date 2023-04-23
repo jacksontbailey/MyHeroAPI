@@ -3,7 +3,7 @@
 .api-key{
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 100%);
+    grid-template-columns: repeat(auto-fit, minmax(100%, 400px));
     grid-auto-rows: minmax(240px, auto);
     gap: 20px;
         
@@ -97,14 +97,11 @@
         }
     }
     
-    @media (min-width: 641px) {
-        grid-template-columns: repeat(2, minmax(246.5px, 1fr));
-        grid-auto-rows: minmax(240px, auto);    
-    }
-    
-    @media (min-width: 1025px) {
-        grid-template-columns: repeat(2, minmax(390px, 1fr));
-        grid-auto-rows: minmax(240px, auto);    
+
+    //width formula for key boxes with 2 columns = (mobile width * 2) + gap + padding
+    @media (min-width: $min-card-width) {
+        grid-template-columns: repeat(2, minmax(400px, 450px));
+        justify-content: center;
     }
 
 }

@@ -1,4 +1,5 @@
 import useSWR from "swr";
+import { getCookie } from "cookies-next";
 import userFetcher from "../libs/api-user";
 
 export default function useUser(){
@@ -6,11 +7,17 @@ export default function useUser(){
     const loading = !data && !error;
     const loggedOut = error && error.status === 401
 
-    return{
+    // Retrieve token from cookie
+    const token = getCookie("token");
+
+    return {
         loading,
         loggedOut,
-        user: data,
+        user: {
+            ...data,
+            token,
+        },
         mutate,
-        revalidate
+        revalidate,
     };
 }
