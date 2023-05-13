@@ -3,7 +3,6 @@ import { TbEdit, TbX } from 'react-icons/tb'
 import ToggleButton from './forms/reusable_form_components/ToggleButton';
 import useKeys from "../data/use-key";
 import { deleteKey, updateKey } from '../libs/auth'
-import User from '../models/user';
 
 
 const ApiKeyList = () => {

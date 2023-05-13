@@ -1,15 +1,18 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import useUser from '../data/use-user'
+import { AuthContext } from './_app'
 import UserCombo from '../components/forms/UserCombo'
 import { logout } from '../libs/auth'
+import { useContext } from 'react'
 
-function Home(){
-  const { loading, user, mutate, loggedOut } = useUser();
+function Home() {
+  const { user, loading, mutate } = useContext(AuthContext);
+  
+  if (loading) {
+    return <div className='loader'></div>;;
+  }
 
-  if (loading) return <div className='loader'></div>;
-
-  return(
+  return (
     <>
       <Head>
         <title>My Hero API</title>
@@ -17,35 +20,33 @@ function Home(){
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="main">
-
         <section className="login">
-          {user && !loggedOut && (
+          {user.token && (
             <>
               <p>Welcome {user.email}!</p>
-              <Link href='/v1'>Check out the docs!</Link>
+              <Link href="/v1">Check out the docs!</Link>
               <button
-                className= "btn-main" 
-                onClick={() =>{
+                className="btn-main"
+                onClick={() => {
                   logout('token');
-                  mutate();
-                }}>
-                  Logout
+                  mutate(null);
+                }}
+              >
+                Logout
               </button>
             </>
           )}
-
-          {loggedOut && (
+          {!user.token &&(
             <>
               <h1>Welcome to MyHeroAPI</h1>
-              <UserCombo/>
+              <UserCombo />
             </>
           )}
-          
         </section>
-
       </main>
     </>
-  )
+  );
 }
+
 
 export default Home;
