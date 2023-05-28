@@ -4,47 +4,29 @@ import Form from "./reusable_form_components/Form";
 import Input from "./reusable_form_components/Input";
 import Option from "./reusable_form_components/Option";
 import Select from "./reusable_form_components/Select";
-import useUser from '../../data/use-user'
 import { useState } from "react";
-import { getCookie, setCookie } from "cookies-next";
+import { AuthContext } from "../../pages/_app";
+import { useContext } from 'react'
+
 
 
 const CreateApiKeyForm = () => {
-    const {user} = useUser();
-    const token = getCookie('token');
+    const { user, createKey} = useContext(AuthContext);
+
     const [isExpirationVisible, setIsExpirationVisible] = useState(false);
     const [startDate, setStartDate] = useState(new Date());
     const [formData, setFormData] = useState({
         name: '',
         hasExpiration: false,
         expiration: "",
-        username: ""
+        username:""
     });
     
     const handleSubmit = async (event) => {
         event.preventDefault();
         formData.username = user.username
-        const { name, hasExpiration, expiration, username} = formData;
-
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api_keys/create`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${token}`    
-            },
-            body: JSON.stringify({ name, hasExpiration, expiration, username }),
-        });
-
-        if (res.ok) {
-            const data = await res.json();
-            setCookie("api_key", data)
-            window.location.reload()
-            // handle successful creation of api key
-        } else {
-            console.error("error", res.json())
-            // handle error
-        }
+        const { name, hasExpiration, expiration, username } = formData;
+        await createKey(name, hasExpiration, expiration, username)       
     };
 
 

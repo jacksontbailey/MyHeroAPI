@@ -6,7 +6,7 @@ import { AuthContext } from '../pages/_app';
 
 
 const ApiKeyList = () => {
-    const { user, loading, mutate, apiKeys, deleteKey, updateKey } = useContext(AuthContext);
+    const { loading, mutate, apiKeys, deleteKey, updateKey } = useContext(AuthContext);
     const [keys, setKeys] = useState(apiKeys);
     const [keyName, setKeyName] = useState('');
     const [selectedItem, setSelectedItem] = useState({});
@@ -84,11 +84,11 @@ const ApiKeyList = () => {
                     <dialog id = "keyNameDialog" className='dialog__key-name'>
                         <form className='dialog__form' method='dialog'>
                             <section className='dialog__fillable'>
-                                <label className='dialog__label'>New Key Name:</label>
+                                <label className='dialog__label'>Rename Key:</label>
                                 <input className='dialog__input' type="text" value={keyName} onChange={(e) => setKeyName(e.target.value)} autoFocus/>
                             </section>
                             <button className='dialog__cancel btnCancel' value="cancel">Cancel</button>
-                            <button className='dialog__submit btnSubmit' onClick={handlePopupSubmit} value="submit">Add Key</button>
+                            <button className='dialog__submit btnSubmit' onClick={handlePopupSubmit} value="submit">Submit</button>
                         </form>
                     </dialog>
                 </section>

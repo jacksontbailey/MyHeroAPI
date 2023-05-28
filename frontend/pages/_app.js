@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react';
 import { createContext } from 'react';
-import { getCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 import Layout from '../components/Layout'
 import useSWR from "swr";
 import userFetcher from "../libs/api-user"
@@ -87,6 +87,41 @@ function MyApp({ Component, pageProps }) {
     }
   }, [apiKeysData, mutateApiKeys, token]);
 
+
+  const createKey = useCallback(async (name, hasExpiration, expiration, username) => {
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api_keys/create`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${token}`    
+        },
+        body: JSON.stringify({name, hasExpiration, expiration, username}),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        // handle successful creation of api key by refreshing users api keys
+        mutateApiKeys([...apiKeysData, data]);
+      } else {
+        const status = res.status;
+        const errorData = await res.json();
+        console.error(`Failed to create API key: ${errorData.message}`);
+        return {
+          status,
+          message: errorData.message,
+        };
+      }
+    } catch (error) {
+      console.error("Error creating API key:", error);
+      return {
+        status: null,
+        message: "An error occurred while creating the API key.",
+      };
+    }  }, [apiKeysData, mutateApiKeys, token]);
+
+
   const contextValue = useMemo(() => ({
     currentUser,
     login,
@@ -99,9 +134,10 @@ function MyApp({ Component, pageProps }) {
     mutateUser,
     apiKeys: apiKeysData,
     loadingKeys,
+    createKey,
     deleteKey,
     updateKey,
-  }), [currentUser, login, loading, loggedOut, userData, token, mutateUser, apiKeysData, loadingKeys, deleteKey, updateKey]);
+  }), [currentUser, login, loading, loggedOut, userData, token, mutateUser, apiKeysData, loadingKeys, createKey, deleteKey, updateKey]);
   
   return (
     <AuthContext.Provider value={contextValue}>
