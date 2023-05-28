@@ -4,12 +4,10 @@ const nextConfig = {
   swcMinify: true,
 }
 
-module.exports = nextConfig
+export default nextConfig
 
-const path = require('path')
+import { join } from 'path'
 
-module.exports = {
-  sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
-  },
+export const sassOptions = {
+  includePaths: [join(__dirname, 'styles')],
 }

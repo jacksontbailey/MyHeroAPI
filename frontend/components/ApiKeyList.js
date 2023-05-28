@@ -1,31 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { TbEdit, TbX } from 'react-icons/tb'
 import ToggleButton from './forms/reusable_form_components/ToggleButton';
-import useKeys from "../data/use-key";
-import { deleteKey, updateKey } from '../libs/auth'
+import { useContext } from 'react';
+import { AuthContext } from '../pages/_app';
 
 
 const ApiKeyList = () => {
-    const { loading, apiKeys, mutate } = useKeys();
+    const { user, loading, mutate, apiKeys, deleteKey, updateKey } = useContext(AuthContext);
+    const [keys, setKeys] = useState(apiKeys);
     const [keyName, setKeyName] = useState('');
     const [selectedItem, setSelectedItem] = useState({});
 
+    useEffect(() => {
+        setKeys(apiKeys);
+    }, [apiKeys]);
+
     const handleToggleStatus = async (index) => {
-        const updatedApiKeys = [...apiKeys];
+        const updatedApiKeys = [...keys];
         const keyToUpdate = updatedApiKeys[index]['api_key']
         const newStatus = (updatedApiKeys[index]['key_status'] === 'active') ? 'inactive' : 'active';
-        await User.updateKey( keyToUpdate, { key_status: newStatus }).then(() => { mutate(updatedApiKeys) })
+        await updateKey( keyToUpdate, {updateStatus: newStatus });
     }
-
+ 
     const handleDelete = async (index) => {
-        const updatedApiKeys = [...apiKeys];
-        const keyToDelete = updatedApiKeys[index]['api_key']
-        await User.deleteApiKey(keyToDelete).then(() => { mutate(updatedApiKeys) })
-    }
-
+        const keyToDelete = keys[index]['api_key'];
+        try {
+            await deleteKey(keyToDelete);
+            const updatedApiKeys = [...keys];
+            updatedApiKeys.splice(index, 1);
+            setKeys(updatedApiKeys);
+        } catch (error) {
+            mutate(keys)
+        }
+    };
+      
     const handleEdit = async (key, newKeyName) => {
-        const updatedApiKeys = [...apiKeys];
-        await User.updateApiKey(key, { key_name: newKeyName }).then(() => { mutate(updatedApiKeys) })
+        await updateKey(key, { updateName: newKeyName })
     }
 
     const openPopup = (item) => {
@@ -37,7 +47,6 @@ const ApiKeyList = () => {
     const handlePopupSubmit = () => {
         handleEdit(selectedItem.api_key, keyName);
     };
-
 
     if (loading) return <div className='loader'></div>
 
