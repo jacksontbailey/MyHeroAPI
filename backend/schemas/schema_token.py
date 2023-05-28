@@ -16,7 +16,13 @@ class AccessTokenRefreshed(BaseModel):
     access_token: str
     token_type: str | None = None
 
-
+class ApiToken(BaseModel):
+    api_key: str
+    key_name: str
+    key_status: str
+    has_expiration: bool
+    exp_date: str | None
+    
 class ApiTokenCreate(BaseModel):
     name: str | None = 'default'
     hasExpiration: bool | None = False

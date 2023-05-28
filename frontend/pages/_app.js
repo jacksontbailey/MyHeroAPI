@@ -1,10 +1,10 @@
 import { useCallback, useMemo, useState } from 'react';
 import { createContext } from 'react';
-import { getCookie, setCookie } from "cookies-next";
+import { getCookie } from "cookies-next";
 import Layout from '../components/Layout'
 import useSWR from "swr";
 import userFetcher from "../libs/api-user"
-import keyFetcher from "../libs/api-user.js";
+import keyFetcher from "../libs/api-user";
 import '../styles/globals.css'
 import '../styles/app.scss'
 
@@ -23,9 +23,11 @@ function MyApp({ Component, pageProps }) {
   const {data: apiKeysData, mutate: mutateApiKeys} = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api_keys/list-keys`, keyFetcher);
   const loadingKeys = !apiKeysData;
 
+
   const login = useCallback((response) => {
     setCurrentUser(response.user);
   }, []);
+
 
   const deleteKey = useCallback(async (currentKey) => {
     try {
@@ -47,6 +49,7 @@ function MyApp({ Component, pageProps }) {
       return error
     }
   }, [apiKeysData, mutateApiKeys, token]);
+
 
   const updateKey = useCallback(async (currentKey, { updateStatus = null, updateName = null }) => {
     try {

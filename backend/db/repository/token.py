@@ -1,9 +1,11 @@
 from core.config import settings
-from fastapi import HTTPException
+from fastapi import HTTPException, status, Header
 from datetime import datetime, timedelta
-from schemas.schema_token import Hasher
+from schemas.schema_token import Hasher, ApiToken
 from jose import jwt
 from pymongo.errors import PyMongoError
+from pydantic import parse_obj_as
+import json
 
 
 
@@ -111,16 +113,26 @@ def save_api_key(username, token, name, hasExpiration, expiration, status):
 
 
 
-def is_valid_api_key(token):
-    api_key = settings.API_COLL.find_one({"api_key": token})
-    if not api_key:
+def is_valid_api_key(api_key: str = Header(...)):
+    parsed_key = parse_obj_as(ApiToken, json.loads(api_key))
+    print(f"type is: {type(api_key)}, token is: {api_key}\n\n parsed_key is: {type(parsed_key), parsed_key}")
+
+    key_value = parsed_key.api_key
+    key_status = parsed_key.key_status
+    has_expiration = parsed_key.has_expiration
+    exp_date = parsed_key.exp_date
+
+    if key_status == "inactive":
         return False
-    decoded_token = decode_tokens(data=token)
-    token = decoded_token["api_key"]
-    if api_key["status"] == "inactive":
+    if has_expiration and exp_date < datetime.utcnow():
         return False
-    if api_key["exp_date"] and api_key["exp_date"] < datetime.utcnow():
+    
+    key = encode_tokens(raw_key=key_value)
+
+    api_key_in_db = settings.API_COLL.find_one({"api_key": key})
+    if not api_key_in_db:
         return False
+    
     return True
 
 

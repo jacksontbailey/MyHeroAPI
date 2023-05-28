@@ -1,30 +1,48 @@
-import { useMemo, useEffect, useState } from "react";
+import { useMemo, useEffect, useState, useContext } from "react";
 import { getCookie } from 'cookies-next';
 import TextBoxList from "../../../components/textbox/TextBoxList";
+import { AuthContext } from "../../_app";
 
 
 export default function Cards() {
+    const { user, apiKeys } = useContext(AuthContext);
     const [cards, setCards] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const token = getCookie('token');
 
     useEffect(() => {
         async function getCards() {
             setIsLoading(true);
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL }/v1/cards`, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
+            // Find an active API key
+            const activeKey = apiKeys && apiKeys.find(key => key.key_status === 'active');
+            
+            if (!activeKey) {
+                // Handle the case when there are no active API keys
+                setIsLoading(false);
+                setCards([]);
+                return;
             }
-    });
+            console.log(`active key is: ${JSON.stringify(activeKey)}\n token is: ${JSON.stringify(user.token)}`)
+            const key = JSON.stringify(activeKey)
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/cards`, {
+                headers: {
+                    'api-key': `${key}`,
+                }
+            });
     
-        if (res.status == 200) {
-            const result = await res.json();
-            setCards(result);
+            if (res.status === 200) {
+                const result = await res.json();
+                setCards(result);
+            } else {
+                // Handle the case when the API request fails
+                setCards([]);
+            }
+        
+            setIsLoading(false);
         }
-        setIsLoading(false);
-    }
+        
         getCards();
-    }, [token]);
+    }, [apiKeys, user.token]);
+        
 
     const cardsData = useMemo(() => {
         return (

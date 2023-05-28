@@ -1,8 +1,7 @@
-from fastapi import APIRouter, HTTPException, Header, Query, status
-from schemas.schema_card import *
-
-router = APIRouter()
-
+from fastapi import APIRouter, HTTPException, Header, Query, status, Depends
+from datetime import datetime
+from schemas.schema_card import Card
+from db.repository.token import is_valid_api_key
 from db.database import (
     fetch_all_card_urls,
     fetch_all_matches,
@@ -10,6 +9,7 @@ from db.database import (
     fetch_card_by_name,
 )
 
+router = APIRouter()
 
 
 
@@ -58,9 +58,15 @@ async def card_search(
             default = 10,
             title = "Limit",
             description = "Amount of cards you get back from each search"
-            )
-        ):
+            ),
+        is_valid_key: bool = Depends(is_valid_api_key)
+    ):
     
+    if not is_valid_key:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid API key"
+        )
     
     search_queries = {}
     if t != None:
