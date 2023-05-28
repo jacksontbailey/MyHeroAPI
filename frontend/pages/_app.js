@@ -13,6 +13,7 @@ export const AuthContext = createContext();
 
 function MyApp({ Component, pageProps }) {
   const [currentUser, setCurrentUser] = useState(null);
+  const token = getCookie("token");
 
   const {data: userData, mutate: mutateUser, error: userError} = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/login/me`, userFetcher);
   const loading = !userData && !userError;
@@ -22,28 +23,20 @@ function MyApp({ Component, pageProps }) {
   const {data: apiKeysData, mutate: mutateApiKeys} = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api_keys/list-keys`, keyFetcher);
   const loadingKeys = !apiKeysData;
 
-  // Retrieve auth token from cookie
-  const token = getCookie("token");
-
   const login = useCallback((response) => {
     setCurrentUser(response.user);
   }, []);
 
-  const deleteKey = async (currentKey) => {
+  const deleteKey = useCallback(async (currentKey) => {
     try {
-      const updatedApiKeys = apiKeysData.filter(
-        (key) => key.api_key !== currentKey
-      );
+      const updatedApiKeys = apiKeysData.filter((key) => key.api_key !== currentKey);
 
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api_keys/delete-key?key=${currentKey}`,
-        {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api_keys/delete-key?key=${currentKey}`, {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
-      );
+        });
 
       if (res.status !== 200) {
         throw new Error("Failed to delete the key");
@@ -51,11 +44,11 @@ function MyApp({ Component, pageProps }) {
 
       mutateApiKeys(updatedApiKeys);
     } catch (error) {
-      // Handle error
+      return error
     }
-  };
+  }, [apiKeysData, mutateApiKeys, token]);
 
-  const updateKey = async (currentKey, { updateStatus = null, updateName = null }) => {
+  const updateKey = useCallback(async (currentKey, { updateStatus = null, updateName = null }) => {
     try {
       const updatedApiKeys = apiKeysData.map((item) => {
         if (item.api_key === currentKey) {
@@ -90,9 +83,9 @@ function MyApp({ Component, pageProps }) {
 
       mutateApiKeys(updatedApiKeys);
     } catch (error) {
-      // Handle error
+      return error
     }
-  };
+  }, [apiKeysData, mutateApiKeys, token]);
 
   const contextValue = useMemo(() => ({
     currentUser,
@@ -108,7 +101,7 @@ function MyApp({ Component, pageProps }) {
     loadingKeys,
     deleteKey,
     updateKey,
-  }), [currentUser, login, loading, loggedOut, userData, token, mutateUser, apiKeysData, loadingKeys]);
+  }), [currentUser, login, loading, loggedOut, userData, token, mutateUser, apiKeysData, loadingKeys, deleteKey, updateKey]);
   
   return (
     <AuthContext.Provider value={contextValue}>
