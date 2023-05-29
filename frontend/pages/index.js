@@ -6,7 +6,7 @@ import { logout } from '../libs/auth'
 import { useContext } from 'react'
 
 function Home() {
-  const { user, loading, mutate } = useContext(AuthContext);
+  const { user, loading, mutateUser } = useContext(AuthContext);
   
   if (loading) {
     return <div className='loader'></div>;;
@@ -29,7 +29,7 @@ function Home() {
                 className="btn-main"
                 onClick={() => {
                   logout('token');
-                  mutate(null);
+                  mutateUser(null);
                 }}
               >
                 Logout

@@ -135,12 +135,13 @@ function MyApp({ Component, pageProps }) {
       token,
     },
     mutateUser,
+    mutateApiKeys,
     apiKeys: apiKeysData,
     loadingKeys,
     createKey,
     deleteKey,
     updateKey,
-  }), [currentUser, login, loading, loggedOut, userData, token, mutateUser, apiKeysData, loadingKeys, createKey, deleteKey, updateKey]);
+  }), [currentUser, login, loading, loggedOut, userData, token, mutateUser, mutateApiKeys, apiKeysData, loadingKeys, createKey, deleteKey, updateKey]);
   
   return (
     <AuthContext.Provider value={contextValue}>

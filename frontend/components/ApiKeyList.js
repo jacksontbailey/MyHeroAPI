@@ -6,7 +6,7 @@ import { AuthContext } from '../pages/_app';
 
 
 const ApiKeyList = () => {
-    const { loading, mutate, apiKeys, deleteKey, updateKey } = useContext(AuthContext);
+    const { loading, mutateApiKeys, apiKeys, deleteKey, updateKey } = useContext(AuthContext);
     const [keys, setKeys] = useState(apiKeys);
     const [keyName, setKeyName] = useState('');
     const [selectedItem, setSelectedItem] = useState({});
@@ -30,7 +30,7 @@ const ApiKeyList = () => {
             updatedApiKeys.splice(index, 1);
             setKeys(updatedApiKeys);
         } catch (error) {
-            mutate(keys)
+            mutateApiKeys(keys)
         }
     };
       
