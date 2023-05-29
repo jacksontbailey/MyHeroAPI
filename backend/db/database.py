@@ -1,6 +1,7 @@
 from schemas.schema_card import Card
 from core.config import settings
 from fastapi import HTTPException, status
+import re
 
 # - Collation allows for case-insensitive lookups
 
@@ -37,8 +38,14 @@ async def fetch_all_card_urls():
     for card in cursor:
         name = card['name']
         url = f"http://localhost:3000/v1/cards/{card['id']}"
-        cards.append({"name": name, "url": url})
-    
+        id = card['id']
+        key = str(card['_id'])
+        
+        match = re.search(r"ObjectId\('(.*)'\)", key)
+        if match: 
+            key = match.group(1)
+        
+        cards.append({"name": name, "url": url, 'id': id, 'key': key})
     return (len(cards), cards)
         
         

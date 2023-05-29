@@ -21,7 +21,7 @@ export default function Cards() {
                 setCards([]);
                 return;
             }
-            console.log(`active key is: ${JSON.stringify(activeKey)}\n token is: ${JSON.stringify(user.token)}`)
+
             const key = JSON.stringify(activeKey)
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/cards`, {
                 headers: {
@@ -46,21 +46,33 @@ export default function Cards() {
 
     const cardsData = useMemo(() => {
         return (
-            cards.map(({ count, cards }) => (
-                {total: count},
-                cards.map((card, index) => ({
-                    title: card.name,
-                    content: <p>{card.url}</p>,
-                    id: index
-                }))
-            )).flat()
-        )
-    }, [cards])
+            cards
+                .flatMap(({ count, cards }) => {
+                    if (!cards) {
+                        return [];
+                    }
+                    return [
+                        { total: count },
+                        ...cards.map((card) => ({
+                            title: card.name,
+                            content: <p>{card.url}</p>,
+                            cardNumber: card.id,
+                            cardKey: card.key,
+                        }))
+                    ];
+                })
+                .sort((a, b) => a.cardNumber - b.cardNumber) // Sort the cards based on the "id" in ascending order
+        );
+    }, [cards]);
+        
+    if (isLoading) {
+        return <div className='loader'></div>;
+    }
 
     return (
-        <div>
+        <main>
             <h1>All Cards</h1>
-            {isLoading ? <p>Loading...</p> : <TextBoxList data={cardsData} />}
-        </div>
+            <TextBoxList data={cardsData} />
+        </main>
     );
 }

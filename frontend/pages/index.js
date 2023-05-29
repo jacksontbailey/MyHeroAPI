@@ -9,7 +9,7 @@ function Home() {
   const { user, loading, mutateUser } = useContext(AuthContext);
   
   if (loading) {
-    return <div className='loader'></div>;;
+    return <div className='loader'></div>;
   }
 
   return (
