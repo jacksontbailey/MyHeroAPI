@@ -1,8 +1,9 @@
-import { getCookie } from 'cookies-next'
 import { useRouter } from 'next/router'
-import {useState, useEffect, useMemo} from 'react'
+import {useState, useEffect, useMemo, useContext} from 'react'
 import Card from '../../../components/cards/Card'
 import TextBox from '../../../components/textbox/TextBox'
+import { AuthContext } from "../../_app";
+
 
 
 export async function getServerSideProps({params}){
@@ -14,20 +15,30 @@ export async function getServerSideProps({params}){
 }
 
 
-const CardId = ({res, req}) => {
+const CardId = () => {
     const router = useRouter()
+    const { user, apiKeys } = useContext(AuthContext);
     const [card, setCard] = useState([])
     const [isLoading, setIsLoading] = useState(false);
     const {cardId} = router.query
     
     useEffect(() => {
-        const token = getCookie('token', {res, req});
         async function getCard(){
             setIsLoading(true);
+
+            const activeKey = apiKeys && apiKeys.find(key => key.key_status === 'active');
+            
+            if (!activeKey) {
+                // Handle the case when there are no active API keys
+                setIsLoading(false);
+                setCard([]);
+                return;
+            }
+
+            const key = JSON.stringify(activeKey)
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/cards/${cardId}`, {
-                mode: 'cors',
                 headers: {
-                    'Authorization': `Bearer ${token}`
+                    'api-key': `${key}`,
                 }
             })        
 
@@ -38,7 +49,7 @@ const CardId = ({res, req}) => {
             setIsLoading(false);
         }
         getCard();
-    }, [])
+    }, [apiKeys, user.token])
 
     const rememberCards = useMemo(() => {
         return <Card data={card}/>

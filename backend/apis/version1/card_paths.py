@@ -59,14 +59,8 @@ async def card_search(
             title = "Limit",
             description = "Amount of cards you get back from each search"
             ),
-        is_valid_key: bool = Depends(is_valid_api_key)
     ):
     
-    if not is_valid_key:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid API key"
-        )
     
     search_queries = {}
     if t != None:

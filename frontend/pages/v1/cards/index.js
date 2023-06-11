@@ -1,5 +1,4 @@
 import { useMemo, useEffect, useState, useContext } from "react";
-import { getCookie } from 'cookies-next';
 import TextBoxList from "../../../components/textbox/TextBoxList";
 import { AuthContext } from "../../_app";
 
