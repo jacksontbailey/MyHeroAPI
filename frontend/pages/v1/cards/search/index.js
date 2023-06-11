@@ -1,4 +1,3 @@
-import { getCookie } from 'cookies-next'
 import { useRouter } from 'next/router'
 import {useState, useEffect, useMemo, useContext} from 'react'
 import CardList from '../../../../components/cards/CardList'

@@ -1,3 +1,5 @@
+@use '../01-helpers/keyframes';
+
 .text-box {
     &__header {
       display: flex;
@@ -18,20 +20,39 @@
     }
   }
   
+  .text-box-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+
   .text-box-list {
-    max-height: 200px;
+    max-height: 500px;
+    width: 800px;
     overflow-y: scroll;
+    padding: 25px;
+    background-color: lightgrey;
+
+    &__count-key{
+      color: darkgray
+    }
+    &__count-value{
+      color: orange
+    }
   }
 
   
 .expand-icon {
-  transition: transform 0.2s ease;
-    
-  &__expanded {
-    transform: rotate(180deg);
+  &__collapsed{
+    transform: rotate(270deg);
   }
     
-  &__collapsed {
-    transform: rotate(0deg);
+  &__collapsed.animate {
+    animation: rotate-close .2s linear 1 normal forwards;
+  }
+
+  &__expanded.animate {
+    animation: rotate-open .2s linear 1 normal forwards;
   }
 }

@@ -34,3 +34,22 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+
+@keyframes rotate-close{
+  from{
+    transform: rotate(360deg);
+  }
+  to{
+    transform: rotate(270deg);
+  }
+}
+
+@keyframes rotate-open{
+  from{
+    transform: rotate(270deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
