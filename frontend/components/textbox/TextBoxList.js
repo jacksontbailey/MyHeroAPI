@@ -11,10 +11,9 @@ const TextBoxList = ({ data }) => {
                     ? data.map((card, index) => (
                         card.title ? (
                             <TextBox
-                                title={card.title}
                                 cardKey={card.cardKey}
                                 cardNumber={card.cardNumber}
-                                content={card.content}
+                                content={[{name: card.title}, {url: card.content}]}
                                 key={index}
                             />
                         ) : null

@@ -54,7 +54,7 @@ export default function Cards() {
                         { total: count },
                         ...cards.map((card) => ({
                             title: card.name,
-                            content: <a href={card.url}>{card.url}</a>,
+                            content: card.url,
                             cardNumber: card.id,
                             cardKey: card.key,
                         }))
