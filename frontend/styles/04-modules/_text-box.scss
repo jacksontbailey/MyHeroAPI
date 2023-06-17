@@ -4,7 +4,19 @@
     &__header {
       display: flex;
       align-items: center;
-      cursor: pointer;
+    }
+
+    &__header-number {
+      color:navy
+    }
+
+    &__header-bracket{
+      margin: 0 15px;
+      color: grey
+    }
+
+    &__header-key{
+      color: grey
     }
   
     &__title {
@@ -16,7 +28,19 @@
     }
   
     &__content {
-      padding: 10px;
+      padding: 0 5%;
+    }
+
+    &__content-item{
+      display: flex;
+    }
+
+    &__content-key{
+      margin-right: 10px
+    }
+
+    &__content-value{
+      color: green
     }
   }
   
@@ -32,10 +56,11 @@
     width: 800px;
     overflow-y: scroll;
     padding: 25px;
-    background-color: lightgrey;
+    background-color: whitesmoke
+    ;
 
     &__count-key{
-      color: darkgray
+      color: grey
     }
     &__count-value{
       color: orange
@@ -44,8 +69,14 @@
 
   
 .expand-icon {
+
   &__collapsed{
     transform: rotate(270deg);
+    cursor: pointer;
+  }
+
+  &__expanded{
+    cursor: pointer;
   }
     
   &__collapsed.animate {

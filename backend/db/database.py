@@ -46,7 +46,8 @@ async def fetch_all_card_urls():
             key = match.group(1)
         
         cards.append({"name": name, "url": url, 'id': id, 'key': key})
-    return (len(cards), cards)
+    sorted_cards = sorted(cards, key=lambda card: card['id'])
+    return (len(cards), sorted_cards)
         
         
 
@@ -57,8 +58,27 @@ async def fetch_all_matches(queries, amount_limited):
     cursor = settings.CARD_COLL.find(queries).collation(settings.INSENSITIVE).limit(amount_limited)
     for card in cursor:
         cards.append(Card(**card))
+    sorted_cards = sorted(cards, key=lambda card: card.id)
+    return(len(cards), sorted_cards)
+
+
+async def fetch_all_match_urls(queries, amount_limited):
+    cards = []
+    cursor = settings.CARD_COLL.find(queries).collation(settings.INSENSITIVE).limit(amount_limited)
+    for card in cursor:
+        name = card['name']
+        url = f"http://localhost:3000/v1/cards/{card['id']}"
+        id = card['id']
+        key = str(card['_id'])
+        
+        match = re.search(r"ObjectId\('(.*)'\)", key)
+        if match: 
+            key = match.group(1)
+        
+        cards.append({"name": name, "url": url, 'id': id, 'key': key})
     
-    return(len(cards), cards)
+    sorted_cards = sorted(cards, key=lambda card: card['id'])
+    return(len(cards), sorted_cards)
 
 
 

@@ -5,6 +5,7 @@ from db.repository.token import is_valid_api_key
 from db.database import (
     fetch_all_card_urls,
     fetch_all_matches,
+    fetch_all_match_urls,
     fetch_card_by_id,
     fetch_card_by_name,
 )
@@ -99,7 +100,7 @@ async def card_search(
         return({'count': results[0], 'cards': results[1]})
     raise HTTPException(
         status_code= status.HTTP_404_NOT_FOUND,
-        detail="There is no card in our database with that name",
+        detail="There is no card in our database with that criteria",
     )
 
 

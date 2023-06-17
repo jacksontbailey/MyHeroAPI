@@ -1,0 +1,11 @@
+.cards-search {
+    &__main {
+        display: grid;
+        width: 100%;
+    }
+
+    &__header {
+        justify-self: center;
+        padding: 50px 0;
+    }
+}

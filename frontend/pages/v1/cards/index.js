@@ -1,5 +1,6 @@
 import { useMemo, useEffect, useState, useContext } from "react";
 import TextBoxList from "../../../components/textbox/TextBoxList";
+import TextBoxAllCards from "../../../components/textbox/TextBoxAllCards";
 import { AuthContext } from "../../_app";
 
 
@@ -13,7 +14,7 @@ export default function Cards() {
             setIsLoading(true);
             // Find an active API key
             const activeKey = apiKeys && apiKeys.find(key => key.key_status === 'active');
-            
+
             if (!activeKey) {
                 // Handle the case when there are no active API keys
                 setIsLoading(false);
@@ -27,7 +28,7 @@ export default function Cards() {
                     'api-key': `${key}`,
                 }
             });
-    
+
             if (res.status === 200) {
                 const result = await res.json();
                 setCards(result);
@@ -35,13 +36,13 @@ export default function Cards() {
                 // Handle the case when the API request fails
                 setCards([]);
             }
-        
+
             setIsLoading(false);
         }
-        
+
         getCards();
     }, [apiKeys, user.token]);
-        
+
 
     const cardsData = useMemo(() => {
         return (
@@ -63,15 +64,26 @@ export default function Cards() {
                 .sort((a, b) => a.cardNumber - b.cardNumber) // Sort the cards based on the "id" in ascending order
         );
     }, [cards]);
-        
+
     if (isLoading) {
         return <div className='loader'></div>;
     }
 
     return (
-        <main>
-            <h1>All Cards</h1>
-            <TextBoxList data={cardsData} />
+        <main className="cards-all main">
+            <h1 className="cards-all header">All Cards</h1>
+            {(cardsData !== undefined) ? <TextBoxList data={cardsData.map((card, index) => (
+                card.title ? (
+                    <TextBoxAllCards
+                        cardKey={card.cardKey}
+                        cardNumber={card.cardNumber}
+                        content={[{ name: card.title }, { url: card.content }]}
+                        key={index}
+                    />
+                ) : null
+            ))} />
+                : null
+            }
         </main>
     );
 }
