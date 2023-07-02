@@ -1,5 +1,5 @@
 from core.config import settings
-from fastapi import HTTPException, status, Header
+from fastapi import HTTPException, status, Header, Depends
 from datetime import datetime, timedelta
 from schemas.schema_token import Hasher, ApiToken
 from jose import jwt
@@ -83,16 +83,14 @@ def change_password(email: str, password: str):
 
 # - For API Tokens JWT_API_SECRET
 
-def encode_tokens(raw_key):
+async def encode_tokens(raw_key):
     encoded_api_key = jwt.encode({"api_key": raw_key}, key=settings.JWT_API_SECRET, algorithm=settings.ALGORITHM)
-    
     return encoded_api_key
 
 
 
 async def decode_tokens(data):
     decoded_api_keys = [{**item, "api_key": jwt.decode(token=item["api_key"], key=settings.JWT_API_SECRET, algorithms=settings.ALGORITHM).get('api_key')} for item in data]
-
     return decoded_api_keys
 
 
@@ -113,28 +111,41 @@ def save_api_key(username, token, name, hasExpiration, expiration, status):
 
 
 
-def is_valid_api_key(api_key: str = Header(...)):
-    parsed_key = parse_obj_as(ApiToken, json.loads(api_key))
-    print(f"type is: {type(api_key)}, token is: {api_key}\n\n parsed_key is: {type(parsed_key), parsed_key}")
+async def is_valid_api_key(api_key: str = Header(...)):
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate api key",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
 
-    key_value = parsed_key.api_key
-    key_status = parsed_key.key_status
-    has_expiration = parsed_key.has_expiration
-    exp_date = parsed_key.exp_date
+    try:
+        parsed_key = json.loads(api_key)
+        parsed_key = parse_obj_as(ApiToken, parsed_key)
+        key_value = parsed_key.api_key
+        key_status = parsed_key.key_status
+        has_expiration = parsed_key.has_expiration
+        exp_date = parsed_key.exp_date
 
-    if key_status == "inactive":
-        return False
-    if has_expiration and exp_date < datetime.utcnow():
-        return False
+        if key_status is "inactive":
+            raise credentials_exception
+        if has_expiration and exp_date < datetime.utcnow():
+            raise credentials_exception
+    except json.JSONDecodeError:
+        key_value = api_key
     
-    key = encode_tokens(raw_key=key_value)
+    key = await encode_tokens(raw_key=key_value)
+    final_key = await encode_tokens(raw_key=key)
 
-    api_key_in_db = settings.API_COLL.find_one({"api_key": key})
+    api_key_in_db = settings.API_COLL.find_one({"api_key": final_key})
     if not api_key_in_db:
-        return False
-    
-    return True
+        raise credentials_exception
+    return api_key_in_db
 
+
+async def get_valid_active_api_key(current_key: str = Depends(is_valid_api_key)):
+    if not current_key.key_status is "active":
+        return False
+    return True
 
 
 def change_api_key_status(username, key, status):

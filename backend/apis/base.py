@@ -18,36 +18,40 @@ api_router.include_router(
     tags=["Admin"],
     dependencies=[Depends(get_current_active_user)],
     responses={418: {"description": "I'm a teapot"}},
+    include_in_schema = False,
 )
 
 api_router.include_router(
     card_paths.router,
     prefix = "/v1",
     tags = ["Cards"],
-    dependencies= [Depends(is_valid_api_key)]
+    dependencies= [Depends(is_valid_api_key)],
 )
 
 api_router.include_router(
     notification_paths.router,
     prefix="/verification",
-    tags=["Email"]
+    tags=["Email"],
+    include_in_schema = False,
 )
 
 api_router.include_router(
     token_paths.router,
     prefix = "/login",
-    tags = ["Login"]
+    tags = ["Login"],
 )
 
 api_router.include_router(
     user_paths.router,
     prefix = "/new",
-    tags = ["Users"]
+    tags = ["Users"],
+    include_in_schema = False
 )
 
 api_router.include_router(
     api_token_paths.router,
     prefix = "/api_keys",
     tags = ["Keys"],
-    dependencies= [Depends(get_current_active_user)]
+    dependencies= [Depends(get_current_active_user)],
+    include_in_schema=False
 )

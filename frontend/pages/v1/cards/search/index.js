@@ -16,7 +16,6 @@ const CardSearch = () => {
     const router = useRouter()
     const [cards, setCards] = useState([])
     const { user, apiKeys } = useContext(AuthContext);
-    const { t, r, sm, s, limit } = router.query
     const [isLoading, setIsLoading] = useState(false);
     const query = router.query
 

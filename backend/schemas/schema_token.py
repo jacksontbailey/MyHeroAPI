@@ -22,6 +22,9 @@ class ApiToken(BaseModel):
     key_status: str
     has_expiration: bool
     exp_date: str | None
+
+class ApiTokenValidation(BaseModel):
+    api_key: str
     
 class ApiTokenCreate(BaseModel):
     name: str | None = 'default'

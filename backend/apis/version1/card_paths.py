@@ -1,7 +1,5 @@
 from fastapi import APIRouter, HTTPException, Header, Query, status, Depends
-from datetime import datetime
 from schemas.schema_card import Card
-from db.repository.token import is_valid_api_key
 from db.database import (
     fetch_all_card_urls,
     fetch_all_matches,

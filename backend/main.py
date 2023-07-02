@@ -11,8 +11,6 @@ def include_router(app):
 	app.include_router(api_router)
 
 def include_middleware(app):
-    #my_middleware = LowerCaseMiddleware()
-    #app.middleware("http")(my_middleware)
 
     app.add_middleware(
         CORSMiddleware,

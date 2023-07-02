@@ -9,7 +9,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 
 router = APIRouter()
 
-@router.post("", response_model = Token)
+@router.post("", response_model = Token, include_in_schema=False)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
     user = authenticate_user(form_data.username, form_data.password)
 
@@ -43,7 +43,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
 
 
 
-@router.post("/refresh", response_model=AccessTokenRefreshed)
+@router.post("/refresh", response_model=AccessTokenRefreshed, include_in_schema = False)
 async def refresh_access_token(refresh_token: str):
     try:
         payload = verify_refresh_token(refresh_token)
